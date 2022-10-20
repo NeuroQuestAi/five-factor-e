@@ -1,9 +1,7 @@
+"""Add desc."""
 
-def check(answers: list) -> None | BaseException:
-    match self._nquestion:
-        case 300:
-            assert len(answers) == 300, 'The number of questions should be 300!'
-        case 120:
-            assert len(answers) == 120, 'The number of questions should be 120!'
-        case _:
-            raise BaseException('Number of answers is invalid!')
+
+def assert_ipip_neo_answers(answers: list, nquestion) -> None | AssertionError:
+    assert (
+        len(answers) == 300 if nquestion == 300 else 120 if nquestion == 120 else 0
+    ), 'The number of questions should be 300 or 120!'
