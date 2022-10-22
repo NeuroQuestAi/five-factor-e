@@ -2,7 +2,7 @@
 
 from enum import Enum, IntEnum
 
-from big5.utility import assert_ipip_neo_answers
+from big5.utility import assert_ipip_neo_answers, create_big5_dict
 
 __author__ = "Ederson Corbari, Neural-7"
 __email__ = "e@neural7.io"
@@ -24,6 +24,20 @@ class FacetScale(IntEnum):
     IPIP_120 = 4
 
 
+class FacetLevel(IntEnum):
+    """Add desc."""
+
+    HIGH = 55
+    LOW = 45
+
+
+class NormScale(IntEnum):
+    """Add desc."""
+
+    CONST_MAX = 73
+    CONST_MIN = 32
+
+
 class NormCubic(float, Enum):
     """Cubic approximation of percentiles."""
 
@@ -41,10 +55,10 @@ class Norm:
         Based on sex and age returns range with norms.
 
         Args:
-            - sex: Gender of the individual (male or female).
+            - sex: Gender of the individual (M or F).
             - age: The age of the individual.
         """
-        if sex == 'male' and age < 21:
+        if sex == 'M' and age < 21:
             return {
                 'id': 1,
                 'ns': [
@@ -123,7 +137,7 @@ class Norm:
                 'category': 'men under 21 years old',
             }
 
-        if sex == 'male' and age > 20 and age < 41:
+        if sex == 'M' and age > 20 and age < 41:
             return {
                 'id': 2,
                 'ns': [
@@ -202,7 +216,7 @@ class Norm:
                 'category': 'men between 21 and 40 years old',
             }
 
-        if sex == 'male' and age > 40 and age < 61:
+        if sex == 'M' and age > 40 and age < 61:
             return {
                 'id': 3,
                 'ns': [
@@ -281,7 +295,7 @@ class Norm:
                 'category': 'men between 41 and 60 years of age',
             }
 
-        if sex == 'male' and age > 60:
+        if sex == 'M' and age > 60:
             return {
                 'id': 4,
                 'ns': [
@@ -360,7 +374,7 @@ class Norm:
                 'category': 'men between 41 and 60 years old',
             }
 
-        if sex == 'female' and age < 21:
+        if sex == 'F' and age < 21:
             return {
                 'id': 5,
                 'ns': [
@@ -439,7 +453,7 @@ class Norm:
                 'category': 'women under 21 years old',
             }
 
-        if sex == 'female' and age > 20 and age < 41:
+        if sex == 'F' and age > 20 and age < 41:
             return {
                 'id': 6,
                 'ns': [
@@ -518,7 +532,7 @@ class Norm:
                 'category': 'women between 21 and 40 years old',
             }
 
-        if sex == 'female' and age > 40 and age < 61:
+        if sex == 'F' and age > 40 and age < 61:
             return {
                 'id': 7,
                 'ns': [
@@ -597,7 +611,7 @@ class Norm:
                 'category': 'women between 41 and 61 years old',
             }
 
-        if sex == 'female' and age > 60:
+        if sex == 'F' and age > 60:
             return {
                 'id': 8,
                 'ns': [
@@ -689,31 +703,31 @@ class Norm:
     @staticmethod
     def percent(normc: dict) -> dict:
         """Add comments."""
-        N = int(
+        N = float(
             NormCubic.CONST1.value
             - (NormCubic.CONST2.value * normc.get('N', 0))
             + (NormCubic.CONST3.value * normc.get('N', 0) ** 2)
             - (NormCubic.CONST4.value * normc.get('N', 0) ** 3)
         )
-        E = int(
+        E = float(
             NormCubic.CONST1.value
             - (NormCubic.CONST2.value * normc.get('E', 0))
             + (NormCubic.CONST3.value * normc.get('E', 0) ** 2)
             - (NormCubic.CONST4.value * normc.get('E', 0) ** 3)
         )
-        O = int(
+        O = float(
             NormCubic.CONST1.value
             - (NormCubic.CONST2.value * normc.get('O', 0))
             + (NormCubic.CONST3.value * normc.get('O', 0) ** 2)
             - (NormCubic.CONST4.value * normc.get('O', 0) ** 3)
         )
-        A = int(
+        A = float(
             NormCubic.CONST1.value
             - (NormCubic.CONST2.value * normc.get('A', 0))
             + (NormCubic.CONST3.value * normc.get('A', 0) ** 2)
             - (NormCubic.CONST4.value * normc.get('A', 0) ** 3)
         )
-        C = int(
+        C = float(
             NormCubic.CONST1.value
             - (NormCubic.CONST2.value * normc.get('C', 0))
             + (NormCubic.CONST3.value * normc.get('C', 0) ** 2)
@@ -725,17 +739,17 @@ class Norm:
     def normalize(normc: dict, percent: dict) -> dict:
         """Add comments."""
 
-        N = 1 if normc.get('N', 0) < 32 else percent.get('N', 0)
-        E = 1 if normc.get('E', 0) < 32 else percent.get('E', 0)
-        O = 1 if normc.get('O', 0) < 32 else percent.get('O', 0)
-        A = 1 if normc.get('A', 0) < 32 else percent.get('A', 0)
-        C = 1 if normc.get('C', 0) < 32 else percent.get('C', 0)
+        N = 1 if normc.get('N', 0) < NormScale.CONST_MIN.value else percent.get('N', 0)
+        E = 1 if normc.get('E', 0) < NormScale.CONST_MIN.value else percent.get('E', 0)
+        O = 1 if normc.get('O', 0) < NormScale.CONST_MIN.value else percent.get('O', 0)
+        A = 1 if normc.get('A', 0) < NormScale.CONST_MIN.value else percent.get('A', 0)
+        C = 1 if normc.get('C', 0) < NormScale.CONST_MIN.value else percent.get('C', 0)
 
-        N = 99 if normc.get('N', 0) > 73 else percent.get('N', 0)
-        E = 99 if normc.get('E', 0) > 73 else percent.get('E', 0)
-        O = 99 if normc.get('O', 0) > 73 else percent.get('O', 0)
-        A = 99 if normc.get('A', 0) > 73 else percent.get('A', 0)
-        C = 99 if normc.get('C', 0) > 73 else percent.get('C', 0)
+        N = 99 if normc.get('N', 0) > NormScale.CONST_MAX.value else percent.get('N', 0)
+        E = 99 if normc.get('E', 0) > NormScale.CONST_MAX.value else percent.get('E', 0)
+        O = 99 if normc.get('O', 0) > NormScale.CONST_MAX.value else percent.get('O', 0)
+        A = 99 if normc.get('A', 0) > NormScale.CONST_MAX.value else percent.get('A', 0)
+        C = 99 if normc.get('C', 0) > NormScale.CONST_MAX.value else percent.get('C', 0)
 
         return {'O': O, 'C': C, 'E': E, 'A': A, 'N': N}
 
@@ -842,6 +856,46 @@ class Facet:
 
         return {'O': O, 'C': C, 'E': E, 'A': A, 'N': N}
 
+    def personality(self, size: int, big5: dict, traits: dict, label: str) -> dict:
+        """Distrib."""
+
+        # @TODO: add assert if label !='A' or label !='C':
+        big5, traits = big5.get(label, 0), traits.get(label, [])
+
+        X = [0] * size
+        Y = [0] * size
+
+        for i in range(1, 7):
+            Y[i] = traits[i]
+
+            if traits[i] < FacetLevel.LOW.value:
+                Y[i] = 'low'
+
+            if traits[i] >= FacetLevel.LOW.value and traits[i] <= FacetLevel.HIGH.value:
+                Y[i] = 'average'
+
+            if traits[i] > FacetLevel.HIGH.value:
+                Y[i] = 'high'
+
+            X[i] = (
+                NormCubic.CONST1.value
+                - (NormCubic.CONST2.value * traits[i])
+                + (NormCubic.CONST3.value * traits[i] ** 2)
+                - (NormCubic.CONST4.value * traits[i] ** 3)
+            )
+
+            if traits[i] < NormScale.CONST_MIN.value:
+                X[i] = 1
+
+            if traits[i] > NormScale.CONST_MAX.value:
+                X[i] = 99
+
+        print('Perso', X)
+        print('Flev', Y)
+        print(big5)
+
+        return create_big5_dict(label=label, big5=big5, x=X, y=Y) or {}
+
 
 class IpipNeo(Facet):
     """Class that calculates IPIP-NEO answers."""
@@ -883,3 +937,43 @@ class IpipNeo(Facet):
 
         normalize = Norm.normalize(normc=normc, percent=percent)
         print('8', normalize)
+
+        N = self.personality(size=len(score), big5=normalize, traits=distrib, label='N')
+        E = self.personality(size=len(score), big5=normalize, traits=distrib, label='E')
+        O = self.personality(size=len(score), big5=normalize, traits=distrib, label='O')
+        A = self.personality(size=len(score), big5=normalize, traits=distrib, label='A')
+        C = self.personality(size=len(score), big5=normalize, traits=distrib, label='C')
+
+        print('\n')
+        # print('9-1', N)
+        # print('9-2', E)
+        # print('9-3', O)
+        # print('9-4', A)
+        # print('9-5', C)
+
+        data = {
+            'theory': 'Big 5 Personality Traits',
+            'model': 'IPIP-NEO',
+            'question': 120,
+            'person': {
+                'name': 'Ederson Corbari',
+                'sex': 'M',
+                'age': 37,
+                'result': {
+                    'personalities': [
+                        {'Openness': O},
+                        {'Conscientiousness': C},
+                        {'Extraversion': E},
+                        {'Agreeableness': A},
+                        {'Neuroticism': N},
+                    ]
+                },
+            },
+        }
+        # print(data)
+
+        import json
+
+        print(json.dumps(data, indent=4, sort_keys=False))
+
+        ##############################################################

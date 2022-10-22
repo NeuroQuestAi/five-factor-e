@@ -497,4 +497,4 @@ answers = [
 ]
 
 
-a.compute(sex='male', age=40, answers=answers)
+a.compute(sex='M', age=40, answers=answers)
