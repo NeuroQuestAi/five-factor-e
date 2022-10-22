@@ -1,6 +1,6 @@
 """It does the calculations to generate the IPIP-NEO results based on the questions and answers."""
 
-from enum import IntEnum
+from enum import Enum, IntEnum
 
 from big5.utility import assert_ipip_neo_answers
 
@@ -22,6 +22,15 @@ class FacetScale(IntEnum):
     IPIP_MAX = 30
     IPIP_300 = 10
     IPIP_120 = 4
+
+
+class NormCubic(float, Enum):
+    """Cubic approximation of percentiles."""
+
+    CONST1 = 210.335958661391
+    CONST2 = 16.7379362643389
+    CONST3 = 0.405936512733332
+    CONST4 = 0.00270624341822222
 
 
 class Norm:
@@ -667,6 +676,69 @@ class Norm:
                 'category': 'women over 60 years old',
             }
 
+    @staticmethod
+    def calc(domain: dict, norm: dict) -> dict:
+        """Add comments."""
+        N = (10 * (domain.get('N', 0) - norm.get('ns')[1]) / norm.get('ns')[6]) + 50
+        E = (10 * (domain.get('E', 0) - norm.get('ns')[2]) / norm.get('ns')[7]) + 50
+        O = (10 * (domain.get('O', 0) - norm.get('ns')[3]) / norm.get('ns')[8]) + 50
+        A = (10 * (domain.get('A', 0) - norm.get('ns')[4]) / norm.get('ns')[9]) + 50
+        C = (10 * (domain.get('C', 0) - norm.get('ns')[5]) / norm.get('ns')[10]) + 50
+        return {'O': O, 'C': C, 'E': E, 'A': A, 'N': N}
+
+    @staticmethod
+    def percent(normc: dict) -> dict:
+        """Add comments."""
+        N = int(
+            NormCubic.CONST1.value
+            - (NormCubic.CONST2.value * normc.get('N', 0))
+            + (NormCubic.CONST3.value * normc.get('N', 0) ** 2)
+            - (NormCubic.CONST4.value * normc.get('N', 0) ** 3)
+        )
+        E = int(
+            NormCubic.CONST1.value
+            - (NormCubic.CONST2.value * normc.get('E', 0))
+            + (NormCubic.CONST3.value * normc.get('E', 0) ** 2)
+            - (NormCubic.CONST4.value * normc.get('E', 0) ** 3)
+        )
+        O = int(
+            NormCubic.CONST1.value
+            - (NormCubic.CONST2.value * normc.get('O', 0))
+            + (NormCubic.CONST3.value * normc.get('O', 0) ** 2)
+            - (NormCubic.CONST4.value * normc.get('O', 0) ** 3)
+        )
+        A = int(
+            NormCubic.CONST1.value
+            - (NormCubic.CONST2.value * normc.get('A', 0))
+            + (NormCubic.CONST3.value * normc.get('A', 0) ** 2)
+            - (NormCubic.CONST4.value * normc.get('A', 0) ** 3)
+        )
+        C = int(
+            NormCubic.CONST1.value
+            - (NormCubic.CONST2.value * normc.get('C', 0))
+            + (NormCubic.CONST3.value * normc.get('C', 0) ** 2)
+            - (NormCubic.CONST4.value * normc.get('C', 0) ** 3)
+        )
+        return {'O': O, 'C': C, 'E': E, 'A': A, 'N': N}
+
+    @staticmethod
+    def normalize(normc: dict, percent: dict) -> dict:
+        """Add comments."""
+
+        N = 1 if normc.get('N', 0) < 32 else percent.get('N', 0)
+        E = 1 if normc.get('E', 0) < 32 else percent.get('E', 0)
+        O = 1 if normc.get('O', 0) < 32 else percent.get('O', 0)
+        A = 1 if normc.get('A', 0) < 32 else percent.get('A', 0)
+        C = 1 if normc.get('C', 0) < 32 else percent.get('C', 0)
+
+        N = 99 if normc.get('N', 0) > 73 else percent.get('N', 0)
+        E = 99 if normc.get('E', 0) > 73 else percent.get('E', 0)
+        O = 99 if normc.get('O', 0) > 73 else percent.get('O', 0)
+        A = 99 if normc.get('A', 0) > 73 else percent.get('A', 0)
+        C = 99 if normc.get('C', 0) > 73 else percent.get('C', 0)
+
+        return {'O': O, 'C': C, 'E': E, 'A': A, 'N': N}
+
 
 class Facet:
     """Class with facet information."""
@@ -692,14 +764,12 @@ class Facet:
         Args:
             - answers: The list with the answers.
         """
-        xx = answers
-        xx.insert(0, 0)
-
-        ss = [0] * len(xx)
+        answers.insert(0, 0)
+        ss = [0] * len(answers)
         try:
             for j in range(FacetScale.IPIP_MAX.value):
                 for i in range(self._scale):
-                    ss[1 + j] += xx[1 + i * FacetScale.IPIP_MAX.value + j]
+                    ss[1 + j] += answers[1 + i * FacetScale.IPIP_MAX.value + j]
         except IndexError as e:
             raise BaseException(f'The number of questions setting is wrong: {str(e)}')
 
@@ -745,6 +815,33 @@ class Facet:
 
         return {'O': O, 'C': C, 'E': E, 'A': A, 'N': N}
 
+    def distrib(self, size: int, b5: dict, norm: dict) -> list:
+        """Distrib."""
+        N = [0] * size
+        E = [0] * size
+        O = [0] * size
+        A = [0] * size
+        C = [0] * size
+
+        for i in range(1, 7):
+            N[i] = 50 + (
+                10 * (b5.get('N')[i] - norm.get('ns')[i + 10]) / norm.get('ns')[i + 16]
+            )
+            E[i] = 50 + (
+                10 * (b5.get('E')[i] - norm.get('ns')[i + 22]) / norm.get('ns')[i + 28]
+            )
+            O[i] = 50 + (
+                10 * (b5.get('O')[i] - norm.get('ns')[i + 34]) / norm.get('ns')[i + 40]
+            )
+            A[i] = 50 + (
+                10 * (b5.get('A')[i] - norm.get('ns')[i + 46]) / norm.get('ns')[i + 52]
+            )
+            C[i] = 50 + (
+                10 * (b5.get('C')[i] - norm.get('ns')[i + 58]) / norm.get('ns')[i + 64]
+            )
+
+        return {'O': O, 'C': C, 'E': E, 'A': A, 'N': N}
+
 
 class IpipNeo(Facet):
     """Class that calculates IPIP-NEO answers."""
@@ -764,7 +861,7 @@ class IpipNeo(Facet):
         assert_ipip_neo_answers(answers=answers, nquestion=self._nquestion)
 
         score = self.score(answers=answers)
-        # print('1', score)
+        print('1', score)
 
         b5 = self.b5create(score=score)
         print('2', b5)
@@ -775,89 +872,14 @@ class IpipNeo(Facet):
         norm = Norm(sex=sex, age=age)
         print('4', norm)
 
-        SN = (10 * (domain.get('N', 0) - norm.get('ns')[1]) / norm.get('ns')[6]) + 50
-        SE = (10 * (domain.get('E', 0) - norm.get('ns')[2]) / norm.get('ns')[7]) + 50
-        SO = (10 * (domain.get('O', 0) - norm.get('ns')[3]) / norm.get('ns')[8]) + 50
-        SA = (10 * (domain.get('A', 0) - norm.get('ns')[4]) / norm.get('ns')[9]) + 50
-        SC = (10 * (domain.get('C', 0) - norm.get('ns')[5]) / norm.get('ns')[10]) + 50
+        normc = Norm.calc(domain=domain, norm=norm)
+        print('5', normc)
 
-        print('SN', SN)
-        print('SE', SE)
-        print('SO', SO)
-        print('SA', SA)
-        print('SC', SC)
+        distrib = self.distrib(size=len(score), b5=b5, norm=norm)
+        print('6', distrib)
 
-        SNF = [0] * 121
-        SEF = [0] * 121
-        SOF = [0] * 121
-        SAF = [0] * 121
-        SCF = [0] * 121
+        percent = Norm.percent(normc=normc)
+        print('7', percent)
 
-        for i in range(1, 7):
-            SNF[i] = 50 + (
-                10 * (b5.get('N')[i] - norm.get('ns')[i + 10]) / norm.get('ns')[i + 16]
-            )
-            SEF[i] = 50 + (
-                10 * (b5.get('E')[i] - norm.get('ns')[i + 22]) / norm.get('ns')[i + 28]
-            )
-            SOF[i] = 50 + (
-                10 * (b5.get('O')[i] - norm.get('ns')[i + 34]) / norm.get('ns')[i + 40]
-            )
-            SAF[i] = 50 + (
-                10 * (b5.get('A')[i] - norm.get('ns')[i + 46]) / norm.get('ns')[i + 52]
-            )
-            SCF[i] = 50 + (
-                10 * (b5.get('C')[i] - norm.get('ns')[i + 58]) / norm.get('ns')[i + 64]
-            )
-
-        # print('SNF >', SNF)
-        # print('SEF >', SEF)
-        # print('SOF >', SOF)
-        # print('SAF >', SAF)
-        # print('SCF >', SCF)
-
-        # Cubic approximations for percentiles
-        CONST1 = 210.335958661391
-        CONST2 = 16.7379362643389
-        CONST3 = 0.405936512733332
-        CONST4 = 0.00270624341822222
-
-        SNP = int(CONST1 - (CONST2 * SN) + (CONST3 * SN**2) - (CONST4 * SN**3))
-        SEP = int(CONST1 - (CONST2 * SE) + (CONST3 * SE**2) - (CONST4 * SE**3))
-        SOP = int(CONST1 - (CONST2 * SO) + (CONST3 * SO**2) - (CONST4 * SO**3))
-        SAP = int(CONST1 - (CONST2 * SA) + (CONST3 * SA**2) - (CONST4 * SA**3))
-        SCP = int(CONST1 - (CONST2 * SC) + (CONST3 * SC**2) - (CONST4 * SC**3))
-
-        print('SNP >', SNP)
-        print('SEP >', SEP)
-        print('SOP >', SOP)
-        print('SAP >', SAP)
-        print('SCP >', SCP)
-
-        if SN < 32:
-            SNP = 1
-        if SE < 32:
-            SEP = 1
-        if SO < 32:
-            SOP = 1
-        if SA < 32:
-            SAP = 1
-        if SC < 32:
-            SCP = 1
-
-        if SN > 73:
-            SNP = 99
-        if SE > 73:
-            SEP = 99
-        if SO > 73:
-            SOP = 99
-        if SA > 73:
-            SAP = 99
-        if SC > 73:
-            SCP = 99
-
-        print('SNP >1', SNP)
-        print('SEP >2', SEP)
-        print('SOP >3', SOP)
-        print('SAP >4', SAP)
-        print('SCP >5', SCP)
+        normalize = Norm.normalize(normc=normc, percent=percent)
+        print('8', normalize)
