@@ -1,92 +1,173 @@
-"""Add desc."""
+"""Contains utility functions used in the library."""
+
+__author__ = 'Ederson Corbari, Neural-7'
+__email__ = 'e@neural7.io'
+__status__ = 'planning'
 
 from enum import Enum
 
-
-class Big5Neuroticism(str, Enum):
-    """Composition of the big5 facets: Neuroticism."""
-
-    TRAIT1 = 'Anxiety'
-    TRAIT2 = 'Anger'
-    TRAIT3 = 'Depression'
-    TRAIT4 = 'Self-Consciousness'
-    TRAIT5 = 'Immoderation'
-    TRAIT6 = 'Vulnerability'
+from big5.model import (Big5Agreeableness, Big5Conscientiousness,
+                        Big5Extraversion, Big5Neuroticism, Big5Openness)
 
 
-class Big5Extraversion(str, Enum):
-    """Composition of the big5 facets: Extraversion."""
+def sex_is_valid(sex: str) -> bool | AssertionError | BaseException:
+    """
+    Validate the sex field.
 
-    TRAIT1 = 'Friendliness'
-    TRAIT2 = 'Gregariousness'
-    TRAIT3 = 'Assertiveness'
-    TRAIT4 = 'Activity-Level'
-    TRAIT5 = 'Excitement-Seeking'
-    TRAIT6 = 'Cheerfulness'
+    Args:
+        - sex: Male is M or Female is F.
+    """
+    if not sex:
+        raise BaseException('The (sex) field is required!')
 
-
-class Big5Openness(str, Enum):
-    """Composition of the big5 facets: Openness."""
-
-    TRAIT1 = 'Imagination'
-    TRAIT2 = 'Artistic-Interests'
-    TRAIT3 = 'Emotionality'
-    TRAIT4 = 'Adventurousness'
-    TRAIT5 = 'Intellect'
-    TRAIT6 = 'Liberalism'
+    assert isinstance(sex, str), 'The (sex) field must be a string!'
+    assert sex == 'M' or sex == 'F', 'The (sex) field must contain (M or F)!'
+    return True
 
 
-class Big5Agreeableness(str, Enum):
-    """Composition of the big5 facets: Agreeableness."""
+def age_is_valid(age: int) -> bool | AssertionError | BaseException:
+    """
+    Validate the age field.
 
-    TRAIT1 = 'Trust'
-    TRAIT2 = 'Morality'
-    TRAIT3 = 'Altruism'
-    TRAIT4 = 'Cooperation'
-    TRAIT5 = 'Modesty'
-    TRAIT6 = 'Sympathy'
+    Args:
+        - age: Person's age.
+    """
+    if not age:
+        raise BaseException('The (age) field is required!')
+
+    assert isinstance(age, int), 'The (age) field must be an integer!'
+
+    min, max = (18, 120)
+    if not (min <= age <= max):
+        raise AssertionError(
+            'The age (%r) must be between %r and %r!' % (age, min, max)
+        )
+
+    return True
 
 
-class Big5Conscientiousness(str, Enum):
-    """Composition of the big5 facets: Conscientiousness."""
+def answers_is_valid(answers: list) -> bool | AssertionError | BaseException:
+    """
+    Validate the answers field.
 
-    TRAIT1 = 'Self-Efficacy'
-    TRAIT2 = 'Orderliness'
-    TRAIT3 = 'Dutifulness'
-    TRAIT4 = 'Achievement-Striving'
-    TRAIT5 = 'Self-Discipline'
-    TRAIT6 = 'Cautiousness'
+    Args:
+        - answers: List with the answers.
+    """
+    if not answers:
+        raise BaseException('The (answers) field is required!')
 
-
-def assert_ipip_neo_answers(answers: list, nquestion) -> None | AssertionError:
+    assert isinstance(answers, list), 'The (answers) field must be a list!'
     assert (
-        len(answers) == 300 if nquestion == 300 else 120 if nquestion == 120 else 0
-    ), 'The number of questions should be 300 or 120!'
+        len(answers) == 120 or len(answers) == 300
+    ), 'The (answers) field should be of size 120 or 300!'
+
+
+def data_input_is_valid(
+    sex: str, age: int, answers: list
+) -> bool | AssertionError | BaseException:
+    """
+    Validate data entry fields.
+
+    Args:
+        - sex: Male is M or Female is F.
+        - age: Person's age.
+        - answers: List with the answers.
+    """
+    if sex_is_valid(sex=sex):
+        pass
+    if age_is_valid(age=age):
+        pass
+    if answers_is_valid(answers=answers):
+        pass
+
+    return True
+
+
+def big5_ocean_is_valid(label: str) -> bool | BaseException:
+    """
+    Validate if the Big-Five acronym is correct.
+
+    Args:
+        - label: The acronym for the Big-Five standard O.C.E.A.N.
+    """
+    if label == 'O':
+        return True
+    if label == 'C':
+        return True
+    if label == 'E':
+        return True
+    if label == 'A':
+        return True
+    if label == 'N':
+        return True
+
+    raise BaseException('The Big-Five label is invalid!')
+
+
+def big_five_target(label: str) -> Enum | bool | BaseException:
+    """
+    Return the facets of a Big-Five.
+
+    Args:
+        - label: The acronym for the Big-Five standard O.C.E.A.N.
+    """
+    if not big5_ocean_is_valid(label=label):
+        return False
+
+    if label == 'O':
+        return Big5Openness
+    if label == 'C':
+        return Big5Conscientiousness
+    if label == 'E':
+        return Big5Extraversion
+    if label == 'A':
+        return Big5Agreeableness
+    if label == 'N':
+        return Big5Neuroticism
 
 
 def create_big5_dict(label: str, big5: int, x: list, y: list) -> dict:
+    """
+    Create a dictionary for Big-Five final result.
 
-    if label == 'N':
-        model = Big5Neuroticism
-    elif label == 'E':
-        model = Big5Extraversion
-    elif label == 'O':
-        model = Big5Openness
-    elif label == 'A':
-        model = Big5Agreeableness
-    elif label == 'C':
-        model = Big5Conscientiousness
-    else:
-        raise 'Big five is invalid'
-
+    Args:
+        - label: The acronym for the Big-Five standard O.C.E.A.N.
+        - big5: The list with the personalities / facets.
+        - x: The list with the facets.
+        - y: The list of scores.
+    """
     return {
         label: big5,
         'traits': [
-            {'trait': 1, model.TRAIT1.value: x[1], 'score': y[1]},
-            {'trait': 2, model.TRAIT2.value: x[2], 'score': y[2]},
-            {'trait': 3, model.TRAIT3.value: x[3], 'score': y[3]},
-            {'trait': 4, model.TRAIT4.value: x[4], 'score': y[4]},
-            {'trait': 5, model.TRAIT5.value: x[5], 'score': y[5]},
-            {'trait': 6, model.TRAIT6.value: x[6], 'score': y[6]},
+            {
+                'trait': 1,
+                big_five_target(label=label).TRAIT1.value: x[1],
+                'score': y[1],
+            },
+            {
+                'trait': 2,
+                big_five_target(label=label).TRAIT2.value: x[2],
+                'score': y[2],
+            },
+            {
+                'trait': 3,
+                big_five_target(label=label).TRAIT3.value: x[3],
+                'score': y[3],
+            },
+            {
+                'trait': 4,
+                big_five_target(label=label).TRAIT4.value: x[4],
+                'score': y[4],
+            },
+            {
+                'trait': 5,
+                big_five_target(label=label).TRAIT5.value: x[5],
+                'score': y[5],
+            },
+            {
+                'trait': 6,
+                big_five_target(label=label).TRAIT6.value: x[6],
+                'score': y[6],
+            },
         ],
     }

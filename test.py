@@ -1,6 +1,7 @@
 """Tests..."""
 
-from big5.ipipneo import IpipNeo, QuestionNumber
+from big5.ipipneo import IpipNeo
+from big5.model import QuestionNumber
 
 a = IpipNeo(nquestion=QuestionNumber.IPIP_120)
 
