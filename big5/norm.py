@@ -5,7 +5,7 @@ __email__ = 'e@neural7.io'
 __status__ = 'planning'
 
 from big5.model import NormCubic, NormScale
-from utility import age_is_valid, sex_is_valid
+from big5.utility import age_is_valid, sex_is_valid
 
 
 class Norm:

@@ -71,8 +71,8 @@ class IpipNeo(Facet):
             'model': 'IPIP-NEO',
             'question': 120,
             'person': {
-                'sex': 'M',
-                'age': 37,
+                'sex': sex,
+                'age': age,
                 'result': {
                     'personalities': [
                         {'Openness': O},
