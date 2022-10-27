@@ -337,7 +337,7 @@ class Norm:
                     2.76,
                     3.61,
                 ],
-                'category': 'men between 41 and 60 years old',
+                'category': 'men over 60 years old',
             }
 
         if sex == 'F' and age < 21:

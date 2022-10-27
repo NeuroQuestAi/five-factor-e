@@ -37,7 +37,7 @@ def age_is_valid(age: int) -> bool | AssertionError | BaseException:
 
     assert isinstance(age, int), 'The (age) field must be an integer!'
 
-    min, max = (18, 120)
+    min, max = (10, 120)
     if not (min <= age <= max):
         raise AssertionError(
             'The age (%r) must be between %r and %r!' % (age, min, max)

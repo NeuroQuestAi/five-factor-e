@@ -4,23 +4,31 @@ __author__ = 'Ederson Corbari, Neural-7'
 __email__ = 'e@neural7.io'
 __status__ = 'planning'
 
-from enum import IntEnum
+import uuid
 
 from big5.facet import Facet
 from big5.norm import Norm
 from big5.utility import data_input_is_valid
+from big5.model import QuestionNumber
 
 
 class IpipNeo(Facet):
     """Class that calculates IPIP-NEO answers."""
 
-    def __init__(self, nquestion: IntEnum) -> None | BaseException:
+    def __init__(self, question: int) -> None | BaseException:
         """
         Initialize the class.
 
         Args:
-            - nquestion: Enum with question type.
+            - nquestion: Question type.
         """
+        if question == 120:
+            nquestion = QuestionNumber.IPIP_120
+        elif question == 120:
+            nquestion = QuestionNumber.IPIP_300
+        else:
+            raise BaseException(f'Type question {question} is invalid!')
+
         super().__init__(nquestion=nquestion)
         self._nquestion = nquestion
 
@@ -59,14 +67,8 @@ class IpipNeo(Facet):
         A = self.personality(size=len(score), big5=normalize, traits=distrib, label='A')
         C = self.personality(size=len(score), big5=normalize, traits=distrib, label='C')
 
-        # print('\n')
-        # print('9-1', N)
-        # print('9-2', E)
-        # print('9-3', O)
-        # print('9-4', A)
-        # print('9-5', C)
-
         data = {
+            'id': str(uuid.uuid4()),
             'theory': 'Big 5 Personality Traits',
             'model': 'IPIP-NEO',
             'question': 120,
