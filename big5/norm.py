@@ -19,10 +19,10 @@ class Norm:
             - sex: Gender of the individual (M or F).
             - age: The age of the individual.
         """
-        if not sex_is_valid(sex=sex):
-            return {}
-        if not age_is_valid(age=age):
-            return {}
+        if sex_is_valid(sex=sex):
+            pass
+        if age_is_valid(age=age):
+            pass
 
         if sex == 'M' and age < 21:
             return {

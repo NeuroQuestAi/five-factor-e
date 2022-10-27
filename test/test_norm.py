@@ -1,11 +1,11 @@
-"""A."""
+"""Unit tests for Norm."""
 
 import unittest
 
 from big5.norm import Norm
 
 
-class NormTest(unittest.TestCase):
+class TestNorm(unittest.TestCase):
     def test_invalid_params(self) -> None:
         with self.assertRaises(TypeError):
             norm = Norm()
@@ -111,11 +111,13 @@ class NormTest(unittest.TestCase):
         self.assertEqual(norm.get('id'), 8)
         self.assertEqual(norm.get('category'), 'women over 60 years old')
 
-    def test_static_calc(self):
+    def test_calc(self):
         normc = Norm.calc(
             domain={'O': 0, 'C': 0, 'E': 0, 'A': 0, 'N': 0},
             norm=Norm(sex='M', age=40),
         )
+
+        assert isinstance(normc, dict), 'normc must be a dict'
 
         self.assertEqual(round(normc.get('O'), 2), -18.39)
         self.assertEqual(round(normc.get('C'), 2), -9.92)
@@ -162,9 +164,88 @@ class NormTest(unittest.TestCase):
         self.assertEqual(round(b.get('A'), 2), 52.12)
         self.assertEqual(round(a.get('N'), 2), 46.38)
 
+    def test_percent(self):
+        normc = Norm.calc(
+            domain={'N': 61, 'A': 87, 'C': 102, 'E': 66, 'O': 78},
+            norm=Norm(sex='M', age=40),
+        )
 
-if __name__ == "__main__":
-    order = ['test_invalid_params', 'test_norm_output', 'test_static_calc']
-    loader = unittest.TestLoader()
-    loader.sortTestMethodsUsing = lambda x, y: order.index(x) - order.index(y)
-    unittest.main(testLoader=loader, verbosity=2)
+        assert isinstance(normc, dict), 'normc must be a dict'
+
+        self.assertEqual(round(normc.get('O'), 2), 43.27)
+        self.assertEqual(round(normc.get('C'), 2), 61.56)
+        self.assertEqual(round(normc.get('E'), 2), 41.52)
+        self.assertEqual(round(normc.get('A'), 2), 52.12)
+        self.assertEqual(round(normc.get('N'), 2), 46.38)
+
+        percent = Norm.percent(normc=normc)
+
+        assert isinstance(percent, dict), 'percent must be a dict'
+
+        self.assertEqual(round(percent.get('O'), 2), 26.88)
+        self.assertEqual(round(percent.get('C'), 2), 86.97)
+        self.assertEqual(round(percent.get('E'), 2), 21.47)
+        self.assertEqual(round(percent.get('A'), 2), 57.53)
+        self.assertEqual(round(percent.get('N'), 2), 37.24)
+
+        normc = Norm.calc(
+            domain={'N': 61, 'A': 87, 'C': 102, 'E': 66, 'O': 78},
+            norm=Norm(sex='F', age=40),
+        )
+
+        percent = Norm.percent(normc=normc)
+
+        self.assertEqual(round(percent.get('O'), 2), 21.6)
+        self.assertEqual(round(percent.get('C'), 2), 83.98)
+        self.assertEqual(round(percent.get('E'), 2), 16.86)
+        self.assertEqual(round(percent.get('A'), 2), 34.88)
+        self.assertEqual(round(percent.get('N'), 2), 26.35)
+
+        percent = Norm.percent(normc={'O': 0, 'C': 0, 'E': 0, 'A': 0, 'N': 0})
+
+        self.assertGreaterEqual(percent.get('O'), 210)
+        self.assertGreaterEqual(percent.get('C'), 210)
+        self.assertGreaterEqual(percent.get('E'), 210)
+        self.assertGreaterEqual(percent.get('A'), 210)
+        self.assertGreaterEqual(percent.get('N'), 210)
+
+        percent = Norm.percent(normc={'O': 1, 'C': 1, 'E': 1, 'A': 1, 'N': 1})
+
+        self.assertGreaterEqual(percent.get('O'), 194)
+        self.assertGreaterEqual(percent.get('C'), 194)
+        self.assertGreaterEqual(percent.get('E'), 194)
+        self.assertGreaterEqual(percent.get('A'), 194)
+        self.assertGreaterEqual(percent.get('N'), 194)
+
+        percent = Norm.percent(
+            normc={'O': 99.99, 'C': 99.99, 'E': 99.99, 'A': 99.99, 'N': 99.99}
+        )
+
+        self.assertLessEqual(percent.get('O'), -110)
+        self.assertLessEqual(percent.get('C'), 8647)
+        self.assertLessEqual(percent.get('E'), -110)
+        self.assertLessEqual(percent.get('A'), -110)
+        self.assertLessEqual(percent.get('N'), 210)
+
+    def test_normalize(self):
+        normc = Norm.calc(
+            domain={'N': 61, 'A': 87, 'C': 102, 'E': 66, 'O': 78},
+            norm=Norm(sex='M', age=40),
+        )
+
+        assert isinstance(normc, dict), 'normc must be a dict'
+
+        percent = Norm.percent(normc=normc)
+
+        assert isinstance(percent, dict), 'percent must be a dict'
+
+        normalize = Norm.normalize(normc=normc, percent=percent)
+
+        assert isinstance(normalize, dict), 'normalize must be a dict'
+
+        self.assertEqual(percent, normalize)
+        self.assertEqual(round(percent.get('O'), 2), 26.88)
+        self.assertEqual(round(normalize.get('C'), 2), 86.97)
+        self.assertEqual(round(percent.get('E'), 2), 21.47)
+        self.assertEqual(round(normalize.get('A'), 2), 57.53)
+        self.assertEqual(round(percent.get('N'), 2), 37.24)
