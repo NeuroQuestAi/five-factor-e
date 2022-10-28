@@ -57,9 +57,48 @@ def answers_is_valid(answers: list) -> bool | AssertionError | BaseException:
         raise BaseException('The (answers) field is required!')
 
     assert isinstance(answers, list), 'The (answers) field must be a list!'
+
+    if 0 in answers:
+        raise BaseException('It cannot contain zeros in the answer list!')
+
+    max5 = [1 if x > 5 else 0 for x in answers]
+
+    if len(max5) >= 1:
+        if 1 in max5:
+            raise BaseException('You cannot have answers with a number greater than 5!')
+
     assert (
         len(answers) == 120 or len(answers) == 300
     ), 'The (answers) field should be of size 120 or 300!'
+
+    return True
+
+
+def organize_list_json(answers: dict) -> list | AssertionError | BaseException:
+    """
+    Organize input list in json format.
+
+    Args:
+        - answers: Dictionary with the list of answers.
+    """
+    assert isinstance(answers, dict), 'The (answers) field must be a dict!'
+
+    if 'answers' not in answers:
+        raise BaseException('The key named (answers) was not found!')
+
+    if not any('id_question' in x for x in answers.get('answers', [])):
+        raise BaseException('The key named (id_question) was not found!')
+
+    if not any('id_select' in x for x in answers.get('answers', [])):
+        raise BaseException('The key named (id_select) was not found!')
+
+    return [
+        x['id_select']
+        for x in sorted(
+            [x for x in answers.get('answers', [])], key=lambda x: x['id_question']
+        )
+        if x['id_select'] >= 1
+    ]
 
 
 def data_input_is_valid(
@@ -104,29 +143,27 @@ def big5_ocean_is_valid(label: str) -> bool | BaseException:
     raise BaseException('The Big-Five label is invalid!')
 
 
-def big_five_target(label: str) -> Enum | bool | BaseException:
+def big_five_target(label: str) -> Enum | BaseException:
     """
     Return the facets of a Big-Five.
 
     Args:
         - label: The acronym for the Big-Five standard O.C.E.A.N.
     """
-    if not big5_ocean_is_valid(label=label):
-        return False
-
-    if label == 'O':
-        return Big5Openness
-    if label == 'C':
-        return Big5Conscientiousness
-    if label == 'E':
-        return Big5Extraversion
-    if label == 'A':
-        return Big5Agreeableness
-    if label == 'N':
-        return Big5Neuroticism
+    if big5_ocean_is_valid(label=label):
+        if label == 'O':
+            return Big5Openness
+        if label == 'C':
+            return Big5Conscientiousness
+        if label == 'E':
+            return Big5Extraversion
+        if label == 'A':
+            return Big5Agreeableness
+        if label == 'N':
+            return Big5Neuroticism
 
 
-def create_big5_dict(label: str, big5: int, x: list, y: list) -> dict:
+def create_big5_dict(label: str, big5: float, x: list, y: list) -> dict:
     """
     Create a dictionary for Big-Five final result.
 

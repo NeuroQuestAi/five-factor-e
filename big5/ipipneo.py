@@ -7,9 +7,9 @@ __status__ = 'planning'
 import uuid
 
 from big5.facet import Facet
+from big5.model import QuestionNumber
 from big5.norm import Norm
 from big5.utility import data_input_is_valid
-from big5.model import QuestionNumber
 
 
 class IpipNeo(Facet):
