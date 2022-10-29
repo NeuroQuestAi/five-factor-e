@@ -37,6 +37,7 @@ class Facet:
         """
         answers.insert(0, 0)
         ss = [0] * len(answers)
+
         try:
             for j in range(FacetScale.IPIP_MAX.value):
                 for i in range(self._scale):
@@ -149,8 +150,8 @@ class Facet:
             - traits: Dictionary with the distribution of personalities.
             - label: Capital letter referring to the Big-Five to be calculated.
         """
-        if not big5_ocean_is_valid(label=label):
-            return {}
+        if big5_ocean_is_valid(label=label):
+            pass
 
         big5, traits = big5.get(label, 0), traits.get(label, [])
 
