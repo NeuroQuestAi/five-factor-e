@@ -1,8 +1,11 @@
 """It does the calculations to generate the IPIP-NEO results based on the questions and answers."""
 
-__author__ = "Ederson Corbari, Neural-7"
+__author__ = "Ederson Corbari"
 __email__ = "e@neural7.io"
-__status__ = "planning"
+__copyright__ = "Copyright Neural7 2022, Big 5 Personality Traits"
+__license__ = "GPL"
+__version__ = "1.0.0"
+__status__ = "production"
 
 import uuid
 
@@ -34,8 +37,7 @@ class IpipNeo(Facet):
 
     def compute(self, sex: str, age: int, answers: list) -> dict:
         """Desc."""
-        if not data_input_is_valid(sex=sex, age=age, answers=answers):
-            return {}
+        data_input_is_valid(sex=sex, age=age, answers=answers)
 
         score = self.score(answers=answers)
         print("1", score)

@@ -1,8 +1,11 @@
 """The standard with the rules of IPIP-NEO norms."""
 
-__author__ = "Ederson Corbari, Neural-7"
+__author__ = "Ederson Corbari"
 __email__ = "e@neural7.io"
-__status__ = "planning"
+__copyright__ = "Copyright Neural7 2022, Big 5 Personality Traits"
+__license__ = "GPL"
+__version__ = "1.0.0"
+__status__ = "production"
 
 from big5.model import NormCubic, NormScale
 from big5.utility import age_is_valid, sex_is_valid

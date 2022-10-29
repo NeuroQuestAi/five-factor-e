@@ -1,8 +1,11 @@
 """Contains utility functions used in the library."""
 
-__author__ = "Ederson Corbari, Neural-7"
+__author__ = "Ederson Corbari"
 __email__ = "e@neural7.io"
-__status__ = "planning"
+__copyright__ = "Copyright Neural7 2022, Big 5 Personality Traits"
+__license__ = "GPL"
+__version__ = "1.0.0"
+__status__ = "production"
 
 from enum import Enum
 
@@ -109,13 +112,9 @@ def data_input_is_valid(
         - age: Person's age.
         - answers: List with the answers.
     """
-    if sex_is_valid(sex=sex):
-        pass
-    if age_is_valid(age=age):
-        pass
-    if answers_is_valid(answers=answers):
-        pass
-
+    sex_is_valid(sex=sex)
+    age_is_valid(age=age)
+    answers_is_valid(answers=answers)
     return True
 
 

@@ -17,7 +17,7 @@ LONG_DESCRIPTION = "Library with a self-administered questionnaire that assesses
 setup(
     name="five-factor-e",
     version=VERSION,
-    author="Ederson Corbari and Marcos Ferretti, Neural-7",
+    author="Ederson Corbari and Marcos Ferretti, Neural7",
     author_email="<e@neural7.com>",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
