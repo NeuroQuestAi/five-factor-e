@@ -28,7 +28,7 @@ class IpipNeo(Facet):
         """
         if question == 120:
             nquestion = QuestionNumber.IPIP_120
-        elif question == 120:
+        elif question == 300:
             nquestion = QuestionNumber.IPIP_300
         else:
             raise BaseException(f"Type question {question} is invalid!")
@@ -48,10 +48,7 @@ class IpipNeo(Facet):
         raise_if_sex_is_invalid(sex=sex)
         raise_if_age_is_invalid(age=age)
 
-        answers = organize_list_json(answers=answers)
-        assert isinstance(answers, list), "answers must be a list"
-
-        score = self.score(answers=answers)
+        score = self.score(answers=organize_list_json(answers=answers))
         assert isinstance(score, list), "score must be a list"
 
         norm = Norm(sex=sex, age=age)
