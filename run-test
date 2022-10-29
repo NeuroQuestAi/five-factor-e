@@ -26,7 +26,7 @@ run_command ()
 #-----------------------------------------------------------------------
 # Run test suite in all supported versions of Python.
 #-----------------------------------------------------------------------
-run_command "python3.10 -B -m unittest $*"
+run_command "python3 -B -m unittest $*"
 
 # coverage run -m unittest discover && coverage report --skip-empty
 # coverage run --source . -m unittest discover && coverage report --skip-empty

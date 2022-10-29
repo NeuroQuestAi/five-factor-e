@@ -48,4 +48,5 @@ __pycache__
 *.project
 *.pydevproject
 .coverage
+htmlcov
 
