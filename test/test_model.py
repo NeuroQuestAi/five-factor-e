@@ -2,10 +2,10 @@
 
 import unittest
 
-from big5.model import (Big5Agreeableness, Big5Conscientiousness,
-                        Big5Extraversion, Big5Neuroticism, Big5Openness,
-                        FacetLevel, FacetScale, NormCubic, NormScale,
-                        QuestionNumber)
+from ipipneo.model import (Big5Agreeableness, Big5Conscientiousness,
+                           Big5Extraversion, Big5Neuroticism, Big5Openness,
+                           FacetLevel, FacetScale, NormCubic, NormScale,
+                           QuestionNumber)
 
 
 class TestModel(unittest.TestCase):

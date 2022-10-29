@@ -9,9 +9,9 @@ __status__ = "production"
 
 from enum import IntEnum
 
-from big5.model import (FacetLevel, FacetScale, NormCubic, NormScale,
-                        QuestionNumber)
-from big5.utility import big5_ocean_is_valid, create_big5_dict
+from ipipneo.model import (FacetLevel, FacetScale, NormCubic, NormScale,
+                           QuestionNumber)
+from ipipneo.utility import big5_ocean_is_valid, create_big5_dict
 
 
 class Facet:

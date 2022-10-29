@@ -2,7 +2,7 @@
 
 import unittest
 
-from big5.norm import Norm
+from ipipneo.norm import Norm
 
 
 class TestNorm(unittest.TestCase):

@@ -9,11 +9,11 @@ __status__ = "production"
 
 import uuid
 
-from big5.facet import Facet
-from big5.model import QuestionNumber
-from big5.norm import Norm
-from big5.utility import (organize_list_json, raise_if_age_is_invalid,
-                          raise_if_sex_is_invalid)
+from ipipneo.facet import Facet
+from ipipneo.model import QuestionNumber
+from ipipneo.norm import Norm
+from ipipneo.utility import (organize_list_json, raise_if_age_is_invalid,
+                             raise_if_sex_is_invalid)
 
 
 class IpipNeo(Facet):

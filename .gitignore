@@ -49,4 +49,7 @@ __pycache__
 *.pydevproject
 .coverage
 *htmlcov*
+*dist*
+*build*
+*.egg-info*
 

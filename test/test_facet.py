@@ -3,9 +3,9 @@
 import json
 import unittest
 
-from big5.facet import Facet
-from big5.norm import Norm
-from big5.utility import organize_list_json
+from ipipneo.facet import Facet
+from ipipneo.norm import Norm
+from ipipneo.utility import organize_list_json
 
 
 def load_mock_answers() -> dict:

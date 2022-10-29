@@ -3,7 +3,7 @@
 import json
 import unittest
 
-from big5.ipipneo import IpipNeo
+from ipipneo.ipipneo import IpipNeo
 
 
 def load_mock_answers() -> dict:

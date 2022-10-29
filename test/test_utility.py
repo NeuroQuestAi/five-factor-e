@@ -3,10 +3,10 @@
 import json
 import unittest
 
-from big5.utility import (answers_is_valid, big5_ocean_is_valid,
-                          big_five_target, create_big5_dict,
-                          organize_list_json, raise_if_age_is_invalid,
-                          raise_if_sex_is_invalid)
+from ipipneo.utility import (answers_is_valid, big5_ocean_is_valid,
+                             big_five_target, create_big5_dict,
+                             organize_list_json, raise_if_age_is_invalid,
+                             raise_if_sex_is_invalid)
 
 
 class Testutility(unittest.TestCase):

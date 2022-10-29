@@ -9,8 +9,8 @@ __status__ = "production"
 
 from enum import Enum
 
-from big5.model import (Big5Agreeableness, Big5Conscientiousness,
-                        Big5Extraversion, Big5Neuroticism, Big5Openness)
+from ipipneo.model import (Big5Agreeableness, Big5Conscientiousness,
+                           Big5Extraversion, Big5Neuroticism, Big5Openness)
 
 
 def raise_if_sex_is_invalid(sex: str) -> bool | AssertionError | BaseException:

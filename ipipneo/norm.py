@@ -7,8 +7,8 @@ __license__ = "MIT"
 __version__ = "1.0.0"
 __status__ = "production"
 
-from big5.model import NormCubic, NormScale
-from big5.utility import raise_if_age_is_invalid, raise_if_sex_is_invalid
+from ipipneo.model import NormCubic, NormScale
+from ipipneo.utility import raise_if_age_is_invalid, raise_if_sex_is_invalid
 
 
 class Norm:
