@@ -28,7 +28,7 @@ run_command ()
 #-----------------------------------------------------------------------
 run_command "python3 -B -m unittest $*"
 
-# coverage run -m unittest discover && coverage report --skip-empty
-# coverage run --source . -m unittest discover && coverage report --skip-empty
+# coverage run --source . -m unittest discover && coverage report
+# coverage run --source . -m unittest discover && coverage html
 echo "" >&2
 echo "All commands successful." >&2

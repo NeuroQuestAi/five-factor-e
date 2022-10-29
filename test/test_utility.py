@@ -3,16 +3,10 @@
 import json
 import unittest
 
-from big5.utility import (
-    age_is_valid,
-    answers_is_valid,
-    big5_ocean_is_valid,
-    big_five_target,
-    create_big5_dict,
-    data_input_is_valid,
-    organize_list_json,
-    sex_is_valid,
-)
+from big5.utility import (age_is_valid, answers_is_valid, big5_ocean_is_valid,
+                          big_five_target, create_big5_dict,
+                          data_input_is_valid, organize_list_json,
+                          sex_is_valid)
 
 
 class Testutility(unittest.TestCase):

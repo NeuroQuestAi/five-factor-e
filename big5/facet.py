@@ -81,11 +81,15 @@ class Facet:
         Args:
             - score: The facet score result.
         """
-        N = score[1] + score[6] + score[11] + score[16] + score[21] + score[26]
-        E = score[2] + score[7] + score[12] + score[17] + score[22] + score[27]
-        O = score[3] + score[8] + score[13] + score[18] + score[23] + score[28]
-        A = score[4] + score[9] + score[14] + score[19] + score[24] + score[29]
-        C = score[5] + score[10] + score[15] + score[20] + score[25] + score[30]
+        try:
+            N = score[1] + score[6] + score[11] + score[16] + score[21] + score[26]
+            E = score[2] + score[7] + score[12] + score[17] + score[22] + score[27]
+            O = score[3] + score[8] + score[13] + score[18] + score[23] + score[28]
+            A = score[4] + score[9] + score[14] + score[19] + score[24] + score[29]
+            C = score[5] + score[10] + score[15] + score[20] + score[25] + score[30]
+        except IndexError as e:
+            raise BaseException(f"Invalid position in the score array: {str(e)}")
+
         return {"O": O, "C": C, "E": E, "A": A, "N": N}
 
     def distrib(self, size: int, b5: dict, norm: dict) -> list:
