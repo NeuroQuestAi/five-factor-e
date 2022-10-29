@@ -150,8 +150,7 @@ class Facet:
             - traits: Dictionary with the distribution of personalities.
             - label: Capital letter referring to the Big-Five to be calculated.
         """
-        if big5_ocean_is_valid(label=label):
-            pass
+        big5_ocean_is_valid(label=label)
 
         big5, traits = big5.get(label, 0), traits.get(label, [])
 

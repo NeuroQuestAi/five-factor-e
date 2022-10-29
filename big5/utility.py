@@ -61,11 +61,8 @@ def answers_is_valid(answers: list) -> bool | AssertionError | BaseException:
     if 0 in answers:
         raise BaseException("It cannot contain zeros in the answer list!")
 
-    max5 = [1 if x > 5 else 0 for x in answers]
-
-    if len(max5) >= 1:
-        if 1 in max5:
-            raise BaseException("You cannot have answers with a number greater than 5!")
+    if 1 in [1 if x > 5 else 0 for x in answers]:
+        raise BaseException("You cannot have answers with a number greater than 5!")
 
     assert (
         len(answers) == 120 or len(answers) == 300
