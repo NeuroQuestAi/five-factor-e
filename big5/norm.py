@@ -8,7 +8,7 @@ __version__ = "1.0.0"
 __status__ = "production"
 
 from big5.model import NormCubic, NormScale
-from big5.utility import age_is_valid, sex_is_valid
+from big5.utility import raise_if_age_is_invalid, raise_if_sex_is_invalid
 
 
 class Norm:
@@ -22,8 +22,8 @@ class Norm:
             - sex: Gender of the individual (M or F).
             - age: The age of the individual.
         """
-        sex_is_valid(sex=sex)
-        age_is_valid(age=age)
+        raise_if_sex_is_invalid(sex=sex)
+        raise_if_age_is_invalid(age=age)
 
         if sex == "M" and age < 21:
             return {

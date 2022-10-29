@@ -13,7 +13,7 @@ from big5.model import (Big5Agreeableness, Big5Conscientiousness,
                         Big5Extraversion, Big5Neuroticism, Big5Openness)
 
 
-def sex_is_valid(sex: str) -> bool | AssertionError | BaseException:
+def raise_if_sex_is_invalid(sex: str) -> bool | AssertionError | BaseException:
     """
     Validate the sex field.
 
@@ -28,7 +28,7 @@ def sex_is_valid(sex: str) -> bool | AssertionError | BaseException:
     return True
 
 
-def age_is_valid(age: int) -> bool | AssertionError | BaseException:
+def raise_if_age_is_invalid(age: int) -> bool | AssertionError | BaseException:
     """
     Validate the age field.
 
@@ -99,23 +99,6 @@ def organize_list_json(answers: dict) -> list | AssertionError | BaseException:
         )
         if x["id_select"] >= 1
     ]
-
-
-def data_input_is_valid(
-    sex: str, age: int, answers: list
-) -> bool | AssertionError | BaseException:
-    """
-    Validate data entry fields.
-
-    Args:
-        - sex: Male is M or Female is F.
-        - age: Person's age.
-        - answers: List with the answers.
-    """
-    sex_is_valid(sex=sex)
-    age_is_valid(age=age)
-    answers_is_valid(answers=answers)
-    return True
 
 
 def big5_ocean_is_valid(label: str) -> bool | BaseException:

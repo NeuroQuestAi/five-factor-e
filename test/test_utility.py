@@ -3,67 +3,67 @@
 import json
 import unittest
 
-from big5.utility import (age_is_valid, answers_is_valid, big5_ocean_is_valid,
+from big5.utility import (answers_is_valid, big5_ocean_is_valid,
                           big_five_target, create_big5_dict,
-                          data_input_is_valid, organize_list_json,
-                          sex_is_valid)
+                          organize_list_json, raise_if_age_is_invalid,
+                          raise_if_sex_is_invalid)
 
 
 class Testutility(unittest.TestCase):
-    def test_sex_is_valid(self) -> None:
+    def test_raise_if_sex_is_invalid(self) -> None:
         with self.assertRaises(BaseException):
-            sex_is_valid(sex="")
+            raise_if_sex_is_invalid(sex="")
 
         with self.assertRaises(AssertionError):
-            sex_is_valid(sex="m")
+            raise_if_sex_is_invalid(sex="m")
 
         with self.assertRaises(AssertionError):
-            sex_is_valid(sex="f")
+            raise_if_sex_is_invalid(sex="f")
 
         with self.assertRaises(AssertionError):
-            sex_is_valid(sex="male")
+            raise_if_sex_is_invalid(sex="male")
 
         with self.assertRaises(AssertionError):
-            sex_is_valid(sex="female")
+            raise_if_sex_is_invalid(sex="female")
 
-        self.assertEqual(sex_is_valid(sex="M"), True)
-        self.assertEqual(sex_is_valid(sex="F"), True)
+        self.assertEqual(raise_if_sex_is_invalid(sex="M"), True)
+        self.assertEqual(raise_if_sex_is_invalid(sex="F"), True)
 
-    def test_age_is_valid(self) -> None:
+    def test_raise_if_age_is_invalid(self) -> None:
         with self.assertRaises(BaseException):
-            age_is_valid(age="")
+            raise_if_age_is_invalid(age="")
 
         with self.assertRaises(AssertionError):
-            age_is_valid(age="40")
+            raise_if_age_is_invalid(age="40")
 
         with self.assertRaises(AssertionError):
-            age_is_valid(age=-1)
+            raise_if_age_is_invalid(age=-1)
 
         with self.assertRaises(AssertionError):
-            age_is_valid(age=5)
+            raise_if_age_is_invalid(age=5)
 
         with self.assertRaises(AssertionError):
-            age_is_valid(age=121)
+            raise_if_age_is_invalid(age=121)
 
         with self.assertRaises(AssertionError):
-            age_is_valid(age=150)
+            raise_if_age_is_invalid(age=150)
 
         with self.assertRaises(AssertionError):
-            age_is_valid(age=300)
+            raise_if_age_is_invalid(age=300)
 
-        self.assertEqual(age_is_valid(age=18), True)
-        self.assertEqual(age_is_valid(age=21), True)
-        self.assertEqual(age_is_valid(age=25), True)
-        self.assertEqual(age_is_valid(age=30), True)
-        self.assertEqual(age_is_valid(age=35), True)
-        self.assertEqual(age_is_valid(age=40), True)
-        self.assertEqual(age_is_valid(age=49), True)
-        self.assertEqual(age_is_valid(age=50), True)
-        self.assertEqual(age_is_valid(age=61), True)
-        self.assertEqual(age_is_valid(age=80), True)
-        self.assertEqual(age_is_valid(age=90), True)
-        self.assertEqual(age_is_valid(age=100), True)
-        self.assertEqual(age_is_valid(age=110), True)
+        self.assertEqual(raise_if_age_is_invalid(age=18), True)
+        self.assertEqual(raise_if_age_is_invalid(age=21), True)
+        self.assertEqual(raise_if_age_is_invalid(age=25), True)
+        self.assertEqual(raise_if_age_is_invalid(age=30), True)
+        self.assertEqual(raise_if_age_is_invalid(age=35), True)
+        self.assertEqual(raise_if_age_is_invalid(age=40), True)
+        self.assertEqual(raise_if_age_is_invalid(age=49), True)
+        self.assertEqual(raise_if_age_is_invalid(age=50), True)
+        self.assertEqual(raise_if_age_is_invalid(age=61), True)
+        self.assertEqual(raise_if_age_is_invalid(age=80), True)
+        self.assertEqual(raise_if_age_is_invalid(age=90), True)
+        self.assertEqual(raise_if_age_is_invalid(age=100), True)
+        self.assertEqual(raise_if_age_is_invalid(age=110), True)
 
     def test_answers_is_valid(self) -> None:
         with self.assertRaises(BaseException):
@@ -381,58 +381,6 @@ class Testutility(unittest.TestCase):
         answers = organize_list_json(answers=data)
         assert isinstance(answers, list), "answers must be a list"
         self.assertEqual(len(answers), 5)
-
-    def test_data_input_is_valid(self) -> None:
-        with self.assertRaises(AssertionError) as e:
-            data_input_is_valid(sex="A", age="0", answers=[])
-        self.assertEqual(str(e.exception), "The (sex) field must contain (M or F)!")
-
-        with self.assertRaises(AssertionError) as e:
-            data_input_is_valid(sex="F", age="0", answers=[])
-        self.assertEqual(str(e.exception), "The (age) field must be an integer!")
-
-        with self.assertRaises(AssertionError) as e:
-            data_input_is_valid(sex="F", age=25, answers="0")
-        self.assertEqual(str(e.exception), "The (answers) field must be a list!")
-
-        with self.assertRaises(BaseException) as e:
-            data_input_is_valid(sex="F", age=25, answers=[])
-        self.assertEqual(str(e.exception), "The (answers) field is required!")
-
-        with self.assertRaises(BaseException) as e:
-            data_input_is_valid(sex="F", age=25, answers=[0])
-        self.assertEqual(
-            str(e.exception), "It cannot contain zeros in the answer list!"
-        )
-
-        with self.assertRaises(BaseException) as e:
-            data_input_is_valid(sex="F", age=25, answers=[1, 2, 3, 4, 5])
-        self.assertEqual(
-            str(e.exception), "The (answers) field should be of size 120 or 300!"
-        )
-
-        with self.assertRaises(BaseException) as e:
-            data_input_is_valid(sex="F", age=25, answers=[6, 7, 8, 9, 10])
-        self.assertEqual(
-            str(e.exception), "You cannot have answers with a number greater than 5!"
-        )
-
-        with self.assertRaises(BaseException) as e:
-            data_input_is_valid(sex="F", age=25, answers=[-1, -2, -3, -4, -5])
-        self.assertEqual(
-            str(e.exception), "The (answers) field should be of size 120 or 300!"
-        )
-
-        def load_mock_answers() -> dict:
-            with open("test/mock/answers-test-1.json") as f:
-                data = json.load(f)
-            return data
-
-        answers = organize_list_json(answers=load_mock_answers())
-        assert isinstance(answers, list), "answers must be a list"
-
-        self.assertEqual(data_input_is_valid(sex="F", age=25, answers=answers), True)
-        self.assertEqual(data_input_is_valid(sex="M", age=40, answers=answers), True)
 
     def test_big5_ocean_is_valid(self) -> None:
         with self.assertRaises(BaseException) as e:

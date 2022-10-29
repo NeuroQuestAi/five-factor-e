@@ -12,7 +12,8 @@ import uuid
 from big5.facet import Facet
 from big5.model import QuestionNumber
 from big5.norm import Norm
-from big5.utility import data_input_is_valid
+from big5.utility import (organize_list_json, raise_if_age_is_invalid,
+                          raise_if_sex_is_invalid)
 
 
 class IpipNeo(Facet):
@@ -33,35 +34,39 @@ class IpipNeo(Facet):
             raise BaseException(f"Type question {question} is invalid!")
 
         super().__init__(nquestion=nquestion)
-        self._nquestion = nquestion
+        self._nquestion = question
 
-    def compute(self, sex: str, age: int, answers: list) -> dict:
-        """Desc."""
-        data_input_is_valid(sex=sex, age=age, answers=answers)
+    def compute(self, sex: str, age: int, answers: dict) -> dict:
+        """
+        Compute the answers and generate the dictionary with the results.
+
+        Args:
+            - sex: Gender of the individual (M or F).
+            - age: The age of the individual.
+            - answers: Standardized dictionary with answers.
+        """
+        raise_if_sex_is_invalid(sex=sex)
+        raise_if_age_is_invalid(age=age)
+
+        answers = organize_list_json(answers=answers)
+        assert isinstance(answers, list), "answers must be a list"
 
         score = self.score(answers=answers)
-        print("1", score)
-
-        b5 = self.b5create(score=score)
-        print("2", b5)
-
-        domain = self.domain(score=score)
-        print("3", domain)
+        assert isinstance(score, list), "score must be a list"
 
         norm = Norm(sex=sex, age=age)
-        print("4", norm)
+        assert isinstance(norm, dict), "norm must be a dict"
 
-        normc = Norm.calc(domain=domain, norm=norm)
-        print("5", normc)
+        normc = Norm.calc(domain=self.domain(score=score), norm=norm)
+        assert isinstance(normc, dict), "normc must be a dict"
 
-        distrib = self.distrib(size=len(score), b5=b5, norm=norm)
-        print("6", distrib)
+        distrib = self.distrib(
+            size=len(score), b5=self.b5create(score=score), norm=norm
+        )
+        assert isinstance(distrib, dict), "distrib must be a dict"
 
-        percent = Norm.percent(normc=normc)
-        print("7", percent)
-
-        normalize = Norm.normalize(normc=normc, percent=percent)
-        print("8", normalize)
+        normalize = Norm.normalize(normc=normc, percent=Norm.percent(normc=normc))
+        assert isinstance(normalize, dict), "normalize must be a dict"
 
         N = self.personality(size=len(score), big5=normalize, traits=distrib, label="N")
         E = self.personality(size=len(score), big5=normalize, traits=distrib, label="E")
@@ -69,11 +74,17 @@ class IpipNeo(Facet):
         A = self.personality(size=len(score), big5=normalize, traits=distrib, label="A")
         C = self.personality(size=len(score), big5=normalize, traits=distrib, label="C")
 
-        data = {
+        assert isinstance(O, dict), "O must be a dict"
+        assert isinstance(C, dict), "C must be a dict"
+        assert isinstance(E, dict), "E must be a dict"
+        assert isinstance(A, dict), "A must be a dict"
+        assert isinstance(N, dict), "N must be a dict"
+
+        return {
             "id": str(uuid.uuid4()),
             "theory": "Big 5 Personality Traits",
             "model": "IPIP-NEO",
-            "question": 120,
+            "question": self._nquestion,
             "person": {
                 "sex": sex,
                 "age": age,
@@ -88,9 +99,3 @@ class IpipNeo(Facet):
                 },
             },
         }
-
-        import json
-
-        print(json.dumps(data, indent=4, sort_keys=False))
-
-        return data or {}
