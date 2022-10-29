@@ -1,8 +1,8 @@
 """The standard with the rules of IPIP-NEO norms."""
 
-__author__ = 'Ederson Corbari, Neural-7'
-__email__ = 'e@neural7.io'
-__status__ = 'planning'
+__author__ = "Ederson Corbari, Neural-7"
+__email__ = "e@neural7.io"
+__status__ = "planning"
 
 from big5.model import NormCubic, NormScale
 from big5.utility import age_is_valid, sex_is_valid
@@ -24,10 +24,10 @@ class Norm:
         if age_is_valid(age=age):
             pass
 
-        if sex == 'M' and age < 21:
+        if sex == "M" and age < 21:
             return {
-                'id': 1,
-                'ns': [
+                "id": 1,
+                "ns": [
                     0,
                     67.84,
                     80.70,
@@ -100,13 +100,13 @@ class Norm:
                     3.24,
                     4.02,
                 ],
-                'category': 'men under 21 years old',
+                "category": "men under 21 years old",
             }
 
-        if sex == 'M' and age > 20 and age < 41:
+        if sex == "M" and age > 20 and age < 41:
             return {
-                'id': 2,
-                'ns': [
+                "id": 2,
+                "ns": [
                     0,
                     66.97,
                     78.90,
@@ -179,13 +179,13 @@ class Norm:
                     3.31,
                     4.03,
                 ],
-                'category': 'men between 21 and 40 years old',
+                "category": "men between 21 and 40 years old",
             }
 
-        if sex == 'M' and age > 40 and age < 61:
+        if sex == "M" and age > 40 and age < 61:
             return {
-                'id': 3,
-                'ns': [
+                "id": 3,
+                "ns": [
                     0,
                     64.11,
                     77.06,
@@ -258,13 +258,13 @@ class Norm:
                     3.13,
                     3.78,
                 ],
-                'category': 'men between 41 and 60 years of age',
+                "category": "men between 41 and 60 years of age",
             }
 
-        if sex == 'M' and age > 60:
+        if sex == "M" and age > 60:
             return {
-                'id': 4,
-                'ns': [
+                "id": 4,
+                "ns": [
                     0,
                     58.42,
                     79.73,
@@ -337,13 +337,13 @@ class Norm:
                     2.76,
                     3.61,
                 ],
-                'category': 'men over 60 years old',
+                "category": "men over 60 years old",
             }
 
-        if sex == 'F' and age < 21:
+        if sex == "F" and age < 21:
             return {
-                'id': 5,
-                'ns': [
+                "id": 5,
+                "ns": [
                     0,
                     73.41,
                     84.26,
@@ -416,13 +416,13 @@ class Norm:
                     3.19,
                     4.01,
                 ],
-                'category': 'women under 21 years old',
+                "category": "women under 21 years old",
             }
 
-        if sex == 'F' and age > 20 and age < 41:
+        if sex == "F" and age > 20 and age < 41:
             return {
-                'id': 6,
-                'ns': [
+                "id": 6,
+                "ns": [
                     0,
                     72.14,
                     80.78,
@@ -495,13 +495,13 @@ class Norm:
                     3.23,
                     4.18,
                 ],
-                'category': 'women between 21 and 40 years old',
+                "category": "women between 21 and 40 years old",
             }
 
-        if sex == 'F' and age > 40 and age < 61:
+        if sex == "F" and age > 40 and age < 61:
             return {
-                'id': 7,
-                'ns': [
+                "id": 7,
+                "ns": [
                     0,
                     67.38,
                     78.62,
@@ -574,13 +574,13 @@ class Norm:
                     3.13,
                     3.86,
                 ],
-                'category': 'women between 41 and 61 years old',
+                "category": "women between 41 and 61 years old",
             }
 
-        if sex == 'F' and age > 60:
+        if sex == "F" and age > 60:
             return {
-                'id': 8,
-                'ns': [
+                "id": 8,
+                "ns": [
                     0,
                     63.48,
                     78.22,
@@ -653,7 +653,7 @@ class Norm:
                     3.15,
                     3.66,
                 ],
-                'category': 'women over 60 years old',
+                "category": "women over 60 years old",
             }
 
     @staticmethod
@@ -665,12 +665,12 @@ class Norm:
             - domain: Structured Big-Fives values.
             - norm: The values of norms.
         """
-        N = (10 * (domain.get('N', 0) - norm.get('ns')[1]) / norm.get('ns')[6]) + 50
-        E = (10 * (domain.get('E', 0) - norm.get('ns')[2]) / norm.get('ns')[7]) + 50
-        O = (10 * (domain.get('O', 0) - norm.get('ns')[3]) / norm.get('ns')[8]) + 50
-        A = (10 * (domain.get('A', 0) - norm.get('ns')[4]) / norm.get('ns')[9]) + 50
-        C = (10 * (domain.get('C', 0) - norm.get('ns')[5]) / norm.get('ns')[10]) + 50
-        return {'O': O, 'C': C, 'E': E, 'A': A, 'N': N}
+        N = (10 * (domain.get("N", 0) - norm.get("ns")[1]) / norm.get("ns")[6]) + 50
+        E = (10 * (domain.get("E", 0) - norm.get("ns")[2]) / norm.get("ns")[7]) + 50
+        O = (10 * (domain.get("O", 0) - norm.get("ns")[3]) / norm.get("ns")[8]) + 50
+        A = (10 * (domain.get("A", 0) - norm.get("ns")[4]) / norm.get("ns")[9]) + 50
+        C = (10 * (domain.get("C", 0) - norm.get("ns")[5]) / norm.get("ns")[10]) + 50
+        return {"O": O, "C": C, "E": E, "A": A, "N": N}
 
     @staticmethod
     def percent(normc: dict) -> dict:
@@ -682,35 +682,35 @@ class Norm:
         """
         N = float(
             NormCubic.CONST1.value
-            - (NormCubic.CONST2.value * normc.get('N', 0))
-            + (NormCubic.CONST3.value * normc.get('N', 0) ** 2)
-            - (NormCubic.CONST4.value * normc.get('N', 0) ** 3)
+            - (NormCubic.CONST2.value * normc.get("N", 0))
+            + (NormCubic.CONST3.value * normc.get("N", 0) ** 2)
+            - (NormCubic.CONST4.value * normc.get("N", 0) ** 3)
         )
         E = float(
             NormCubic.CONST1.value
-            - (NormCubic.CONST2.value * normc.get('E', 0))
-            + (NormCubic.CONST3.value * normc.get('E', 0) ** 2)
-            - (NormCubic.CONST4.value * normc.get('E', 0) ** 3)
+            - (NormCubic.CONST2.value * normc.get("E", 0))
+            + (NormCubic.CONST3.value * normc.get("E", 0) ** 2)
+            - (NormCubic.CONST4.value * normc.get("E", 0) ** 3)
         )
         O = float(
             NormCubic.CONST1.value
-            - (NormCubic.CONST2.value * normc.get('O', 0))
-            + (NormCubic.CONST3.value * normc.get('O', 0) ** 2)
-            - (NormCubic.CONST4.value * normc.get('O', 0) ** 3)
+            - (NormCubic.CONST2.value * normc.get("O", 0))
+            + (NormCubic.CONST3.value * normc.get("O", 0) ** 2)
+            - (NormCubic.CONST4.value * normc.get("O", 0) ** 3)
         )
         A = float(
             NormCubic.CONST1.value
-            - (NormCubic.CONST2.value * normc.get('A', 0))
-            + (NormCubic.CONST3.value * normc.get('A', 0) ** 2)
-            - (NormCubic.CONST4.value * normc.get('A', 0) ** 3)
+            - (NormCubic.CONST2.value * normc.get("A", 0))
+            + (NormCubic.CONST3.value * normc.get("A", 0) ** 2)
+            - (NormCubic.CONST4.value * normc.get("A", 0) ** 3)
         )
         C = float(
             NormCubic.CONST1.value
-            - (NormCubic.CONST2.value * normc.get('C', 0))
-            + (NormCubic.CONST3.value * normc.get('C', 0) ** 2)
-            - (NormCubic.CONST4.value * normc.get('C', 0) ** 3)
+            - (NormCubic.CONST2.value * normc.get("C", 0))
+            + (NormCubic.CONST3.value * normc.get("C", 0) ** 2)
+            - (NormCubic.CONST4.value * normc.get("C", 0) ** 3)
         )
-        return {'O': O, 'C': C, 'E': E, 'A': A, 'N': N}
+        return {"O": O, "C": C, "E": E, "A": A, "N": N}
 
     @staticmethod
     def normalize(normc: dict, percent: dict) -> dict:
@@ -720,16 +720,16 @@ class Norm:
         Args:
             - normc: The calculated norms.
         """
-        N = 1 if normc.get('N', 0) < NormScale.CONST_MIN.value else percent.get('N', 0)
-        E = 1 if normc.get('E', 0) < NormScale.CONST_MIN.value else percent.get('E', 0)
-        O = 1 if normc.get('O', 0) < NormScale.CONST_MIN.value else percent.get('O', 0)
-        A = 1 if normc.get('A', 0) < NormScale.CONST_MIN.value else percent.get('A', 0)
-        C = 1 if normc.get('C', 0) < NormScale.CONST_MIN.value else percent.get('C', 0)
+        N = 1 if normc.get("N", 0) < NormScale.CONST_MIN.value else percent.get("N", 0)
+        E = 1 if normc.get("E", 0) < NormScale.CONST_MIN.value else percent.get("E", 0)
+        O = 1 if normc.get("O", 0) < NormScale.CONST_MIN.value else percent.get("O", 0)
+        A = 1 if normc.get("A", 0) < NormScale.CONST_MIN.value else percent.get("A", 0)
+        C = 1 if normc.get("C", 0) < NormScale.CONST_MIN.value else percent.get("C", 0)
 
-        N = 99 if normc.get('N', 0) > NormScale.CONST_MAX.value else percent.get('N', 0)
-        E = 99 if normc.get('E', 0) > NormScale.CONST_MAX.value else percent.get('E', 0)
-        O = 99 if normc.get('O', 0) > NormScale.CONST_MAX.value else percent.get('O', 0)
-        A = 99 if normc.get('A', 0) > NormScale.CONST_MAX.value else percent.get('A', 0)
-        C = 99 if normc.get('C', 0) > NormScale.CONST_MAX.value else percent.get('C', 0)
+        N = 99 if normc.get("N", 0) > NormScale.CONST_MAX.value else percent.get("N", 0)
+        E = 99 if normc.get("E", 0) > NormScale.CONST_MAX.value else percent.get("E", 0)
+        O = 99 if normc.get("O", 0) > NormScale.CONST_MAX.value else percent.get("O", 0)
+        A = 99 if normc.get("A", 0) > NormScale.CONST_MAX.value else percent.get("A", 0)
+        C = 99 if normc.get("C", 0) > NormScale.CONST_MAX.value else percent.get("C", 0)
 
-        return {'O': O, 'C': C, 'E': E, 'A': A, 'N': N}
+        return {"O": O, "C": C, "E": E, "A": A, "N": N}

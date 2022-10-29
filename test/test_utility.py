@@ -6,43 +6,41 @@ import unittest
 from big5.utility import (
     age_is_valid,
     answers_is_valid,
-    data_input_is_valid,
-    organize_list_json,
-    sex_is_valid,
     big5_ocean_is_valid,
     big_five_target,
     create_big5_dict,
+    data_input_is_valid,
+    organize_list_json,
+    sex_is_valid,
 )
 
 
 class Testutility(unittest.TestCase):
     def test_sex_is_valid(self) -> None:
-
         with self.assertRaises(BaseException):
-            sex_is_valid(sex='')
+            sex_is_valid(sex="")
 
         with self.assertRaises(AssertionError):
-            sex_is_valid(sex='m')
+            sex_is_valid(sex="m")
 
         with self.assertRaises(AssertionError):
-            sex_is_valid(sex='f')
+            sex_is_valid(sex="f")
 
         with self.assertRaises(AssertionError):
-            sex_is_valid(sex='male')
+            sex_is_valid(sex="male")
 
         with self.assertRaises(AssertionError):
-            sex_is_valid(sex='female')
+            sex_is_valid(sex="female")
 
-        self.assertEqual(sex_is_valid(sex='M'), True)
-        self.assertEqual(sex_is_valid(sex='F'), True)
+        self.assertEqual(sex_is_valid(sex="M"), True)
+        self.assertEqual(sex_is_valid(sex="F"), True)
 
     def test_age_is_valid(self) -> None:
-
         with self.assertRaises(BaseException):
-            age_is_valid(age='')
+            age_is_valid(age="")
 
         with self.assertRaises(AssertionError):
-            age_is_valid(age='40')
+            age_is_valid(age="40")
 
         with self.assertRaises(AssertionError):
             age_is_valid(age=-1)
@@ -74,15 +72,14 @@ class Testutility(unittest.TestCase):
         self.assertEqual(age_is_valid(age=110), True)
 
     def test_answers_is_valid(self) -> None:
-
         with self.assertRaises(BaseException):
-            answers_is_valid(answers='')
+            answers_is_valid(answers="")
 
         with self.assertRaises(BaseException):
             answers_is_valid(answers=[])
 
         with self.assertRaises(BaseException):
-            answers_is_valid(answers=['A'])
+            answers_is_valid(answers=["A"])
 
         with self.assertRaises(BaseException):
             answers_is_valid(answers=[1, 2, 3, 4, 5])
@@ -225,8 +222,8 @@ class Testutility(unittest.TestCase):
         )
 
         def load_mock_answers(idx: int) -> dict:
-            name = 'answers-test-1.json' if idx == 1 else 'answers-test-2.json'
-            with open(f'test/mock/{name}') as f:
+            name = "answers-test-1.json" if idx == 1 else "answers-test-2.json"
+            with open(f"test/mock/{name}") as f:
                 data = json.load(f)
             return data
 
@@ -354,16 +351,16 @@ class Testutility(unittest.TestCase):
         ]
 
         b = organize_list_json(answers=load_mock_answers(idx=1))
-        assert isinstance(b, list), 'b must be a list'
+        assert isinstance(b, list), "b must be a list"
         self.assertEqual(a, b)
 
         c = organize_list_json(answers=load_mock_answers(idx=2))
-        assert isinstance(c, list), 'c must be a list'
+        assert isinstance(c, list), "c must be a list"
         self.assertEqual(c, b)
 
     def test_organize_list_json(self) -> None:
         with self.assertRaises(AssertionError):
-            organize_list_json(answers='')
+            organize_list_json(answers="")
 
         with self.assertRaises(BaseException):
             organize_list_json(answers={"A": []})
@@ -388,86 +385,86 @@ class Testutility(unittest.TestCase):
         }
 
         answers = organize_list_json(answers=data)
-        assert isinstance(answers, list), 'answers must be a list'
+        assert isinstance(answers, list), "answers must be a list"
         self.assertEqual(len(answers), 5)
 
     def test_data_input_is_valid(self) -> None:
         with self.assertRaises(AssertionError) as e:
-            data_input_is_valid(sex='A', age='0', answers=[])
-        self.assertEqual(str(e.exception), 'The (sex) field must contain (M or F)!')
+            data_input_is_valid(sex="A", age="0", answers=[])
+        self.assertEqual(str(e.exception), "The (sex) field must contain (M or F)!")
 
         with self.assertRaises(AssertionError) as e:
-            data_input_is_valid(sex='F', age='0', answers=[])
-        self.assertEqual(str(e.exception), 'The (age) field must be an integer!')
+            data_input_is_valid(sex="F", age="0", answers=[])
+        self.assertEqual(str(e.exception), "The (age) field must be an integer!")
 
         with self.assertRaises(AssertionError) as e:
-            data_input_is_valid(sex='F', age=25, answers='0')
-        self.assertEqual(str(e.exception), 'The (answers) field must be a list!')
+            data_input_is_valid(sex="F", age=25, answers="0")
+        self.assertEqual(str(e.exception), "The (answers) field must be a list!")
 
         with self.assertRaises(BaseException) as e:
-            data_input_is_valid(sex='F', age=25, answers=[])
-        self.assertEqual(str(e.exception), 'The (answers) field is required!')
+            data_input_is_valid(sex="F", age=25, answers=[])
+        self.assertEqual(str(e.exception), "The (answers) field is required!")
 
         with self.assertRaises(BaseException) as e:
-            data_input_is_valid(sex='F', age=25, answers=[0])
+            data_input_is_valid(sex="F", age=25, answers=[0])
         self.assertEqual(
-            str(e.exception), 'It cannot contain zeros in the answer list!'
+            str(e.exception), "It cannot contain zeros in the answer list!"
         )
 
         with self.assertRaises(BaseException) as e:
-            data_input_is_valid(sex='F', age=25, answers=[1, 2, 3, 4, 5])
+            data_input_is_valid(sex="F", age=25, answers=[1, 2, 3, 4, 5])
         self.assertEqual(
-            str(e.exception), 'The (answers) field should be of size 120 or 300!'
+            str(e.exception), "The (answers) field should be of size 120 or 300!"
         )
 
         with self.assertRaises(BaseException) as e:
-            data_input_is_valid(sex='F', age=25, answers=[6, 7, 8, 9, 10])
+            data_input_is_valid(sex="F", age=25, answers=[6, 7, 8, 9, 10])
         self.assertEqual(
-            str(e.exception), 'You cannot have answers with a number greater than 5!'
+            str(e.exception), "You cannot have answers with a number greater than 5!"
         )
 
         with self.assertRaises(BaseException) as e:
-            data_input_is_valid(sex='F', age=25, answers=[-1, -2, -3, -4, -5])
+            data_input_is_valid(sex="F", age=25, answers=[-1, -2, -3, -4, -5])
         self.assertEqual(
-            str(e.exception), 'The (answers) field should be of size 120 or 300!'
+            str(e.exception), "The (answers) field should be of size 120 or 300!"
         )
 
         def load_mock_answers() -> dict:
-            with open('test/mock/answers-test-1.json') as f:
+            with open("test/mock/answers-test-1.json") as f:
                 data = json.load(f)
             return data
 
         answers = organize_list_json(answers=load_mock_answers())
-        assert isinstance(answers, list), 'answers must be a list'
+        assert isinstance(answers, list), "answers must be a list"
 
-        self.assertEqual(data_input_is_valid(sex='F', age=25, answers=answers), True)
-        self.assertEqual(data_input_is_valid(sex='M', age=40, answers=answers), True)
+        self.assertEqual(data_input_is_valid(sex="F", age=25, answers=answers), True)
+        self.assertEqual(data_input_is_valid(sex="M", age=40, answers=answers), True)
 
     def test_big5_ocean_is_valid(self) -> None:
         with self.assertRaises(BaseException) as e:
-            big5_ocean_is_valid(label='')
-        self.assertEqual(str(e.exception), 'The Big-Five label is invalid!')
+            big5_ocean_is_valid(label="")
+        self.assertEqual(str(e.exception), "The Big-Five label is invalid!")
 
         with self.assertRaises(BaseException) as e:
-            big5_ocean_is_valid(label='OCEAN')
-        self.assertEqual(str(e.exception), 'The Big-Five label is invalid!')
+            big5_ocean_is_valid(label="OCEAN")
+        self.assertEqual(str(e.exception), "The Big-Five label is invalid!")
 
-        self.assertEqual(big5_ocean_is_valid(label='O'), True)
-        self.assertEqual(big5_ocean_is_valid(label='C'), True)
-        self.assertEqual(big5_ocean_is_valid(label='E'), True)
-        self.assertEqual(big5_ocean_is_valid(label='A'), True)
-        self.assertEqual(big5_ocean_is_valid(label='N'), True)
+        self.assertEqual(big5_ocean_is_valid(label="O"), True)
+        self.assertEqual(big5_ocean_is_valid(label="C"), True)
+        self.assertEqual(big5_ocean_is_valid(label="E"), True)
+        self.assertEqual(big5_ocean_is_valid(label="A"), True)
+        self.assertEqual(big5_ocean_is_valid(label="N"), True)
 
     def test_big_five_target(self) -> None:
         with self.assertRaises(BaseException) as e:
-            big_five_target(label='')
-        self.assertEqual(str(e.exception), 'The Big-Five label is invalid!')
+            big_five_target(label="")
+        self.assertEqual(str(e.exception), "The Big-Five label is invalid!")
 
-        O = list(map(str, big_five_target(label='O')))
-        C = list(map(str, big_five_target(label='C')))
-        E = list(map(str, big_five_target(label='E')))
-        A = list(map(str, big_five_target(label='A')))
-        N = list(map(str, big_five_target(label='N')))
+        O = list(map(str, big_five_target(label="O")))
+        C = list(map(str, big_five_target(label="C")))
+        E = list(map(str, big_five_target(label="E")))
+        A = list(map(str, big_five_target(label="A")))
+        N = list(map(str, big_five_target(label="N")))
 
         self.assertEqual(len(O), 6)
         self.assertEqual(len(C), 6)
@@ -477,9 +474,9 @@ class Testutility(unittest.TestCase):
 
     def test_create_big5_dict(self) -> None:
         N = {
-            'label': 'N',
-            'big5': 37.23631660596993,
-            'x': [
+            "label": "N",
+            "big5": 37.23631660596993,
+            "x": [
                 0,
                 55.29153291804727,
                 52.068589887460575,
@@ -488,27 +485,27 @@ class Testutility(unittest.TestCase):
                 28.601999121511483,
                 38.536490293892996,
             ],
-            'y': [
+            "y": [
                 0,
-                'average',
-                'average',
-                'low',
-                'average',
-                'low',
-                'average',
+                "average",
+                "average",
+                "low",
+                "average",
+                "low",
+                "average",
             ],
         }
         N = create_big5_dict(
-            label=N.get('label'), big5=N.get('big5'), x=N.get('x'), y=N.get('y')
+            label=N.get("label"), big5=N.get("big5"), x=N.get("x"), y=N.get("y")
         )
-        assert isinstance(N, dict), 'N must be a dict'
-        self.assertEqual(N.get('N'), 37.23631660596993)
-        assert isinstance(N.get('traits'), list), 'traits must be a list'
+        assert isinstance(N, dict), "N must be a dict"
+        self.assertEqual(N.get("N"), 37.23631660596993)
+        assert isinstance(N.get("traits"), list), "traits must be a list"
 
         E = {
-            'label': 'E',
-            'big5': 21.46713047820697,
-            'x': [
+            "label": "E",
+            "big5": 21.46713047820697,
+            "x": [
                 0,
                 20.788746198012063,
                 8.857170154068399,
@@ -517,28 +514,28 @@ class Testutility(unittest.TestCase):
                 36.25782829248527,
                 27.560328329400278,
             ],
-            'y': [
+            "y": [
                 0,
-                'low',
-                'low',
-                'low',
-                'high',
-                'average',
-                'low',
+                "low",
+                "low",
+                "low",
+                "high",
+                "average",
+                "low",
             ],
         }
 
         E = create_big5_dict(
-            label=E.get('label'), big5=E.get('big5'), x=E.get('x'), y=E.get('y')
+            label=E.get("label"), big5=E.get("big5"), x=E.get("x"), y=E.get("y")
         )
-        assert isinstance(E, dict), 'N must be a dict'
-        self.assertEqual(E.get('E'), 21.46713047820697)
-        assert isinstance(E.get('traits'), list), 'traits must be a list'
+        assert isinstance(E, dict), "N must be a dict"
+        self.assertEqual(E.get("E"), 21.46713047820697)
+        assert isinstance(E.get("traits"), list), "traits must be a list"
 
         O = {
-            'label': 'O',
-            'big5': 26.882298529738506,
-            'x': [
+            "label": "O",
+            "big5": 26.882298529738506,
+            "x": [
                 0,
                 1,
                 14.832308817371768,
@@ -547,28 +544,28 @@ class Testutility(unittest.TestCase):
                 27.6351617847169,
                 79.99472618213304,
             ],
-            'y': [
+            "y": [
                 0,
-                'low',
-                'low',
-                'low',
-                'high',
-                'low',
-                'high',
+                "low",
+                "low",
+                "low",
+                "high",
+                "low",
+                "high",
             ],
         }
 
         O = create_big5_dict(
-            label=O.get('label'), big5=O.get('big5'), x=O.get('x'), y=O.get('y')
+            label=O.get("label"), big5=O.get("big5"), x=O.get("x"), y=O.get("y")
         )
-        assert isinstance(O, dict), 'O must be a dict'
-        self.assertEqual(O.get('O'), 26.882298529738506)
-        assert isinstance(O.get('traits'), list), 'traits must be a list'
+        assert isinstance(O, dict), "O must be a dict"
+        self.assertEqual(O.get("O"), 26.882298529738506)
+        assert isinstance(O.get("traits"), list), "traits must be a list"
 
         A = {
-            'label': 'A',
-            'big5': 57.52658875205816,
-            'x': [
+            "label": "A",
+            "big5": 57.52658875205816,
+            "x": [
                 0,
                 70.5561195632738,
                 89.87557658724631,
@@ -577,28 +574,28 @@ class Testutility(unittest.TestCase):
                 55.67124528467815,
                 21.651269458084244,
             ],
-            'y': [
+            "y": [
                 0,
-                'high',
-                'high',
-                'low',
-                'average',
-                'average',
-                'low',
+                "high",
+                "high",
+                "low",
+                "average",
+                "average",
+                "low",
             ],
         }
 
         A = create_big5_dict(
-            label=A.get('label'), big5=A.get('big5'), x=A.get('x'), y=A.get('y')
+            label=A.get("label"), big5=A.get("big5"), x=A.get("x"), y=A.get("y")
         )
-        assert isinstance(A, dict), 'A must be a dict'
-        self.assertEqual(A.get('A'), 57.52658875205816)
-        assert isinstance(A.get('traits'), list), 'traits must be a list'
+        assert isinstance(A, dict), "A must be a dict"
+        self.assertEqual(A.get("A"), 57.52658875205816)
+        assert isinstance(A.get("traits"), list), "traits must be a list"
 
         C = {
-            'label': 'C',
-            'big5': 86.96687032595662,
-            'x': [
+            "label": "C",
+            "big5": 86.96687032595662,
+            "x": [
                 0,
                 67.18081968991703,
                 98.82696217870512,
@@ -607,20 +604,20 @@ class Testutility(unittest.TestCase):
                 92.95956099997227,
                 38.524355262005315,
             ],
-            'y': [
+            "y": [
                 0,
-                'average',
-                'high',
-                'average',
-                'high',
-                'high',
-                'average',
+                "average",
+                "high",
+                "average",
+                "high",
+                "high",
+                "average",
             ],
         }
 
         C = create_big5_dict(
-            label=C.get('label'), big5=C.get('big5'), x=C.get('x'), y=C.get('y')
+            label=C.get("label"), big5=C.get("big5"), x=C.get("x"), y=C.get("y")
         )
-        assert isinstance(C, dict), 'A must be a dict'
-        self.assertEqual(C.get('C'), 86.96687032595662)
-        assert isinstance(C.get('traits'), list), 'traits must be a list'
+        assert isinstance(C, dict), "A must be a dict"
+        self.assertEqual(C.get("C"), 86.96687032595662)
+        assert isinstance(C.get("traits"), list), "traits must be a list"

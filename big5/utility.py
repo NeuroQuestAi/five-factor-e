@@ -1,8 +1,8 @@
 """Contains utility functions used in the library."""
 
-__author__ = 'Ederson Corbari, Neural-7'
-__email__ = 'e@neural7.io'
-__status__ = 'planning'
+__author__ = "Ederson Corbari, Neural-7"
+__email__ = "e@neural7.io"
+__status__ = "planning"
 
 from enum import Enum
 
@@ -18,10 +18,10 @@ def sex_is_valid(sex: str) -> bool | AssertionError | BaseException:
         - sex: Male is M or Female is F.
     """
     if not sex:
-        raise BaseException('The (sex) field is required!')
+        raise BaseException("The (sex) field is required!")
 
-    assert isinstance(sex, str), 'The (sex) field must be a string!'
-    assert sex == 'M' or sex == 'F', 'The (sex) field must contain (M or F)!'
+    assert isinstance(sex, str), "The (sex) field must be a string!"
+    assert sex == "M" or sex == "F", "The (sex) field must contain (M or F)!"
     return True
 
 
@@ -33,14 +33,14 @@ def age_is_valid(age: int) -> bool | AssertionError | BaseException:
         - age: Person's age.
     """
     if not age:
-        raise BaseException('The (age) field is required!')
+        raise BaseException("The (age) field is required!")
 
-    assert isinstance(age, int), 'The (age) field must be an integer!'
+    assert isinstance(age, int), "The (age) field must be an integer!"
 
     min, max = (10, 120)
     if not (min <= age <= max):
         raise AssertionError(
-            'The age (%r) must be between %r and %r!' % (age, min, max)
+            "The age (%r) must be between %r and %r!" % (age, min, max)
         )
 
     return True
@@ -54,22 +54,22 @@ def answers_is_valid(answers: list) -> bool | AssertionError | BaseException:
         - answers: List with the answers.
     """
     if not answers:
-        raise BaseException('The (answers) field is required!')
+        raise BaseException("The (answers) field is required!")
 
-    assert isinstance(answers, list), 'The (answers) field must be a list!'
+    assert isinstance(answers, list), "The (answers) field must be a list!"
 
     if 0 in answers:
-        raise BaseException('It cannot contain zeros in the answer list!')
+        raise BaseException("It cannot contain zeros in the answer list!")
 
     max5 = [1 if x > 5 else 0 for x in answers]
 
     if len(max5) >= 1:
         if 1 in max5:
-            raise BaseException('You cannot have answers with a number greater than 5!')
+            raise BaseException("You cannot have answers with a number greater than 5!")
 
     assert (
         len(answers) == 120 or len(answers) == 300
-    ), 'The (answers) field should be of size 120 or 300!'
+    ), "The (answers) field should be of size 120 or 300!"
 
     return True
 
@@ -81,23 +81,23 @@ def organize_list_json(answers: dict) -> list | AssertionError | BaseException:
     Args:
         - answers: Dictionary with the list of answers.
     """
-    assert isinstance(answers, dict), 'The (answers) field must be a dict!'
+    assert isinstance(answers, dict), "The (answers) field must be a dict!"
 
-    if 'answers' not in answers:
-        raise BaseException('The key named (answers) was not found!')
+    if "answers" not in answers:
+        raise BaseException("The key named (answers) was not found!")
 
-    if not any('id_question' in x for x in answers.get('answers', [])):
-        raise BaseException('The key named (id_question) was not found!')
+    if not any("id_question" in x for x in answers.get("answers", [])):
+        raise BaseException("The key named (id_question) was not found!")
 
-    if not any('id_select' in x for x in answers.get('answers', [])):
-        raise BaseException('The key named (id_select) was not found!')
+    if not any("id_select" in x for x in answers.get("answers", [])):
+        raise BaseException("The key named (id_select) was not found!")
 
     return [
-        x['id_select']
+        x["id_select"]
         for x in sorted(
-            [x for x in answers.get('answers', [])], key=lambda x: x['id_question']
+            [x for x in answers.get("answers", [])], key=lambda x: x["id_question"]
         )
-        if x['id_select'] >= 1
+        if x["id_select"] >= 1
     ]
 
 
@@ -129,18 +129,18 @@ def big5_ocean_is_valid(label: str) -> bool | BaseException:
     Args:
         - label: The acronym for the Big-Five standard O.C.E.A.N.
     """
-    if label == 'O':
+    if label == "O":
         return True
-    if label == 'C':
+    if label == "C":
         return True
-    if label == 'E':
+    if label == "E":
         return True
-    if label == 'A':
+    if label == "A":
         return True
-    if label == 'N':
+    if label == "N":
         return True
 
-    raise BaseException('The Big-Five label is invalid!')
+    raise BaseException("The Big-Five label is invalid!")
 
 
 def big_five_target(label: str) -> Enum | BaseException:
@@ -151,15 +151,15 @@ def big_five_target(label: str) -> Enum | BaseException:
         - label: The acronym for the Big-Five standard O.C.E.A.N.
     """
     if big5_ocean_is_valid(label=label):
-        if label == 'O':
+        if label == "O":
             return Big5Openness
-        if label == 'C':
+        if label == "C":
             return Big5Conscientiousness
-        if label == 'E':
+        if label == "E":
             return Big5Extraversion
-        if label == 'A':
+        if label == "A":
             return Big5Agreeableness
-        if label == 'N':
+        if label == "N":
             return Big5Neuroticism
 
 
@@ -175,36 +175,36 @@ def create_big5_dict(label: str, big5: float, x: list, y: list) -> dict:
     """
     return {
         label: big5,
-        'traits': [
+        "traits": [
             {
-                'trait': 1,
+                "trait": 1,
                 big_five_target(label=label).TRAIT1.value: x[1],
-                'score': y[1],
+                "score": y[1],
             },
             {
-                'trait': 2,
+                "trait": 2,
                 big_five_target(label=label).TRAIT2.value: x[2],
-                'score': y[2],
+                "score": y[2],
             },
             {
-                'trait': 3,
+                "trait": 3,
                 big_five_target(label=label).TRAIT3.value: x[3],
-                'score': y[3],
+                "score": y[3],
             },
             {
-                'trait': 4,
+                "trait": 4,
                 big_five_target(label=label).TRAIT4.value: x[4],
-                'score': y[4],
+                "score": y[4],
             },
             {
-                'trait': 5,
+                "trait": 5,
                 big_five_target(label=label).TRAIT5.value: x[5],
-                'score': y[5],
+                "score": y[5],
             },
             {
-                'trait': 6,
+                "trait": 6,
                 big_five_target(label=label).TRAIT6.value: x[6],
-                'score': y[6],
+                "score": y[6],
             },
         ],
     }

@@ -1,12 +1,13 @@
 """Creation and scoring of the facets that make up the Big-Five."""
 
-__author__ = 'Ederson Corbari, Neural-7'
-__email__ = 'e@neural7.io'
-__status__ = 'planning'
+__author__ = "Ederson Corbari, Neural-7"
+__email__ = "e@neural7.io"
+__status__ = "planning"
 
 from enum import IntEnum
 
-from big5.model import FacetLevel, FacetScale, NormCubic, NormScale, QuestionNumber
+from big5.model import (FacetLevel, FacetScale, NormCubic, NormScale,
+                        QuestionNumber)
 from big5.utility import big5_ocean_is_valid, create_big5_dict
 
 
@@ -25,7 +26,7 @@ class Facet:
         elif nquestion == 120:
             self._scale = FacetScale.IPIP_120.value
         else:
-            raise BaseException(f'The available questions are: {list(QuestionNumber)}')
+            raise BaseException(f"The available questions are: {list(QuestionNumber)}")
 
     def score(self, answers: list) -> list | BaseException:
         """
@@ -41,7 +42,7 @@ class Facet:
                 for i in range(self._scale):
                     ss[1 + j] += answers[1 + i * FacetScale.IPIP_MAX.value + j]
         except IndexError as e:
-            raise BaseException(f'The number of questions setting is wrong: {str(e)}')
+            raise BaseException(f"The number of questions setting is wrong: {str(e)}")
 
         return ss
 
@@ -69,9 +70,9 @@ class Facet:
                 C[i] = ss[i + j + 4]
                 j = j + 4
         except IndexError as e:
-            raise BaseException(f'The number of questions setting is wrong: {str(e)}')
+            raise BaseException(f"The number of questions setting is wrong: {str(e)}")
 
-        return {'O': O, 'C': C, 'E': E, 'A': A, 'N': N}
+        return {"O": O, "C": C, "E": E, "A": A, "N": N}
 
     def domain(self, score: list) -> dict:
         """
@@ -85,7 +86,7 @@ class Facet:
         O = score[3] + score[8] + score[13] + score[18] + score[23] + score[28]
         A = score[4] + score[9] + score[14] + score[19] + score[24] + score[29]
         C = score[5] + score[10] + score[15] + score[20] + score[25] + score[30]
-        return {'O': O, 'C': C, 'E': E, 'A': A, 'N': N}
+        return {"O": O, "C": C, "E": E, "A": A, "N": N}
 
     def distrib(self, size: int, b5: dict, norm: dict) -> list:
         """
@@ -106,33 +107,33 @@ class Facet:
             for i in range(1, 7):
                 N[i] = 50 + (
                     10
-                    * (b5.get('N')[i] - norm.get('ns')[i + 10])
-                    / norm.get('ns')[i + 16]
+                    * (b5.get("N")[i] - norm.get("ns")[i + 10])
+                    / norm.get("ns")[i + 16]
                 )
                 E[i] = 50 + (
                     10
-                    * (b5.get('E')[i] - norm.get('ns')[i + 22])
-                    / norm.get('ns')[i + 28]
+                    * (b5.get("E")[i] - norm.get("ns")[i + 22])
+                    / norm.get("ns")[i + 28]
                 )
                 O[i] = 50 + (
                     10
-                    * (b5.get('O')[i] - norm.get('ns')[i + 34])
-                    / norm.get('ns')[i + 40]
+                    * (b5.get("O")[i] - norm.get("ns")[i + 34])
+                    / norm.get("ns")[i + 40]
                 )
                 A[i] = 50 + (
                     10
-                    * (b5.get('A')[i] - norm.get('ns')[i + 46])
-                    / norm.get('ns')[i + 52]
+                    * (b5.get("A")[i] - norm.get("ns")[i + 46])
+                    / norm.get("ns")[i + 52]
                 )
                 C[i] = 50 + (
                     10
-                    * (b5.get('C')[i] - norm.get('ns')[i + 58])
-                    / norm.get('ns')[i + 64]
+                    * (b5.get("C")[i] - norm.get("ns")[i + 58])
+                    / norm.get("ns")[i + 64]
                 )
         except IndexError as e:
-            raise BaseException(f'The number of questions setting is wrong: {str(e)}')
+            raise BaseException(f"The number of questions setting is wrong: {str(e)}")
 
-        return {'O': O, 'C': C, 'E': E, 'A': A, 'N': N}
+        return {"O": O, "C": C, "E": E, "A": A, "N": N}
 
     def personality(self, size: int, big5: dict, traits: dict, label: str) -> dict:
         """
@@ -157,14 +158,14 @@ class Facet:
                 Y[i] = traits[i]
 
                 if traits[i] < FacetLevel.LOW.value:
-                    Y[i] = 'low'
+                    Y[i] = "low"
                 if (
                     traits[i] >= FacetLevel.LOW.value
                     and traits[i] <= FacetLevel.HIGH.value
                 ):
-                    Y[i] = 'average'
+                    Y[i] = "average"
                 if traits[i] > FacetLevel.HIGH.value:
-                    Y[i] = 'high'
+                    Y[i] = "high"
 
                 X[i] = (
                     NormCubic.CONST1.value
@@ -179,6 +180,6 @@ class Facet:
                 if traits[i] > NormScale.CONST_MAX.value:
                     X[i] = 99
         except IndexError as e:
-            raise BaseException(f'The number of questions setting is wrong: {str(e)}')
+            raise BaseException(f"The number of questions setting is wrong: {str(e)}")
 
         return create_big5_dict(label=label, big5=big5, x=X, y=Y) or {}

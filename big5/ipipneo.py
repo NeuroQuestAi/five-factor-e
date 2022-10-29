@@ -1,8 +1,8 @@
 """It does the calculations to generate the IPIP-NEO results based on the questions and answers."""
 
-__author__ = 'Ederson Corbari, Neural-7'
-__email__ = 'e@neural7.io'
-__status__ = 'planning'
+__author__ = "Ederson Corbari, Neural-7"
+__email__ = "e@neural7.io"
+__status__ = "planning"
 
 import uuid
 
@@ -27,7 +27,7 @@ class IpipNeo(Facet):
         elif question == 120:
             nquestion = QuestionNumber.IPIP_300
         else:
-            raise BaseException(f'Type question {question} is invalid!')
+            raise BaseException(f"Type question {question} is invalid!")
 
         super().__init__(nquestion=nquestion)
         self._nquestion = nquestion
@@ -38,50 +38,50 @@ class IpipNeo(Facet):
             return {}
 
         score = self.score(answers=answers)
-        print('1', score)
+        print("1", score)
 
         b5 = self.b5create(score=score)
-        print('2', b5)
+        print("2", b5)
 
         domain = self.domain(score=score)
-        print('3', domain)
+        print("3", domain)
 
         norm = Norm(sex=sex, age=age)
-        print('4', norm)
+        print("4", norm)
 
         normc = Norm.calc(domain=domain, norm=norm)
-        print('5', normc)
+        print("5", normc)
 
         distrib = self.distrib(size=len(score), b5=b5, norm=norm)
-        print('6', distrib)
+        print("6", distrib)
 
         percent = Norm.percent(normc=normc)
-        print('7', percent)
+        print("7", percent)
 
         normalize = Norm.normalize(normc=normc, percent=percent)
-        print('8', normalize)
+        print("8", normalize)
 
-        N = self.personality(size=len(score), big5=normalize, traits=distrib, label='N')
-        E = self.personality(size=len(score), big5=normalize, traits=distrib, label='E')
-        O = self.personality(size=len(score), big5=normalize, traits=distrib, label='O')
-        A = self.personality(size=len(score), big5=normalize, traits=distrib, label='A')
-        C = self.personality(size=len(score), big5=normalize, traits=distrib, label='C')
+        N = self.personality(size=len(score), big5=normalize, traits=distrib, label="N")
+        E = self.personality(size=len(score), big5=normalize, traits=distrib, label="E")
+        O = self.personality(size=len(score), big5=normalize, traits=distrib, label="O")
+        A = self.personality(size=len(score), big5=normalize, traits=distrib, label="A")
+        C = self.personality(size=len(score), big5=normalize, traits=distrib, label="C")
 
         data = {
-            'id': str(uuid.uuid4()),
-            'theory': 'Big 5 Personality Traits',
-            'model': 'IPIP-NEO',
-            'question': 120,
-            'person': {
-                'sex': sex,
-                'age': age,
-                'result': {
-                    'personalities': [
-                        {'Openness': O},
-                        {'Conscientiousness': C},
-                        {'Extraversion': E},
-                        {'Agreeableness': A},
-                        {'Neuroticism': N},
+            "id": str(uuid.uuid4()),
+            "theory": "Big 5 Personality Traits",
+            "model": "IPIP-NEO",
+            "question": 120,
+            "person": {
+                "sex": sex,
+                "age": age,
+                "result": {
+                    "personalities": [
+                        {"Openness": O},
+                        {"Conscientiousness": C},
+                        {"Extraversion": E},
+                        {"Agreeableness": A},
+                        {"Neuroticism": N},
                     ]
                 },
             },
