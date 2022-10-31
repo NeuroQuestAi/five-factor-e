@@ -46,7 +46,32 @@ $ pip install five-factor-e
 
 ### How to use 🔥
 
-Add examples...
+The answers must be in a standardized *json*, you can enter this template in the project folder [data](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json).
+
+To calculate the Big-Five of a 40-year-old man with his facets, just use the code below:
+
+```python
+from ipipneo import IpipNeo
+
+IpipNeo(question=120).compute(sex="M", age=40, answers=JSON_STANDARD)
+```
+
+As an example you can load the project json to test.
+
+```python
+import json, urllib.request
+
+data = urllib.request.urlopen("https://raw.githubusercontent.com/neural7/five-factor-e/main/data/IPIP-NEO/120/answers.json").read()
+answers = json.loads(data)
+```
+
+Now testing:
+
+```python
+from ipipneo import IpipNeo
+
+IpipNeo(question=120).compute(sex="M", age=40, answers=answers)
+```
 
 ### Unit tests 🏗
 
