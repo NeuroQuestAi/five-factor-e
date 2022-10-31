@@ -48,6 +48,10 @@ $ pip install five-factor-e
 
 Add examples...
 
+### Credits :teacher:
+
+Add examples...
+
 ### Authors 👨‍💻
 
   * [Ederson Corbari](mailto:e@neural7.io)
