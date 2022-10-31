@@ -1,4 +1,4 @@
-# Five Factor Library
+# Five Factor E Library
 
 ![version 1.0.0][img_version]
 ![python 3.7 | 3.8 | 3.9 | 3.10][python_version]
