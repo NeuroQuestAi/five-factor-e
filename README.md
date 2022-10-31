@@ -89,6 +89,29 @@ Simply run the command below:
 $ ./run-test
 ```
 
+### About data 📊 
+
+Inside the data [data](https://github.com/neural7/five-factor-e/blob/main/data/) directory, there are examples of questions and answers. The most important is the response data entry which must follow the pattern of this [file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json). Example:
+
+```json
+{
+   "answers":[
+      {
+         "id_question":50,
+         "id_select":5
+      },
+      {
+         "id_question":80,
+         "id_select":2
+      }
+   ]
+}
+```
+
+Notes: *The order of answers does not affect the result.*
+
+The id question field refers to the question in this [file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/questions-en-us.json). Obviously you may want to change the form of the questions, we are working on the English, Portuguese and Spanish translations.
+
 ### Credits 🏆
 
   * Dr John A. Johnson
