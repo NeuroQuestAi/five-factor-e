@@ -122,6 +122,7 @@ The id question field refers to the question in this [file](https://github.com/n
   * https://github.com/kholia/IPIP-NEO-PI
   * http://www.personal.psu.edu/j5j/IPIP/ipipneo300.htm
   * http://www.personal.psu.edu/~j5j/IPIP/ipipneo120.htm
+  * http://www.personal.psu.edu/faculty/j/5/j5j/
   * https://ipip.ori.org/
   * https://osf.io/tbmh5/
 
