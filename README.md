@@ -6,7 +6,9 @@
 [img_version]: https://img.shields.io/static/v1.svg?label=version&message=1.0.0&color=blue
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3.7%20|%203.8%20|%203.9%20|%203.10%20&color=blue
 
-This project assesses a person's personality based on an inventory of questions. The project uses the Big Five theory using the IPIP-NEO-120 and IPIP-NEO-300 model developed by Professor Dr. John A. Johnson.
+This project assesses a person's personality based on an inventory of questions. The project uses the Big Five theory using the IPIP-NEO-120 and IPIP-NEO-300 model developed by Professor Dr. John A. Johnson, this is free version of NEO PI-R™.
+
+"The IPIP-NEO is not identical to the original NEO PI-R, but in my opinion it is close enough to serve as a good substitute. More and more people are beginning to use it in published research, so its acceptance is growing." - Dr. Johnson
 
 ### Authors 👨‍💻
 
