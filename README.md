@@ -36,7 +36,7 @@ To compose each great personality there are **6** traits or facets, totaling **3
 
 For more information to demystify the Big Five, please see the article: [Measuring the Big Five Personality Domains](https://pages.uoregon.edu/sanjay/bigfive.html#norms)
 
-### Installation 🛠
+### Installation 🚀
 
 The simplest way is to use **PIP**, like the command:
 
@@ -44,7 +44,7 @@ The simplest way is to use **PIP**, like the command:
 $ pip install five-factor-e
 ```
 
-### Examples of use 🚀
+### Examples of use 🛠
 
 Add examples...
 
