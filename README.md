@@ -44,7 +44,7 @@ The simplest way is to use **PIP**, like the command:
 $ pip install five-factor-e
 ```
 
-### Examples of use 🛠
+### How to use 🔥
 
 Add examples...
 
@@ -56,7 +56,7 @@ Add examples...
 $ ./run-test
 ```
 
-### Credits :teacher:
+### Credits 🙋
 
 Add examples...
 
