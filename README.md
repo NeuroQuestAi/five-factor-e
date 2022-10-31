@@ -10,6 +10,8 @@ This project assesses a person's :busts_in_silhouette: personality based on an i
 
 *"The IPIP-NEO is not identical to the original NEO PI-R, but in my opinion it is close enough to serve as a good substitute. More and more people are beginning to use it in published research, so its acceptance is growing."* - Dr. Johnson
 
+The main idea of the project is to facilitate the use of **Python** developers who want to use **IPIP-NEO** in their projects.
+
 ### Authors 👨‍💻
 
   * [Ederson Corbari](mailto:e@neural7.io)
