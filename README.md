@@ -48,6 +48,14 @@ $ pip install five-factor-e
 
 Add examples...
 
+### Unit tests 🏗
+
+Add examples...
+
+```shell
+$ ./run-test
+```
+
 ### Credits :teacher:
 
 Add examples...
