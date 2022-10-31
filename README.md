@@ -72,16 +72,12 @@ answers = json.loads(data)
 Calculate the Big Five for a 40-year-old man:
 
 ```python
-from ipipneo import IpipNeo
-
 IpipNeo(question=120).compute(sex="M", age=40, answers=answers)
 ```
 
 For a 25 year old woman:
 
 ```python
-from ipipneo import IpipNeo
-
 IpipNeo(question=120).compute(sex="F", age=25, answers=answers)
 ```
 
@@ -120,6 +116,10 @@ The id question field refers to the question in this [file](https://github.com/n
 
   * Dr John A. Johnson
   * Dhiru Kholia
+
+### License 🙋
+
+  * https://ipip.ori.org/newPermission.htm
 
 ### Resources 📗
 
