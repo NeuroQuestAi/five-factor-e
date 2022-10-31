@@ -83,15 +83,23 @@ IpipNeo(question=120).compute(sex="F", age=25, answers=answers)
 
 ### Unit tests 🏗
 
-Add examples...
+Simply run the command below:
 
 ```shell
 $ ./run-test
 ```
 
-### Credits 🙋
+### Credits 🏆
 
-Add examples...
+  * Dr John A. Johnson
+  * Dhiru Kholia
+
+### Resources 📗
+
+  * https://github.com/kholia/IPIP-NEO-PI
+  * http://www.personal.psu.edu/j5j/IPIP/ipipneo300.htm
+  * http://www.personal.psu.edu/~j5j/IPIP/ipipneo120.htm
+  * https://ipip.ori.org/
 
 ### Authors 👨‍💻
 
