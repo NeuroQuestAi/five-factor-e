@@ -1,4 +1,4 @@
-<img src="doc/neural7.png" align="right" width="100" height="90"/>
+<img src="doc/neural7.png" align="right" width="80" height="70"/>
 
 # Five Factor E Library 📦
 
