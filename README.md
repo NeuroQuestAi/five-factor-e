@@ -1,4 +1,4 @@
-<img src="doc/neural7.png" align="right" width="80" height="70"/>
+<img src="https://raw.githubusercontent.com/neural7/five-factor-e/main/doc/neural7.png" align="right" width="80" height="70"/>
 
 # Five Factor E Library 📦
 
