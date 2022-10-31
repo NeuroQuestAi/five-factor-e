@@ -1,3 +1,5 @@
+<img src="doc/neural7.png" align="right" width="100" height="90"/>
+
 # Five Factor E Library 📦
 
 ![version 1.0.0][img_version]
