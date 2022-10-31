@@ -26,7 +26,7 @@ A little theory, the The Big Five or Five Factor is made up of **5** great human
  * Agreeableness
  * Neuroticism
 
-To compose each great personality there are **6** traits or facets, totaling **30** traits. The user must answer a questionnaire of 120 or 300 single-choice questions. The user must answer an inventory of questions where each answer can have a unique choice with **5** options:
+To compose each great personality there are **6** traits or facets, totaling **30** traits. The user must answer a questionnaire of 120 or 300 single-choice questions. The user must answer an inventory of questions where each answer can have a unique and mandatory choice with **5** options:
 
 * Very Inaccurate
 * Moderately Inaccurate
