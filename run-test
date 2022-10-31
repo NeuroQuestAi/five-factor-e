@@ -23,11 +23,11 @@ run_command ()
         exit $?  # <- EXIT!
     fi
 }
+[[ "$(command -v coverage)" ]] || { echo "Sorry! Command (coverage) is not installed...." 1>&2 && exit -1; }
 #-----------------------------------------------------------------------
 # Run test suite in all supported versions of Python.
 #-----------------------------------------------------------------------
 run_command "python3 -B -m unittest $*"
-
 # coverage run --source . -m unittest discover && coverage report
 # coverage run --source . -m unittest discover && coverage html
 echo "" >&2
