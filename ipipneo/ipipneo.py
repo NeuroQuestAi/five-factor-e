@@ -19,7 +19,7 @@ from ipipneo.utility import (organize_list_json, raise_if_age_is_invalid,
 class IpipNeo(Facet):
     """Class that calculates IPIP-NEO answers."""
 
-    def __init__(self, question: int) -> None | BaseException:
+    def __init__(self, question: int) -> None or BaseException:
         """
         Initialize the class.
 

@@ -17,7 +17,7 @@ from ipipneo.utility import big5_ocean_is_valid, create_big5_dict
 class Facet:
     """Creating and scoring facets and Big-Five."""
 
-    def __init__(self, nquestion: IntEnum) -> None | BaseException:
+    def __init__(self, nquestion: IntEnum) -> None or BaseException:
         """
         Initialize the class.
 
@@ -31,7 +31,7 @@ class Facet:
         else:
             raise BaseException(f"The available questions are: {list(QuestionNumber)}")
 
-    def score(self, answers: list) -> list | BaseException:
+    def score(self, answers: list) -> list or BaseException:
         """
         Score facet scales are created.
 
