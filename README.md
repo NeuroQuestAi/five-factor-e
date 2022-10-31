@@ -34,6 +34,8 @@ To compose each great personality there are **6** traits or facets, totaling **3
 * Moderately Accurate
 * Very Accurate
 
+For more information to demystify the Big Five, please see the article: [Measuring the Big Five Personality Domains](https://pages.uoregon.edu/sanjay/bigfive.html#norms)
+
 ### Authors 👨‍💻
 
   * [Ederson Corbari](mailto:e@neural7.io)
