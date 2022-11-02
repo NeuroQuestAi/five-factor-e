@@ -2,12 +2,12 @@
 
 # Five Factor E Library 📦
 
-![version 1.0.0][img_version]
+![version 1.2.0][img_version]
 ![python 3.7 | 3.8 | 3.9 | 3.10][python_version]
 [![PyPI Downloads](https://img.shields.io/pypi/dm/five-factor-e.svg?label=PyPI%20downloads)](
 https://pypi.org/project/five-factor-e/)
 
-[img_version]: https://img.shields.io/static/v1.svg?label=version&message=1.0.0&color=blue
+[img_version]: https://img.shields.io/static/v1.svg?label=version&message=1.2.0&color=blue
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3.7%20|%203.8%20|%203.9%20|%203.10%20&color=blue
 
 <p align="center">
@@ -40,7 +40,7 @@ To compose each great personality there are **6** traits or facets, totaling **3
 * Moderately Accurate
 * Very Accurate
 
-For more information to demystify the Big Five, please see the article: [Measuring the Big Five Personality Domains](https://pages.uoregon.edu/sanjay/bigfive.html#norms)
+For more information to demystify the Big Five, please see the article: [Measuring the Big Five Personality Domains](https://pages.uoregon.edu/sanjay/bigfive.html)
 
 ### Installation 🚀
 
@@ -89,7 +89,7 @@ Simply run the command below:
 $ ./run-test
 ```
 
-### About data 📊 
+### About data 📊
 
 Inside the data [data](https://github.com/neural7/five-factor-e/blob/main/data/) directory, there are examples of questions and answers. The most important is the response data entry which must follow the pattern of this [file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json). Example:
 
