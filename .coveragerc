@@ -1,6 +1,6 @@
 [run]
 branch = True
-omit = setup.py, tools.py
+omit = setup.py, quiz.py
 
 [report]
 skip_empty = True
