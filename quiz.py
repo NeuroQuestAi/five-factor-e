@@ -24,7 +24,7 @@ URL_DEV = "https://raw.githubusercontent.com/neural7/five-factor-e/feature/v1.2.
 
 def load_original_questions_ipip() -> dict:
     """Load the original questions into the project repo."""
-    return json.loads(urllib.request.urlopen(URL_DEV).read())
+    return json.loads(urllib.request.urlopen(URL_PROD).read())
 
 
 def quiz(sex: str, age: int, shuffle: str) -> None:
