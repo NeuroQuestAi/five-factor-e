@@ -42,6 +42,16 @@ To compose each great personality there are **6** traits or facets, totaling **3
 
 For more information to demystify the Big Five, please see the article: [Measuring the Big Five Personality Domains](https://pages.uoregon.edu/sanjay/bigfive.html)
 
+Notes: *In the response input pattern, the order of array elements must be followed:*
+
+| Option                          | Array       | 
+| ------------------------------- | ----------- | 
+| Very Inaccurate                 | 5           |
+| Moderately Inaccurate           | 4           |
+| Neither Accurate Nor Inaccurate | 3           |
+| Moderately Accurate             | 2           |
+| Very Accurate                   | 1           |
+
 ### Installation 🚀
 
 The simplest way is to use **PIP**, like the command:
