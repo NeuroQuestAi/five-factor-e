@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+create_pypi()
+{
+  python3 setup.py sdist bdist_wheel && twine check dist/*
+  # cat ~/.pypi && twine upload --repository testpypi dist/*
+  echo "Ok."
+}
+
+clean_pypi()
+{
+  rm -rf build && rm -rf dist && rm -rf five_factor_e.egg-info
+  echo "Ok."
+}
+
+while [[ "$#" -gt 0 ]]; do
+    case ${1} in
+        -p|--pypi) create_pypi;;
+        -c|--clean) clean_pypi;;
+        *) echo "Unknown parameter!"; exit 1;;
+    esac
+    shift
+done
