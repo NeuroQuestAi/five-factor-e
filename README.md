@@ -81,12 +81,18 @@ For a 25 year old woman:
 IpipNeo(question=120).compute(sex="F", age=25, answers=answers)
 ```
 
-### Unit tests 🏗
+### Tests 🏗
 
-Simply run the command below:
+For the tests it is necessary to download the repository. To run the unit tests use the command below:
 
 ```shell
 $ ./run-test
+```
+
+If you want to make an assessment by answering the inventory of questions, just run:
+
+```shell
+$ python3 quiz.py
 ```
 
 ### About data 📊
