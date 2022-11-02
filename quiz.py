@@ -13,7 +13,10 @@ import random
 import sys
 import urllib.request
 
-from ipipneo.ipipneo import IpipNeo
+try:
+    from ipipneo import IpipNeo
+except ModuleNotFoundError:
+    from ipipneo.ipipneo import IpipNeo
 
 URL_PROD = "https://raw.githubusercontent.com/neural7/five-factor-e/main/data/IPIP-NEO/120/questions.json"
 URL_DEV = "https://raw.githubusercontent.com/neural7/five-factor-e/feature/v1.2.0/data/IPIP-NEO/120/questions.json"
