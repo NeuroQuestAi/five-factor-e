@@ -9,9 +9,9 @@ __version__ = "1.2.0"
 __status__ = "production"
 
 import json
+import random
 import sys
 import urllib.request
-import random
 
 from ipipneo.ipipneo import IpipNeo
 
@@ -26,7 +26,7 @@ def load_original_questions_ipip() -> dict:
 
 def quiz(sex: str, age: int, shuffle: str) -> None:
     """
-    The inventory of questions.
+    Inventory of questions.
 
     Args:
         - sex: The sex of the person.
@@ -54,8 +54,8 @@ def quiz(sex: str, age: int, shuffle: str) -> None:
 
         try:
             option = int(input("\nOption: "))
-        except:
-            print("\n!!! Invalid option. The quiz has been aborted !!!\n")
+        except BaseException as e:
+            print(f"\n!!! Invalid option {e}. The quiz has been aborted !!!\n")
             sys.exit(0)
 
         if option < 1 or option > 5:
