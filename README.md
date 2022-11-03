@@ -2,7 +2,7 @@
 
 # Five Factor E Library 📦
 
-![version 1.2.0][img_version]
+![version 1.3.0][img_version]
 ![python 3.7 | 3.8 | 3.9 | 3.10][python_version]
 [![PyPI Downloads](https://img.shields.io/pypi/dm/five-factor-e.svg?label=PyPI%20downloads)](
 https://pypi.org/project/five-factor-e/)
@@ -44,8 +44,8 @@ For more information to demystify the Big Five, please see the article: [Measuri
 
 Notes: *In the response input pattern, the order of array elements must be followed:*
 
-| Option                          | Array       | 
-| ------------------------------- | ----------- | 
+| Option                          | Array       |
+| ------------------------------- | ----------- |
 | Very Inaccurate                 | 5           |
 | Moderately Inaccurate           | 4           |
 | Neither Accurate Nor Inaccurate | 3           |
