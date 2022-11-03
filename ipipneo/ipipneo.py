@@ -13,8 +13,8 @@ import uuid
 from ipipneo.facet import Facet
 from ipipneo.model import QuestionNumber
 from ipipneo.norm import Norm
-from ipipneo.utility import (organize_list_json, raise_if_age_is_invalid,
-                             raise_if_sex_is_invalid)
+from ipipneo.utility import (apply_invert_select, organize_list_json,
+                             raise_if_age_is_invalid, raise_if_sex_is_invalid)
 
 
 class IpipNeo(Facet):
@@ -48,6 +48,10 @@ class IpipNeo(Facet):
         """
         raise_if_sex_is_invalid(sex=sex)
         raise_if_age_is_invalid(age=age)
+        assert isinstance(answers, dict), "answers 1 must be a dict"
+
+        answers = apply_invert_select(answers=answers)
+        assert isinstance(answers, dict), "answers 2 must be a dict"
 
         score = self.score(answers=organize_list_json(answers=answers))
         assert isinstance(score, list), "score must be a list"

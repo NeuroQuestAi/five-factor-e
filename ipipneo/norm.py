@@ -26,7 +26,7 @@ class Norm:
         raise_if_sex_is_invalid(sex=sex)
         raise_if_age_is_invalid(age=age)
 
-        if sex == "M" and age < 21:
+        if sex.upper() == "M" and age < 21:
             return {
                 "id": 1,
                 "ns": [
@@ -105,7 +105,7 @@ class Norm:
                 "category": "men under 21 years old",
             }
 
-        if sex == "M" and age > 20 and age < 41:
+        if sex.upper() == "M" and age > 20 and age < 41:
             return {
                 "id": 2,
                 "ns": [
@@ -184,7 +184,7 @@ class Norm:
                 "category": "men between 21 and 40 years old",
             }
 
-        if sex == "M" and age > 40 and age < 61:
+        if sex.upper() == "M" and age > 40 and age < 61:
             return {
                 "id": 3,
                 "ns": [
@@ -263,7 +263,7 @@ class Norm:
                 "category": "men between 41 and 60 years of age",
             }
 
-        if sex == "M" and age > 60:
+        if sex.upper() == "M" and age > 60:
             return {
                 "id": 4,
                 "ns": [
@@ -342,7 +342,7 @@ class Norm:
                 "category": "men over 60 years old",
             }
 
-        if sex == "F" and age < 21:
+        if sex.upper() == "F" and age < 21:
             return {
                 "id": 5,
                 "ns": [
@@ -421,7 +421,7 @@ class Norm:
                 "category": "women under 21 years old",
             }
 
-        if sex == "F" and age > 20 and age < 41:
+        if sex.upper() == "F" and age > 20 and age < 41:
             return {
                 "id": 6,
                 "ns": [
@@ -500,7 +500,7 @@ class Norm:
                 "category": "women between 21 and 40 years old",
             }
 
-        if sex == "F" and age > 40 and age < 61:
+        if sex.upper() == "F" and age > 40 and age < 61:
             return {
                 "id": 7,
                 "ns": [
@@ -579,7 +579,7 @@ class Norm:
                 "category": "women between 41 and 61 years old",
             }
 
-        if sex == "F" and age > 60:
+        if sex.upper() == "F" and age > 60:
             return {
                 "id": 8,
                 "ns": [
@@ -672,6 +672,7 @@ class Norm:
         O = (10 * (domain.get("O", 0) - norm.get("ns")[3]) / norm.get("ns")[8]) + 50
         A = (10 * (domain.get("A", 0) - norm.get("ns")[4]) / norm.get("ns")[9]) + 50
         C = (10 * (domain.get("C", 0) - norm.get("ns")[5]) / norm.get("ns")[10]) + 50
+
         return {"O": O, "C": C, "E": E, "A": A, "N": N}
 
     @staticmethod
@@ -712,6 +713,7 @@ class Norm:
             + (NormCubic.CONST3.value * normc.get("C", 0) ** 2)
             - (NormCubic.CONST4.value * normc.get("C", 0) ** 3)
         )
+
         return {"O": O, "C": C, "E": E, "A": A, "N": N}
 
     @staticmethod
@@ -728,10 +730,10 @@ class Norm:
         A = 1 if normc.get("A", 0) < NormScale.CONST_MIN.value else percent.get("A", 0)
         C = 1 if normc.get("C", 0) < NormScale.CONST_MIN.value else percent.get("C", 0)
 
-        N = 99 if normc.get("N", 0) > NormScale.CONST_MAX.value else percent.get("N", 0)
-        E = 99 if normc.get("E", 0) > NormScale.CONST_MAX.value else percent.get("E", 0)
-        O = 99 if normc.get("O", 0) > NormScale.CONST_MAX.value else percent.get("O", 0)
-        A = 99 if normc.get("A", 0) > NormScale.CONST_MAX.value else percent.get("A", 0)
-        C = 99 if normc.get("C", 0) > NormScale.CONST_MAX.value else percent.get("C", 0)
+        N = 99 if normc.get("N", 0) > NormScale.CONST_MAX.value else N
+        E = 99 if normc.get("E", 0) > NormScale.CONST_MAX.value else E
+        O = 99 if normc.get("O", 0) > NormScale.CONST_MAX.value else O
+        A = 99 if normc.get("A", 0) > NormScale.CONST_MAX.value else A
+        C = 99 if normc.get("C", 0) > NormScale.CONST_MAX.value else C
 
         return {"O": O, "C": C, "E": E, "A": A, "N": N}

@@ -3,13 +3,28 @@
 import json
 import unittest
 
-from ipipneo.utility import (answers_is_valid, big5_ocean_is_valid,
-                             big_five_target, create_big5_dict,
-                             organize_list_json, raise_if_age_is_invalid,
-                             raise_if_sex_is_invalid)
+from ipipneo.utility import (answers_is_valid, apply_invert_select,
+                             big5_ocean_is_valid, big_five_target,
+                             create_big5_dict, organize_list_json,
+                             raise_if_age_is_invalid, raise_if_sex_is_invalid)
+
+
+def load_mock_answers(idx: int) -> dict:
+    if idx == 1:
+        name = "answers-test-1.json"
+    elif idx == 2:
+        name = "answers-test-2.json"
+    elif idx == 3:
+        name = "answers-test-3.json"
+    with open(f"test/mock/{name}") as f:
+        data = json.load(f)
+    return data
 
 
 class Testutility(unittest.TestCase):
+
+    maxDiff = None
+
     def test_raise_if_sex_is_invalid(self) -> None:
         with self.assertRaises(BaseException):
             raise_if_sex_is_invalid(sex="")
@@ -214,12 +229,6 @@ class Testutility(unittest.TestCase):
             ),
             True,
         )
-
-        def load_mock_answers(idx: int) -> dict:
-            name = "answers-test-1.json" if idx == 1 else "answers-test-2.json"
-            with open(f"test/mock/{name}") as f:
-                data = json.load(f)
-            return data
 
         a = [
             5,
@@ -563,3 +572,29 @@ class Testutility(unittest.TestCase):
         assert isinstance(C, dict), "A must be a dict"
         self.assertEqual(C.get("C"), 86.96687032595662)
         assert isinstance(C.get("traits"), list), "traits must be a list"
+
+    def test_apply_invert_select(self) -> None:
+        with self.assertRaises(AssertionError) as e:
+            apply_invert_select(answers="")
+        self.assertEqual(str(e.exception), "The (answers) field must be a dict!")
+
+        with self.assertRaises(BaseException) as e:
+            apply_invert_select(answers={})
+        self.assertEqual(str(e.exception), "The key named (answers) was not found!")
+
+        with self.assertRaises(BaseException) as e:
+            apply_invert_select(answers={"answers": []})
+        self.assertEqual(str(e.exception), "The key named (id_question) was not found!")
+
+        with self.assertRaises(BaseException) as e:
+            apply_invert_select(answers={"answers": [{"id_question": 1}]})
+        self.assertEqual(str(e.exception), "The key named (id_select) was not found!")
+
+        a = load_mock_answers(idx=3)
+        assert isinstance(a, dict), "a must be a dict"
+
+        b = apply_invert_select(answers=load_mock_answers(idx=3))
+        assert isinstance(b, dict), "b must be a dict"
+        assert isinstance(b.get("answers", []), list), "b must be a list"
+
+        self.assertNotEqual(a, b)

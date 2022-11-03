@@ -14,7 +14,6 @@ def load_mock_answers() -> dict:
 
 class TestIpipNeo(unittest.TestCase):
     def test_invalid_params(self) -> None:
-
         with self.assertRaises(BaseException):
             IpipNeo(question="")
 
@@ -55,13 +54,13 @@ class TestIpipNeo(unittest.TestCase):
         personalities = result.get("person").get("result").get("personalities")
         self.assertEqual(len(personalities), 5)
 
-        self.assertEqual(personalities[0]["Openness"].get("O"), 26.882298529738506)
+        self.assertEqual(personalities[0]["Openness"].get("O"), 13.262383714475419)
         self.assertEqual(
-            personalities[1]["Conscientiousness"].get("C"), 86.96687032595662
+            personalities[1]["Conscientiousness"].get("C"), 18.62283542366208
         )
-        self.assertEqual(personalities[2]["Extraversion"].get("E"), 21.46713047820697)
-        self.assertEqual(personalities[3]["Agreeableness"].get("A"), 57.52658875205816)
-        self.assertEqual(personalities[4]["Neuroticism"].get("N"), 37.23631660596993)
+        self.assertEqual(personalities[2]["Extraversion"].get("E"), 34.10779114957646)
+        self.assertEqual(personalities[3]["Agreeableness"].get("A"), 1.9889215690788262)
+        self.assertEqual(personalities[4]["Neuroticism"].get("N"), 58.6632925696303)
 
         #############################################
         # 1. Test with 30 year old woman.
@@ -82,10 +81,10 @@ class TestIpipNeo(unittest.TestCase):
         personalities = result.get("person").get("result").get("personalities")
         self.assertEqual(len(personalities), 5)
 
-        self.assertEqual(personalities[0]["Openness"].get("O"), 21.601284007758267)
+        self.assertEqual(personalities[0]["Openness"].get("O"), 8.876064362586419)
         self.assertEqual(
-            personalities[1]["Conscientiousness"].get("C"), 83.97834295105292
+            personalities[1]["Conscientiousness"].get("C"), 13.877369975064141
         )
-        self.assertEqual(personalities[2]["Extraversion"].get("E"), 16.85540168264683)
-        self.assertEqual(personalities[3]["Agreeableness"].get("A"), 34.87513390061565)
-        self.assertEqual(personalities[4]["Neuroticism"].get("N"), 26.35310712596734)
+        self.assertEqual(personalities[2]["Extraversion"].get("E"), 29.240137885780882)
+        self.assertEqual(personalities[3]["Agreeableness"].get("A"), 1)
+        self.assertEqual(personalities[4]["Neuroticism"].get("N"), 47.49034742252866)
