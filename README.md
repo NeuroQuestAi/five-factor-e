@@ -2,13 +2,13 @@
 
 # Five Factor E Library 📦
 
-![version 1.2.0][img_version]
-![python 3.7 | 3.8 | 3.9 | 3.10][python_version]
+![version 1.3.0][img_version]
+![python 3.7 | 3.8 | 3.9 | 3.10 | 3.11][python_version]
 [![PyPI Downloads](https://img.shields.io/pypi/dm/five-factor-e.svg?label=PyPI%20downloads)](
 https://pypi.org/project/five-factor-e/)
 
-[img_version]: https://img.shields.io/static/v1.svg?label=version&message=1.2.0&color=blue
-[python_version]: https://img.shields.io/static/v1.svg?label=python&message=3.7%20|%203.8%20|%203.9%20|%203.10%20&color=blue
+[img_version]: https://img.shields.io/static/v1.svg?label=version&message=1.3.0&color=blue
+[python_version]: https://img.shields.io/static/v1.svg?label=python&message=3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20&color=blue
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/neural7/five-factor-e/04ac3ce31e37f582e66ffdf694d4c4bcb8469ec9/doc/big-five.png" alt="Representation of the Big Five"/>
@@ -42,15 +42,15 @@ To compose each great personality there are **6** traits or facets, totaling **3
 
 For more information to demystify the Big Five, please see the article: [Measuring the Big Five Personality Domains](https://pages.uoregon.edu/sanjay/bigfive.html)
 
-Notes: *In the response input pattern, the order of array elements must be followed:*
+Notes: *User-selected answers follow the position:*
 
-| Option                          | Array       | 
-| ------------------------------- | ----------- | 
-| Very Inaccurate                 | 5           |
-| Moderately Inaccurate           | 4           |
+| Option                          | Array       |
+| ------------------------------- | ----------- |
+| Very Inaccurate                 | 1           |
+| Moderately Inaccurate           | 2           |
 | Neither Accurate Nor Inaccurate | 3           |
-| Moderately Accurate             | 2           |
-| Very Accurate                   | 1           |
+| Moderately Accurate             | 4           |
+| Very Accurate                   | 5           |
 
 ### Installation 🚀
 

@@ -47,7 +47,7 @@ def quiz(sex: str, age: int, shuffle: str) -> None:
         random.shuffle(questions)
 
     for i, q in enumerate(questions, start=1):
-        print(f"Q.{i} {q.get('text')}\n")
+        print(f"\nQ.{i} {q.get('text')}\n")
 
         print("1. Very Inaccurate")
         print("2. Moderately Inaccurate")
@@ -71,7 +71,7 @@ def quiz(sex: str, age: int, shuffle: str) -> None:
         answers.append({"id_question": q.get("id"), "id_select": option})
 
     result = IpipNeo(question=120).compute(
-        sex="M", age=40, answers={"answers": answers}
+        sex=sex, age=age, answers={"answers": answers}
     )
 
     print(json.dumps(result, indent=4))
@@ -105,7 +105,7 @@ def main() -> None:
     else:
         shuffle = "Y"
 
-    quiz(sex=sex, age=age, shuffle=shuffle)
+    quiz(sex=sex.upper(), age=int(age), shuffle=shuffle)
 
 
 if __name__ == "__main__":
