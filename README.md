@@ -124,11 +124,13 @@ Inside the data [data](https://github.com/neural7/five-factor-e/blob/main/data/)
 }
 ```
 
-Notes: *The order of answers does not affect the result.*
+ *The order of answers does not affect the result.*
 
 The id question field refers to the question in this [file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/questions.json). Obviously you may want to change the form of the questions, we are working on the English, Portuguese and Spanish translations.
 
-Notes: *You can rephrase the questions to your need, but don't change the question IDs, they are used by the algorithm.*
+Notes:
+  * *The order of answers does not affect the result;*
+  * *You can rephrase the questions to your need, but don't change the question IDs, they are used by the algorithm.*
 
 ### Credits 🏆
 
