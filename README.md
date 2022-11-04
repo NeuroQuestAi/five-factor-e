@@ -20,7 +20,7 @@ This project assesses a person's 🗣 personality based on an inventory of quest
 
 The main idea of the project is to facilitate the use of **Python** developers who want to use **IPIP-NEO** in their projects. *The project is also done in pure Python, it doesn't have any dependencies on other libraries*.
 
-Notes: *The project is based on the work of [Dhiru Kholia](https://github.com/kholia/IPIP-NEO-PI), and is an adaptation of Neural7 for a version that can be reused in other projects of the company.*
+Note: *The project is based on the work of [Dhiru Kholia](https://github.com/kholia/IPIP-NEO-PI), and is an adaptation of [Neural7](https://github.com/neural7) for a version that can be reused in other projects of the company.*
 
 ### Synopsis 🌐
 
