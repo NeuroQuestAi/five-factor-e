@@ -26,11 +26,11 @@ Note: *The project is based on the work of [Dhiru Kholia](https://github.com/kho
 
 A little theory, the The Big Five or Five Factor is made up of **5** great human personalities also known as the *O.C.E.A.N*. Are they:
 
- * Openness
- * Conscientiousness
- * Extraversion
- * Agreeableness
- * Neuroticism
+ * **O**penness
+ * **C**onscientiousness
+ * **E**xtraversion
+ * **A**greeableness
+ * **N**euroticism
 
 To compose each great personality there are **6** traits or facets, totaling **30** traits. The user must answer a questionnaire of 120 or 300 single choice questions with **5** options:
 
