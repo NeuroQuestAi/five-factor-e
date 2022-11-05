@@ -1,0 +1,506 @@
+{
+   "questions":[
+      {
+         "id":1,
+         "text":"Me preocupo com as coisas."
+      },
+      {
+         "id":2,
+         "text":"Faço amigos com facilidade."
+      },
+      {
+         "id":3,
+         "text":"Tenho imaginação vívida."
+      },
+      {
+         "id":4,
+         "text":"Confio nos outros."
+      },
+      {
+         "id":5,
+         "text":"Completo as tarefas que me são passadas."
+      },
+      {
+         "id":6,
+         "text":"Me irrito facilmente."
+      },
+      {
+         "id":7,
+         "text":"Amo festas grandes."
+      },
+      {
+         "id":8,
+         "text":"Acredito na importância da arte."
+      },
+      {
+         "id":9,
+         "text":"Uso os outros para alcançar meus objetivos."
+      },
+      {
+         "id":10,
+         "text":"Gosta de organizar as coisas."
+      },
+      {
+         "id":11,
+         "text":"Costumo me sentir desanimado(a)."
+      },
+      {
+         "id":12,
+         "text":"Assumo a liderança."
+      },
+      {
+         "id":13,
+         "text":"Expresso minhas emoções intensamente."
+      },
+      {
+         "id":14,
+         "text":"Gosto de ajudar os outros."
+      },
+      {
+         "id":15,
+         "text":"Mantenho minhas promessas."
+      },
+      {
+         "id":16,
+         "text":"Tenho dificuldade de me aproximar dos outros."
+      },
+      {
+         "id":17,
+         "text":"Estou sempre ocupado(a)."
+      },
+      {
+         "id":18,
+         "text":"Prefiro variedade à rotina."
+      },
+      {
+         "id":19,
+         "text":"Adoro uma boa luta."
+      },
+      {
+         "id":20,
+         "text":"Trabalho duro."
+      },
+      {
+         "id":21,
+         "text":"Cometo exageros."
+      },
+      {
+         "id":22,
+         "text":"Busco adrenalina."
+      },
+      {
+         "id":23,
+         "text":"Gosto de ler textos desafiadores."
+      },
+      {
+         "id":24,
+         "text":"Acredito ser melhor que os outros."
+      },
+      {
+         "id":25,
+         "text":"Estou sempre preparado."
+      },
+      {
+         "id":26,
+         "text":"Entro em pânico facilmente."
+      },
+      {
+         "id":27,
+         "text":"Irradio alegria."
+      },
+      {
+         "id":28,
+         "text":"Tendo a votar em cadidatos progressistas."
+      },
+      {
+         "id":29,
+         "text":"Me preocupo com os desabrigados."
+      },
+      {
+         "id":30,
+         "text":"Faço sem pensar."
+      },
+      {
+         "id":31,
+         "text":"Temo o pior."
+      },
+      {
+         "id":32,
+         "text":"Me sinto confortável no meio das pessoas."
+      },
+      {
+         "id":33,
+         "text":"Adoro histórias fantásticas."
+      },
+      {
+         "id":34,
+         "text":"Acredito que os outros são bem intencionados."
+      },
+      {
+         "id":35,
+         "text":"Sou muito bom no que faço(a)."
+      },
+      {
+         "id":36,
+         "text":"Me irrito facilmente."
+      },
+      {
+         "id":37,
+         "text":"Converso com muitas pessoas diferentes em festas."
+      },
+      {
+         "id":38,
+         "text":"Vejo beleza em coisas que os outros não vêem."
+      },
+      {
+         "id":39,
+         "text":"Trapaceio para tirar vantagem."
+      },
+      {
+         "id":40,
+         "text":"Frequentemente esqueço de colocar as coisas de volta em seu lugar."
+      },
+      {
+         "id":41,
+         "text":"Não gosto de mim."
+      },
+      {
+         "id":42,
+         "text":"Tento liderar os outros."
+      },
+      {
+         "id":43,
+         "text":"Sinto as emoções dos outros."
+      },
+      {
+         "id":44,
+         "text":"Me preocupo com os outros."
+      },
+      {
+         "id":45,
+         "text":"Digo a verdade."
+      },
+      {
+         "id":46,
+         "text":"Tenho medo de chamar a atenção."
+      },
+      {
+         "id":47,
+         "text":"Estou sempre preparado(a)."
+      },
+      {
+         "id":48,
+         "text":"Prefiro fazer apenas o que sei."
+      },
+      {
+         "id":49,
+         "text":"Grito com os outros."
+      },
+      {
+         "id":50,
+         "text":"Supero as expectativas."
+      },
+      {
+         "id":51,
+         "text":"Dificilmente exagero."
+      },
+      {
+         "id":52,
+         "text":"Busco aventura."
+      },
+      {
+         "id":53,
+         "text":"Evito discussões filosóficas."
+      },
+      {
+         "id":54,
+         "text":"Me tenho em grande estima."
+      },
+      {
+         "id":55,
+         "text":"Transformo meus planos em realidade."
+      },
+      {
+         "id":56,
+         "text":"Me sinto sobrecarregado em eventos."
+      },
+      {
+         "id":57,
+         "text":"Me divirto bastante."
+      },
+      {
+         "id":58,
+         "text":"Acredito que certo e errado são relativos."
+      },
+      {
+         "id":59,
+         "text":"Sinto pena dos que são piores do que eu."
+      },
+      {
+         "id":60,
+         "text":"Tomo decisões difíceis."
+      },
+      {
+         "id":61,
+         "text":"Tenho medo de muitas coisas."
+      },
+      {
+         "id":62,
+         "text":"Evito encontrar outras pessoas."
+      },
+      {
+         "id":63,
+         "text":"Amo ficar no mundo da lua."
+      },
+      {
+         "id":64,
+         "text":"Confio no que dizem."
+      },
+      {
+         "id":65,
+         "text":"Executo as tarefas sem maiores problemas."
+      },
+      {
+         "id":66,
+         "text":"Perco a cabeça."
+      },
+      {
+         "id":67,
+         "text":"Prefiro ficar sozinho(a)."
+      },
+      {
+         "id":68,
+         "text":"Não gosto de poesia."
+      },
+      {
+         "id":69,
+         "text":"Tiro vantagem dos outros."
+      },
+      {
+         "id":70,
+         "text":"Meu quarto é uma bagunça."
+      },
+      {
+         "id":71,
+         "text":"Estou sempre deprimido."
+      },
+      {
+         "id":72,
+         "text":"Assumo controle das coisas."
+      },
+      {
+         "id":73,
+         "text":"Raramente percebo minha própria reação emocional."
+      },
+      {
+         "id":74,
+         "text":"Sou indiferente ao sentimento dos outros."
+      },
+      {
+         "id":75,
+         "text":"Quebro as regras."
+      },
+      {
+         "id":76,
+         "text":"Só me sinto bem com meus amigos(as)."
+      },
+      {
+         "id":77,
+         "text":"Faço muitas coisas no tempo livre."
+      },
+      {
+         "id":78,
+         "text":"Sou avesso a mudanças."
+      },
+      {
+         "id":79,
+         "text":"Insulto os outros."
+      },
+      {
+         "id":80,
+         "text":"Faço apenas o necessário."
+      },
+      {
+         "id":81,
+         "text":"Resisto a tentações facilmente."
+      },
+      {
+         "id":82,
+         "text":"Gosto de ser inconsequente."
+      },
+      {
+         "id":83,
+         "text":"Tenho dificuldade com ideias abstratas."
+      },
+      {
+         "id":84,
+         "text":"Me considero muito bom(boa)."
+      },
+      {
+         "id":85,
+         "text":"Fico perdendo tempo."
+      },
+      {
+         "id":86,
+         "text":"Acho que sou incapaz de lidar com as coisas."
+      },
+      {
+         "id":87,
+         "text":"Amo a vida."
+      },
+      {
+         "id":88,
+         "text":"Tende a votar em políticos conservadores."
+      },
+      {
+         "id":89,
+         "text":"Não me interesso pelos problemas dos outros."
+      },
+      {
+         "id":90,
+         "text":"Já saio fazendo."
+      },
+      {
+         "id":91,
+         "text":"Me irrito facilmente."
+      },
+      {
+         "id":92,
+         "text":"Mantenho distância dos outros."
+      },
+      {
+         "id":93,
+         "text":"Me perco nos pensamentos."
+      },
+      {
+         "id":94,
+         "text":"Desconfio das pessoas."
+      },
+      {
+         "id":95,
+         "text":"Sei como fazer as coisas."
+      },
+      {
+         "id":96,
+         "text":"Não sou incomodado facilmente."
+      },
+      {
+         "id":97,
+         "text":"Evito multidões."
+      },
+      {
+         "id":98,
+         "text":"Não gosto de ir ao museu de arte."
+      },
+      {
+         "id":99,
+         "text":"Atrapalho os planos dos outros."
+      },
+      {
+         "id":100,
+         "text":"Deixo minhas coisas espalhadas."
+      },
+      {
+         "id":101,
+         "text":"Me sinto confortável comigo."
+      },
+      {
+         "id":102,
+         "text":"Aguardo outras pessoas tomarem a liderança."
+      },
+      {
+         "id":103,
+         "text":"Não entendo pessoas que agem emocionalmente."
+      },
+      {
+         "id":104,
+         "text":"Não tiro tempo para os outros."
+      },
+      {
+         "id":105,
+         "text":"Quebro minhas promessas."
+      },
+      {
+         "id":106,
+         "text":"Não sou incomodado(a) por situações sociais difíceis."
+      },
+      {
+         "id":107,
+         "text":"Gosto de pegar leve."
+      },
+      {
+         "id":108,
+         "text":"Sou tradicional."
+      },
+      {
+         "id":109,
+         "text":"Entro em contato com os outros."
+      },
+      {
+         "id":110,
+         "text":"Dedico pouco tempo e esforço no meu trabalho."
+      },
+      {
+         "id":111,
+         "text":"Controlo minhas vontades."
+      },
+      {
+         "id":112,
+         "text":"Ajo de forma descontrolada."
+      },
+      {
+         "id":113,
+         "text":"Não me interesso por discussões teóricas."
+      },
+      {
+         "id":114,
+         "text":"Gosto de falar das minhas virtudes."
+      },
+      {
+         "id":115,
+         "text":"Tenho dificuldade para começar as tarefas."
+      },
+      {
+         "id":116,
+         "text":"Fico calmo(a) sob pressão."
+      },
+      {
+         "id":117,
+         "text":"Vejo o lado bom da vida."
+      },
+      {
+         "id":118,
+         "text":"Acredito que precisamos ser rígidos com o crime."
+      },
+      {
+         "id":119,
+         "text":"Tento não pensar nos necessitados."
+      },
+      {
+         "id":120,
+         "text":"Ajo sem pensar."
+      }
+   ],
+   "select":[
+      {
+         "id":1,
+         "text":"Muito inadequado"
+      },
+      {
+         "id":2,
+         "text":"Relativamente inadequado"
+      },
+      {
+         "id":3,
+         "text":"Nem adequado, nem inadequado"
+      },
+      {
+         "id":4,
+         "text":"Relativamente adequado"
+      },
+      {
+         "id":5,
+         "text":"Muito adequado"
+      }
+   ]
+}

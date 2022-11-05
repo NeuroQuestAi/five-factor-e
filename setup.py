@@ -10,7 +10,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = "1.3.0"
+VERSION = "1.4.0"
 DESCRIPTION = "Big 5 IPIP-NEO Personality Traits"
 LONG_DESCRIPTION = "Library with a self-administered questionnaire that assesses a person's personality according to the Big Five model, using the IPIP-NEO."
 
