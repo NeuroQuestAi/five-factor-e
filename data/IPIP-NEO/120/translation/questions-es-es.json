@@ -1,0 +1,506 @@
+{
+   "questions":[
+      {
+         "id":1,
+         "text":"Me preocupo por las cosas."
+      },
+      {
+         "id":2,
+         "text":"Creo que hago amigos fácilmente."
+      },
+      {
+         "id":3,
+         "text":"Tengo una imaginación vívida."
+      },
+      {
+         "id":4,
+         "text":"Confío en los demás."
+      },
+      {
+         "id":5,
+         "text":"Completo las tareas correctamente."
+      },
+      {
+         "id":6,
+         "text":"Suelo enojarme fácilmente."
+      },
+      {
+         "id":7,
+         "text":"Me encantan las fiestas grandes."
+      },
+      {
+         "id":8,
+         "text":"Creo que el arte es importante."
+      },
+      {
+         "id":9,
+         "text":"Colaboro con otros solo si obtengo algún beneficio propio."
+      },
+      {
+         "id":10,
+         "text":"Me gusta mantener las cosas en orden."
+      },
+      {
+         "id":11,
+         "text":"A menudo me siento triste."
+      },
+      {
+         "id":12,
+         "text":"Me gusta estar a cargo de las decisiones."
+      },
+      {
+         "id":13,
+         "text":"Considero que soy muy sentimental."
+      },
+      {
+         "id":14,
+         "text":"Me siento a gusto ayudando a los demás."
+      },
+      {
+         "id":15,
+         "text":"Siempre cumplo mis promesas."
+      },
+      {
+         "id":16,
+         "text":"Tengo dificultades para acercarme a los demás."
+      },
+      {
+         "id":17,
+         "text":"Estoy ocupado/a todo el tiempo."
+      },
+      {
+         "id":18,
+         "text":"Prefiero la variedad antes que la rutina."
+      },
+      {
+         "id":19,
+         "text":"Me gusta pelear."
+      },
+      {
+         "id":20,
+         "text":"Siempre trabajo duro."
+      },
+      {
+         "id":21,
+         "text":"A menudo voy de borracheras."
+      },
+      {
+         "id":22,
+         "text":"Amo la emoción."
+      },
+      {
+         "id":23,
+         "text":"Me gusta mucho leer."
+      },
+      {
+         "id":24,
+         "text":"Creo que soy mejor que los demás."
+      },
+      {
+         "id":25,
+         "text":"Siempre estoy preparado."
+      },
+      {
+         "id":26,
+         "text":"Me asusto fácilmente."
+      },
+      {
+         "id":27,
+         "text":"Soy una persona muy alegre."
+      },
+      {
+         "id":28,
+         "text":"Tiendo a votar por candidatos políticos liberales."
+      },
+      {
+         "id":29,
+         "text":"Me compadezco por la gente sin hogar."
+      },
+      {
+         "id":30,
+         "text":"Hago las cosas sin razonar mucho sobre ellas."
+      },
+      {
+         "id":31,
+         "text":"Temo que suceda lo peor."
+      },
+      {
+         "id":32,
+         "text":"Me siento cómodo con la gente."
+      },
+      {
+         "id":33,
+         "text":"Disfruto de fantásticos vuelos de fantasía."
+      },
+      {
+         "id":34,
+         "text":"Creo que las personas tienen buenas intenciones."
+      },
+      {
+         "id":35,
+         "text":"Soy muy bueno en lo que hago."
+      },
+      {
+         "id":36,
+         "text":"Me suelo molestar con facilidad."
+      },
+      {
+         "id":37,
+         "text":"Me gusta hablar con muchas personas en las fiestas."
+      },
+      {
+         "id":38,
+         "text":"Veo belleza en cosas que otros podrían no notar."
+      },
+      {
+         "id":39,
+         "text":"Podría hacer trampa si eso me lleva adelante."
+      },
+      {
+         "id":40,
+         "text":"A menudo olvido poner las cosas de vuelta donde las tomé."
+      },
+      {
+         "id":41,
+         "text":"No me siento bien conmigo mismo."
+      },
+      {
+         "id":42,
+         "text":"Intento dirigir a los demás."
+      },
+      {
+         "id":43,
+         "text":"Puedo comprender bien las emociones de los demás."
+      },
+      {
+         "id":44,
+         "text":"Me preocupo por los demás."
+      },
+      {
+         "id":45,
+         "text":"Siempre digo la verdad."
+      },
+      {
+         "id":46,
+         "text":"Temo ser el centro de atención."
+      },
+      {
+         "id":47,
+         "text":"Creo que soy una persona activa y vigorosa."
+      },
+      {
+         "id":48,
+         "text":"Prefiero quedarme cosas que conozco."
+      },
+      {
+         "id":49,
+         "text":"Suelo gritar a las personas."
+      },
+      {
+         "id":50,
+         "text":"Hago más de lo que se espera de mí."
+      },
+      {
+         "id":51,
+         "text":"Rara vez me dejo llevar."
+      },
+      {
+         "id":52,
+         "text":"Siempre busco la aventura."
+      },
+      {
+         "id":53,
+         "text":"Intento evitar discusiones filosóficas."
+      },
+      {
+         "id":54,
+         "text":"Espero mucho de mí mismo."
+      },
+      {
+         "id":55,
+         "text":"Llevo a cabo mis planes."
+      },
+      {
+         "id":56,
+         "text":"Me abrumo fácilmente de las cosas que suceden alrededor."
+      },
+      {
+         "id":57,
+         "text":"Pienso que soy una persona muy divertida."
+      },
+      {
+         "id":58,
+         "text":"No creo que haya acciones completamente correctas o incorrectas."
+      },
+      {
+         "id":59,
+         "text":"Siento simpatía por aquellos que se encuentran en peores situaciones que yo."
+      },
+      {
+         "id":60,
+         "text":"Suelo tomar decisiones precipitadas."
+      },
+      {
+         "id":61,
+         "text":"Tengo miedo de muchas cosas."
+      },
+      {
+         "id":62,
+         "text":"A menudo evito el contacto con los demás."
+      },
+      {
+         "id":63,
+         "text":"Soy una persona que a veces sueña despierta."
+      },
+      {
+         "id":64,
+         "text":"Confío en lo que dicen las personas."
+      },
+      {
+         "id":65,
+         "text":"Realizo mis tareas sin ningún problema."
+      },
+      {
+         "id":66,
+         "text":"A veces pierdo los estribos."
+      },
+      {
+         "id":67,
+         "text":"Prefiero estar solo."
+      },
+      {
+         "id":68,
+         "text":"No me gusta la poesía."
+      },
+      {
+         "id":69,
+         "text":"Me aprovecho de los demás."
+      },
+      {
+         "id":70,
+         "text":"Mi habitación es muy desordenada."
+      },
+      {
+         "id":71,
+         "text":"A menudo me siento bajoneado."
+      },
+      {
+         "id":72,
+         "text":"Tomo el control de las cosas."
+      },
+      {
+         "id":73,
+         "text":"En raras ocasiones noto mis reacciones emocionales."
+      },
+      {
+         "id":74,
+         "text":"Soy indiferente a los sentimientos de los demás."
+      },
+      {
+         "id":75,
+         "text":"Las reglas fueron hechas para romperse."
+      },
+      {
+         "id":76,
+         "text":"Sólo me siento cómodo en compañía de amigos."
+      },
+      {
+         "id":77,
+         "text":"Hago muchas cosas en mi tiempo libre."
+      },
+      {
+         "id":78,
+         "text":"No me atraen situaciones en constante cambio."
+      },
+      {
+         "id":79,
+         "text":"No tengo recelo en insultar a la gente."
+      },
+      {
+         "id":80,
+         "text":"Solo hago el trabajo justo para haberlo cumplido."
+      },
+      {
+         "id":81,
+         "text":"Resisto las tentaciones fácilmente."
+      },
+      {
+         "id":82,
+         "text":"Me gusta ser imprudente."
+      },
+      {
+         "id":83,
+         "text":"Me es difícil entender ideas abstractas."
+      },
+      {
+         "id":84,
+         "text":"Tengo altas expectativas de mí mismo."
+      },
+      {
+         "id":85,
+         "text":"No hago mucho en mi tiempo libre."
+      },
+      {
+         "id":86,
+         "text":"A veces siento que no soy capaz de manejar situaciones."
+      },
+      {
+         "id":87,
+         "text":"Amo la vida."
+      },
+      {
+         "id":88,
+         "text":"Tiendo a votar por los candidatos políticos conservativos."
+      },
+      {
+         "id":89,
+         "text":"No me suelo implicar en los problemas de los demás."
+      },
+      {
+         "id":90,
+         "text":"Hago las cosas sin cautela."
+      },
+      {
+         "id":91,
+         "text":"Tiendo a estresarme con facilidad."
+      },
+      {
+         "id":92,
+         "text":"Siempre mantengo cierta distancia con las personas."
+      },
+      {
+         "id":93,
+         "text":"Me gusta perderme en mis pensamientos."
+      },
+      {
+         "id":94,
+         "text":"Desconfío de la gente."
+      },
+      {
+         "id":95,
+         "text":"Generalmente sé cómo hacer las cosas."
+      },
+      {
+         "id":96,
+         "text":"No me molesto fácilmente."
+      },
+      {
+         "id":97,
+         "text":"No me gusta mezclarme con la gente."
+      },
+      {
+         "id":98,
+         "text":"No me agrada ir a museos de arte."
+      },
+      {
+         "id":99,
+         "text":"Sería capaz de sabotear los planes de otros."
+      },
+      {
+         "id":100,
+         "text":"Dejo mis pertenencias aquí y allá."
+      },
+      {
+         "id":101,
+         "text":"Me siento cómodo conmigo mismo."
+      },
+      {
+         "id":102,
+         "text":"Espero que alguien más lleve la batuta en un grupo."
+      },
+      {
+         "id":103,
+         "text":"No comprendo a las personas que se emocionan fácilmente."
+      },
+      {
+         "id":104,
+         "text":"No tengo tiempo para los demás."
+      },
+      {
+         "id":105,
+         "text":"No suelo cumplir mis promesas."
+      },
+      {
+         "id":106,
+         "text":"No me molestan las situaciones sociales difíciles."
+      },
+      {
+         "id":107,
+         "text":"Me gusta tomar las cosas con calma."
+      },
+      {
+         "id":108,
+         "text":"Soy una persona mayormente conservadora."
+      },
+      {
+         "id":109,
+         "text":"No suelo apoyar a los otros."
+      },
+      {
+         "id":110,
+         "text":"Pongo poco tiempo y esfuerzo en mi trabajo."
+      },
+      {
+         "id":111,
+         "text":"Siempre puedo controlar mis antojos."
+      },
+      {
+         "id":112,
+         "text":"Creo que soy una persona activa y vigorosa."
+      },
+      {
+         "id":113,
+         "text":"No me interesan las discusiones teóricas."
+      },
+      {
+         "id":114,
+         "text":"Me jacto de mis virtudes."
+      },
+      {
+         "id":115,
+         "text":"Tengo dificultad para comenzar tareas."
+      },
+      {
+         "id":116,
+         "text":"Me mantengo tranquilo/a bajo presión."
+      },
+      {
+         "id":117,
+         "text":"Siempre miro el buen lado de la vida."
+      },
+      {
+         "id":118,
+         "text":"Creo que deberíamos ser severos con el crimen."
+      },
+      {
+         "id":119,
+         "text":"Trato de no pensar en los necesitados."
+      },
+      {
+         "id":120,
+         "text":"Actúo sin pensar."
+      }
+   ],
+   "select":[
+      {
+         "id":1,
+         "text":"Muy en desacuerdo"
+      },
+      {
+         "id":2,
+         "text":"Moderadamente en desacuerdo"
+      },
+      {
+         "id":3,
+         "text":"Ni de acuerdo, ni en desacuerdo"
+      },
+      {
+         "id":4,
+         "text":"Moderadamente de acuerdo"
+      },
+      {
+         "id":5,
+         "text":"Muy de acuerdo"
+      }
+   ]
+}

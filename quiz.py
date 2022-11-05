@@ -32,6 +32,8 @@ def load_ipip_questions(lang: int) -> dict:
         target = target + "/translation/questions-en-us.json"
     if lang == 2:
         target = target + "/translation/questions-pt-br.json"
+    if lang == 3:
+        target = target + "/translation/questions-es-es.json"
     try:
         return json.loads(urllib.request.urlopen(target).read())
     except BaseException:
@@ -54,7 +56,7 @@ def get_select(lang: int) -> list:
 
 def question_translate() -> list:
     """Return the available question translations."""
-    return ["0. IPIP-NEO Original", "1. EN-US", "2. PT-BR"]
+    return ["0. IPIP-NEO Original", "1. EN-US", "2. PT-BR", "3. ES-ES"]
 
 
 def quiz(sex: str, age: int, shuffle: str, lang: int) -> None:
