@@ -126,7 +126,8 @@ Inside the data [data](https://github.com/neural7/five-factor-e/blob/main/data/)
 
  *The order of answers does not affect the result.*
 
-The id question field refers to the question in this [file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/questions.json). Obviously you may want to change the form of the questions, we are working on the English, Portuguese and Spanish translations.
+The id question field refers to the question in this [file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/questions.json). 
+Obviously if you want you can change the translation of the question, *but don't change the ID of the question*.
 
 Notes:
   * *The order of answers does not affect the result;*
