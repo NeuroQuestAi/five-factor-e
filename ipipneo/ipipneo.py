@@ -126,6 +126,9 @@ class IpipNeo(Facet):
             }
         assert isinstance(result, dict), "result 2 must be a dict"
 
+        # import json
+        # json_object = json.dumps(result, indent=4)
+
         return result or {}
 
     def compute2(self, sex: str, age: int, answers: list) -> dict:
