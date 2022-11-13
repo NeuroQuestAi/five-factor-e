@@ -153,7 +153,7 @@ An example of the output of the results:
 }
 ```
 
-Example of the complete output check here: [Big 5️⃣ Output](https://github.com/neural7/five-factor-e/blob/main/data/)
+Example of the complete output check here: [Big 5️⃣ Output](https://raw.githubusercontent.com/neural7/five-factor-e/main/data/IPIP-NEO/120/result.json)
 
 ### Tests 🏗
 
