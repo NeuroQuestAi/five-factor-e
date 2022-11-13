@@ -22,11 +22,11 @@ The main idea of the project is to facilitate the use of **Python** developers w
 
 *"That is wonderful, ...! Thank you for developing the Python version of the IPIP-NEO and making it publicly available. It looks like a great resource."* - Dr. Johnson
 
-Note: *The project is based on the work of **Dhiru Kholia**, and is an adaptation of [Neural7](https://github.com/neural7) for a version that can be reused in other projects of the company.*
+Note 👉: *The project is based on the work of **Dhiru Kholia**, and is an adaptation of [Neural7](https://github.com/neural7) for a version that can be reused in other projects of the company.*
 
 ### Synopsis 🌐
 
-A little theory, the The Big Five or Five Factor is made up of **5** great human personalities also known as the *O.C.E.A.N*. Are they:
+A little theory, the The Big Five or Five Factor is made up of **5** great human personalities also known as the 🌊 **O.C.E.A.N**. Are they:
 
  * **O**penness
  * **C**onscientiousness
@@ -44,7 +44,7 @@ To compose each great personality there are **6** traits or facets, totaling **3
 
 For more information to demystify the Big Five, please see the article: [Measuring the Big Five Personality Domains](https://pages.uoregon.edu/sanjay/bigfive.html)
 
-Notes: *User-selected answers follow the position:*
+User-selected answers follow the position:
 
 | Option                          | Array       |
 | ------------------------------- | ----------- |
@@ -53,6 +53,8 @@ Notes: *User-selected answers follow the position:*
 | Neither Accurate Nor Inaccurate | 3           |
 | Moderately Accurate             | 4           |
 | Very Accurate                   | 5           |
+
+Note 👉: Some questions have the order of the score reversed, the algorithm treats the questions with the score inverted by (*question_id*).
 
 ### Installation 🚀
 
@@ -141,7 +143,7 @@ Inside the data [data](https://github.com/neural7/five-factor-e/blob/main/data/)
 The id question field refers to the question in this [file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/questions.json).
 Obviously if you want you can change the translation of the question, *but don't change the ID of the question*.
 
-Notes:
+Note 👉:
   * *The order of answers does not affect the result;*
   * *You can rephrase the questions to your need, but don't change the question IDs, they are used by the algorithm.*
 
@@ -166,4 +168,4 @@ Notes:
 
 ### Authors 👨‍💻
 
-  * [Ederson Corbari](mailto:e@neural7.io)
+  * [Ederson Corbari](mailto:e@neural7.io) 👽
