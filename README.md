@@ -137,6 +137,7 @@ Notes:
 
   * Dr John A. Johnson
   * Dhiru Kholia
+  * Chris Hunt
 
 ### License 🙋
 

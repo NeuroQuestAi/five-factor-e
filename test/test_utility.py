@@ -6,7 +6,8 @@ import unittest
 from ipipneo.utility import (answers_is_valid, apply_reverse_scored_120,
                              big5_ocean_is_valid, big_five_target,
                              create_big5_dict, organize_list_json,
-                             raise_if_age_is_invalid, raise_if_sex_is_invalid)
+                             raise_if_age_is_invalid, raise_if_sex_is_invalid,
+                             reverse_scored)
 
 
 def load_mock_answers(idx: int) -> dict:
@@ -598,3 +599,19 @@ class Testutility(unittest.TestCase):
         assert isinstance(b.get("answers", []), list), "b must be a list"
 
         self.assertNotEqual(a, b)
+
+    def test_reverse_scored(self) -> None:
+        with self.assertRaises(TypeError) as e:
+            reverse_scored(a=1)
+
+        with self.assertRaises(BaseException) as e:
+            reverse_scored(select=900)
+        self.assertEqual(
+            str(e.exception), "Something wrong in the selection option: 900"
+        )
+
+        self.assertEqual(reverse_scored(select=1), 5)
+        self.assertEqual(reverse_scored(select=2), 4)
+        self.assertEqual(reverse_scored(select=3), 3)
+        self.assertEqual(reverse_scored(select=4), 2)
+        self.assertEqual(reverse_scored(select=5), 1)

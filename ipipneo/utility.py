@@ -388,7 +388,6 @@ def big5_ocean_is_valid(label: str) -> bool or BaseException:
         return True
     if label == "N":
         return True
-
     raise BaseException("The Big-Five label is invalid!")
 
 

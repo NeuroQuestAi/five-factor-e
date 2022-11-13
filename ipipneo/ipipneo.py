@@ -8,17 +8,14 @@ __license__ = "MIT"
 __version__ = "1.0.0"
 __status__ = "production"
 
+import copy
 import uuid
 
 from ipipneo.facet import Facet
 from ipipneo.model import QuestionNumber
 from ipipneo.norm import Norm
-from ipipneo.utility import (
-    apply_reverse_scored_120,
-    organize_list_json,
-    raise_if_age_is_invalid,
-    raise_if_sex_is_invalid,
-)
+from ipipneo.utility import (apply_reverse_scored_120, organize_list_json,
+                             raise_if_age_is_invalid, raise_if_sex_is_invalid)
 
 
 class IpipNeo(Facet):
@@ -96,7 +93,7 @@ class IpipNeo(Facet):
             },
         }
 
-    def compute(self, sex: str, age: int, answers: dict, selects: bool = False) -> dict:
+    def compute(self, sex: str, age: int, answers: dict, compare: bool = False) -> dict:
         """
         Compute the answers and generate the data with the results.
 
@@ -104,28 +101,32 @@ class IpipNeo(Facet):
             - sex: Gender of the individual (M or F).
             - age: The age of the individual.
             - answers: Standardized dictionary with answers.
+            - compare: If true, it shows the user's answers and reverse score.
         """
         raise_if_sex_is_invalid(sex=sex)
         raise_if_age_is_invalid(age=age)
-        assert isinstance(answers, dict), "answers 1 must be a dict"
+        assert isinstance(answers, dict), "answers must be a dict"
 
-        reverse = apply_reverse_scored_120(answers=answers)
-        assert isinstance(reverse, dict), "answers 2 must be a dict"
+        original = copy.deepcopy(answers)
+        assert isinstance(original, dict), "original must be a dict"
 
-        score = self.score(answers=organize_list_json(answers=reverse))
+        reversed = apply_reverse_scored_120(answers=answers)
+        assert isinstance(reversed, dict), "reversed must be a dict"
+
+        score = self.score(answers=organize_list_json(answers=reversed))
         assert isinstance(score, list), "score must be a list"
 
         result = self.evaluator(sex=sex, age=age, score=score)
         assert isinstance(result, dict), "result 1 must be a dict"
 
-        if selects:
-            result["person"]["result"]["answers"] = {
-                "original": [x.get("id_select", 0) for x in answers.get("answers", [])],
-                "reverse": [x.get("id_select", 0) for x in reverse.get("answers", [])],
+        if compare:
+            result["person"]["result"]["compare"] = {
+                "user_answers_original": original.get("answers", []),
+                "user_answers_reversed": reversed.get("answers", []),
             }
         assert isinstance(result, dict), "result 2 must be a dict"
 
-        return result
+        return result or {}
 
     def compute2(self, sex: str, age: int, answers: list) -> dict:
         """

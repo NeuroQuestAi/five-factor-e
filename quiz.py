@@ -59,17 +59,24 @@ def question_translate() -> list:
     return ["0. IPIP-NEO Original", "1. EN-US", "2. PT-BR", "3. ES-ES"]
 
 
-def quiz(sex: str, age: int, shuffle: str, lang: int) -> None:
+def quiz(inventory: int, sex: str, age: int, shuffle: str, lang: int) -> None:
     """
     Inventory of questions.
 
     Args:
+        - inventory: Inventory model 120 or 300.
         - sex: The sex of the person.
         - age: The age of the person.
         - shuffle: Shuffle the questions.
         - lang: Then number of language.
     """
-    questions, answers = (get_questions(lang=lang), [])
+    answers = questions = []
+    if inventory == 120:
+        questions = get_questions(lang=lang)
+    elif inventory == 300:
+        pass
+    else:
+        raise BaseException(f"Invalid inventory model: {inventory}")
 
     print("\n *** Big Five IPIP-NEO Personality Test ***\n")
 
@@ -95,7 +102,7 @@ def quiz(sex: str, age: int, shuffle: str, lang: int) -> None:
 
         answers.append({"id_question": q.get("id"), "id_select": option})
 
-    result = IpipNeo(question=120).compute(
+    result = IpipNeo(question=inventory).compute(
         sex=sex, age=age, answers={"answers": answers}
     )
 
@@ -104,14 +111,27 @@ def quiz(sex: str, age: int, shuffle: str, lang: int) -> None:
 
 def main() -> None:
     """Initialize the test."""
-    print("\n *** Welcome to Big Five IPIP-NEO Personality Test ***\n")
-    print(
-        "The following test contains 120 questions which is estimated to take you about 10 minutes to complete!"
-    )
+    print("\n *** Welcome to Big Five IPIP-NEO Personality Test ***")
 
     go = str(input("\nDo you wish to continue? Yes / No: "))
     if go.upper() == "NO" or go.upper() == "N":
         sys.exit(0)
+
+    inventory = int(input("\nWhat inventory model will you make? 120 / 300: "))
+    assert isinstance(inventory, int), "The (inventory) field must be an integer!"
+    if inventory != 120 and inventory != 300:
+        print(f"Invalid inventory model: {inventory}!")
+        sys.exit(0)
+
+    print("\n====================================================================")
+    if inventory == 120:
+        print(
+            "The following test contains 120 questions which is estimated to take you about 15 minutes to complete!"
+        )
+    elif inventory == 300:
+        print(
+            "The following test contains 300 questions which is estimated to take you about 35 minutes to complete!"
+        )
 
     sex = str(input("\nWhat is your sex Male or Female? M / F: "))
     assert (
@@ -120,8 +140,8 @@ def main() -> None:
 
     age = int(input("\nWhat is your age? "))
     assert isinstance(age, int), "The (age) field must be an integer!"
-    if not (10 <= age <= 120):
-        print(f"The age ({age}) must be between 10 and 120!")
+    if not (18 <= age <= 100):
+        print(f"The age ({age}) must be between 18 and 100!")
         sys.exit(0)
 
     shuffle = str(input("\nDo you want to shuffle the questions? Yes / No: "))
@@ -137,7 +157,13 @@ def main() -> None:
     )
     assert isinstance(age, int), "The (lang) field must be an integer!"
 
-    quiz(sex=sex.upper(), age=int(age), shuffle=shuffle, lang=int(lang))
+    quiz(
+        inventory=int(inventory),
+        sex=sex.upper(),
+        age=int(age),
+        shuffle=shuffle,
+        lang=int(lang),
+    )
 
 
 if __name__ == "__main__":

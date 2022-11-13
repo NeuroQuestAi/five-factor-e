@@ -32,6 +32,8 @@ setup(
         "Personality",
         "Assessment",
         "Psychometrics",
+        "Personality-Insights",
+        "People-Analytics",
         "Python",
     ],
     classifiers=[

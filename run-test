@@ -28,7 +28,7 @@ run_command ()
 # Run test suite in all supported versions of Python.
 #-----------------------------------------------------------------------
 run_command "python3 -B -m unittest $*"
-# coverage run --source . -m unittest discover && coverage report
-# coverage run --source . -m unittest discover && coverage html
+# run_command coverage run --source . -m unittest discover && coverage report
+# run_command coverage run --source . -m unittest discover && coverage html
 echo "" >&2
 echo "All commands successful." >&2
