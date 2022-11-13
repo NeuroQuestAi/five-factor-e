@@ -34,7 +34,7 @@ A little theory, the The Big Five or Five Factor is made up of **5** great human
  * **A**greeableness
  * **N**euroticism
 
-To compose each great personality there are **6** traits or facets, totaling **30** traits. The user must answer a questionnaire of 120 or 300 single choice questions with **5** options:
+To compose each great personality there are **6** traits or facets, totaling **30** traits. The user must answer a questionnaire of **120** or **300** single choice questions with **5** options:
 
 * Very Inaccurate
 * Moderately Inaccurate
@@ -42,7 +42,7 @@ To compose each great personality there are **6** traits or facets, totaling **3
 * Moderately Accurate
 * Very Accurate
 
-For more information to demystify the Big Five, please see the article: [Measuring the Big Five Personality Domains](https://pages.uoregon.edu/sanjay/bigfive.html)
+For more information to demystify the Big Five, please see the article: [Measuring the Big Five Personality Domains](https://pages.uoregon.edu/sanjay/bigfive.html).
 
 User-selected answers follow the position:
 
@@ -54,7 +54,7 @@ User-selected answers follow the position:
 | Moderately Accurate             | 4           |
 | Very Accurate                   | 5           |
 
-Note 👉: Some questions have the order of the score reversed, the algorithm treats the questions with the score inverted by (*question_id*).
+Note 👉: Some answers have the order of the score reversed, the algorithm treats the questions with the score inverted by (*question_id*).
 
 ### Installation 🚀
 
