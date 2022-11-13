@@ -14,13 +14,13 @@ https://pypi.org/project/five-factor-e/)
   <img src="https://raw.githubusercontent.com/neural7/five-factor-e/04ac3ce31e37f582e66ffdf694d4c4bcb8469ec9/doc/big-five.png" alt="Representation of the Big Five"/>
 </p>
 
-This project assesses a person's 🗣 personality based on an inventory of questions. The project uses the Big Five theory using the [IPIP-NEO-120](http://www.personal.psu.edu/~j5j/IPIP/ipipneo120.htm) and [IPIP-NEO-300](http://www.personal.psu.edu/~j5j/IPIP/ipipneo300.htm) model developed by Professor **Dr. John A. Johnson**, this is free representation of [NEO PI-R™](https://en.wikipedia.org/wiki/Revised_NEO_Personality_Inventory).
+This project assesses a person's 🗣 personality based on an inventory of questions. The project uses the **Big Five** theory using the [IPIP-NEO-300](http://www.personal.psu.edu/~j5j/IPIP/ipipneo300.htm) model created by **Lewis R. Goldberg** and [IPIP-NEO-120](http://www.personal.psu.edu/~j5j/IPIP/ipipneo120.htm) the shorter version developed by Professor **Dr. John A. Johnson**, this is a free representation of the [NEO PI-R™](https://en.wikipedia.org/wiki/Revised_NEO_Personality_Inventory).
 
 *"The IPIP-NEO is not identical to the original NEO PI-R, but in my opinion it is close enough to serve as a good substitute. More and more people are beginning to use it in published research, so its acceptance is growing."* - Dr. Johnson
 
-*"That is wonderful, ...! Thank you for developing the Python version of the IPIP-NEO and making it publicly available. It looks like a great resource."* - Dr. Johnson
-
 The main idea of the project is to facilitate the use of **Python** developers who want to use **IPIP-NEO** in their projects. *The project is also done in pure Python, it doesn't have any dependencies on other libraries*.
+
+*"That is wonderful, ...! Thank you for developing the Python version of the IPIP-NEO and making it publicly available. It looks like a great resource."* - Dr. Johnson
 
 Note: *The project is based on the work of **Dhiru Kholia**, and is an adaptation of [Neural7](https://github.com/neural7) for a version that can be reused in other projects of the company.*
 
