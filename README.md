@@ -20,7 +20,7 @@ This project assesses a person's 🗣 personality based on an inventory of quest
 
 The main idea of the project is to facilitate the use of **Python** developers who want to use **IPIP-NEO** in their projects. *The project is also done in pure Python, it doesn't have any dependencies on other libraries*.
 
-Note: *The project is based on the work of [Dhiru Kholia](https://github.com/kholia/IPIP-NEO-PI), and is an adaptation of [Neural7](https://github.com/neural7) for a version that can be reused in other projects of the company.*
+Note: *The project is based on the work of Dhiru Kholia, and is an adaptation of [Neural7](https://github.com/neural7) for a version that can be reused in other projects of the company.*
 
 ### Synopsis 🌐
 
@@ -126,7 +126,7 @@ Inside the data [data](https://github.com/neural7/five-factor-e/blob/main/data/)
 
  *The order of answers does not affect the result.*
 
-The id question field refers to the question in this [file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/questions.json). 
+The id question field refers to the question in this [file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/questions.json).
 Obviously if you want you can change the translation of the question, *but don't change the ID of the question*.
 
 Notes:
@@ -154,4 +154,3 @@ Notes:
 ### Authors 👨‍💻
 
   * [Ederson Corbari](mailto:e@neural7.io)
-  * [Marcos Ferretti](mailto:m@neural7.io)

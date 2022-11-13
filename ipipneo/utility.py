@@ -102,9 +102,33 @@ def organize_list_json(answers: dict) -> list or AssertionError or BaseException
     ]
 
 
-def apply_invert_select(answers: dict) -> dict or BaseException:
+def reverse_scored(select: int) -> int or BaseException:
     """
-    Answers have the values inverted, this function does the from-to correct.
+    Apply reverse scoring (1=5, 2=4, 4=2, 5=1).
+
+    Args:
+        - answers: Selected item.
+    """
+    if select == 1:
+        return 5
+    elif select == 2:
+        return 4
+    elif select == 3:
+        return 3
+    elif select == 4:
+        return 2
+    elif select == 5:
+        return 1
+    raise BaseException(f"Something wrong in the selection option: {select}")
+
+
+def apply_reverse_scored_120(answers: dict) -> dict or BaseException:
+    """
+    Apply reverse scoring on certain items (IPIP-120).
+
+    Reverse-scored items were recoded (1=5, 2=4, 4=2, 5=1) at the time the respondent
+    completed the inventory, so values for these items can simply be added without
+    recoding whenscale scores are computed.
 
     Example position: [1, 2, 3, 4, 5] to [5, 4, 3, 2, 1].
 
@@ -122,130 +146,227 @@ def apply_invert_select(answers: dict) -> dict or BaseException:
     if not any("id_select" in x for x in answers.get("answers", [])):
         raise BaseException("The key named (id_select) was not found!")
 
-    def reoption(select: int):
-        if select == 1:
-            return 5
-        elif select == 2:
-            return 4
-        elif select == 3:
-            return 3
-        elif select == 4:
-            return 2
-        elif select == 5:
-            return 1
-        raise BaseException(f"Something wrong in the selection option: {select}")
-
     for i, x in enumerate(answers.get("answers", [])):
         if x.get("id_question", 0) == 9:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 19:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 24:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 30:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 39:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 40:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 48:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 49:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 51:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 53:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 54:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 60:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 62:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 67:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 68:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 69:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 70:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 73:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 74:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 75:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 78:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 79:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 80:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 81:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 83:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 84:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 85:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 88:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 89:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 90:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 92:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 94:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 96:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 97:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 98:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 99:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 100:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 101:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 102:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 103:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 104:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 105:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 106:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 107:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 108:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 109:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 110:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 111:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 113:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 114:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 115:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 116:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 118:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 119:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
         if x.get("id_question", 0) == 120:
-            answers["answers"][i]["id_select"] = reoption(select=x.get("id_select", 0))
+            answers["answers"][i]["id_select"] = reverse_scored(
+                select=x.get("id_select", 0)
+            )
 
     return answers or {}
 
