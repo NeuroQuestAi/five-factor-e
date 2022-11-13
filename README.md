@@ -64,24 +64,16 @@ $ pip install five-factor-e
 
 ### How to use 🔥
 
-The answers must be in a standardized *json*, you can enter this template in the project folder [data](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json). Valid parameters for compute method:
-
-| Parameters    | Type      | Description                                             |
-| ------------- | --------- | ------------------------------------------------------- |
-| sex           | string    | Gender of the individual (M or F).                      |
-| age           | int       | The age of the individual.                              |
-| answers       | dict      | Standardized dictionary with answers.                   |
-| compare       | boolean   | If true, it shows the user's answers and reverse score. |
-
-To calculate the Big Five use the code snippet below:
+The construtor requires the questions model, whether it is the **300** model or short model with **120** questions. Example:
 
 ```python
 from ipipneo import IpipNeo
 
-IpipNeo(question=120).compute(sex=<>, age=<>, answers=JSON_STANDARD)
+ipip = IpipNeo(question=120)
 ```
 
-This dictionary contains random answers, used for testing purposes only. As an example you can load the json project to test:
+The answers must be in a standardized *json*, you can enter this template in the project folder [data](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json). This dictionary contains random answers, used for testing purposes only. As an example you can 
+load the json project to test:
 
 ```python
 import json, urllib.request
@@ -92,13 +84,22 @@ data = urllib.request.urlopen("https://raw.githubusercontent.com/neural7"\
 answers = json.loads(data)
 ```
 
-Calculate the Big Five for a 40-year-old man:
+Valid parameters for **compute** method:
+
+| Parameters    | Type      | Description                                               |
+| ------------- | --------- | --------------------------------------------------------- |
+| sex           | string    | The sex of the individual (M or F).                       |
+| age           | int       | The age of the individual (between 18 and 100 years old). |
+| answers       | dict      | Standardized dictionary with answers.                     |
+| compare       | boolean   | If true, it shows the user's answers and reverse score.   |
+
+Calculate the Big Five for a **40-year-old man**:
 
 ```python
 IpipNeo(question=120).compute(sex="M", age=40, answers=answers)
 ```
 
-For a 25 year old woman:
+Calculating the big five for a 25 year old woman:
 
 ```python
 IpipNeo(question=120).compute(sex="F", age=25, answers=answers)
