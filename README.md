@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/neural7/five-factor-e/main/doc/neural7.png" align="right" width="80" height="70"/>
 
-# Five Factor E Library 📦
+# Five Factor E Library 📦 🇧🇷
 
 ![version 1.5.0][img_version]
 ![python 3.7 | 3.8 | 3.9 | 3.10 | 3.11][python_version]
@@ -16,17 +16,17 @@ https://pypi.org/project/five-factor-e/)
 
 This project assesses a person's 🗣 personality based on an inventory of questions. The project uses the **Big Five** theory using the [IPIP-NEO-300](http://www.personal.psu.edu/~j5j/IPIP/ipipneo300.htm) model created by **Lewis R. Goldberg** and [IPIP-NEO-120](http://www.personal.psu.edu/~j5j/IPIP/ipipneo120.htm) the shorter version developed by Professor **Dr. John A. Johnson**, this is a free representation of the [NEO PI-R™](https://en.wikipedia.org/wiki/Revised_NEO_Personality_Inventory).
 
-*"The IPIP-NEO is not identical to the original NEO PI-R, but in my opinion it is close enough to serve as a good substitute. More and more people are beginning to use it in published research, so its acceptance is growing."* - Dr. Johnson
+👉 *"The IPIP-NEO is not identical to the original NEO PI-R, but in my opinion it is close enough to serve as a good substitute. More and more people are beginning to use it in published research, so its acceptance is growing."* - Dr. Johnson
 
 The main idea of the project is to facilitate the use of **Python** developers who want to use **IPIP-NEO** in their projects. *The project is also done in pure Python, it doesn't have any dependencies on other libraries*.
 
-*"That is wonderful, ...! Thank you for developing the Python version of the IPIP-NEO and making it publicly available. It looks like a great resource."* - Dr. Johnson
+👉 *"That is wonderful, ...! Thank you for developing the Python version of the IPIP-NEO and making it publicly available. It looks like a great resource."* - Dr. Johnson
 
-Note: *The project is based on the work of **Dhiru Kholia**, and is an adaptation of [Neural7](https://github.com/neural7) for a version that can be reused in other projects of the company.*
+Note 🚩: *The project is based on the work of **Dhiru Kholia**, and is an adaptation of [Neural7](https://github.com/neural7) for a version that can be reused in other projects of the company.*
 
 ### Synopsis 🌐
 
-A little theory, the The Big Five or Five Factor is made up of **5** great human personalities also known as the *O.C.E.A.N*. Are they:
+A little theory, the The Big Five or Five Factor is made up of **5** great human personalities also known as the 🌊 **O.C.E.A.N**. Are they:
 
  * **O**penness
  * **C**onscientiousness
@@ -34,7 +34,7 @@ A little theory, the The Big Five or Five Factor is made up of **5** great human
  * **A**greeableness
  * **N**euroticism
 
-To compose each great personality there are **6** traits or facets, totaling **30** traits. The user must answer a questionnaire of 120 or 300 single choice questions with **5** options:
+To compose each great personality there are **6** traits or facets, totaling **30** traits. The user must answer a questionnaire of **120** or **300** single choice questions with **5** options:
 
 * Very Inaccurate
 * Moderately Inaccurate
@@ -42,9 +42,9 @@ To compose each great personality there are **6** traits or facets, totaling **3
 * Moderately Accurate
 * Very Accurate
 
-For more information to demystify the Big Five, please see the article: [Measuring the Big Five Personality Domains](https://pages.uoregon.edu/sanjay/bigfive.html)
+For more information to demystify the Big Five, please see the article: [Measuring the Big Five Personality Domains](https://pages.uoregon.edu/sanjay/bigfive.html).
 
-Notes: *User-selected answers follow the position:*
+User-selected answers follow the position:
 
 | Option                          | Array       |
 | ------------------------------- | ----------- |
@@ -53,6 +53,8 @@ Notes: *User-selected answers follow the position:*
 | Neither Accurate Nor Inaccurate | 3           |
 | Moderately Accurate             | 4           |
 | Very Accurate                   | 5           |
+
+Note 🚩: Some answers have the order of the score reversed, the algorithm treats the questions with the score inverted by (*question_id*).
 
 ### Installation 🚀
 
@@ -64,24 +66,16 @@ $ pip install five-factor-e
 
 ### How to use 🔥
 
-The answers must be in a standardized *json*, you can enter this template in the project folder [data](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json). Valid parameters for compute method:
-
-| Parameters    | Type      | Description                                             |
-| ------------- | --------- | ------------------------------------------------------- |
-| sex           | string    | Gender of the individual (M or F).                      |
-| age           | int       | The age of the individual.                              |
-| answers       | dict      | Standardized dictionary with answers.                   |
-| compare       | boolean   | If true, it shows the user's answers and reverse score. |
-
-To calculate the Big Five use the code snippet below:
+The construtor requires the questions model, whether it is the **300** model or short model with **120** questions. Example:
 
 ```python
 from ipipneo import IpipNeo
 
-IpipNeo(question=120).compute(sex=<>, age=<>, answers=JSON_STANDARD)
+ipip = IpipNeo(question=120)
 ```
 
-This dictionary contains random answers, used for testing purposes only. As an example you can load the json project to test:
+The answers must be in a standardized *json*, you can enter this template in the project folder [data](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json). This dictionary contains random answers, used for testing purposes only. As an example you can 
+load the json project to test:
 
 ```python
 import json, urllib.request
@@ -92,17 +86,74 @@ data = urllib.request.urlopen("https://raw.githubusercontent.com/neural7"\
 answers = json.loads(data)
 ```
 
-Calculate the Big Five for a 40-year-old man:
+Valid parameters for **compute** method:
+
+| Parameters    | Type      | Description                                               |
+| ------------- | --------- | --------------------------------------------------------- |
+| sex           | string    | The sex of the individual (M or F).                       |
+| age           | int       | The age of the individual (between 18 and 100 years old). |
+| answers       | dict      | Standardized dictionary with answers.                     |
+| compare       | boolean   | If true, it shows the user's answers and reverse score.   |
+
+Calculate the Big Five for a **40-year-old man**:
 
 ```python
 IpipNeo(question=120).compute(sex="M", age=40, answers=answers)
 ```
 
-For a 25 year old woman:
+Calculating the Big Five for a **25-year-old woman**:
 
 ```python
 IpipNeo(question=120).compute(sex="F", age=25, answers=answers)
 ```
+
+An example of the output of the results:
+
+```json
+{
+   "personalities":[
+      {
+         "Openness":{
+            "O":24.29091080263288,
+            "traits":[
+               {
+                  "trait":1,
+                  "Imagination":21.43945888481437,
+                  "score":"low"
+               },
+               {
+                  "trait":2,
+                  "Artistic-Interests":4.344187760272675,
+                  "score":"low"
+               },
+               {
+                  "trait":3,
+                  "Emotionality":8.379530297432893,
+                  "score":"low"
+               },
+               {
+                  "trait":4,
+                  "Adventurousness":30.805235884673323,
+                  "score":"low"
+               },
+               {
+                  "trait":5,
+                  "Intellect":47.84680512022845,
+                  "score":"average"
+               },
+               {
+                  "trait":6,
+                  "Liberalism":84.95164346200181,
+                  "score":"high"
+               }
+            ]
+         }
+      }
+   ]
+}
+```
+
+Example of the complete output check here: [Big 5️⃣ Output](https://github.com/neural7/five-factor-e/blob/main/data/)
 
 ### Tests 🏗
 
@@ -140,7 +191,7 @@ Inside the data [data](https://github.com/neural7/five-factor-e/blob/main/data/)
 The id question field refers to the question in this [file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/questions.json).
 Obviously if you want you can change the translation of the question, *but don't change the ID of the question*.
 
-Notes:
+Note 🚩:
   * *The order of answers does not affect the result;*
   * *You can rephrase the questions to your need, but don't change the question IDs, they are used by the algorithm.*
 
@@ -165,4 +216,4 @@ Notes:
 
 ### Authors 👨‍💻
 
-  * [Ederson Corbari](mailto:e@neural7.io)
+  * [Ederson Corbari](mailto:e@neural7.io) 👽
