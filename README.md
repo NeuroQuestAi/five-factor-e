@@ -2,12 +2,12 @@
 
 # Five Factor E Library 📦
 
-![version 1.4.0][img_version]
+![version 1.5.0][img_version]
 ![python 3.7 | 3.8 | 3.9 | 3.10 | 3.11][python_version]
 [![PyPI Downloads](https://img.shields.io/pypi/dm/five-factor-e.svg?label=PyPI%20downloads)](
 https://pypi.org/project/five-factor-e/)
 
-[img_version]: https://img.shields.io/static/v1.svg?label=version&message=1.4.0&color=blue
+[img_version]: https://img.shields.io/static/v1.svg?label=version&message=1.5.0&color=blue
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20&color=blue
 
 <p align="center">
@@ -20,7 +20,7 @@ This project assesses a person's 🗣 personality based on an inventory of quest
 
 The main idea of the project is to facilitate the use of **Python** developers who want to use **IPIP-NEO** in their projects. *The project is also done in pure Python, it doesn't have any dependencies on other libraries*.
 
-Note: *The project is based on the work of Dhiru Kholia, and is an adaptation of [Neural7](https://github.com/neural7) for a version that can be reused in other projects of the company.*
+Note: *The project is based on the work of **Dhiru Kholia**, and is an adaptation of [Neural7](https://github.com/neural7) for a version that can be reused in other projects of the company.*
 
 ### Synopsis 🌐
 
@@ -62,7 +62,16 @@ $ pip install five-factor-e
 
 ### How to use 🔥
 
-The answers must be in a standardized *json*, you can enter this template in the project folder [data](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json). To calculate the Big Five use the code snippet below:
+The answers must be in a standardized *json*, you can enter this template in the project folder [data](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json). Valid parameters for compute method:
+
+| Parameters    | Type      | Description                                             |
+| ------------- | --------- | ------------------------------------------------------- |
+| sex           | string    | Gender of the individual (M or F).                      |
+| age           | int       | The age of the individual.                              |
+| answers       | dict      | Standardized dictionary with answers.                   |
+| compare       | boolean   | If true, it shows the user's answers and reverse score. |
+
+To calculate the Big Five use the code snippet below:
 
 ```python
 from ipipneo import IpipNeo
@@ -70,12 +79,14 @@ from ipipneo import IpipNeo
 IpipNeo(question=120).compute(sex=<>, age=<>, answers=JSON_STANDARD)
 ```
 
-As an example you can load the project json to test.
+This dictionary contains random answers, used for testing purposes only. As an example you can load the json project to test:
 
 ```python
 import json, urllib.request
 
-data = urllib.request.urlopen("https://raw.githubusercontent.com/neural7/five-factor-e/main/data/IPIP-NEO/120/answers.json").read()
+data = urllib.request.urlopen("https://raw.githubusercontent.com/neural7"\
+   "/five-factor-e/main/data/IPIP-NEO/120/answers.json").read()
+
 answers = json.loads(data)
 ```
 
@@ -123,8 +134,6 @@ Inside the data [data](https://github.com/neural7/five-factor-e/blob/main/data/)
    ]
 }
 ```
-
- *The order of answers does not affect the result.*
 
 The id question field refers to the question in this [file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/questions.json).
 Obviously if you want you can change the translation of the question, *but don't change the ID of the question*.
