@@ -1,0 +1,1226 @@
+{
+   "questions":[
+      {
+         "id":1,
+         "text":"Worry about things."
+      },
+      {
+         "id":2,
+         "text":"Make friends easily."
+      },
+      {
+         "id":3,
+         "text":"Have a vivid imagination."
+      },
+      {
+         "id":4,
+         "text":"Trust others."
+      },
+      {
+         "id":5,
+         "text":"Complete tasks successfully."
+      },
+      {
+         "id":6,
+         "text":"Get angry easily."
+      },
+      {
+         "id":7,
+         "text":"Love large parties."
+      },
+      {
+         "id":8,
+         "text":"Believe in the importance of art."
+      },
+      {
+         "id":9,
+         "text":"Would never cheat on my taxes."
+      },
+      {
+         "id":10,
+         "text":"Like order."
+      },
+      {
+         "id":11,
+         "text":"Often feel blue."
+      },
+      {
+         "id":12,
+         "text":"Take charge."
+      },
+      {
+         "id":13,
+         "text":"Experience my emotions intensely."
+      },
+      {
+         "id":14,
+         "text":"Make people feel welcome."
+      },
+      {
+         "id":15,
+         "text":"Try to follow the rules."
+      },
+      {
+         "id":16,
+         "text":"Am easily intimidated."
+      },
+      {
+         "id":17,
+         "text":"Am always busy."
+      },
+      {
+         "id":18,
+         "text":"Prefer variety to routine."
+      },
+      {
+         "id":19,
+         "text":"Am easy to satisfy."
+      },
+      {
+         "id":20,
+         "text":"Go straight for the goal."
+      },
+      {
+         "id":21,
+         "text":"Often eat too much."
+      },
+      {
+         "id":22,
+         "text":"Love excitement."
+      },
+      {
+         "id":23,
+         "text":"Like to solve complex problems."
+      },
+      {
+         "id":24,
+         "text":"Dislike being the center of attention."
+      },
+      {
+         "id":25,
+         "text":"Get chores done right away."
+      },
+      {
+         "id":26,
+         "text":"Panic easily."
+      },
+      {
+         "id":27,
+         "text":"Radiate joy."
+      },
+      {
+         "id":28,
+         "text":"Tend to vote for liberal political candidates."
+      },
+      {
+         "id":29,
+         "text":"Sympathize with the homeless."
+      },
+      {
+         "id":30,
+         "text":"Avoid mistakes."
+      },
+      {
+         "id":31,
+         "text":"Fear for the worst."
+      },
+      {
+         "id":32,
+         "text":"Warm up quickly to others."
+      },
+      {
+         "id":33,
+         "text":"Enjoy wild flights of fantasy."
+      },
+      {
+         "id":34,
+         "text":"Believe that others have good intentions."
+      },
+      {
+         "id":35,
+         "text":"Excel in what I do."
+      },
+      {
+         "id":36,
+         "text":"Get irritated easily."
+      },
+      {
+         "id":37,
+         "text":"Talk to a lot of different people at parties."
+      },
+      {
+         "id":38,
+         "text":"Like music."
+      },
+      {
+         "id":39,
+         "text":"Stick to the rules."
+      },
+      {
+         "id":40,
+         "text":"Like to tidy up."
+      },
+      {
+         "id":41,
+         "text":"Dislike myself."
+      },
+      {
+         "id":42,
+         "text":"Try to lead others."
+      },
+      {
+         "id":43,
+         "text":"Feel others' emotions."
+      },
+      {
+         "id":44,
+         "text":"Anticipate the needs of others."
+      },
+      {
+         "id":45,
+         "text":"Keep my promises."
+      },
+      {
+         "id":46,
+         "text":"Am afraid that I will do the wrong thing."
+      },
+      {
+         "id":47,
+         "text":"Am always on the go."
+      },
+      {
+         "id":48,
+         "text":"Like to visit new places."
+      },
+      {
+         "id":49,
+         "text":"Can't stand confrontations."
+      },
+      {
+         "id":50,
+         "text":"Work hard."
+      },
+      {
+         "id":51,
+         "text":"Don't know why I do some of the things I do."
+      },
+      {
+         "id":52,
+         "text":"Seek adventure."
+      },
+      {
+         "id":53,
+         "text":"Love to read challenging material."
+      },
+      {
+         "id":54,
+         "text":"Dislike talking about myself."
+      },
+      {
+         "id":55,
+         "text":"Am always prepared."
+      },
+      {
+         "id":56,
+         "text":"Become overwhelmed by events."
+      },
+      {
+         "id":57,
+         "text":"Have a lot of fun."
+      },
+      {
+         "id":58,
+         "text":"Believe that there is no absolute right or wrong."
+      },
+      {
+         "id":59,
+         "text":"Feel sympathy for those who are worse off than myself."
+      },
+      {
+         "id":60,
+         "text":"Choose my words with care."
+      },
+      {
+         "id":61,
+         "text":"Am afraid of many things."
+      },
+      {
+         "id":62,
+         "text":"Feel comfortable around people."
+      },
+      {
+         "id":63,
+         "text":"Love to daydream."
+      },
+      {
+         "id":64,
+         "text":"Trust what people say."
+      },
+      {
+         "id":65,
+         "text":"Handle tasks smoothly."
+      },
+      {
+         "id":66,
+         "text":"Get upset easily."
+      },
+      {
+         "id":67,
+         "text":"Enjoy being part of a group."
+      },
+      {
+         "id":68,
+         "text":"See beauty in things that others might not notice."
+      },
+      {
+         "id":69,
+         "text":"Use flattery to get ahead."
+      },
+      {
+         "id":70,
+         "text":"Want everything to be \"just right.\""
+      },
+      {
+         "id":71,
+         "text":"Am often down in the dumps."
+      },
+      {
+         "id":72,
+         "text":"Can talk others into doing things."
+      },
+      {
+         "id":73,
+         "text":"Am passionate about causes."
+      },
+      {
+         "id":74,
+         "text":"Love to help others."
+      },
+      {
+         "id":75,
+         "text":"Pay my bills on time."
+      },
+      {
+         "id":76,
+         "text":"Find it difficult to approach others."
+      },
+      {
+         "id":77,
+         "text":"Do a lot in my spare time."
+      },
+      {
+         "id":78,
+         "text":"Interested in many things."
+      },
+      {
+         "id":79,
+         "text":"Hate to seem pushy."
+      },
+      {
+         "id":80,
+         "text":"Turn plans into actions."
+      },
+      {
+         "id":81,
+         "text":"Do things I later regret."
+      },
+      {
+         "id":82,
+         "text":"Love action."
+      },
+      {
+         "id":83,
+         "text":"Have a rich vocabulary."
+      },
+      {
+         "id":84,
+         "text":"Consider myself an average person."
+      },
+      {
+         "id":85,
+         "text":"Start tasks right away."
+      },
+      {
+         "id":86,
+         "text":"Feel that I'm unable to deal with things."
+      },
+      {
+         "id":87,
+         "text":"Express childlike joy."
+      },
+      {
+         "id":88,
+         "text":"Believe that criminals should receive help rather than punishment."
+      },
+      {
+         "id":89,
+         "text":"Value cooperation over competition."
+      },
+      {
+         "id":90,
+         "text":"Stick to my chosen path."
+      },
+      {
+         "id":91,
+         "text":"Get stressed out easily."
+      },
+      {
+         "id":92,
+         "text":"Act comfortably with others."
+      },
+      {
+         "id":93,
+         "text":"Like to get lost in thought."
+      },
+      {
+         "id":94,
+         "text":"Believe that people are basically moral."
+      },
+      {
+         "id":95,
+         "text":"Am sure of my ground."
+      },
+      {
+         "id":96,
+         "text":"Am often in a bad mood."
+      },
+      {
+         "id":97,
+         "text":"Involve others in what I am doing."
+      },
+      {
+         "id":98,
+         "text":"Love flowers."
+      },
+      {
+         "id":99,
+         "text":"Use others for my own ends."
+      },
+      {
+         "id":100,
+         "text":"Love order and regularity."
+      },
+      {
+         "id":101,
+         "text":"Have a low opinion of myself."
+      },
+      {
+         "id":102,
+         "text":"Seek to influence others."
+      },
+      {
+         "id":103,
+         "text":"Enjoy examining myself and my life."
+      },
+      {
+         "id":104,
+         "text":"Am concerned about others."
+      },
+      {
+         "id":105,
+         "text":"Tell the truth."
+      },
+      {
+         "id":106,
+         "text":"Am afraid to draw attention to myself."
+      },
+      {
+         "id":107,
+         "text":"Can manage many things at the same time."
+      },
+      {
+         "id":108,
+         "text":"Like to begin new things."
+      },
+      {
+         "id":109,
+         "text":"Have a sharp tongue."
+      },
+      {
+         "id":110,
+         "text":"Plunge into tasks with all my heart."
+      },
+      {
+         "id":111,
+         "text":"Go on binges."
+      },
+      {
+         "id":112,
+         "text":"Enjoy being part of a loud crowd."
+      },
+      {
+         "id":113,
+         "text":"Can handle a lot of information."
+      },
+      {
+         "id":114,
+         "text":"Seldom toot my own horn."
+      },
+      {
+         "id":115,
+         "text":"Get to work at once."
+      },
+      {
+         "id":116,
+         "text":"Can't make up my mind."
+      },
+      {
+         "id":117,
+         "text":"Laugh my way through life."
+      },
+      {
+         "id":118,
+         "text":"Believe in one true religion."
+      },
+      {
+         "id":119,
+         "text":"Suffer from others' sorrows."
+      },
+      {
+         "id":120,
+         "text":"Jump into things without thinking."
+      },
+      {
+         "id":121,
+         "text":"Get caught up in my problems."
+      },
+      {
+         "id":122,
+         "text":"Cheer people up."
+      },
+      {
+         "id":123,
+         "text":"Indulge in my fantasies."
+      },
+      {
+         "id":124,
+         "text":"Believe in human goodness."
+      },
+      {
+         "id":125,
+         "text":"Come up with good solutions."
+      },
+      {
+         "id":126,
+         "text":"Lose my temper."
+      },
+      {
+         "id":127,
+         "text":"Love surprise parties."
+      },
+      {
+         "id":128,
+         "text":"Enjoy the beauty of nature."
+      },
+      {
+         "id":129,
+         "text":"Know how to get around the rules."
+      },
+      {
+         "id":130,
+         "text":"Do things according to a plan."
+      },
+      {
+         "id":131,
+         "text":"Have frequent mood swings."
+      },
+      {
+         "id":132,
+         "text":"Take control of things."
+      },
+      {
+         "id":133,
+         "text":"Try to understand myself."
+      },
+      {
+         "id":134,
+         "text":"Have a good word for everyone."
+      },
+      {
+         "id":135,
+         "text":"Listen to my conscience."
+      },
+      {
+         "id":136,
+         "text":"Only feel comfortable with friends."
+      },
+      {
+         "id":137,
+         "text":"React quickly."
+      },
+      {
+         "id":138,
+         "text":"Prefer to stick with things that I know."
+      },
+      {
+         "id":139,
+         "text":"Contradict others."
+      },
+      {
+         "id":140,
+         "text":"Do more than what's expected of me."
+      },
+      {
+         "id":141,
+         "text":"Love to eat."
+      },
+      {
+         "id":142,
+         "text":"Enjoy being reckless."
+      },
+      {
+         "id":143,
+         "text":"Enjoy thinking about things."
+      },
+      {
+         "id":144,
+         "text":"Believe that I am better than others."
+      },
+      {
+         "id":145,
+         "text":"Carry out my plans."
+      },
+      {
+         "id":146,
+         "text":"Get overwhelmed by emotions."
+      },
+      {
+         "id":147,
+         "text":"Love life."
+      },
+      {
+         "id":148,
+         "text":"Tend to vote for conservative political candidates."
+      },
+      {
+         "id":149,
+         "text":"Am not interested in other people's problems."
+      },
+      {
+         "id":150,
+         "text":"Make rash decisions."
+      },
+      {
+         "id":151,
+         "text":"Am not easily bothered by things."
+      },
+      {
+         "id":152,
+         "text":"Am hard to get to know."
+      },
+      {
+         "id":153,
+         "text":"Spend time reflecting on things."
+      },
+      {
+         "id":154,
+         "text":"Think that all will be well."
+      },
+      {
+         "id":155,
+         "text":"Know how to get things done."
+      },
+      {
+         "id":156,
+         "text":"Rarely get irritated."
+      },
+      {
+         "id":157,
+         "text":"Prefer to be alone."
+      },
+      {
+         "id":158,
+         "text":"Do not like art."
+      },
+      {
+         "id":159,
+         "text":"Cheat to get ahead."
+      },
+      {
+         "id":160,
+         "text":"Often forget to put things back in their proper place."
+      },
+      {
+         "id":161,
+         "text":"Feel desperate."
+      },
+      {
+         "id":162,
+         "text":"Wait for others to lead the way."
+      },
+      {
+         "id":163,
+         "text":"Seldom get emotional."
+      },
+      {
+         "id":164,
+         "text":"Look down on others."
+      },
+      {
+         "id":165,
+         "text":"Break rules."
+      },
+      {
+         "id":166,
+         "text":"Stumble over my words."
+      },
+      {
+         "id":167,
+         "text":"Like to take it easy."
+      },
+      {
+         "id":168,
+         "text":"Dislike changes."
+      },
+      {
+         "id":169,
+         "text":"Love a good fight."
+      },
+      {
+         "id":170,
+         "text":"Set high standards for myself and others."
+      },
+      {
+         "id":171,
+         "text":"Rarely overindulge."
+      },
+      {
+         "id":172,
+         "text":"Act wild and crazy."
+      },
+      {
+         "id":173,
+         "text":"Am not interested in abstract ideas."
+      },
+      {
+         "id":174,
+         "text":"Think highly of myself."
+      },
+      {
+         "id":175,
+         "text":"Find it difficult to get down to work."
+      },
+      {
+         "id":176,
+         "text":"Remain calm under pressure."
+      },
+      {
+         "id":177,
+         "text":"Look at the bright side of life."
+      },
+      {
+         "id":178,
+         "text":"Believe that too much tax money goes to support artists."
+      },
+      {
+         "id":179,
+         "text":"Tend to dislike soft-hearted people."
+      },
+      {
+         "id":180,
+         "text":"Like to act on a whim."
+      },
+      {
+         "id":181,
+         "text":"Am relaxed most of the time."
+      },
+      {
+         "id":182,
+         "text":"Often feel uncomfortable around others."
+      },
+      {
+         "id":183,
+         "text":"Seldom daydream."
+      },
+      {
+         "id":184,
+         "text":"Distrust people."
+      },
+      {
+         "id":185,
+         "text":"Misjudge situations."
+      },
+      {
+         "id":186,
+         "text":"Seldom get mad."
+      },
+      {
+         "id":187,
+         "text":"Want to be left alone."
+      },
+      {
+         "id":188,
+         "text":"Do not like poetry."
+      },
+      {
+         "id":189,
+         "text":"Put people under pressure."
+      },
+      {
+         "id":190,
+         "text":"Leave a mess in my room."
+      },
+      {
+         "id":191,
+         "text":"Feel that my life lacks direction."
+      },
+      {
+         "id":192,
+         "text":"Keep in the background."
+      },
+      {
+         "id":193,
+         "text":"Am not easily affected by my emotions."
+      },
+      {
+         "id":194,
+         "text":"Am indifferent to the feelings of others."
+      },
+      {
+         "id":195,
+         "text":"Break my promises."
+      },
+      {
+         "id":196,
+         "text":"Am not embarrassed easily."
+      },
+      {
+         "id":197,
+         "text":"Like to take my time."
+      },
+      {
+         "id":198,
+         "text":"Don't like the idea of change."
+      },
+      {
+         "id":199,
+         "text":"Yell at people."
+      },
+      {
+         "id":200,
+         "text":"Demand quality."
+      },
+      {
+         "id":201,
+         "text":"Easily resist temptations."
+      },
+      {
+         "id":202,
+         "text":"Willing to try anything once."
+      },
+      {
+         "id":203,
+         "text":"Avoid philosophical discussions."
+      },
+      {
+         "id":204,
+         "text":"Have a high opinion of myself."
+      },
+      {
+         "id":205,
+         "text":"Waste my time."
+      },
+      {
+         "id":206,
+         "text":"Can handle complex problems."
+      },
+      {
+         "id":207,
+         "text":"Laugh aloud."
+      },
+      {
+         "id":208,
+         "text":"Believe laws should be strictly enforced."
+      },
+      {
+         "id":209,
+         "text":"Believe in an eye for an eye."
+      },
+      {
+         "id":210,
+         "text":"Rush into things."
+      },
+      {
+         "id":211,
+         "text":"Am not easily disturbed by events."
+      },
+      {
+         "id":212,
+         "text":"Avoid contacts with others."
+      },
+      {
+         "id":213,
+         "text":"Do not have a good imagination."
+      },
+      {
+         "id":214,
+         "text":"Suspect hidden motives in others."
+      },
+      {
+         "id":215,
+         "text":"Don't understand things."
+      },
+      {
+         "id":216,
+         "text":"Am not easily annoyed."
+      },
+      {
+         "id":217,
+         "text":"Don't like crowded events."
+      },
+      {
+         "id":218,
+         "text":"Do not enjoy going to art museums."
+      },
+      {
+         "id":219,
+         "text":"Pretend to be concerned for others."
+      },
+      {
+         "id":220,
+         "text":"Leave my belongings around."
+      },
+      {
+         "id":221,
+         "text":"Seldom feel blue."
+      },
+      {
+         "id":222,
+         "text":"Have little to say."
+      },
+      {
+         "id":223,
+         "text":"Rarely notice my emotional reactions."
+      },
+      {
+         "id":224,
+         "text":"Make people feel uncomfortable."
+      },
+      {
+         "id":225,
+         "text":"Get others to do my duties."
+      },
+      {
+         "id":226,
+         "text":"Am comfortable in unfamiliar situations."
+      },
+      {
+         "id":227,
+         "text":"Like a leisurely lifestyle."
+      },
+      {
+         "id":228,
+         "text":"Am a creature of habit."
+      },
+      {
+         "id":229,
+         "text":"Insult people."
+      },
+      {
+         "id":230,
+         "text":"Am not highly motivated to succeed."
+      },
+      {
+         "id":231,
+         "text":"Am able to control my cravings."
+      },
+      {
+         "id":232,
+         "text":"Seek danger."
+      },
+      {
+         "id":233,
+         "text":"Have difficulty understanding abstract ideas."
+      },
+      {
+         "id":234,
+         "text":"Know the answers to many questions."
+      },
+      {
+         "id":235,
+         "text":"Need a push to get started."
+      },
+      {
+         "id":236,
+         "text":"Know how to cope."
+      },
+      {
+         "id":237,
+         "text":"Amuse my friends."
+      },
+      {
+         "id":238,
+         "text":"Believe that we coddle criminals too much."
+      },
+      {
+         "id":239,
+         "text":"Try not to think about the needy."
+      },
+      {
+         "id":240,
+         "text":"Do crazy things."
+      },
+      {
+         "id":241,
+         "text":"Don't worry about things that have already happened."
+      },
+      {
+         "id":242,
+         "text":"Am not really interested in others."
+      },
+      {
+         "id":243,
+         "text":"Seldom get lost in thought."
+      },
+      {
+         "id":244,
+         "text":"Am wary of others."
+      },
+      {
+         "id":245,
+         "text":"Have little to contribute."
+      },
+      {
+         "id":246,
+         "text":"Keep my cool."
+      },
+      {
+         "id":247,
+         "text":"Avoid crowds."
+      },
+      {
+         "id":248,
+         "text":"Do not like concerts."
+      },
+      {
+         "id":249,
+         "text":"Take advantage of others."
+      },
+      {
+         "id":250,
+         "text":"Am not bothered by messy people."
+      },
+      {
+         "id":251,
+         "text":"Feel comfortable with myself."
+      },
+      {
+         "id":252,
+         "text":"Don't like to draw attention to myself."
+      },
+      {
+         "id":253,
+         "text":"Experience very few emotional highs and lows."
+      },
+      {
+         "id":254,
+         "text":"Turn my back on others."
+      },
+      {
+         "id":255,
+         "text":"Do the opposite of what is asked."
+      },
+      {
+         "id":256,
+         "text":"Am not bothered by difficult social situations."
+      },
+      {
+         "id":257,
+         "text":"Let things proceed at their own pace."
+      },
+      {
+         "id":258,
+         "text":"Dislike new foods."
+      },
+      {
+         "id":259,
+         "text":"Get back at others."
+      },
+      {
+         "id":260,
+         "text":"Do just enough work to get by."
+      },
+      {
+         "id":261,
+         "text":"Never spend more than I can afford."
+      },
+      {
+         "id":262,
+         "text":"Would never go hang gliding or bungee jumping."
+      },
+      {
+         "id":263,
+         "text":"Am not interested in theoretical discussions."
+      },
+      {
+         "id":264,
+         "text":"Boast about my virtues."
+      },
+      {
+         "id":265,
+         "text":"Have difficulty starting tasks."
+      },
+      {
+         "id":266,
+         "text":"Readily overcome setbacks."
+      },
+      {
+         "id":267,
+         "text":"Am not easily amused."
+      },
+      {
+         "id":268,
+         "text":"Believe that we should be tough on crime."
+      },
+      {
+         "id":269,
+         "text":"Believe people should fend for themselves."
+      },
+      {
+         "id":270,
+         "text":"Act without thinking."
+      },
+      {
+         "id":271,
+         "text":"Adapt easily to new situations."
+      },
+      {
+         "id":272,
+         "text":"Keep others at a distance."
+      },
+      {
+         "id":273,
+         "text":"Have difficulty imagining things."
+      },
+      {
+         "id":274,
+         "text":"Believe that people are essentially evil."
+      },
+      {
+         "id":275,
+         "text":"Don't see the consequences of things."
+      },
+      {
+         "id":276,
+         "text":"Rarely complain."
+      },
+      {
+         "id":277,
+         "text":"Seek quiet."
+      },
+      {
+         "id":278,
+         "text":"Do not enjoy watching dance performances."
+      },
+      {
+         "id":279,
+         "text":"Obstruct others' plans."
+      },
+      {
+         "id":280,
+         "text":"Am not bothered by disorder."
+      },
+      {
+         "id":281,
+         "text":"Am very pleased with myself."
+      },
+      {
+         "id":282,
+         "text":"Hold back my opinions."
+      },
+      {
+         "id":283,
+         "text":"Don't understand people who get emotional."
+      },
+      {
+         "id":284,
+         "text":"Take no time for others."
+      },
+      {
+         "id":285,
+         "text":"Misrepresent the facts."
+      },
+      {
+         "id":286,
+         "text":"Am able to stand up for myself."
+      },
+      {
+         "id":287,
+         "text":"React slowly."
+      },
+      {
+         "id":288,
+         "text":"Am attached to conventional ways."
+      },
+      {
+         "id":289,
+         "text":"Hold a grudge."
+      },
+      {
+         "id":290,
+         "text":"Put little time and effort into my work."
+      },
+      {
+         "id":291,
+         "text":"Never splurge."
+      },
+      {
+         "id":292,
+         "text":"Dislike loud music."
+      },
+      {
+         "id":293,
+         "text":"Avoid difficult reading material."
+      },
+      {
+         "id":294,
+         "text":"Make myself the center of attention."
+      },
+      {
+         "id":295,
+         "text":"Postpone decisions."
+      },
+      {
+         "id":296,
+         "text":"Am calm even in tense situations."
+      },
+      {
+         "id":297,
+         "text":"Seldom joke around."
+      },
+      {
+         "id":298,
+         "text":"Like to stand during the national anthem."
+      },
+      {
+         "id":299,
+         "text":"Can't stand weak people."
+      },
+      {
+         "id":300,
+         "text":"Often make last-minute plans."
+      }
+   ],
+   "select":[
+      {
+         "id":1,
+         "text":"Very Inaccurate"
+      },
+      {
+         "id":2,
+         "text":"Moderately Inaccurate"
+      },
+      {
+         "id":3,
+         "text":"Neither Accurate Nor Inaccurate"
+      },
+      {
+         "id":4,
+         "text":"Moderately Accurate"
+      },
+      {
+         "id":5,
+         "text":"Very Accurate"
+      }
+   ]
+}

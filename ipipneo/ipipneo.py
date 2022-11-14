@@ -8,12 +8,13 @@ __license__ = "MIT"
 __version__ = "1.0.0"
 __status__ = "production"
 
+import copy
 import uuid
 
 from ipipneo.facet import Facet
 from ipipneo.model import QuestionNumber
 from ipipneo.norm import Norm
-from ipipneo.utility import (apply_invert_select, organize_list_json,
+from ipipneo.utility import (apply_reverse_scored_120, organize_list_json,
                              raise_if_age_is_invalid, raise_if_sex_is_invalid)
 
 
@@ -37,25 +38,15 @@ class IpipNeo(Facet):
         super().__init__(nquestion=nquestion)
         self._nquestion = question
 
-    def compute(self, sex: str, age: int, answers: dict) -> dict:
+    def evaluator(self, sex: str, age: int, score: list) -> dict:
         """
-        Compute the answers and generate the dictionary with the results.
+        Apply the calculation of the Big-Five and its personalities based on the answers.
 
         Args:
             - sex: Gender of the individual (M or F).
             - age: The age of the individual.
-            - answers: Standardized dictionary with answers.
+            - score: The normalized score.
         """
-        raise_if_sex_is_invalid(sex=sex)
-        raise_if_age_is_invalid(age=age)
-        assert isinstance(answers, dict), "answers 1 must be a dict"
-
-        answers = apply_invert_select(answers=answers)
-        assert isinstance(answers, dict), "answers 2 must be a dict"
-
-        score = self.score(answers=organize_list_json(answers=answers))
-        assert isinstance(score, list), "score must be a list"
-
         norm = Norm(sex=sex, age=age)
         assert isinstance(norm, dict), "norm must be a dict"
 
@@ -101,3 +92,60 @@ class IpipNeo(Facet):
                 },
             },
         }
+
+    def compute(self, sex: str, age: int, answers: dict, compare: bool = False) -> dict:
+        """
+        Compute the answers and generate the data with the results.
+
+        Args:
+            - sex: Gender of the individual (M or F).
+            - age: The age of the individual.
+            - answers: Standardized dictionary with answers.
+            - compare: If true, it shows the user's answers and reverse score.
+        """
+        raise_if_sex_is_invalid(sex=sex)
+        raise_if_age_is_invalid(age=age)
+        assert isinstance(answers, dict), "answers must be a dict"
+
+        original = copy.deepcopy(answers)
+        assert isinstance(original, dict), "original must be a dict"
+
+        reversed = apply_reverse_scored_120(answers=answers)
+        assert isinstance(reversed, dict), "reversed must be a dict"
+
+        score = self.score(answers=organize_list_json(answers=reversed))
+        assert isinstance(score, list), "score must be a list"
+
+        result = self.evaluator(sex=sex, age=age, score=score)
+        assert isinstance(result, dict), "result 1 must be a dict"
+
+        if compare:
+            result["person"]["result"]["compare"] = {
+                "user_answers_original": original.get("answers", []),
+                "user_answers_reversed": reversed.get("answers", []),
+            }
+        assert isinstance(result, dict), "result 2 must be a dict"
+
+        # import json
+        # json_object = json.dumps(result, indent=4)
+
+        return result or {}
+
+    def compute2(self, sex: str, age: int, answers: list) -> dict:
+        """
+        Compute the answers and generate the data with the results without \
+        applying the reverse-scored items and sort items.
+
+        Args:
+            - sex: Gender of the individual (M or F).
+            - age: The age of the individual.
+            - answers: List with data already normalized from the source.
+        """
+        raise_if_sex_is_invalid(sex=sex)
+        raise_if_age_is_invalid(age=age)
+        assert isinstance(answers, list), "answers must be a list"
+
+        score = self.score(answers=answers)
+        assert isinstance(score, list), "score must be a list"
+
+        return self.evaluator(sex=sex, age=age, score=score) or {}

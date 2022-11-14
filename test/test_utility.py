@@ -3,10 +3,11 @@
 import json
 import unittest
 
-from ipipneo.utility import (answers_is_valid, apply_invert_select,
+from ipipneo.utility import (answers_is_valid, apply_reverse_scored_120,
                              big5_ocean_is_valid, big_five_target,
                              create_big5_dict, organize_list_json,
-                             raise_if_age_is_invalid, raise_if_sex_is_invalid)
+                             raise_if_age_is_invalid, raise_if_sex_is_invalid,
+                             reverse_scored)
 
 
 def load_mock_answers(idx: int) -> dict:
@@ -573,28 +574,44 @@ class Testutility(unittest.TestCase):
         self.assertEqual(C.get("C"), 86.96687032595662)
         assert isinstance(C.get("traits"), list), "traits must be a list"
 
-    def test_apply_invert_select(self) -> None:
+    def test_apply_reverse_scored_120(self) -> None:
         with self.assertRaises(AssertionError) as e:
-            apply_invert_select(answers="")
+            apply_reverse_scored_120(answers="")
         self.assertEqual(str(e.exception), "The (answers) field must be a dict!")
 
         with self.assertRaises(BaseException) as e:
-            apply_invert_select(answers={})
+            apply_reverse_scored_120(answers={})
         self.assertEqual(str(e.exception), "The key named (answers) was not found!")
 
         with self.assertRaises(BaseException) as e:
-            apply_invert_select(answers={"answers": []})
+            apply_reverse_scored_120(answers={"answers": []})
         self.assertEqual(str(e.exception), "The key named (id_question) was not found!")
 
         with self.assertRaises(BaseException) as e:
-            apply_invert_select(answers={"answers": [{"id_question": 1}]})
+            apply_reverse_scored_120(answers={"answers": [{"id_question": 1}]})
         self.assertEqual(str(e.exception), "The key named (id_select) was not found!")
 
         a = load_mock_answers(idx=3)
         assert isinstance(a, dict), "a must be a dict"
 
-        b = apply_invert_select(answers=load_mock_answers(idx=3))
+        b = apply_reverse_scored_120(answers=load_mock_answers(idx=3))
         assert isinstance(b, dict), "b must be a dict"
         assert isinstance(b.get("answers", []), list), "b must be a list"
 
         self.assertNotEqual(a, b)
+
+    def test_reverse_scored(self) -> None:
+        with self.assertRaises(TypeError) as e:
+            reverse_scored(a=1)
+
+        with self.assertRaises(BaseException) as e:
+            reverse_scored(select=900)
+        self.assertEqual(
+            str(e.exception), "Something wrong in the selection option: 900"
+        )
+
+        self.assertEqual(reverse_scored(select=1), 5)
+        self.assertEqual(reverse_scored(select=2), 4)
+        self.assertEqual(reverse_scored(select=3), 3)
+        self.assertEqual(reverse_scored(select=4), 2)
+        self.assertEqual(reverse_scored(select=5), 1)
