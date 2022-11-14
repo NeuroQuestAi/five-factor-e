@@ -26,7 +26,7 @@ class IpipNeo(Facet):
         Initialize the class.
 
         Args:
-            - nquestion: Question type.
+            - question: Question type, 120 or 300.
         """
         if question == 120:
             nquestion = QuestionNumber.IPIP_120
@@ -47,7 +47,7 @@ class IpipNeo(Facet):
             - age: The age of the individual.
             - score: The normalized score.
         """
-        norm = Norm(sex=sex, age=age)
+        norm = Norm(sex=sex, age=age, nquestion=self._nquestion)
         assert isinstance(norm, dict), "norm must be a dict"
 
         normc = Norm.calc(domain=self.domain(score=score), norm=norm)

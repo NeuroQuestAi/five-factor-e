@@ -8,25 +8,33 @@ from ipipneo.norm import Norm
 class TestNorm(unittest.TestCase):
     def test_invalid_params(self) -> None:
         with self.assertRaises(TypeError):
-            norm = Norm()
+            Norm()
 
         with self.assertRaises(TypeError):
-            norm = Norm(sex="M")
+            Norm(sex="M")
 
         with self.assertRaises(TypeError):
-            norm = Norm(age=0)
+            Norm(age=0)
+
+        with self.assertRaises(TypeError):
+            Norm(sex="M", age=1)
 
         with self.assertRaises(AssertionError):
-            norm = Norm(sex="M", age=1)
+            Norm(sex="-", age=1, nquestion=1)
 
         with self.assertRaises(AssertionError):
-            norm = Norm(sex="-", age=1)
+            Norm(sex="F", age=121, nquestion=51)
 
         with self.assertRaises(AssertionError):
-            norm = Norm(sex="F", age=121)
+            Norm(sex="5", age=5, nquestion=121)
 
-        with self.assertRaises(AssertionError):
-            norm = Norm(sex="5", age=5)
+        with self.assertRaises(BaseException) as e:
+            Norm(sex="M", age=20, nquestion=121)
+        self.assertEqual(str(e.exception), "Type question 121 is invalid!")
+
+        with self.assertRaises(BaseException) as e:
+            Norm(sex="F", age=39, nquestion=301)
+        self.assertEqual(str(e.exception), "Type question 301 is invalid!")
 
     def test_norm_output(self) -> None:
         def check(d: dict) -> bool:
@@ -41,72 +49,72 @@ class TestNorm(unittest.TestCase):
             self.assertEqual(len(d.get("ns")), 71)
             return True
 
-        norm = Norm(sex="M", age=18)
+        norm = Norm(sex="M", age=18, nquestion=120)
         assert check(d=norm), "common failed check 1"
         self.assertEqual(norm.get("id"), 1)
         self.assertEqual(norm.get("category"), "men under 21 years old")
 
-        norm = Norm(sex="F", age=18)
+        norm = Norm(sex="F", age=18, nquestion=120)
         assert check(d=norm), "common failed check 2"
         self.assertEqual(norm.get("id"), 5)
         self.assertEqual(norm.get("category"), "women under 21 years old")
 
-        norm = Norm(sex="M", age=21)
+        norm = Norm(sex="M", age=21, nquestion=120)
         assert check(d=norm), "common failed check 3"
         self.assertEqual(norm.get("id"), 2)
         self.assertEqual(norm.get("category"), "men between 21 and 40 years old")
 
-        norm = Norm(sex="F", age=30)
+        norm = Norm(sex="F", age=30, nquestion=120)
         assert check(d=norm), "common failed check 4"
         self.assertEqual(norm.get("id"), 6)
         self.assertEqual(norm.get("category"), "women between 21 and 40 years old")
 
-        norm = Norm(sex="M", age=41)
+        norm = Norm(sex="M", age=41, nquestion=120)
         assert check(d=norm), "common failed check 5"
         self.assertEqual(norm.get("id"), 3)
         self.assertEqual(norm.get("category"), "men between 41 and 60 years of age")
 
-        norm = Norm(sex="F", age=41)
+        norm = Norm(sex="F", age=41, nquestion=120)
         assert check(d=norm), "common failed check 6"
         self.assertEqual(norm.get("id"), 7)
         self.assertEqual(norm.get("category"), "women between 41 and 61 years old")
 
-        norm = Norm(sex="M", age=60)
+        norm = Norm(sex="M", age=60, nquestion=120)
         assert check(d=norm), "common failed check 7"
         self.assertEqual(norm.get("id"), 3)
         self.assertEqual(norm.get("category"), "men between 41 and 60 years of age")
 
-        norm = Norm(sex="F", age=60)
+        norm = Norm(sex="F", age=60, nquestion=120)
         assert check(d=norm), "common failed check 8"
         self.assertEqual(norm.get("id"), 7)
         self.assertEqual(norm.get("category"), "women between 41 and 61 years old")
 
-        norm = Norm(sex="M", age=61)
+        norm = Norm(sex="M", age=61, nquestion=120)
         assert check(d=norm), "common failed check 9"
         self.assertEqual(norm.get("id"), 4)
         self.assertEqual(norm.get("category"), "men over 60 years old")
 
-        norm = Norm(sex="F", age=61)
+        norm = Norm(sex="F", age=61, nquestion=120)
         assert check(d=norm), "common failed check 10"
         self.assertEqual(norm.get("id"), 8)
         self.assertEqual(norm.get("category"), "women over 60 years old")
 
-        norm = Norm(sex="M", age=80)
+        norm = Norm(sex="M", age=80, nquestion=120)
         assert check(d=norm), "common failed check 11"
         self.assertEqual(norm.get("id"), 4)
         self.assertEqual(norm.get("category"), "men over 60 years old")
 
-        norm = Norm(sex="F", age=80)
+        norm = Norm(sex="F", age=80, nquestion=120)
         assert check(d=norm), "common failed check 10"
         self.assertEqual(norm.get("id"), 8)
         self.assertEqual(norm.get("category"), "women over 60 years old")
 
-        norm = Norm(sex="M", age=101)
+        norm = Norm(sex="M", age=101, nquestion=120)
         assert check(d=norm), "common failed check 11"
         self.assertEqual(norm.get("id"), 4)
         self.assertEqual(norm.get("category"), "men over 60 years old")
 
-        norm = Norm(sex="F", age=105)
+        norm = Norm(sex="F", age=105, nquestion=120)
         assert check(d=norm), "common failed check 12"
         self.assertEqual(norm.get("id"), 8)
         self.assertEqual(norm.get("category"), "women over 60 years old")
@@ -114,7 +122,7 @@ class TestNorm(unittest.TestCase):
     def test_calc(self):
         normc = Norm.calc(
             domain={"O": 0, "C": 0, "E": 0, "A": 0, "N": 0},
-            norm=Norm(sex="M", age=40),
+            norm=Norm(sex="M", age=40, nquestion=120),
         )
 
         assert isinstance(normc, dict), "normc must be a dict"
@@ -127,7 +135,7 @@ class TestNorm(unittest.TestCase):
 
         normc = Norm.calc(
             domain={"O": 99, "C": 99, "E": 99, "A": 99, "N": 99},
-            norm=Norm(sex="M", age=40),
+            norm=Norm(sex="M", age=40, nquestion=120),
         )
 
         self.assertGreaterEqual(normc.get("O"), 59)
@@ -138,7 +146,7 @@ class TestNorm(unittest.TestCase):
 
         normc = Norm.calc(
             domain={"O": 150, "C": 150, "E": 150, "A": 150, "N": 150},
-            norm=Norm(sex="F", age=25),
+            norm=Norm(sex="F", age=25, nquestion=120),
         )
 
         self.assertGreaterEqual(normc.get("O"), 100)
@@ -149,12 +157,12 @@ class TestNorm(unittest.TestCase):
 
         a = Norm.calc(
             domain={"N": 61, "A": 87, "C": 102, "E": 66, "O": 78},
-            norm=Norm(sex="M", age=40),
+            norm=Norm(sex="M", age=40, nquestion=120),
         )
 
         b = Norm.calc(
             domain={"O": 78, "C": 102, "E": 66, "A": 87, "N": 61},
-            norm=Norm(sex="M", age=40),
+            norm=Norm(sex="M", age=40, nquestion=120),
         )
 
         self.assertEqual(a, b)
@@ -167,7 +175,7 @@ class TestNorm(unittest.TestCase):
     def test_percent(self):
         normc = Norm.calc(
             domain={"N": 61, "A": 87, "C": 102, "E": 66, "O": 78},
-            norm=Norm(sex="M", age=40),
+            norm=Norm(sex="M", age=40, nquestion=120),
         )
 
         assert isinstance(normc, dict), "normc must be a dict"
@@ -190,7 +198,7 @@ class TestNorm(unittest.TestCase):
 
         normc = Norm.calc(
             domain={"N": 61, "A": 87, "C": 102, "E": 66, "O": 78},
-            norm=Norm(sex="F", age=40),
+            norm=Norm(sex="F", age=40, nquestion=120),
         )
 
         percent = Norm.percent(normc=normc)
@@ -230,7 +238,7 @@ class TestNorm(unittest.TestCase):
     def test_normalize(self):
         normc = Norm.calc(
             domain={"N": 61, "A": 87, "C": 102, "E": 66, "O": 78},
-            norm=Norm(sex="M", age=40),
+            norm=Norm(sex="M", age=40, nquestion=120),
         )
 
         assert isinstance(normc, dict), "normc must be a dict"

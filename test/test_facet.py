@@ -113,13 +113,13 @@ class TestFacet(unittest.TestCase):
         assert isinstance(domain, dict), "domain must be a dict"
 
         with self.assertRaises(BaseException) as e:
-            facet.distrib(size=0, b5=b5, norm=Norm(sex="M", age=40))
+            facet.distrib(size=0, b5=b5, norm=Norm(sex="M", age=40, nquestion=120))
         self.assertEqual(
             str(e.exception),
             "The number of questions setting is wrong: list assignment index out of range",
         )
 
-        distrib = facet.distrib(size=7, b5=b5, norm=Norm(sex="M", age=40))
+        distrib = facet.distrib(size=7, b5=b5, norm=Norm(sex="M", age=40, nquestion=120))
         assert isinstance(distrib, dict), "distrib must be a dict"
 
         self.assertEqual(distrib.get("O")[0], 0)
@@ -163,7 +163,7 @@ class TestFacet(unittest.TestCase):
         self.assertEqual(distrib.get("N")[5], 43.80681818181818)
         self.assertEqual(distrib.get("N")[6], 46.75287356321839)
 
-        distrib = facet.distrib(size=7, b5=b5, norm=Norm(sex="F", age=30))
+        distrib = facet.distrib(size=7, b5=b5, norm=Norm(sex="F", age=30, nquestion=120))
         assert isinstance(distrib, dict), "distrib must be a dict"
 
         self.assertEqual(distrib.get("O")[1], 33.113772455089816)
@@ -235,7 +235,7 @@ class TestFacet(unittest.TestCase):
         domain = facet.domain(score=score)
         assert isinstance(domain, dict), "domain must be a dict"
 
-        norm = Norm(sex="M", age=40)
+        norm = Norm(sex="M", age=40, nquestion=120)
         assert isinstance(norm, dict), "norm must be a dict"
 
         normc = Norm.calc(domain=domain, norm=norm)
