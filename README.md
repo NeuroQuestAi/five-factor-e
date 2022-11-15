@@ -74,8 +74,7 @@ from ipipneo import IpipNeo
 ipip = IpipNeo(question=120)
 ```
 
-The answers must be in a standardized *json*, you can enter this template in the project folder [data](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json). This dictionary contains random answers, used for testing purposes only. As an example you can 
-load the json project to test:
+The answers must be in a standardized *json*, you can enter this template in the project folder [data](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json). This dictionary contains random answers, used for testing purposes only. As an example you can load the json project to test:
 
 ```python
 import json, urllib.request
@@ -207,12 +206,12 @@ Note 🚩:
 
 ### Resources 📗
 
-  * https://github.com/kholia/IPIP-NEO-PI
   * http://www.personal.psu.edu/j5j/IPIP/ipipneo300.htm
-  * http://www.personal.psu.edu/~j5j/IPIP/ipipneo120.htm
+  * http://www.personal.psu.edu/j5j/IPIP/ipipneo120.htm
   * http://www.personal.psu.edu/faculty/j/5/j5j/
   * https://ipip.ori.org/
   * https://osf.io/tbmh5/
+  * https://github.com/kholia/IPIP-NEO-PI
 
 ### Authors 👨‍💻
 

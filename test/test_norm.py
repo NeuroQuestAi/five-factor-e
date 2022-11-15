@@ -109,12 +109,12 @@ class TestNorm(unittest.TestCase):
         self.assertEqual(norm.get("id"), 8)
         self.assertEqual(norm.get("category"), "women over 60 years old")
 
-        norm = Norm(sex="M", age=101, nquestion=120)
+        norm = Norm(sex="M", age=90, nquestion=120)
         assert check(d=norm), "common failed check 11"
         self.assertEqual(norm.get("id"), 4)
         self.assertEqual(norm.get("category"), "men over 60 years old")
 
-        norm = Norm(sex="F", age=105, nquestion=120)
+        norm = Norm(sex="F", age=90, nquestion=120)
         assert check(d=norm), "common failed check 12"
         self.assertEqual(norm.get("id"), 8)
         self.assertEqual(norm.get("category"), "women over 60 years old")
