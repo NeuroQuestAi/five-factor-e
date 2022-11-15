@@ -11,7 +11,7 @@ __status__ = "production"
 from ipipneo.utility import reverse_scored
 
 
-class ReverseScoreTest:
+class ReverseScoredCustom:
     """Reverse scored for Tests."""
 
     def __new__(self, answers: dict) -> dict or BaseException or AssertionError:

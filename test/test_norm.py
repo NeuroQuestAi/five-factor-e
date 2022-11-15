@@ -49,6 +49,9 @@ class TestNorm(unittest.TestCase):
             self.assertEqual(len(d.get("ns")), 71)
             return True
 
+        #############################################
+        # 1. Tests with the IPIP-120 norms.
+        #############################################
         norm = Norm(sex="M", age=18, nquestion=120)
         assert check(d=norm), "common failed check 1"
         self.assertEqual(norm.get("id"), 1)
@@ -119,7 +122,30 @@ class TestNorm(unittest.TestCase):
         self.assertEqual(norm.get("id"), 8)
         self.assertEqual(norm.get("category"), "women over 60 years old")
 
-    def test_calc(self):
+        #############################################
+        # 2. Tests with the IPIP-300 norms.
+        #############################################
+        norm = Norm(sex="M", age=18, nquestion=300)
+        assert check(d=norm), "common failed check 13"
+        self.assertEqual(norm.get("id"), 1)
+        self.assertEqual(norm.get("category"), "men of traditional college age")
+
+        norm = Norm(sex="M", age=25, nquestion=300)
+        assert check(d=norm), "common failed check 14"
+        self.assertEqual(norm.get("id"), 2)
+        self.assertEqual(norm.get("category"), "adult men")
+
+        norm = Norm(sex="F", age=18, nquestion=300)
+        assert check(d=norm), "common failed check 15"
+        self.assertEqual(norm.get("id"), 3)
+        self.assertEqual(norm.get("category"), "women of traditional college age")
+
+        norm = Norm(sex="F", age=25, nquestion=300)
+        assert check(d=norm), "common failed check 16"
+        self.assertEqual(norm.get("id"), 4)
+        self.assertEqual(norm.get("category"), "adult women")
+
+    def test_calc_120(self):
         normc = Norm.calc(
             domain={"O": 0, "C": 0, "E": 0, "A": 0, "N": 0},
             norm=Norm(sex="M", age=40, nquestion=120),
@@ -172,7 +198,60 @@ class TestNorm(unittest.TestCase):
         self.assertEqual(round(b.get("A"), 2), 52.12)
         self.assertEqual(round(a.get("N"), 2), 46.38)
 
-    def test_percent(self):
+    def test_calc_300(self):
+        normc = Norm.calc(
+            domain={"O": 0, "C": 0, "E": 0, "A": 0, "N": 0},
+            norm=Norm(sex="M", age=40, nquestion=300),
+        )
+
+        assert isinstance(normc, dict), "normc must be a dict"
+
+        self.assertEqual(round(normc.get("O"), 2), -32.11)
+        self.assertEqual(round(normc.get("C"), 2), -19.9)
+        self.assertEqual(round(normc.get("E"), 2), -10.44)
+        self.assertEqual(round(normc.get("A"), 2), -24.29)
+        self.assertEqual(round(normc.get("N"), 2), 8.19)
+
+        normc = Norm.calc(
+            domain={"O": 99, "C": 99, "E": 99, "A": 99, "N": 99},
+            norm=Norm(sex="M", age=40, nquestion=300),
+        )
+
+        self.assertGreaterEqual(normc.get("O"), 5)
+        self.assertGreaterEqual(normc.get("C"), 12)
+        self.assertGreaterEqual(normc.get("E"), 20)
+        self.assertGreaterEqual(normc.get("A"), 11)
+        self.assertGreaterEqual(normc.get("N"), 33)
+
+        normc = Norm.calc(
+            domain={"O": 150, "C": 150, "E": 150, "A": 150, "N": 150},
+            norm=Norm(sex="F", age=25, nquestion=300),
+        )
+
+        self.assertGreaterEqual(normc.get("O"), 21)
+        self.assertGreaterEqual(normc.get("C"), 26)
+        self.assertGreaterEqual(normc.get("E"), 35)
+        self.assertGreaterEqual(normc.get("A"), 23)
+        self.assertGreaterEqual(normc.get("N"), 43)
+
+        a = Norm.calc(
+            domain={"N": 61, "A": 87, "C": 102, "E": 66, "O": 78},
+            norm=Norm(sex="M", age=40, nquestion=300),
+        )
+
+        b = Norm.calc(
+            domain={"O": 78, "C": 102, "E": 66, "A": 87, "N": 61},
+            norm=Norm(sex="M", age=40, nquestion=300),
+        )
+
+        self.assertEqual(a, b)
+        self.assertEqual(round(a.get("O"), 2), -2.78)
+        self.assertEqual(round(b.get("C"), 2), 13.21)
+        self.assertEqual(round(a.get("E"), 2), 10.25)
+        self.assertEqual(round(b.get("A"), 2), 7.58)
+        self.assertEqual(round(a.get("N"), 2), 23.95)
+
+    def test_percent_120(self):
         normc = Norm.calc(
             domain={"N": 61, "A": 87, "C": 102, "E": 66, "O": 78},
             norm=Norm(sex="M", age=40, nquestion=120),
@@ -235,7 +314,44 @@ class TestNorm(unittest.TestCase):
         self.assertLessEqual(percent.get("A"), -110)
         self.assertLessEqual(percent.get("N"), 210)
 
-    def test_normalize(self):
+    def test_percent_300(self):
+        normc = Norm.calc(
+            domain={"N": 61, "A": 87, "C": 102, "E": 66, "O": 78},
+            norm=Norm(sex="M", age=40, nquestion=300),
+        )
+
+        assert isinstance(normc, dict), "normc must be a dict"
+
+        self.assertEqual(round(normc.get("O"), 2), -2.78)
+        self.assertEqual(round(normc.get("C"), 2), 13.21)
+        self.assertEqual(round(normc.get("E"), 2), 10.25)
+        self.assertEqual(round(normc.get("A"), 2), 7.58)
+        self.assertEqual(round(normc.get("N"), 2), 23.95)
+
+        percent = Norm.percent(normc=normc)
+
+        assert isinstance(percent, dict), "percent must be a dict"
+
+        self.assertEqual(round(percent.get("O"), 2), 260.1)
+        self.assertEqual(round(percent.get("C"), 2), 53.8)
+        self.assertEqual(round(percent.get("E"), 2), 78.5)
+        self.assertEqual(round(percent.get("A"), 2), 105.58)
+        self.assertEqual(round(percent.get("N"), 2), 5.12)
+
+        normc = Norm.calc(
+            domain={"N": 61, "A": 87, "C": 102, "E": 66, "O": 78},
+            norm=Norm(sex="F", age=40, nquestion=300),
+        )
+
+        percent = Norm.percent(normc=normc)
+
+        self.assertEqual(round(percent.get("O"), 2), 311.62)
+        self.assertEqual(round(percent.get("C"), 2), 79.27)
+        self.assertEqual(round(percent.get("E"), 2), 91.34)
+        self.assertEqual(round(percent.get("A"), 2), 236.4)
+        self.assertEqual(round(percent.get("N"), 2), 17.44)
+
+    def test_normalize_120(self):
         normc = Norm.calc(
             domain={"N": 61, "A": 87, "C": 102, "E": 66, "O": 78},
             norm=Norm(sex="M", age=40, nquestion=120),
@@ -257,3 +373,25 @@ class TestNorm(unittest.TestCase):
         self.assertEqual(round(percent.get("E"), 2), 21.47)
         self.assertEqual(round(normalize.get("A"), 2), 57.53)
         self.assertEqual(round(percent.get("N"), 2), 37.24)
+
+    def test_normalize_300(self):
+        normc = Norm.calc(
+            domain={"N": 61, "A": 87, "C": 102, "E": 66, "O": 78},
+            norm=Norm(sex="M", age=40, nquestion=300),
+        )
+
+        assert isinstance(normc, dict), "normc must be a dict"
+
+        percent = Norm.percent(normc=normc)
+
+        assert isinstance(percent, dict), "percent must be a dict"
+
+        normalize = Norm.normalize(normc=normc, percent=percent)
+
+        assert isinstance(normalize, dict), "normalize must be a dict"
+
+        self.assertEqual(round(percent.get("O"), 2), 260.1)
+        self.assertEqual(round(normalize.get("C"), 2), 1)
+        self.assertEqual(round(percent.get("E"), 2), 78.5)
+        self.assertEqual(round(normalize.get("A"), 2), 1)
+        self.assertEqual(round(percent.get("N"), 2), 5.12)

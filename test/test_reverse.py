@@ -3,7 +3,8 @@
 import json
 import unittest
 
-from ipipneo.reverse import ReverseScored120, ReverseScored300
+from ipipneo.reverse import (ReverseScored120, ReverseScored300,
+                             ReverseScoredCustom)
 
 
 def load_mock_answers_120() -> dict:
@@ -18,6 +19,12 @@ def load_mock_answers_300() -> dict:
     return data
 
 
+def load_mock_answers_custom() -> dict:
+    with open(f"test/mock/answers-test-6.json") as f:
+        data = json.load(f)
+    return data
+
+
 class TestReverse(unittest.TestCase):
     def test_reverse_scored_120(self) -> None:
         with self.assertRaises(TypeError):
@@ -26,6 +33,10 @@ class TestReverse(unittest.TestCase):
         with self.assertRaises(AssertionError) as e:
             ReverseScored120(answers=[])
         self.assertEqual(str(e.exception), "The (answers) field must be a dict!")
+
+        with self.assertRaises(BaseException) as e:
+            ReverseScored120(answers={})
+        self.assertEqual(str(e.exception), "The key named (answers) was not found!")
 
         with self.assertRaises(BaseException) as e:
             ReverseScored120(answers={"answers": [{"id_select": 1}]})
@@ -53,6 +64,10 @@ class TestReverse(unittest.TestCase):
         self.assertEqual(str(e.exception), "The (answers) field must be a dict!")
 
         with self.assertRaises(BaseException) as e:
+            ReverseScored300(answers={})
+        self.assertEqual(str(e.exception), "The key named (answers) was not found!")
+
+        with self.assertRaises(BaseException) as e:
             ReverseScored300(answers={"answers": [{"id_select": 1}]})
         self.assertEqual(str(e.exception), "The key named (id_question) was not found!")
 
@@ -66,5 +81,85 @@ class TestReverse(unittest.TestCase):
         b = ReverseScored300(answers=load_mock_answers_300())
         assert isinstance(b, dict), "b must be a dict"
         assert isinstance(b.get("answers", []), list), "b must be a list"
+
+        self.assertNotEqual(a, b)
+
+    def test_reverse_scored_custom(self) -> None:
+        with self.assertRaises(TypeError):
+            ReverseScoredCustom()
+
+        with self.assertRaises(AssertionError) as e:
+            ReverseScoredCustom(answers=[])
+        self.assertEqual(str(e.exception), "The (answers) field must be a dict!")
+
+        with self.assertRaises(BaseException) as e:
+            ReverseScoredCustom(answers={})
+        self.assertEqual(str(e.exception), "The key named (answers) was not found!")
+
+        with self.assertRaises(BaseException) as e:
+            ReverseScoredCustom(answers={"answers": [{"id_select": 1}]})
+        self.assertEqual(str(e.exception), "The key named (id_question) was not found!")
+
+        with self.assertRaises(BaseException) as e:
+            ReverseScoredCustom(answers={"answers": [{"id_question": 1}]})
+        self.assertEqual(str(e.exception), "The key named (id_select) was not found!")
+
+        with self.assertRaises(BaseException) as e:
+            ReverseScoredCustom(
+                answers={"answers": [{"id_question": 1, "id_select": 1}]}
+            )
+        self.assertEqual(
+            str(e.exception), "The key named (reverse_scored) was not found!"
+        )
+
+        a = load_mock_answers_custom()
+        assert isinstance(a, dict), "a must be a dict"
+
+        b = ReverseScoredCustom(answers=load_mock_answers_custom())
+        assert isinstance(b, dict), "b must be a dict"
+        assert isinstance(b.get("answers", []), list), "b must be a list"
+
+        self.assertEqual(
+            a.get("answers")[8].get("id_question"),
+            b.get("answers")[8].get("id_question"),
+        )
+        self.assertEqual(
+            a.get("answers")[8].get("reverse_scored"),
+            b.get("answers")[8].get("reverse_scored"),
+        )
+        self.assertEqual(a.get("answers")[8].get("id_select"), 5)
+        self.assertEqual(b.get("answers")[8].get("id_select"), 1)
+        self.assertNotEqual(
+            a.get("answers")[8].get("id_select"), b.get("answers")[8].get("id_select")
+        )
+
+        self.assertEqual(
+            a.get("answers")[48].get("id_question"),
+            b.get("answers")[48].get("id_question"),
+        )
+        self.assertEqual(
+            a.get("answers")[48].get("reverse_scored"),
+            b.get("answers")[48].get("reverse_scored"),
+        )
+        self.assertEqual(a.get("answers")[48].get("id_select"), 5)
+        self.assertEqual(b.get("answers")[48].get("id_select"), 1)
+        self.assertNotEqual(
+            a.get("answers")[48].get("id_select"), b.get("answers")[48].get("id_select")
+        )
+
+        self.assertEqual(
+            a.get("answers")[119].get("id_question"),
+            b.get("answers")[119].get("id_question"),
+        )
+        self.assertEqual(
+            a.get("answers")[119].get("reverse_scored"),
+            b.get("answers")[119].get("reverse_scored"),
+        )
+        self.assertEqual(a.get("answers")[119].get("id_select"), 4)
+        self.assertEqual(b.get("answers")[119].get("id_select"), 2)
+        self.assertNotEqual(
+            a.get("answers")[119].get("id_select"),
+            b.get("answers")[119].get("id_select"),
+        )
 
         self.assertNotEqual(a, b)

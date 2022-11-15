@@ -14,8 +14,6 @@ def load_mock_answers(idx: int) -> dict:
         name = "answers-test-1.json"
     elif idx == 2:
         name = "answers-test-2.json"
-    elif idx == 3:
-        name = "answers-test-3.json"
     with open(f"test/mock/{name}") as f:
         data = json.load(f)
     return data
