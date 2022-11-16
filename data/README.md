@@ -34,7 +34,7 @@ Example loading json response file locally:
 ```python
 import json
 
-with open('my-test-answers.json', 'r') as f:
+with open("my-test-answers.json", "r") as f:
   answers120 = json.load(f)
 ```
 
