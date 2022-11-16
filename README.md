@@ -9,6 +9,7 @@ https://pypi.org/project/five-factor-e/)
 
 [img_version]: https://img.shields.io/static/v1.svg?label=version&message=1.5.0&color=blue
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20&color=blue
+[![Code style: Black](https://img.shields.io/badge/code%20style-Black-000000.svg)](https://github.com/psf/black)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/neural7/five-factor-e/04ac3ce31e37f582e66ffdf694d4c4bcb8469ec9/doc/big-five.png" alt="Representation of the Big Five"/>
@@ -54,19 +55,40 @@ User-selected answers follow the position:
 | Moderately Accurate             | 4           |
 | Very Accurate                   | 5           |
 
-Note 🚩: Some answers have the order of the score reversed, the algorithm treats the questions with the score inverted by (*question_id*).
+Note 🚩: Some answers have the order of the [score reversed](https://ipip.ori.org/newScoringInstructions.htm), the algorithm treats the questions with the score inverted by (*question_id*).
+
+### Releases
+
+News about each version please look here:
+
+  * [Release](A)
 
 ### Installation 🚀
 
-The simplest way is to use **PIP**, like the command:
+From **PyPI**:
 
 ```shell
-$ pip install five-factor-e
+$ python3 -m pip install --upgrade five-factor-e
+```
+
+From source:
+
+```shell
+$ git clone https://github.com/neural7/five-factor-e.git
+$ cd five-factor-e
+$ python3 -m pip install .
 ```
 
 ### How to use 🔥
 
-The construtor requires the questions model, whether it is the **300** model or short model with **120** questions. Example:
+The construtor requires the questions model, whether it is the **300** model or short model with **120** questions. It also has the version to do simulations with the questions that are [reversed](https://ipip.ori.org/newScoringInstructions.htm). For this, you must turn the **test** variable from false to true.
+
+| Parameters    | Type      | Description                                                       |
+| ------------- | --------- | ----------------------------------------------------------------- |
+| question      | int       | Question type, 120 or 300.                                        |
+| test          | boolean   | Used to simulate reverse scoring questions, only used for studies.|
+
+Example:
 
 ```python
 from ipipneo import IpipNeo
@@ -74,7 +96,15 @@ from ipipneo import IpipNeo
 ipip = IpipNeo(question=120)
 ```
 
-The answers must be in a standardized *json*, you can enter this template in the project folder [data](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json). This dictionary contains random answers, used for testing purposes only. As an example you can load the json project to test:
+The **120** item version is a short version of the inventory, but you can use the full **300** item version. Example:
+
+```python
+from ipipneo import IpipNeo
+
+ipip = IpipNeo(question=300)
+```
+
+The answers must be in a *standardized json*, you can insert this template in the [data](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json) folder of the project. This dictionary contains random answers, used for testing purposes only. As an example, you can load the file with the **120** test responses:
 
 ```python
 import json, urllib.request
@@ -82,10 +112,14 @@ import json, urllib.request
 data = urllib.request.urlopen("https://raw.githubusercontent.com/neural7"\
    "/five-factor-e/main/data/IPIP-NEO/120/answers.json").read()
 
-answers = json.loads(data)
+answers120 = json.loads(data)
 ```
 
-Valid parameters for **compute** method:
+For the long version of the inventory just change the URL from **120** to **300**.
+
+#### Compute the data
+
+The **compute** method is used to evaluate the answers, see the table below with the parameters:
 
 | Parameters    | Type      | Description                                               |
 | ------------- | --------- | --------------------------------------------------------- |
@@ -97,13 +131,19 @@ Valid parameters for **compute** method:
 Calculate the Big Five for a **40-year-old man**:
 
 ```python
-IpipNeo(question=120).compute(sex="M", age=40, answers=answers)
+IpipNeo(question=120).compute(sex="M", age=40, answers=answers120)
+```
+
+For the long version of the inventory just change the parameters *question* to **300**.
+
+```python
+IpipNeo(question=300).compute(sex="M", age=40, answers=answers300)
 ```
 
 Calculating the Big Five for a **25-year-old woman**:
 
 ```python
-IpipNeo(question=120).compute(sex="F", age=25, answers=answers)
+IpipNeo(question=120).compute(sex="F", age=25, answers=answers120)
 ```
 
 An example of the output of the results:
@@ -162,11 +202,27 @@ For the tests it is necessary to download the repository. To run the unit tests 
 $ ./run-test
 ```
 
+#### Using inventory for testing
+
 If you want to make an assessment by answering the inventory of questions, just run:
 
 ```shell
-$ python3 quiz.py
+$ ipipneo-quiz
 ```
+
+In this program you take an assessment for the short version with **120** items as well as the **300** item version, just follow the program's instructions. It is possible to see the **basic graphs** of your **Big-Five** via terminal, if you want to see the graphs at the end of the questionnaires you need to run the installation command:
+
+```shell
+$ pip install five-factor-e[quiz]
+```
+
+Example output with graphics:
+
+<p align="center">
+  <img src="doc/sample-light-1.png" alt="Representation of the Big Five"/>
+</p>
+
+*The complete result is saved in the run folder in json format*.
 
 ### About data 📊
 
