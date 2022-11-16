@@ -22,8 +22,16 @@ setup(
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=long_description,
-    packages=find_packages(),
+    packages=find_packages(exclude=("test",)),
+    python_requires=">=3.5",
+    include_package_data=True,
     install_requires=[],
+    extras_require={"quiz": ["plotext"]},
+    entry_points={
+        "console_scripts": [
+            "ipipneo-quiz = ipipneo.quiz:main",
+        ],
+    },
     keywords=[
         "IPIP-NEO",
         "Big-5",

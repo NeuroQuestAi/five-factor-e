@@ -17,6 +17,7 @@ from itertools import chain, repeat
 try:
     from ipipneo import IpipNeo
 except ModuleNotFoundError:
+    sys.path.insert(0, "../")
     from ipipneo.ipipneo import IpipNeo
 
 URL_IPIP_QUESTIONS = (
@@ -81,9 +82,9 @@ def question_translate() -> list:
     return ["0. IPIP-NEO Original", "1. EN-US", "2. PT-BR", "3. ES-ES"]
 
 
-def inventory(inventory: int, sex: str, age: int, shuffle: str, lang: int) -> None:
+def quiz(inventory: int, sex: str, age: int, shuffle: str, lang: int) -> None:
     """
-    Inventory of questions.
+    Inventory / quiz of questions.
 
     Args:
         - inventory: Inventory model 120 or 300.
@@ -109,8 +110,8 @@ def inventory(inventory: int, sex: str, age: int, shuffle: str, lang: int) -> No
                 repeat("Only numbers from 1 to 5 are accepted! Try again: "),
             ),
         )
-        option = next(filter({"1", "2", "3", "4", "5"}.__contains__, replies))
-        answers.append({"id_question": q.get("id"), "id_select": int(option)})
+        option = int(next(filter({"1", "2", "3", "4", "5"}.__contains__, replies)))
+        answers.append({"id_question": q.get("id"), "id_select": option})
 
     result = IpipNeo(question=inventory).compute(
         sex=sex, age=age, answers={"answers": answers}, compare=True
@@ -411,7 +412,7 @@ def main() -> None:
     )
     lang = int(next(filter(set(map(str, range(0, 3))).__contains__, replies)))
 
-    inventory(
+    quiz(
         inventory=int(inventory),
         sex=str(sex).upper(),
         age=int(age),

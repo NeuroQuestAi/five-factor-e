@@ -5,7 +5,7 @@ __email__ = "e@neural7.io"
 __copyright__ = "Copyright Neural7 2022, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.0.0"
+__version__ = "1.5.0"
 __status__ = "production"
 
 import copy
@@ -14,19 +14,22 @@ import uuid
 from ipipneo.facet import Facet
 from ipipneo.model import QuestionNumber
 from ipipneo.norm import Norm
-from ipipneo.utility import (apply_reverse_scored_120, organize_list_json,
-                             raise_if_age_is_invalid, raise_if_sex_is_invalid)
+from ipipneo.reverse import (ReverseScored120, ReverseScored300,
+                             ReverseScoredCustom)
+from ipipneo.utility import (organize_list_json, raise_if_age_is_invalid,
+                             raise_if_sex_is_invalid)
 
 
 class IpipNeo(Facet):
     """Class that calculates IPIP-NEO answers."""
 
-    def __init__(self, question: int) -> None or BaseException:
+    def __init__(self, question: int, test: bool = False) -> None or BaseException:
         """
         Initialize the class.
 
         Args:
-            - nquestion: Question type.
+            - question: Question type, 120 or 300.
+            - test: Used to test your proposed questions with reverse.
         """
         if question == 120:
             nquestion = QuestionNumber.IPIP_120
@@ -36,7 +39,7 @@ class IpipNeo(Facet):
             raise BaseException(f"Type question {question} is invalid!")
 
         super().__init__(nquestion=nquestion)
-        self._nquestion = question
+        self._nquestion, self._test = (question, test)
 
     def evaluator(self, sex: str, age: int, score: list) -> dict:
         """
@@ -47,7 +50,7 @@ class IpipNeo(Facet):
             - age: The age of the individual.
             - score: The normalized score.
         """
-        norm = Norm(sex=sex, age=age)
+        norm = Norm(sex=sex, age=age, nquestion=self._nquestion)
         assert isinstance(norm, dict), "norm must be a dict"
 
         normc = Norm.calc(domain=self.domain(score=score), norm=norm)
@@ -78,6 +81,8 @@ class IpipNeo(Facet):
             "theory": "Big 5 Personality Traits",
             "model": "IPIP-NEO",
             "question": self._nquestion,
+            "test": self._test,
+            "version": __version__,
             "person": {
                 "sex": sex,
                 "age": age,
@@ -110,7 +115,15 @@ class IpipNeo(Facet):
         original = copy.deepcopy(answers)
         assert isinstance(original, dict), "original must be a dict"
 
-        reversed = apply_reverse_scored_120(answers=answers)
+        reversed = {}
+        if self._test:
+            reversed = ReverseScoredCustom(answers=answers)
+        else:
+            reversed = (
+                ReverseScored120(answers=answers)
+                if self._nquestion == 120
+                else ReverseScored300(answers=answers)
+            )
         assert isinstance(reversed, dict), "reversed must be a dict"
 
         score = self.score(answers=organize_list_json(answers=reversed))
@@ -126,26 +139,4 @@ class IpipNeo(Facet):
             }
         assert isinstance(result, dict), "result 2 must be a dict"
 
-        # import json
-        # json_object = json.dumps(result, indent=4)
-
         return result or {}
-
-    def compute2(self, sex: str, age: int, answers: list) -> dict:
-        """
-        Compute the answers and generate the data with the results without \
-        applying the reverse-scored items and sort items.
-
-        Args:
-            - sex: Gender of the individual (M or F).
-            - age: The age of the individual.
-            - answers: List with data already normalized from the source.
-        """
-        raise_if_sex_is_invalid(sex=sex)
-        raise_if_age_is_invalid(age=age)
-        assert isinstance(answers, list), "answers must be a list"
-
-        score = self.score(answers=answers)
-        assert isinstance(score, list), "score must be a list"
-
-        return self.evaluator(sex=sex, age=age, score=score) or {}

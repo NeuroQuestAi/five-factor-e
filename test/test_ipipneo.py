@@ -6,8 +6,20 @@ import unittest
 from ipipneo.ipipneo import IpipNeo
 
 
-def load_mock_answers() -> dict:
+def load_mock_answers_120() -> dict:
     with open("test/mock/answers-test-1.json") as f:
+        data = json.load(f)
+    return data
+
+
+def load_mock_answers_300() -> dict:
+    with open("test/mock/answers-test-4.json") as f:
+        data = json.load(f)
+    return data
+
+
+def load_mock_answers_custom() -> dict:
+    with open(f"test/mock/answers-test-6.json") as f:
         data = json.load(f)
     return data
 
@@ -28,8 +40,10 @@ class TestIpipNeo(unittest.TestCase):
 
         self.assertEqual(IpipNeo(question=120).__class__.__name__, "IpipNeo")
         self.assertEqual(IpipNeo(question=300).__class__.__name__, "IpipNeo")
+        self.assertEqual(IpipNeo(question=120, test=True).__class__.__name__, "IpipNeo")
+        self.assertEqual(IpipNeo(question=300, test=True).__class__.__name__, "IpipNeo")
 
-    def test_compute(self) -> None:
+    def test_compute_120(self) -> None:
         big5 = IpipNeo(question=120)
 
         with self.assertRaises(TypeError):
@@ -44,7 +58,7 @@ class TestIpipNeo(unittest.TestCase):
         # 1. Test with 40 year old man.
         #############################################
         result = IpipNeo(question=120).compute(
-            sex="M", age=40, answers=load_mock_answers()
+            sex="M", age=40, answers=load_mock_answers_120()
         )
 
         self.assertTrue(len(result.get("id")))
@@ -73,7 +87,7 @@ class TestIpipNeo(unittest.TestCase):
         # 2. Test with 30 year old woman.
         #############################################
         result = IpipNeo(question=120).compute(
-            sex="F", age=30, answers=load_mock_answers()
+            sex="F", age=30, answers=load_mock_answers_120()
         )
 
         self.assertTrue(len(result.get("id")))
@@ -102,10 +116,9 @@ class TestIpipNeo(unittest.TestCase):
         # 3. Test with 65 year old woman.
         #############################################
         result = IpipNeo(question=120).compute(
-            sex="F", age=65, answers=load_mock_answers(), compare=True
+            sex="F", age=65, answers=load_mock_answers_120(), compare=True
         )
 
-        # print(result)
         self.assertIn("id", result)
         self.assertIn("theory", result)
         self.assertIn("model", result)
@@ -214,3 +227,190 @@ class TestIpipNeo(unittest.TestCase):
         self.assertNotEqual(a[66], b[66])
         self.assertEqual(a[66], 2)
         self.assertEqual(b[66], 4)
+
+    def test_compute_300(self) -> None:
+        #############################################
+        # 1. Test with 40 year old man.
+        #############################################
+        result = IpipNeo(question=300).compute(
+            sex="M", age=40, answers=load_mock_answers_300()
+        )
+
+        self.assertTrue(len(result.get("id")))
+        self.assertTrue(len(result.get("theory")))
+        self.assertTrue(len(result.get("model")))
+
+        self.assertEqual(result.get("question"), 300)
+        self.assertEqual(result.get("person").get("sex"), "M")
+        self.assertEqual(result.get("person").get("age"), 40)
+
+        self.assertTrue(len(result.get("person").get("result")))
+        self.assertTrue(len(result.get("person").get("result").get("personalities")))
+
+        personalities = result.get("person").get("result").get("personalities")
+        self.assertEqual(len(personalities), 5)
+
+        self.assertEqual(personalities[0]["Openness"].get("O"), 38.846625568407774)
+        self.assertEqual(
+            personalities[1]["Conscientiousness"].get("C"), 4.6266733183044835
+        )
+        self.assertEqual(personalities[2]["Extraversion"].get("E"), 58.00148636052478)
+        self.assertEqual(personalities[3]["Agreeableness"].get("A"), 11.934721812005705)
+        self.assertEqual(personalities[4]["Neuroticism"].get("N"), 78.82240987792443)
+
+        #############################################
+        # 2. Test with 30 year old woman.
+        #############################################
+        result = IpipNeo(question=300).compute(
+            sex="F", age=30, answers=load_mock_answers_300()
+        )
+
+        self.assertTrue(len(result.get("id")))
+        self.assertTrue(len(result.get("theory")))
+        self.assertTrue(len(result.get("model")))
+
+        self.assertEqual(result.get("question"), 300)
+        self.assertEqual(result.get("person").get("sex"), "F")
+        self.assertEqual(result.get("person").get("age"), 30)
+
+        self.assertTrue(len(result.get("person").get("result")))
+        self.assertTrue(len(result.get("person").get("result").get("personalities")))
+
+        personalities = result.get("person").get("result").get("personalities")
+        self.assertEqual(len(personalities), 5)
+
+        self.assertEqual(personalities[0]["Openness"].get("O"), 28.963387129747275)
+        self.assertEqual(personalities[1]["Conscientiousness"].get("C"), 1)
+        self.assertEqual(personalities[2]["Extraversion"].get("E"), 54.26151488253112)
+        self.assertEqual(personalities[3]["Agreeableness"].get("A"), 1)
+        self.assertEqual(personalities[4]["Neuroticism"].get("N"), 71.14096931653722)
+
+        #############################################
+        # 3. Test with 65 year old woman.
+        #############################################
+        result = IpipNeo(question=300).compute(
+            sex="F", age=65, answers=load_mock_answers_300(), compare=True
+        )
+
+        self.assertIn("id", result)
+        self.assertIn("theory", result)
+        self.assertIn("model", result)
+        self.assertIn("question", result)
+        self.assertIn("person", result)
+
+        self.assertIn("sex", result.get("person"))
+        self.assertIn("age", result.get("person"))
+
+        self.assertTrue(len(result.get("id")))
+        self.assertTrue(len(result.get("theory")))
+        self.assertTrue(len(result.get("model")))
+
+        self.assertEqual(result.get("question"), 300)
+        self.assertEqual(result.get("person").get("sex"), "F")
+        self.assertEqual(result.get("person").get("age"), 65)
+
+        self.assertTrue(len(result.get("person").get("result")))
+        self.assertTrue(len(result.get("person").get("result").get("personalities")))
+        self.assertTrue(len(result.get("person").get("result").get("compare")))
+
+        personalities = result.get("person").get("result").get("personalities")
+        self.assertEqual(len(personalities), 5)
+
+        compare = result.get("person").get("result").get("compare")
+        self.assertIn("user_answers_original", compare)
+        self.assertIn("user_answers_reversed", compare)
+
+        self.assertEqual(personalities[0]["Openness"].get("O"), 28.963387129747275)
+        self.assertEqual(personalities[1]["Conscientiousness"].get("C"), 1)
+        self.assertEqual(personalities[2]["Extraversion"].get("E"), 54.26151488253112)
+        self.assertEqual(personalities[3]["Agreeableness"].get("A"), 1)
+        self.assertEqual(personalities[4]["Neuroticism"].get("N"), 71.14096931653722)
+
+        original = (
+            result.get("person")
+            .get("result")
+            .get("compare")
+            .get("user_answers_original")
+        )
+        assert isinstance(original, list), "original must be a list"
+        self.assertEqual(len(original), 300)
+
+        reversed = (
+            result.get("person")
+            .get("result")
+            .get("compare")
+            .get("user_answers_reversed")
+        )
+        assert isinstance(reversed, list), "reversed must be a list"
+        self.assertEqual(len(reversed), 300)
+
+        a = [x.get("id_select") for x in original]
+        assert isinstance(original, list), "reversed must be a list"
+
+        b = [x.get("id_select") for x in reversed]
+        assert isinstance(reversed, list), "reversed must be a list"
+
+        self.assertNotEqual(a, b)
+
+    def test_compute_test_custom_reversed(self) -> None:
+        #############################################
+        # 1. Test with 40 year old man.
+        #############################################
+        result = IpipNeo(question=120, test=True).compute(
+            sex="M", age=40, answers=load_mock_answers_custom(), compare=True
+        )
+
+        self.assertIn("id", result)
+        self.assertIn("theory", result)
+        self.assertIn("model", result)
+        self.assertIn("version", result)
+        self.assertIn("test", result)
+        self.assertIn("question", result)
+        self.assertIn("person", result)
+
+        self.assertIn("sex", result.get("person"))
+        self.assertIn("age", result.get("person"))
+
+        self.assertTrue(len(result.get("id")))
+        self.assertTrue(len(result.get("theory")))
+        self.assertTrue(len(result.get("model")))
+
+        self.assertEqual(result.get("question"), 120)
+        self.assertEqual(result.get("test"), True)
+        self.assertEqual(result.get("person").get("sex"), "M")
+        self.assertEqual(result.get("person").get("age"), 40)
+
+        self.assertTrue(len(result.get("person").get("result")))
+        self.assertTrue(len(result.get("person").get("result").get("personalities")))
+        self.assertTrue(len(result.get("person").get("result").get("compare")))
+
+        personalities = result.get("person").get("result").get("personalities")
+        self.assertEqual(len(personalities), 5)
+
+        compare = result.get("person").get("result").get("compare")
+        self.assertIn("user_answers_original", compare)
+        self.assertIn("user_answers_reversed", compare)
+
+        select1 = [
+            x.get("reverse_scored") for x in compare.get("user_answers_original", [])
+        ]
+        assert isinstance(select1, list), "select1 must be a list"
+
+        self.assertEqual(select1.count(0), 67)
+        self.assertEqual(select1.count(1), 53)
+
+        select2 = [
+            x.get("reverse_scored") for x in compare.get("user_answers_reversed", [])
+        ]
+        assert isinstance(select2, list), "select2 must be a list"
+
+        self.assertEqual(select2.count(0), select1.count(0))
+        self.assertEqual(select2.count(1), select1.count(1))
+
+        self.assertEqual(personalities[0]["Openness"].get("O"), 17.42235805055492)
+        self.assertEqual(
+            personalities[1]["Conscientiousness"].get("C"), 18.62283542366208
+        )
+        self.assertEqual(personalities[2]["Extraversion"].get("E"), 34.10779114957646)
+        self.assertEqual(personalities[3]["Agreeableness"].get("A"), 6.331832993524202)
+        self.assertEqual(personalities[4]["Neuroticism"].get("N"), 58.6632925696303)

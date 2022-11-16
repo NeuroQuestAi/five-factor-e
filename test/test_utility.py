@@ -3,9 +3,8 @@
 import json
 import unittest
 
-from ipipneo.utility import (answers_is_valid, apply_reverse_scored_120,
-                             big5_ocean_is_valid, big_five_target,
-                             create_big5_dict, organize_list_json,
+from ipipneo.utility import (answers_is_valid, big5_ocean_is_valid,
+                             big5_target, create_big5_dict, organize_list_json,
                              raise_if_age_is_invalid, raise_if_sex_is_invalid,
                              reverse_scored)
 
@@ -15,14 +14,12 @@ def load_mock_answers(idx: int) -> dict:
         name = "answers-test-1.json"
     elif idx == 2:
         name = "answers-test-2.json"
-    elif idx == 3:
-        name = "answers-test-3.json"
     with open(f"test/mock/{name}") as f:
         data = json.load(f)
     return data
 
 
-class Testutility(unittest.TestCase):
+class TestUtility(unittest.TestCase):
 
     maxDiff = None
 
@@ -79,7 +76,6 @@ class Testutility(unittest.TestCase):
         self.assertEqual(raise_if_age_is_invalid(age=80), True)
         self.assertEqual(raise_if_age_is_invalid(age=90), True)
         self.assertEqual(raise_if_age_is_invalid(age=100), True)
-        self.assertEqual(raise_if_age_is_invalid(age=110), True)
 
     def test_answers_is_valid(self) -> None:
         with self.assertRaises(BaseException):
@@ -407,16 +403,16 @@ class Testutility(unittest.TestCase):
         self.assertEqual(big5_ocean_is_valid(label="A"), True)
         self.assertEqual(big5_ocean_is_valid(label="N"), True)
 
-    def test_big_five_target(self) -> None:
+    def test_big5_target(self) -> None:
         with self.assertRaises(BaseException) as e:
-            big_five_target(label="")
+            big5_target(label="")
         self.assertEqual(str(e.exception), "The Big-Five label is invalid!")
 
-        O = list(map(str, big_five_target(label="O")))
-        C = list(map(str, big_five_target(label="C")))
-        E = list(map(str, big_five_target(label="E")))
-        A = list(map(str, big_five_target(label="A")))
-        N = list(map(str, big_five_target(label="N")))
+        O = list(map(str, big5_target(label="O")))
+        C = list(map(str, big5_target(label="C")))
+        E = list(map(str, big5_target(label="E")))
+        A = list(map(str, big5_target(label="A")))
+        N = list(map(str, big5_target(label="N")))
 
         self.assertEqual(len(O), 6)
         self.assertEqual(len(C), 6)
@@ -573,32 +569,6 @@ class Testutility(unittest.TestCase):
         assert isinstance(C, dict), "A must be a dict"
         self.assertEqual(C.get("C"), 86.96687032595662)
         assert isinstance(C.get("traits"), list), "traits must be a list"
-
-    def test_apply_reverse_scored_120(self) -> None:
-        with self.assertRaises(AssertionError) as e:
-            apply_reverse_scored_120(answers="")
-        self.assertEqual(str(e.exception), "The (answers) field must be a dict!")
-
-        with self.assertRaises(BaseException) as e:
-            apply_reverse_scored_120(answers={})
-        self.assertEqual(str(e.exception), "The key named (answers) was not found!")
-
-        with self.assertRaises(BaseException) as e:
-            apply_reverse_scored_120(answers={"answers": []})
-        self.assertEqual(str(e.exception), "The key named (id_question) was not found!")
-
-        with self.assertRaises(BaseException) as e:
-            apply_reverse_scored_120(answers={"answers": [{"id_question": 1}]})
-        self.assertEqual(str(e.exception), "The key named (id_select) was not found!")
-
-        a = load_mock_answers(idx=3)
-        assert isinstance(a, dict), "a must be a dict"
-
-        b = apply_reverse_scored_120(answers=load_mock_answers(idx=3))
-        assert isinstance(b, dict), "b must be a dict"
-        assert isinstance(b.get("answers", []), list), "b must be a list"
-
-        self.assertNotEqual(a, b)
 
     def test_reverse_scored(self) -> None:
         with self.assertRaises(TypeError) as e:
