@@ -57,7 +57,7 @@ User-selected answers follow the position:
 
 Note 🚩: Some answers have the order of the [score reversed](https://ipip.ori.org/newScoringInstructions.htm), the algorithm treats the questions with the score inverted by (*question_id*).
 
-### Releases 📦
+### Releases 🎈
 
 News about each version please look here:
 
