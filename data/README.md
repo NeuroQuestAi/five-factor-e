@@ -41,6 +41,8 @@ with open("my-test-answers.json", "r") as f:
 For the test, we must start the constructor with the test variable turned on:
 
 ```python
+from ipipneo import IpipNeo
+
 IpipNeo(question=120, test=True).compute(sex="M", age=40, answers=answers120, compare=True)
 ```
 
