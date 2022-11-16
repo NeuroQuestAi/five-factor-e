@@ -57,7 +57,7 @@ User-selected answers follow the position:
 
 Note 🚩: Some answers have the order of the [score reversed](https://ipip.ori.org/newScoringInstructions.htm), the algorithm treats the questions with the score inverted by (*question_id*).
 
-### Releases
+### Releases 📦
 
 News about each version please look here:
 
@@ -117,7 +117,7 @@ answers120 = json.loads(data)
 
 For the long version of the inventory just change the URL from **120** to **300**.
 
-#### Compute the data
+#### Compute the data 🏁
 
 The **compute** method is used to evaluate the answers, see the table below with the parameters:
 
@@ -202,7 +202,7 @@ For the tests it is necessary to download the repository. To run the unit tests 
 $ ./run-test
 ```
 
-#### Using inventory for testing
+#### Using inventory for testing 📚
 
 If you want to make an assessment by answering the inventory of questions, just run:
 
