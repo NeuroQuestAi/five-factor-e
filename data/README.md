@@ -8,7 +8,42 @@ If you are thinking of using this library in your project, you should follow the
 
 The translations of the questions are in the [translation](https://github.com/neural7/five-factor-e/tree/main/data/IPIP-NEO/120/translation) folder, as the translations happen, we will attach them to this directory. If you want to send a translation that is not in the repository, feel free to contribute with us following the [json file pattern](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/translation/questions-en-us.json).
 
-If you have any questions, please send us an email to: (**e at neural.io**) or create an issue reporting the question of the problem in the repository of this project (https://github.com/neural7/five-factor-e/issues).
+### Experiments with reverse scoring questions
 
+If you want to test and experiment with questions with the reverse order, you need to use the [example json file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/test/answers-1.json). Answers that have the key (reverse_scored = *1*) will have the reverse score ie: The value selected was *5*, it will be turned into *1*. You can read more about it [here](https://ipip.ori.org/newScoringInstructions.htm).
+
+```json
+{
+   "answers":[
+      {
+         "id_question":1,
+         "id_select":5,
+         "reverse_scored":1
+      },
+      {
+         "id_question":2,
+         "id_select":2,
+         "reverse_scored":0
+      }
+    ]
+}
+```
+
+Example loading json response file locally:
+
+```python
+import json
+
+with open('my-test-answers.json', 'r') as f:
+  answers120 = json.load(f)
+```
+
+For the test, we must start the constructor with the test variable turned on:
+
+```python
+IpipNeo(question=120, test=True).compute(sex="M", age=40, answers=answers120, compare=True)
+```
+
+If you have any questions, please send us an email to: (**e at neural.io**) or create an issue reporting the question of the problem in the repository of this project (https://github.com/neural7/five-factor-e/issues).
 
 Thanks!
