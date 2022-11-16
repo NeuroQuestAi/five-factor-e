@@ -4,9 +4,9 @@
 
 The data directory contains the artifacts used for the [IPIP](https://ipip.ori.org/) used by this library, in the short version with **120** items and the long version with **300** items.
 
-If you are thinking of using this library in your project, you must follow the pattern of the question and answer files proposed here (ANSEWER LINK).
+If you are thinking of using this library in your project, you should follow the standard question and answer files proposed in examples [120](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json) and [300](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/300/answers.json).
 
-The translations of the questions are in the **translation** box, as the translations happen, we will attach them to this directory. If you want to send a translation that is not in the repository, feel free to contribute with us following the *json file pattern*.
+The translations of the questions are in the [translation](https://github.com/neural7/five-factor-e/tree/main/data/IPIP-NEO/120/translation) folder, as the translations happen, we will attach them to this directory. If you want to send a translation that is not in the repository, feel free to contribute with us following the [json file pattern](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/translation/questions-en-us.json).
 
 If you have any questions, please send us an email to: (**e at neural.io**) or create an issue reporting the question of the problem in the repository of this project (https://github.com/neural7/five-factor-e/issues).
 
