@@ -219,7 +219,7 @@ $ pip install five-factor-e[quiz]
 Example output with graphics:
 
 <p align="center">
-  <img src="doc/sample-light-1.png" alt="Representation of the Big Five"/>
+  <img src="https://raw.githubusercontent.com/neural7/five-factor-e/feature/v1.5.0/doc/sample-light-1.png" alt="Representation of the Big Five"/>
 </p>
 
 *The complete result is saved in the run folder in json format*.
