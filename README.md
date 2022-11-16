@@ -6,10 +6,10 @@
 ![python 3.7 | 3.8 | 3.9 | 3.10 | 3.11][python_version]
 [![PyPI Downloads](https://img.shields.io/pypi/dm/five-factor-e.svg?label=PyPI%20downloads)](
 https://pypi.org/project/five-factor-e/)
+[![Code style: Black](https://img.shields.io/badge/code%20style-Black-000000.svg)](https://github.com/psf/black)
 
 [img_version]: https://img.shields.io/static/v1.svg?label=version&message=1.5.0&color=blue
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20&color=blue
-[![Code style: Black](https://img.shields.io/badge/code%20style-Black-000000.svg)](https://github.com/psf/black)
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/neural7/five-factor-e/04ac3ce31e37f582e66ffdf694d4c4bcb8469ec9/doc/big-five.png" alt="Representation of the Big Five"/>
@@ -61,7 +61,7 @@ Note 🚩: Some answers have the order of the [score reversed](https://ipip.ori.
 
 News about each version please look here:
 
-  * [Release](A)
+  * [Releases](https://github.com/neural7/five-factor-e/blob/main/RELEASES.md)
 
 ### Installation 🚀
 
