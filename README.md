@@ -81,7 +81,7 @@ $ python3 -m pip install .
 
 ### How to use 🔥
 
-The construtor requires the questions model, whether it is the **300** model or short model with **120** questions. It also has the version to do simulations with the questions that are [reversed](https://ipip.ori.org/newScoringInstructions.htm). For this, you must turn the **test** variable from false to true.
+The construtor requires the questions model, whether it is the **300** model or short model with **120** questions. It also has the version to do simulations with the questions that are [reversed](https://ipip.ori.org/newScoringInstructions.htm). For this, you must turn the **test** variable from false to true, for more details on reverse scoring tests see section [Experiments with reverse scoring questions](https://github.com/neural7/five-factor-e/blob/main/data/README.md).
 
 | Parameters    | Type      | Description                                                       |
 | ------------- | --------- | ----------------------------------------------------------------- |
