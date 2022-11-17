@@ -115,7 +115,16 @@ data = urllib.request.urlopen("https://raw.githubusercontent.com/neural7"\
 answers120 = json.loads(data)
 ```
 
-For the long version of the inventory just change the URL from **120** to **300**.
+For the long version of the inventory:
+
+```python
+import json, urllib.request
+
+data = urllib.request.urlopen("https://raw.githubusercontent.com/neural7"\
+   "/five-factor-e/main/data/IPIP-NEO/300/answers.json").read()
+
+answers300 = json.loads(data)
+```
 
 #### Compute the data 🏁
 
