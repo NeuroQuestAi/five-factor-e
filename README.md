@@ -115,7 +115,7 @@ data = urllib.request.urlopen("https://raw.githubusercontent.com/neural7"\
 answers120 = json.loads(data)
 ```
 
-For the long version of the inventory:
+For the long inventory version with **300** items.
 
 ```python
 import json, urllib.request
