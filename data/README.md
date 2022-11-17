@@ -10,7 +10,11 @@ The translations of the questions are in the [translation](https://github.com/ne
 
 ### Experiments with reverse scoring questions ⚡
 
-If you want to test and experiment with questions with the reverse order, you need to use the [example json file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/test/answers-1.json). Answers that have the key (reverse_scored = *1*) will have the reverse score ie: The value selected was *5*, it will be turned into *1*. You can read more about it [here](https://ipip.ori.org/newScoringInstructions.htm).
+If you want to test and experiment with questions with the reverse order, you need to use the [example json file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/test/answers-1.json). Answers that have the key (reverse_scored = *1*) will have the reverse score ie: The value selected was *5*, it will be turned into *1*. You can read more about it here:
+
+ * [https://ipip.ori.org/newScoringInstructions.htm](https://ipip.ori.org/newScoringInstructions.htm)
+ * [https://ipip.ori.org/newMultipleconstructs.htm](https://ipip.ori.org/newMultipleconstructs.htm)
+ * [https://ipip.ori.org/Finding_Scales_to_Measure_Particular_Constructs.htm](https://ipip.ori.org/Finding_Scales_to_Measure_Particular_Constructs.htm)
 
 ```json
 {
