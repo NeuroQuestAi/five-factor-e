@@ -2,7 +2,7 @@
 
 ### About data 📊
 
-The data directory contains the artifacts used for the [IPIP](https://ipip.ori.org/) used by this library, in the short version with **120** items and the long version with **300** items.
+The data directory contains the artifacts used for the [IPIP-NEO](https://ipip.ori.org/) used by this library, in the short version with **120** items and the long version with **300** items.
 
 If you are thinking of using this library in your project, you should follow the standard question and answer files proposed in examples [120](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json) and [300](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/300/answers.json).
 
