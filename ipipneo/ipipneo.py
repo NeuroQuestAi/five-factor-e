@@ -5,7 +5,7 @@ __email__ = "e@neural7.io"
 __copyright__ = "Copyright Neural7 2022, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.5.0"
+__version__ = "1.6.0"
 __status__ = "production"
 
 import copy
@@ -88,11 +88,11 @@ class IpipNeo(Facet):
                 "age": age,
                 "result": {
                     "personalities": [
-                        {"Openness": O},
-                        {"Conscientiousness": C},
-                        {"Extraversion": E},
-                        {"Agreeableness": A},
-                        {"Neuroticism": N},
+                        {"Openness": self.big_five_level(big5=O, label="O")},
+                        {"Conscientiousness": self.big_five_level(big5=C, label="C")},
+                        {"Extraversion": self.big_five_level(big5=E, label="E")},
+                        {"Agreeableness": self.big_five_level(big5=A, label="A")},
+                        {"Neuroticism": self.big_five_level(big5=N, label="N")},
                     ]
                 },
             },

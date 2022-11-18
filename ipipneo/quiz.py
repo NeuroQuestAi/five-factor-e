@@ -77,9 +77,14 @@ def get_select(lang: int, question: int) -> list:
     ]
 
 
-def question_translate() -> list:
-    """Return the available question translations."""
+def question_translate_120() -> list:
+    """Return the available question translations (120)."""
     return ["0. IPIP-NEO Original", "1. EN-US", "2. PT-BR", "3. ES-ES"]
+
+
+def question_translate_300() -> list:
+    """Return the available question translations (300)."""
+    return ["0. IPIP-NEO Original"]
 
 
 def quiz(inventory: int, sex: str, age: int, shuffle: str, lang: int) -> None:
@@ -399,7 +404,10 @@ def main() -> None:
     shuffle = str(next(filter(yes_or_no.__contains__, replies)))
 
     print("\n====================================================================")
-    print(*question_translate(), sep="\n")
+    if inventory == 120:
+        print(*question_translate_120(), sep="\n")
+    elif inventory == 300:
+        print(*question_translate_300(), sep="\n")
 
     replies = map(
         input,

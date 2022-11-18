@@ -191,3 +191,24 @@ class Facet:
             raise BaseException(f"The number of questions setting is wrong: {str(e)}")
 
         return create_big5_dict(label=label, big5=big5, x=X, y=Y) or {}
+
+    def big_five_level(self, big5: dict, label: str) -> dict:
+        """
+        Add the average for each Big-Five.
+
+        Args:
+            - big5: Dictionary of personality Big-Five.
+            - label: Capital letter referring to the Big-Five to be checked the average.
+        """
+        big5_ocean_is_valid(label=label)
+
+        score = big5.get(label, 0)
+
+        if score < FacetLevel.LOW.value:
+            big5["score"] = "low"
+        if score >= FacetLevel.LOW.value and score <= FacetLevel.HIGH.value:
+            big5["score"] = "average"
+        if score > FacetLevel.HIGH.value:
+            big5["score"] = "high"
+
+        return big5

@@ -1,6 +1,13 @@
 <img src="https://raw.githubusercontent.com/neural7/five-factor-e/main/doc/neural7.png" align="right" width="80" height="70"/>
 
-### Releases
+### Releases 🎈
+
+Release **[1.6.0](https://github.com/neural7/five-factor-e/releases/tag/v1.6.0)**:
+
+* Added to the return with the big-five averages: (low, average, high);
+* Refactoring of the reverse scored questions code;
+* Added to the quiz program, the verification of the translation of the questions (120 or 300);
+* Added new topics to PyPI setup.
 
 Release **[1.5.0](https://github.com/neural7/five-factor-e/releases/tag/v1.5.0)**:
 
