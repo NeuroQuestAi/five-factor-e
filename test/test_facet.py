@@ -579,6 +579,244 @@ class TestFacet(unittest.TestCase):
         self.assertEqual(C.get("traits")[5]["Cautiousness"], 38.524355262005315)
         self.assertEqual(C.get("traits")[5]["score"], "average")
 
+        #############################################
+        # MOCK: High values
+        #############################################
+
+        # >> 1
+        N = facet.personality(
+            size=121,
+            big5={"O": 99.99, "C": 99.99, "E": 99.99, "A": 99.99, "N": 99.99},
+            traits={
+                "N": [
+                    0,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                ]
+            },
+            label="N",
+        )
+        assert isinstance(N, dict), "N must be a dict"
+        self.assertEqual(N.get("N"), 99.99)
+
+        for x in N.get("traits", []):
+            self.assertEqual(x.get("score"), "high")
+
+        # >> 2
+        E = facet.personality(
+            size=121,
+            big5={"O": 99.99, "C": 99.99, "E": 99.99, "A": 99.99, "N": 99.99},
+            traits={
+                "E": [
+                    0,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                ]
+            },
+            label="E",
+        )
+        assert isinstance(E, dict), "E must be a dict"
+        self.assertEqual(E.get("E"), 99.99)
+
+        for x in E.get("traits", []):
+            self.assertEqual(x.get("score"), "high")
+
+        # >> 3
+        O = facet.personality(
+            size=121,
+            big5={"O": 99.99, "C": 99.99, "E": 99.99, "A": 99.99, "N": 99.99},
+            traits={
+                "O": [
+                    0,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                ]
+            },
+            label="O",
+        )
+        assert isinstance(O, dict), "O must be a dict"
+        self.assertEqual(O.get("O"), 99.99)
+
+        for x in O.get("traits", []):
+            self.assertEqual(x.get("score"), "high")
+
+        # >> 4
+        A = facet.personality(
+            size=121,
+            big5={"O": 99.99, "C": 99.99, "E": 99.99, "A": 99.99, "N": 99.99},
+            traits={
+                "A": [
+                    0,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                ]
+            },
+            label="A",
+        )
+        assert isinstance(A, dict), "A must be a dict"
+        self.assertEqual(A.get("A"), 99.99)
+
+        for x in A.get("traits", []):
+            self.assertEqual(x.get("score"), "high")
+
+        # >> 5
+        C = facet.personality(
+            size=121,
+            big5={"O": 99.99, "C": 99.99, "E": 99.99, "A": 99.99, "N": 99.99},
+            traits={
+                "C": [
+                    0,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                    99.99,
+                ]
+            },
+            label="C",
+        )
+        assert isinstance(C, dict), "C must be a dict"
+        self.assertEqual(C.get("C"), 99.99)
+
+        for x in C.get("traits", []):
+            self.assertEqual(x.get("score"), "high")
+
+        #############################################
+        # MOCK: Low values
+        #############################################
+
+        # >> 1
+        N = facet.personality(
+            size=121,
+            big5={"O": 0.0, "C": 0.0, "E": 0.0, "A": 0.0, "N": 0.0},
+            traits={
+                "N": [
+                    0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                ]
+            },
+            label="N",
+        )
+        assert isinstance(N, dict), "N must be a dict"
+        self.assertEqual(N.get("N"), 0)
+
+        for x in N.get("traits", []):
+            self.assertEqual(x.get("score"), "low")
+
+        # >> 2
+        E = facet.personality(
+            size=121,
+            big5={"O": 0.0, "C": 0.0, "E": 0.0, "A": 0.0, "N": 0.0},
+            traits={
+                "E": [
+                    0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                ]
+            },
+            label="E",
+        )
+        assert isinstance(E, dict), "E must be a dict"
+        self.assertEqual(E.get("E"), 0)
+
+        for x in E.get("traits", []):
+            self.assertEqual(x.get("score"), "low")
+
+        # >> 3
+        O = facet.personality(
+            size=121,
+            big5={"O": 0.0, "C": 0.0, "E": 0.0, "A": 0.0, "N": 0.0},
+            traits={
+                "O": [
+                    0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                ]
+            },
+            label="O",
+        )
+        assert isinstance(O, dict), "O must be a dict"
+        self.assertEqual(O.get("O"), 0)
+
+        for x in O.get("traits", []):
+            self.assertEqual(x.get("score"), "low")
+
+        # >> 4
+        A = facet.personality(
+            size=121,
+            big5={"O": 0.0, "C": 0.0, "E": 0.0, "A": 0.0, "N": 0.0},
+            traits={
+                "A": [
+                    0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                ]
+            },
+            label="A",
+        )
+        assert isinstance(A, dict), "A must be a dict"
+        self.assertEqual(A.get("A"), 0)
+
+        for x in O.get("traits", []):
+            self.assertEqual(x.get("score"), "low")
+
+        # >> 5
+        C = facet.personality(
+            size=121,
+            big5={"O": 0.0, "C": 0.0, "E": 0.0, "A": 0.0, "N": 0.0},
+            traits={
+                "C": [
+                    0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                ]
+            },
+            label="C",
+        )
+        assert isinstance(C, dict), "C must be a dict"
+        self.assertEqual(C.get("C"), 0)
+
+        for x in C.get("traits", []):
+            self.assertEqual(x.get("score"), "low")
+
     def test_personality_300(self) -> None:
         facet = Facet(nquestion=300)
 
@@ -802,3 +1040,42 @@ class TestFacet(unittest.TestCase):
         self.assertEqual(C.get("traits")[5]["trait"], 6)
         self.assertEqual(C.get("traits")[5]["Cautiousness"], 62.553226842568904)
         self.assertEqual(C.get("traits")[5]["score"], "average")
+
+    def test_big_five_level(self) -> None:
+        facet = Facet(nquestion=120)
+
+        O = facet.big_five_level(big5={"O": 10.0}, label="O")
+        assert isinstance(O, dict), "O must be a dict 1"
+
+        self.assertIn("score", O.keys())
+        self.assertEqual(O.get("score"), "low")
+
+        O = facet.big_five_level(big5={"O": 45.0}, label="O")
+        assert isinstance(O, dict), "O must be a dict 2"
+
+        self.assertIn("score", O.keys())
+        self.assertEqual(O.get("score"), "average")
+
+        O = facet.big_five_level(big5={"O": 50.0}, label="O")
+        assert isinstance(O, dict), "O must be a dict 3"
+
+        self.assertIn("score", O.keys())
+        self.assertEqual(O.get("score"), "average")
+
+        O = facet.big_five_level(big5={"O": 55.1}, label="O")
+        assert isinstance(O, dict), "O must be a dict 4"
+
+        self.assertIn("score", O.keys())
+        self.assertEqual(O.get("score"), "high")
+
+        O = facet.big_five_level(big5={"O": 60.0}, label="O")
+        assert isinstance(O, dict), "O must be a dict 5"
+
+        self.assertIn("score", O.keys())
+        self.assertEqual(O.get("score"), "high")
+
+        O = facet.big_five_level(big5={"O": 105.99}, label="O")
+        assert isinstance(O, dict), "O must be a dict 6"
+
+        self.assertIn("score", O.keys())
+        self.assertEqual(O.get("score"), "high")

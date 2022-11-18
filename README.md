@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/neural7/five-factor-e/main/doc/neural7.png" align="right" width="80" height="70"/>
 
-# Five Factor E Library 📦 🇧🇷
+# Five Factor E Library 📦 🌊
 
 ![version 1.5.0][img_version]
 ![python 3.7 | 3.8 | 3.9 | 3.10 | 3.11][python_version]
@@ -163,6 +163,7 @@ An example of the output of the results:
       {
          "Openness":{
             "O":24.29091080263288,
+            "score": "low",
             "traits":[
                {
                   "trait":1,
@@ -228,7 +229,7 @@ $ pip install five-factor-e[quiz]
 Example output with graphics:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/neural7/five-factor-e/feature/v1.5.0/doc/sample-light-1.png" alt="Representation of the Big Five"/>
+  <img src="https://raw.githubusercontent.com/neural7/five-factor-e/feature/v1.5.0/doc/sample-light-1.png" alt="Big Five Results" border="1"/>
 </p>
 
 *The complete result is saved in the run folder in json format*.

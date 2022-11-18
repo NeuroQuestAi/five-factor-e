@@ -1,14 +1,223 @@
-"""Reverses scores for certain questions from the IPIP-120 and IPIP-300."""
+"""Reverses scores for certain questions from the IPIP-120, IPIP-300 and Custom Items."""
 
 __author__ = "Ederson Corbari"
 __email__ = "e@neural7.io"
 __copyright__ = "Copyright Neural7 2022, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __status__ = "production"
 
 from ipipneo.utility import reverse_scored
+
+IPIP_NEO_ITEMS_REVERSED_120 = [
+    9,
+    19,
+    24,
+    30,
+    39,
+    40,
+    48,
+    49,
+    51,
+    53,
+    54,
+    60,
+    62,
+    67,
+    68,
+    69,
+    70,
+    73,
+    74,
+    75,
+    78,
+    79,
+    80,
+    81,
+    83,
+    84,
+    85,
+    88,
+    89,
+    90,
+    92,
+    94,
+    96,
+    97,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    113,
+    114,
+    115,
+    116,
+    118,
+    119,
+    120,
+]
+
+IPIP_NEO_ITEMS_REVERSED_300 = [
+    69,
+    99,
+    109,
+    118,
+    120,
+    129,
+    138,
+    139,
+    144,
+    148,
+    149,
+    150,
+    151,
+    152,
+    156,
+    157,
+    158,
+    159,
+    160,
+    162,
+    163,
+    164,
+    165,
+    167,
+    168,
+    169,
+    171,
+    173,
+    174,
+    175,
+    176,
+    178,
+    179,
+    180,
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    201,
+    203,
+    204,
+    205,
+    206,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    233,
+    234,
+    235,
+    236,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    249,
+    250,
+    251,
+    253,
+    252,
+    254,
+    255,
+    256,
+    257,
+    259,
+    258,
+    260,
+    261,
+    262,
+    263,
+    264,
+    265,
+    266,
+    267,
+    268,
+    269,
+    270,
+    271,
+    272,
+    273,
+    274,
+    275,
+    276,
+    277,
+    278,
+    279,
+    281,
+    280,
+    282,
+    283,
+    284,
+    285,
+    286,
+    287,
+    288,
+    289,
+    290,
+    291,
+    292,
+    294,
+    293,
+    295,
+    296,
+    297,
+    298,
+    299,
+    300,
+]
 
 
 class ReverseScoredCustom:
@@ -42,7 +251,7 @@ class ReverseScoredCustom:
         if not any("reverse_scored" in x for x in answers.get("answers", [])):
             raise BaseException("The key named (reverse_scored) was not found!")
 
-        def is_reversed(x: dict) -> dict:
+        def is_reversed_custom(x: dict) -> dict:
             x["id_select"] = (
                 reverse_scored(select=x["id_select"])
                 if x.get("reverse_scored") == 1
@@ -50,7 +259,9 @@ class ReverseScoredCustom:
             )
             return x
 
-        return {"answers": [is_reversed(x=x) for x in answers.get("answers", [])]}
+        return {
+            "answers": [is_reversed_custom(x=x) for x in answers.get("answers", [])]
+        }
 
 
 class ReverseScored120:
@@ -80,227 +291,27 @@ class ReverseScored120:
         if not any("id_select" in x for x in answers.get("answers", [])):
             raise BaseException("The key named (id_select) was not found!")
 
-        for i, x in enumerate(answers.get("answers", [])):
-            if x.get("id_question", 0) == 9:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
+        assert (
+            len(list(IPIP_NEO_ITEMS_REVERSED_120)) == 55
+        ), "The number of reverse items should be 55!"
+
+        def is_reversed_120(x: int, y: int) -> int:
+            for i in IPIP_NEO_ITEMS_REVERSED_120:
+                if x == i:
+                    return reverse_scored(select=y)
+            return y
+
+        update = map(
+            (
+                lambda x: (
+                    x.__setitem__(
+                        "id_select", is_reversed_120(x["id_question"], x["id_select"])
+                    )
                 )
-            if x.get("id_question", 0) == 19:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 24:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 30:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 39:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 40:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 48:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 49:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 51:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 53:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 54:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 60:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 62:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 67:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 68:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 69:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 70:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 73:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 74:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 75:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 78:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 79:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 80:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 81:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 83:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 84:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 85:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 88:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 89:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 90:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 92:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 94:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 96:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 97:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 98:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 99:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 100:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 101:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 102:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 103:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 104:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 105:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 106:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 107:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 108:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 109:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 110:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 111:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 113:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 114:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 115:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 116:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 118:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 119:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 120:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
+            ),
+            answers.get("answers"),
+        )
+        assert len(list(update)) == 120, "The update number should be 120!"
 
         return answers or {}
 
@@ -332,598 +343,26 @@ class ReverseScored300:
         if not any("id_select" in x for x in answers.get("answers", [])):
             raise BaseException("The key named (id_select) was not found!")
 
-        for i, x in enumerate(answers.get("answers", [])):
-            if x.get("id_question", 0) == 69:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 99:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 109:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 118:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 120:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 129:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 138:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 139:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 144:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 148:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 149:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 150:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 151:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 152:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 156:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 157:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 158:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 159:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 160:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 162:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 163:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 164:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 165:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 167:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 168:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 169:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 171:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 173:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 174:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 175:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 176:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 178:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 179:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 180:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 181:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 182:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 183:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 184:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 185:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 186:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 187:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 188:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 189:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 190:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 192:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 193:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 194:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 195:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 196:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 197:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 198:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 199:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 201:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 203:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 204:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 205:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 206:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 208:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 209:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 210:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 211:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 212:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 213:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 214:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 215:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 216:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 217:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 218:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 219:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 220:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 221:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 222:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 223:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 224:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 225:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 226:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 227:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 228:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 229:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 230:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 231:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 233:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 234:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 235:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 236:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 238:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 239:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 240:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 241:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 242:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 243:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 244:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 245:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 246:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 247:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 248:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 249:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 250:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 251:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 253:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 252:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 254:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 255:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 256:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 257:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 259:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 258:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 260:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 261:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 262:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 263:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 264:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 265:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 266:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 267:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 268:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 269:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 270:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 271:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 272:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 273:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 274:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 275:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 276:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 277:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 278:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 279:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 281:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 280:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 282:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 283:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 284:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 285:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 286:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 287:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 288:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 289:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 290:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 291:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 292:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 294:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 293:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 295:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 296:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 297:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 298:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 299:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
-            if x.get("id_question", 0) == 300:
-                answers["answers"][i]["id_select"] = reverse_scored(
-                    select=x.get("id_select", 0)
-                )
+        assert (
+            len(list(IPIP_NEO_ITEMS_REVERSED_300)) == 148
+        ), "The number of reverse items should be 148!"
+
+        def is_reversed_300(x: int, y: int) -> int:
+            for i in IPIP_NEO_ITEMS_REVERSED_300:
+                if x == i:
+                    return reverse_scored(select=y)
+            return y
+
+        update = map(
+            (
+                lambda x: (
+                    x.__setitem__(
+                        "id_select", is_reversed_300(x["id_question"], x["id_select"])
+                    )
+                )
+            ),
+            answers.get("answers"),
+        )
+        assert len(list(update)) == 300, "The update number should be 300!"
 
         return answers or {}

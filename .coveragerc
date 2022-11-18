@@ -1,6 +1,6 @@
 [run]
 branch = True
-omit = setup.py, quiz.py
+omit = setup.py, ipipneo/__init__.py, ipipneo/quiz.py
 
 [report]
 skip_empty = True
