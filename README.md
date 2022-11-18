@@ -2,13 +2,13 @@
 
 # Five Factor E Library 📦 🌊
 
-![version 1.5.0][img_version]
+![version 1.6.0][img_version]
 ![python 3.7 | 3.8 | 3.9 | 3.10 | 3.11][python_version]
 [![PyPI Downloads](https://img.shields.io/pypi/dm/five-factor-e.svg?label=PyPI%20downloads)](
 https://pypi.org/project/five-factor-e/)
 [![Code style: Black](https://img.shields.io/badge/code%20style-Black-000000.svg)](https://github.com/psf/black)
 
-[img_version]: https://img.shields.io/static/v1.svg?label=version&message=1.5.0&color=blue
+[img_version]: https://img.shields.io/static/v1.svg?label=version&message=1.6.0&color=blue
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20&color=blue
 
 <p align="center">
