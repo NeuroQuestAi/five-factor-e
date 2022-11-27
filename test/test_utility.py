@@ -64,6 +64,10 @@ class TestUtility(unittest.TestCase):
         with self.assertRaises(AssertionError):
             raise_if_age_is_invalid(age=300)
 
+        self.assertEqual(raise_if_age_is_invalid(age=10), True)
+        self.assertEqual(raise_if_age_is_invalid(age=13), True)
+        self.assertEqual(raise_if_age_is_invalid(age=15), True)
+        self.assertEqual(raise_if_age_is_invalid(age=17), True)
         self.assertEqual(raise_if_age_is_invalid(age=18), True)
         self.assertEqual(raise_if_age_is_invalid(age=21), True)
         self.assertEqual(raise_if_age_is_invalid(age=25), True)
@@ -76,6 +80,8 @@ class TestUtility(unittest.TestCase):
         self.assertEqual(raise_if_age_is_invalid(age=80), True)
         self.assertEqual(raise_if_age_is_invalid(age=90), True)
         self.assertEqual(raise_if_age_is_invalid(age=100), True)
+        self.assertEqual(raise_if_age_is_invalid(age=105), True)
+        self.assertEqual(raise_if_age_is_invalid(age=110), True)
 
     def test_answers_is_valid(self) -> None:
         with self.assertRaises(BaseException):

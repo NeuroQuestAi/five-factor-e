@@ -2,13 +2,13 @@
 
 # Five Factor E Library 📦 🌊
 
-![version 1.6.0][img_version]
+![version 1.7.0][img_version]
 ![python 3.7 | 3.8 | 3.9 | 3.10 | 3.11][python_version]
 [![PyPI Downloads](https://img.shields.io/pypi/dm/five-factor-e.svg?label=PyPI%20downloads)](
 https://pypi.org/project/five-factor-e/)
 [![Code style: Black](https://img.shields.io/badge/code%20style-Black-000000.svg)](https://github.com/psf/black)
 
-[img_version]: https://img.shields.io/static/v1.svg?label=version&message=1.6.0&color=blue
+[img_version]: https://img.shields.io/static/v1.svg?label=version&message=1.7.0&color=blue
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20&color=blue
 
 <p align="center">
@@ -27,7 +27,7 @@ Note 🚩: *The project is based on the work of **Dhiru Kholia**, and is an adap
 
 ### Synopsis 🌐
 
-A little theory, the The Big Five or Five Factor is made up of **5** great human personalities also known as the 🌊 **O.C.E.A.N**. Are they:
+A little theory, The Big Five or Five Factor is made up of **5** great human personalities also known as the 🌊 **O.C.E.A.N**. Are they:
 
  * **O**penness
  * **C**onscientiousness
@@ -47,7 +47,7 @@ For more information to demystify the Big Five, please see the article: [Measuri
 
 User-selected answers follow the position:
 
-| Option                          | Array       |
+| Option                          | Select      |
 | ------------------------------- | ----------- |
 | Very Inaccurate                 | 1           |
 | Moderately Inaccurate           | 2           |

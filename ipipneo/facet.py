@@ -5,7 +5,7 @@ __email__ = "e@neural7.io"
 __copyright__ = "Copyright Neural7 2022, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.0.0"
+__version__ = "1.7.0"
 __status__ = "production"
 
 from enum import IntEnum
