@@ -2,6 +2,11 @@
 
 ### Releases 🎈
 
+Release **[1.7.0](https://github.com/neural7/five-factor-e/releases/tag/v1.7.0)**:
+
+* Leaving the age range between 10 to 110 years;
+* Revised README files.
+
 Release **[1.6.0](https://github.com/neural7/five-factor-e/releases/tag/v1.6.0)**:
 
 * Added to the return with the big-five averages: (low, average, high);
