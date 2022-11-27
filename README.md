@@ -27,7 +27,7 @@ Note 🚩: *The project is based on the work of **Dhiru Kholia**, and is an adap
 
 ### Synopsis 🌐
 
-A little theory, the The Big Five or Five Factor is made up of **5** great human personalities also known as the 🌊 **O.C.E.A.N**. Are they:
+A little theory, The Big Five or Five Factor is made up of **5** great human personalities also known as the 🌊 **O.C.E.A.N**. Are they:
 
  * **O**penness
  * **C**onscientiousness
