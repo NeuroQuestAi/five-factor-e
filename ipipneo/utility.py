@@ -5,7 +5,7 @@ __email__ = "e@neural7.io"
 __copyright__ = "Copyright Neural7 2022, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.0.0"
+__version__ = "1.7.0"
 __status__ = "production"
 
 from enum import Enum
@@ -41,7 +41,7 @@ def raise_if_age_is_invalid(age: int) -> bool or AssertionError or BaseException
 
     assert isinstance(age, int), "The (age) field must be an integer!"
 
-    min, max = (18, 100)
+    min, max = (10, 110)
     if not (min <= age <= max):
         raise AssertionError(
             "The age (%r) must be between %r and %r!" % (age, min, max)

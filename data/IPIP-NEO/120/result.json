@@ -11,6 +11,7 @@
             {
                "Openness":{
                   "O":24.29091080263288,
+                  "score":"low",
                   "traits":[
                      {
                         "trait":1,
@@ -48,6 +49,7 @@
             {
                "Conscientiousness":{
                   "C":1,
+                  "score":"low",
                   "traits":[
                      {
                         "trait":1,
@@ -85,6 +87,7 @@
             {
                "Extraversion":{
                   "E":32.92660962191414,
+                  "score":"average",
                   "traits":[
                      {
                         "trait":1,
@@ -122,6 +125,7 @@
             {
                "Agreeableness":{
                   "A":1,
+                  "score":"low",
                   "traits":[
                      {
                         "trait":1,
@@ -159,6 +163,7 @@
             {
                "Neuroticism":{
                   "N":67.59105722337824,
+                  "score":"high",
                   "traits":[
                      {
                         "trait":1,
