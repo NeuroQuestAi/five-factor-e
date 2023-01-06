@@ -12,7 +12,7 @@
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20&color=blue
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/neural7/five-factor-e/main/doc/big-five-2.png" alt="Representation of the Big Five"/>
+  <img src="https://raw.githubusercontent.com/neural7/five-factor-e/main/doc/big-five-neural7.png" alt="Representation of the Big Five"/>
 </p>
 
 This project assesses a person's 🗣 personality based on an inventory of questions. The project uses the **Big Five** theory using the [IPIP-NEO-300](http://www.personal.psu.edu/~j5j/IPIP/ipipneo300.htm) model created by **Lewis R. Goldberg** and [IPIP-NEO-120](http://www.personal.psu.edu/~j5j/IPIP/ipipneo120.htm) the shorter version developed by Professor **Dr. John A. Johnson**, this is a free representation of the [NEO PI-R™](https://en.wikipedia.org/wiki/Revised_NEO_Personality_Inventory).
