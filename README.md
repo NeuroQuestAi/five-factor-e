@@ -2,7 +2,7 @@
 
 # Five Factor E Library 📦 🌊
 
-![version 1.7.0][img_version]
+[![PyPI Latest Release](https://img.shields.io/pypi/v/five-factor-e.svg)](https://pypi.org/project/five-factor-e/)
 ![python 3.7 | 3.8 | 3.9 | 3.10 | 3.11][python_version]
 [![PyPi Downloads](https://pepy.tech/badge/five-factor-e)](https://pepy.tech/project/five-factor-e)
 [![PyPi Monthly Downloads](https://pepy.tech/badge/five-factor-e/month)](https://pepy.tech/project/five-factor-e/month)
