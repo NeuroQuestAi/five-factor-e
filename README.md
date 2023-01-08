@@ -5,7 +5,6 @@
 [![PyPI Latest Release](https://img.shields.io/pypi/v/five-factor-e.svg)](https://pypi.org/project/five-factor-e/)
 ![python 3.7 | 3.8 | 3.9 | 3.10 | 3.11][python_version]
 [![PyPi Downloads](https://pepy.tech/badge/five-factor-e)](https://pepy.tech/project/five-factor-e)
-[![PyPi Monthly Downloads](https://pepy.tech/badge/five-factor-e/month)](https://pepy.tech/project/five-factor-e/)
 [![Code style: Black](https://img.shields.io/badge/code%20style-Black-000000.svg)](https://github.com/psf/black)
 
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20&color=blue
