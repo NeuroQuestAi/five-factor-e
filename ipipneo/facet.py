@@ -5,13 +5,12 @@ __email__ = "e@neural7.io"
 __copyright__ = "Copyright Neural7 2022, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.7.0"
+__version__ = "1.8.0"
 __status__ = "production"
 
 from enum import IntEnum
 
-from ipipneo.model import (FacetLevel, FacetScale, NormCubic, NormScale,
-                           QuestionNumber)
+from ipipneo.model import FacetLevel, FacetScale, NormCubic, NormScale, QuestionNumber
 from ipipneo.utility import big5_ocean_is_valid, create_big5_dict
 
 
@@ -114,31 +113,11 @@ class Facet:
 
         try:
             for i in range(1, 7):
-                N[i] = 50 + (
-                    10
-                    * (b5.get("N")[i] - norm.get("ns")[i + 10])
-                    / norm.get("ns")[i + 16]
-                )
-                E[i] = 50 + (
-                    10
-                    * (b5.get("E")[i] - norm.get("ns")[i + 22])
-                    / norm.get("ns")[i + 28]
-                )
-                O[i] = 50 + (
-                    10
-                    * (b5.get("O")[i] - norm.get("ns")[i + 34])
-                    / norm.get("ns")[i + 40]
-                )
-                A[i] = 50 + (
-                    10
-                    * (b5.get("A")[i] - norm.get("ns")[i + 46])
-                    / norm.get("ns")[i + 52]
-                )
-                C[i] = 50 + (
-                    10
-                    * (b5.get("C")[i] - norm.get("ns")[i + 58])
-                    / norm.get("ns")[i + 64]
-                )
+                N[i] = 50 + (10 * (b5.get("N")[i] - norm.get("ns")[i + 10]) / norm.get("ns")[i + 16])
+                E[i] = 50 + (10 * (b5.get("E")[i] - norm.get("ns")[i + 22]) / norm.get("ns")[i + 28])
+                O[i] = 50 + (10 * (b5.get("O")[i] - norm.get("ns")[i + 34]) / norm.get("ns")[i + 40])
+                A[i] = 50 + (10 * (b5.get("A")[i] - norm.get("ns")[i + 46]) / norm.get("ns")[i + 52])
+                C[i] = 50 + (10 * (b5.get("C")[i] - norm.get("ns")[i + 58]) / norm.get("ns")[i + 64])
         except IndexError as e:
             raise BaseException(f"The number of questions setting is wrong: {str(e)}")
 
@@ -167,10 +146,7 @@ class Facet:
 
                 if traits[i] < FacetLevel.LOW.value:
                     Y[i] = "low"
-                if (
-                    traits[i] >= FacetLevel.LOW.value
-                    and traits[i] <= FacetLevel.HIGH.value
-                ):
+                if traits[i] >= FacetLevel.LOW.value and traits[i] <= FacetLevel.HIGH.value:
                     Y[i] = "average"
                 if traits[i] > FacetLevel.HIGH.value:
                     Y[i] = "high"

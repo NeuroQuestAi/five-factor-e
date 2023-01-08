@@ -5,10 +5,8 @@
 [![PyPI Latest Release](https://img.shields.io/pypi/v/five-factor-e.svg)](https://pypi.org/project/five-factor-e/)
 ![python 3.7 | 3.8 | 3.9 | 3.10 | 3.11][python_version]
 [![PyPi Downloads](https://pepy.tech/badge/five-factor-e)](https://pepy.tech/project/five-factor-e)
-[![PyPi Monthly Downloads](https://pepy.tech/badge/five-factor-e/month)](https://pepy.tech/project/five-factor-e/)
 [![Code style: Black](https://img.shields.io/badge/code%20style-Black-000000.svg)](https://github.com/psf/black)
 
-[img_version]: https://img.shields.io/static/v1.svg?label=version&message=1.7.0&color=blue
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20&color=blue
 
 <p align="center">
@@ -161,38 +159,38 @@ An example of the output of the results:
 {
    "personalities":[
       {
-         "Openness":{
+         "openness":{
             "O":24.29091080263288,
             "score": "low",
             "traits":[
                {
                   "trait":1,
-                  "Imagination":21.43945888481437,
+                  "imagination":21.43945888481437,
                   "score":"low"
                },
                {
                   "trait":2,
-                  "Artistic-Interests":4.344187760272675,
+                  "artistic_interests":4.344187760272675,
                   "score":"low"
                },
                {
                   "trait":3,
-                  "Emotionality":8.379530297432893,
+                  "emotionality":8.379530297432893,
                   "score":"low"
                },
                {
                   "trait":4,
-                  "Adventurousness":30.805235884673323,
+                  "adventurousness":30.805235884673323,
                   "score":"low"
                },
                {
                   "trait":5,
-                  "Intellect":47.84680512022845,
+                  "intellect":47.84680512022845,
                   "score":"average"
                },
                {
                   "trait":6,
-                  "Liberalism":84.95164346200181,
+                  "liberalism":84.95164346200181,
                   "score":"high"
                }
             ]

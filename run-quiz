@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+cd ipipneo; clear; python3 quiz.py; exit 0;

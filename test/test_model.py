@@ -2,10 +2,18 @@
 
 import unittest
 
-from ipipneo.model import (Big5Agreeableness, Big5Conscientiousness,
-                           Big5Extraversion, Big5Neuroticism, Big5Openness,
-                           FacetLevel, FacetScale, NormCubic, NormScale,
-                           QuestionNumber)
+from ipipneo.model import (
+    Big5Agreeableness,
+    Big5Conscientiousness,
+    Big5Extraversion,
+    Big5Neuroticism,
+    Big5Openness,
+    FacetLevel,
+    FacetScale,
+    NormCubic,
+    NormScale,
+    QuestionNumber,
+)
 
 
 class TestModel(unittest.TestCase):
@@ -81,23 +89,23 @@ class TestModel(unittest.TestCase):
     def test_big5_neuroticism(self) -> None:
         model = Big5Neuroticism
 
-        self.assertEqual(model.TRAIT1, "Anxiety")
-        self.assertEqual(model.TRAIT1.value, "Anxiety")
+        self.assertEqual(model.TRAIT1, "anxiety")
+        self.assertEqual(model.TRAIT1.value, "anxiety")
 
-        self.assertEqual(model.TRAIT2, "Anger")
-        self.assertEqual(model.TRAIT2.value, "Anger")
+        self.assertEqual(model.TRAIT2, "anger")
+        self.assertEqual(model.TRAIT2.value, "anger")
 
-        self.assertEqual(model.TRAIT3, "Depression")
-        self.assertEqual(model.TRAIT3.value, "Depression")
+        self.assertEqual(model.TRAIT3, "depression")
+        self.assertEqual(model.TRAIT3.value, "depression")
 
-        self.assertEqual(model.TRAIT4, "Self-Consciousness")
-        self.assertEqual(model.TRAIT4.value, "Self-Consciousness")
+        self.assertEqual(model.TRAIT4, "self_consciousness")
+        self.assertEqual(model.TRAIT4.value, "self_consciousness")
 
-        self.assertEqual(model.TRAIT5, "Immoderation")
-        self.assertEqual(model.TRAIT5.value, "Immoderation")
+        self.assertEqual(model.TRAIT5, "immoderation")
+        self.assertEqual(model.TRAIT5.value, "immoderation")
 
-        self.assertEqual(model.TRAIT6, "Vulnerability")
-        self.assertEqual(model.TRAIT6.value, "Vulnerability")
+        self.assertEqual(model.TRAIT6, "vulnerability")
+        self.assertEqual(model.TRAIT6.value, "vulnerability")
 
         x1 = list(map(str, model))
         self.assertEqual(len(x1), 6)
@@ -105,23 +113,23 @@ class TestModel(unittest.TestCase):
     def test_big5_extraversion(self) -> None:
         model = Big5Extraversion
 
-        self.assertEqual(model.TRAIT1, "Friendliness")
-        self.assertEqual(model.TRAIT1.value, "Friendliness")
+        self.assertEqual(model.TRAIT1, "friendliness")
+        self.assertEqual(model.TRAIT1.value, "friendliness")
 
-        self.assertEqual(model.TRAIT2, "Gregariousness")
-        self.assertEqual(model.TRAIT2.value, "Gregariousness")
+        self.assertEqual(model.TRAIT2, "gregariousness")
+        self.assertEqual(model.TRAIT2.value, "gregariousness")
 
-        self.assertEqual(model.TRAIT3, "Assertiveness")
-        self.assertEqual(model.TRAIT3.value, "Assertiveness")
+        self.assertEqual(model.TRAIT3, "assertiveness")
+        self.assertEqual(model.TRAIT3.value, "assertiveness")
 
-        self.assertEqual(model.TRAIT4, "Activity-Level")
-        self.assertEqual(model.TRAIT4.value, "Activity-Level")
+        self.assertEqual(model.TRAIT4, "activity_level")
+        self.assertEqual(model.TRAIT4.value, "activity_level")
 
-        self.assertEqual(model.TRAIT5, "Excitement-Seeking")
-        self.assertEqual(model.TRAIT5.value, "Excitement-Seeking")
+        self.assertEqual(model.TRAIT5, "excitement_seeking")
+        self.assertEqual(model.TRAIT5.value, "excitement_seeking")
 
-        self.assertEqual(model.TRAIT6, "Cheerfulness")
-        self.assertEqual(model.TRAIT6.value, "Cheerfulness")
+        self.assertEqual(model.TRAIT6, "cheerfulness")
+        self.assertEqual(model.TRAIT6.value, "cheerfulness")
 
         x1 = list(map(str, model))
         self.assertEqual(len(x1), 6)
@@ -129,23 +137,23 @@ class TestModel(unittest.TestCase):
     def test_big5_openness(self) -> None:
         model = Big5Openness
 
-        self.assertEqual(model.TRAIT1, "Imagination")
-        self.assertEqual(model.TRAIT1.value, "Imagination")
+        self.assertEqual(model.TRAIT1, "imagination")
+        self.assertEqual(model.TRAIT1.value, "imagination")
 
-        self.assertEqual(model.TRAIT2, "Artistic-Interests")
-        self.assertEqual(model.TRAIT2.value, "Artistic-Interests")
+        self.assertEqual(model.TRAIT2, "artistic_interests")
+        self.assertEqual(model.TRAIT2.value, "artistic_interests")
 
-        self.assertEqual(model.TRAIT3, "Emotionality")
-        self.assertEqual(model.TRAIT3.value, "Emotionality")
+        self.assertEqual(model.TRAIT3, "emotionality")
+        self.assertEqual(model.TRAIT3.value, "emotionality")
 
-        self.assertEqual(model.TRAIT4, "Adventurousness")
-        self.assertEqual(model.TRAIT4.value, "Adventurousness")
+        self.assertEqual(model.TRAIT4, "adventurousness")
+        self.assertEqual(model.TRAIT4.value, "adventurousness")
 
-        self.assertEqual(model.TRAIT5, "Intellect")
-        self.assertEqual(model.TRAIT5.value, "Intellect")
+        self.assertEqual(model.TRAIT5, "intellect")
+        self.assertEqual(model.TRAIT5.value, "intellect")
 
-        self.assertEqual(model.TRAIT6, "Liberalism")
-        self.assertEqual(model.TRAIT6.value, "Liberalism")
+        self.assertEqual(model.TRAIT6, "liberalism")
+        self.assertEqual(model.TRAIT6.value, "liberalism")
 
         x1 = list(map(str, model))
         self.assertEqual(len(x1), 6)
@@ -153,23 +161,23 @@ class TestModel(unittest.TestCase):
     def test_big5_agreeableness(self) -> None:
         model = Big5Agreeableness
 
-        self.assertEqual(model.TRAIT1, "Trust")
-        self.assertEqual(model.TRAIT1.value, "Trust")
+        self.assertEqual(model.TRAIT1, "trust")
+        self.assertEqual(model.TRAIT1.value, "trust")
 
-        self.assertEqual(model.TRAIT2, "Morality")
-        self.assertEqual(model.TRAIT2.value, "Morality")
+        self.assertEqual(model.TRAIT2, "morality")
+        self.assertEqual(model.TRAIT2.value, "morality")
 
-        self.assertEqual(model.TRAIT3, "Altruism")
-        self.assertEqual(model.TRAIT3.value, "Altruism")
+        self.assertEqual(model.TRAIT3, "altruism")
+        self.assertEqual(model.TRAIT3.value, "altruism")
 
-        self.assertEqual(model.TRAIT4, "Cooperation")
-        self.assertEqual(model.TRAIT4.value, "Cooperation")
+        self.assertEqual(model.TRAIT4, "cooperation")
+        self.assertEqual(model.TRAIT4.value, "cooperation")
 
-        self.assertEqual(model.TRAIT5, "Modesty")
-        self.assertEqual(model.TRAIT5.value, "Modesty")
+        self.assertEqual(model.TRAIT5, "modesty")
+        self.assertEqual(model.TRAIT5.value, "modesty")
 
-        self.assertEqual(model.TRAIT6, "Sympathy")
-        self.assertEqual(model.TRAIT6.value, "Sympathy")
+        self.assertEqual(model.TRAIT6, "sympathy")
+        self.assertEqual(model.TRAIT6.value, "sympathy")
 
         x1 = list(map(str, model))
         self.assertEqual(len(x1), 6)
@@ -177,23 +185,23 @@ class TestModel(unittest.TestCase):
     def test_big5_conscientiousness(self) -> None:
         model = Big5Conscientiousness
 
-        self.assertEqual(model.TRAIT1, "Self-Efficacy")
-        self.assertEqual(model.TRAIT1.value, "Self-Efficacy")
+        self.assertEqual(model.TRAIT1, "self_efficacy")
+        self.assertEqual(model.TRAIT1.value, "self_efficacy")
 
-        self.assertEqual(model.TRAIT2, "Orderliness")
-        self.assertEqual(model.TRAIT2.value, "Orderliness")
+        self.assertEqual(model.TRAIT2, "orderliness")
+        self.assertEqual(model.TRAIT2.value, "orderliness")
 
-        self.assertEqual(model.TRAIT3, "Dutifulness")
-        self.assertEqual(model.TRAIT3.value, "Dutifulness")
+        self.assertEqual(model.TRAIT3, "dutifulness")
+        self.assertEqual(model.TRAIT3.value, "dutifulness")
 
-        self.assertEqual(model.TRAIT4, "Achievement-Striving")
-        self.assertEqual(model.TRAIT4.value, "Achievement-Striving")
+        self.assertEqual(model.TRAIT4, "achievement_striving")
+        self.assertEqual(model.TRAIT4.value, "achievement_striving")
 
-        self.assertEqual(model.TRAIT5, "Self-Discipline")
-        self.assertEqual(model.TRAIT5.value, "Self-Discipline")
+        self.assertEqual(model.TRAIT5, "self_discipline")
+        self.assertEqual(model.TRAIT5.value, "self_discipline")
 
-        self.assertEqual(model.TRAIT6, "Cautiousness")
-        self.assertEqual(model.TRAIT6.value, "Cautiousness")
+        self.assertEqual(model.TRAIT6, "cautiousness")
+        self.assertEqual(model.TRAIT6.value, "cautiousness")
 
         x1 = list(map(str, model))
         self.assertEqual(len(x1), 6)

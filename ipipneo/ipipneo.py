@@ -5,7 +5,7 @@ __email__ = "e@neural7.io"
 __copyright__ = "Copyright Neural7 2022, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.7.0"
+__version__ = "1.8.0"
 __status__ = "production"
 
 import copy
@@ -14,10 +14,12 @@ import uuid
 from ipipneo.facet import Facet
 from ipipneo.model import QuestionNumber
 from ipipneo.norm import Norm
-from ipipneo.reverse import (ReverseScored120, ReverseScored300,
-                             ReverseScoredCustom)
-from ipipneo.utility import (organize_list_json, raise_if_age_is_invalid,
-                             raise_if_sex_is_invalid)
+from ipipneo.reverse import ReverseScored120, ReverseScored300, ReverseScoredCustom
+from ipipneo.utility import (
+    organize_list_json,
+    raise_if_age_is_invalid,
+    raise_if_sex_is_invalid,
+)
 
 
 class IpipNeo(Facet):
@@ -56,9 +58,7 @@ class IpipNeo(Facet):
         normc = Norm.calc(domain=self.domain(score=score), norm=norm)
         assert isinstance(normc, dict), "normc must be a dict"
 
-        distrib = self.distrib(
-            size=len(score), b5=self.b5create(score=score), norm=norm
-        )
+        distrib = self.distrib(size=len(score), b5=self.b5create(score=score), norm=norm)
         assert isinstance(distrib, dict), "distrib must be a dict"
 
         normalize = Norm.normalize(normc=normc, percent=Norm.percent(normc=normc))
@@ -88,11 +88,11 @@ class IpipNeo(Facet):
                 "age": age,
                 "result": {
                     "personalities": [
-                        {"Openness": self.big_five_level(big5=O, label="O")},
-                        {"Conscientiousness": self.big_five_level(big5=C, label="C")},
-                        {"Extraversion": self.big_five_level(big5=E, label="E")},
-                        {"Agreeableness": self.big_five_level(big5=A, label="A")},
-                        {"Neuroticism": self.big_five_level(big5=N, label="N")},
+                        {"openness": self.big_five_level(big5=O, label="O")},
+                        {"conscientiousness": self.big_five_level(big5=C, label="C")},
+                        {"extraversion": self.big_five_level(big5=E, label="E")},
+                        {"agreeableness": self.big_five_level(big5=A, label="A")},
+                        {"neuroticism": self.big_five_level(big5=N, label="N")},
                     ]
                 },
             },
@@ -120,9 +120,7 @@ class IpipNeo(Facet):
             reversed = ReverseScoredCustom(answers=answers)
         else:
             reversed = (
-                ReverseScored120(answers=answers)
-                if self._nquestion == 120
-                else ReverseScored300(answers=answers)
+                ReverseScored120(answers=answers) if self._nquestion == 120 else ReverseScored300(answers=answers)
             )
         assert isinstance(reversed, dict), "reversed must be a dict"
 
