@@ -1,506 +1,506 @@
 {
-   "questions":[
+   "questions": [
       {
-         "id":1,
-         "text":"Worry about things."
+         "id": 1,
+         "text": "Worry about things."
       },
       {
-         "id":2,
-         "text":"Make friends easily."
+         "id": 2,
+         "text": "Make friends easily."
       },
       {
-         "id":3,
-         "text":"Have a vivid imagination."
+         "id": 3,
+         "text": "Have a vivid imagination."
       },
       {
-         "id":4,
-         "text":"Trust others."
+         "id": 4,
+         "text": "Trust others."
       },
       {
-         "id":5,
-         "text":"Complete tasks successfully."
+         "id": 5,
+         "text": "Complete tasks successfully."
       },
       {
-         "id":6,
-         "text":"Get angry easily."
+         "id": 6,
+         "text": "Get angry easily."
       },
       {
-         "id":7,
-         "text":"Love large parties."
+         "id": 7,
+         "text": "Love large parties."
       },
       {
-         "id":8,
-         "text":"Believe in the importance of art."
+         "id": 8,
+         "text": "Believe in the importance of art."
       },
       {
-         "id":9,
-         "text":"Use others for my own ends."
+         "id": 9,
+         "text": "Use others for my own ends."
       },
       {
-         "id":10,
-         "text":"Like to tidy up."
+         "id": 10,
+         "text": "Like to tidy up."
       },
       {
-         "id":11,
-         "text":"Often feel blue."
+         "id": 11,
+         "text": "Often feel blue."
       },
       {
-         "id":12,
-         "text":"Take charge."
+         "id": 12,
+         "text": "Take charge."
       },
       {
-         "id":13,
-         "text":"Experience my emotions intensely."
+         "id": 13,
+         "text": "Experience my emotions intensely."
       },
       {
-         "id":14,
-         "text":"Love to help others."
+         "id": 14,
+         "text": "Love to help others."
       },
       {
-         "id":15,
-         "text":"Keep my promises."
+         "id": 15,
+         "text": "Keep my promises."
       },
       {
-         "id":16,
-         "text":"Find it difficult to approach others."
+         "id": 16,
+         "text": "Find it difficult to approach others."
       },
       {
-         "id":17,
-         "text":"Am always busy."
+         "id": 17,
+         "text": "Am always busy."
       },
       {
-         "id":18,
-         "text":"Prefer variety to routine."
+         "id": 18,
+         "text": "Prefer variety to routine."
       },
       {
-         "id":19,
-         "text":"Love a good fight."
+         "id": 19,
+         "text": "Love a good fight."
       },
       {
-         "id":20,
-         "text":"Work hard."
+         "id": 20,
+         "text": "Work hard."
       },
       {
-         "id":21,
-         "text":"Go on binges."
+         "id": 21,
+         "text": "Go on binges."
       },
       {
-         "id":22,
-         "text":"Love excitement."
+         "id": 22,
+         "text": "Love excitement."
       },
       {
-         "id":23,
-         "text":"Love to read challenging material."
+         "id": 23,
+         "text": "Love to read challenging material."
       },
       {
-         "id":24,
-         "text":"Believe that I am better than others."
+         "id": 24,
+         "text": "Believe that I am better than others."
       },
       {
-         "id":25,
-         "text":"Am always prepared."
+         "id": 25,
+         "text": "Am always prepared."
       },
       {
-         "id":26,
-         "text":"Panic easily."
+         "id": 26,
+         "text": "Panic easily."
       },
       {
-         "id":27,
-         "text":"Radiate joy."
+         "id": 27,
+         "text": "Radiate joy."
       },
       {
-         "id":28,
-         "text":"Tend to vote for liberal political candidates."
+         "id": 28,
+         "text": "Tend to vote for liberal political candidates."
       },
       {
-         "id":29,
-         "text":"Sympathize with the homeless."
+         "id": 29,
+         "text": "Sympathize with the homeless."
       },
       {
-         "id":30,
-         "text":"Jump into things without thinking."
+         "id": 30,
+         "text": "Jump into things without thinking."
       },
       {
-         "id":31,
-         "text":"Fear for the worst."
+         "id": 31,
+         "text": "Fear for the worst."
       },
       {
-         "id":32,
-         "text":"Feel comfortable around people."
+         "id": 32,
+         "text": "Feel comfortable around people."
       },
       {
-         "id":33,
-         "text":"Enjoy wild flights of fantasy."
+         "id": 33,
+         "text": "Enjoy wild flights of fantasy."
       },
       {
-         "id":34,
-         "text":"Believe that others have good intentions."
+         "id": 34,
+         "text": "Believe that others have good intentions."
       },
       {
-         "id":35,
-         "text":"Excel in what I do."
+         "id": 35,
+         "text": "Excel in what I do."
       },
       {
-         "id":36,
-         "text":"Get irritated easily."
+         "id": 36,
+         "text": "Get irritated easily."
       },
       {
-         "id":37,
-         "text":"Talk to a lot of different people at parties."
+         "id": 37,
+         "text": "Talk to a lot of different people at parties."
       },
       {
-         "id":38,
-         "text":"See beauty in things that others might not notice."
+         "id": 38,
+         "text": "See beauty in things that others might not notice."
       },
       {
-         "id":39,
-         "text":"Cheat to get ahead."
+         "id": 39,
+         "text": "Cheat to get ahead."
       },
       {
-         "id":40,
-         "text":"Often forget to put things back in their proper place."
+         "id": 40,
+         "text": "Often forget to put things back in their proper place."
       },
       {
-         "id":41,
-         "text":"Dislike myself."
+         "id": 41,
+         "text": "Dislike myself."
       },
       {
-         "id":42,
-         "text":"Try to lead others."
+         "id": 42,
+         "text": "Try to lead others."
       },
       {
-         "id":43,
-         "text":"Feel others' emotions."
+         "id": 43,
+         "text": "Feel others' emotions."
       },
       {
-         "id":44,
-         "text":"Am concerned about others."
+         "id": 44,
+         "text": "Am concerned about others."
       },
       {
-         "id":45,
-         "text":"Tell the truth."
+         "id": 45,
+         "text": "Tell the truth."
       },
       {
-         "id":46,
-         "text":"Am afraid to draw attention to myself."
+         "id": 46,
+         "text": "Am afraid to draw attention to myself."
       },
       {
-         "id":47,
-         "text":"Am always on the go."
+         "id": 47,
+         "text": "Am always on the go."
       },
       {
-         "id":48,
-         "text":"Prefer to stick with things that I know."
+         "id": 48,
+         "text": "Prefer to stick with things that I know."
       },
       {
-         "id":49,
-         "text":"Yell at people."
+         "id": 49,
+         "text": "Yell at people."
       },
       {
-         "id":50,
-         "text":"Do more than what's expected of me."
+         "id": 50,
+         "text": "Do more than what's expected of me."
       },
       {
-         "id":51,
-         "text":"Rarely overindulge."
+         "id": 51,
+         "text": "Rarely overindulge."
       },
       {
-         "id":52,
-         "text":"Seek adventure."
+         "id": 52,
+         "text": "Seek adventure."
       },
       {
-         "id":53,
-         "text":"Avoid philosophical discussions."
+         "id": 53,
+         "text": "Avoid philosophical discussions."
       },
       {
-         "id":54,
-         "text":"Think highly of myself."
+         "id": 54,
+         "text": "Think highly of myself."
       },
       {
-         "id":55,
-         "text":"Carry out my plans."
+         "id": 55,
+         "text": "Carry out my plans."
       },
       {
-         "id":56,
-         "text":"Become overwhelmed by events."
+         "id": 56,
+         "text": "Become overwhelmed by events."
       },
       {
-         "id":57,
-         "text":"Have a lot of fun."
+         "id": 57,
+         "text": "Have a lot of fun."
       },
       {
-         "id":58,
-         "text":"Believe that there is no absolute right or wrong."
+         "id": 58,
+         "text": "Believe that there is no absolute right or wrong."
       },
       {
-         "id":59,
-         "text":"Feel sympathy for those who are worse off than myself."
+         "id": 59,
+         "text": "Feel sympathy for those who are worse off than myself."
       },
       {
-         "id":60,
-         "text":"Make rash decisions."
+         "id": 60,
+         "text": "Make rash decisions."
       },
       {
-         "id":61,
-         "text":"Am afraid of many things."
+         "id": 61,
+         "text": "Am afraid of many things."
       },
       {
-         "id":62,
-         "text":"Avoid contacts with others."
+         "id": 62,
+         "text": "Avoid contacts with others."
       },
       {
-         "id":63,
-         "text":"Love to daydream."
+         "id": 63,
+         "text": "Love to daydream."
       },
       {
-         "id":64,
-         "text":"Trust what people say."
+         "id": 64,
+         "text": "Trust what people say."
       },
       {
-         "id":65,
-         "text":"Handle tasks smoothly."
+         "id": 65,
+         "text": "Handle tasks smoothly."
       },
       {
-         "id":66,
-         "text":"Lose my temper."
+         "id": 66,
+         "text": "Lose my temper."
       },
       {
-         "id":67,
-         "text":"Prefer to be alone."
+         "id": 67,
+         "text": "Prefer to be alone."
       },
       {
-         "id":68,
-         "text":"Do not like poetry."
+         "id": 68,
+         "text": "Do not like poetry."
       },
       {
-         "id":69,
-         "text":"Take advantage of others."
+         "id": 69,
+         "text": "Take advantage of others."
       },
       {
-         "id":70,
-         "text":"Leave a mess in my room."
+         "id": 70,
+         "text": "Leave a mess in my room."
       },
       {
-         "id":71,
-         "text":"Am often down in the dumps."
+         "id": 71,
+         "text": "Am often down in the dumps."
       },
       {
-         "id":72,
-         "text":"Take control of things."
+         "id": 72,
+         "text": "Take control of things."
       },
       {
-         "id":73,
-         "text":"Rarely notice my emotional reactions."
+         "id": 73,
+         "text": "Rarely notice my emotional reactions."
       },
       {
-         "id":74,
-         "text":"Am indifferent to the feelings of others."
+         "id": 74,
+         "text": "Am indifferent to the feelings of others."
       },
       {
-         "id":75,
-         "text":"Break rules."
+         "id": 75,
+         "text": "Break rules."
       },
       {
-         "id":76,
-         "text":"Only feel comfortable with friends."
+         "id": 76,
+         "text": "Only feel comfortable with friends."
       },
       {
-         "id":77,
-         "text":"Do a lot in my spare time."
+         "id": 77,
+         "text": "Do a lot in my spare time."
       },
       {
-         "id":78,
-         "text":"Dislike changes."
+         "id": 78,
+         "text": "Dislike changes."
       },
       {
-         "id":79,
-         "text":"Insult people."
+         "id": 79,
+         "text": "Insult people."
       },
       {
-         "id":80,
-         "text":"Do just enough work to get by."
+         "id": 80,
+         "text": "Do just enough work to get by."
       },
       {
-         "id":81,
-         "text":"Easily resist temptations."
+         "id": 81,
+         "text": "Easily resist temptations."
       },
       {
-         "id":82,
-         "text":"Enjoy being reckless."
+         "id": 82,
+         "text": "Enjoy being reckless."
       },
       {
-         "id":83,
-         "text":"Have difficulty understanding abstract ideas."
+         "id": 83,
+         "text": "Have difficulty understanding abstract ideas."
       },
       {
-         "id":84,
-         "text":"Have a high opinion of myself."
+         "id": 84,
+         "text": "Have a high opinion of myself."
       },
       {
-         "id":85,
-         "text":"Waste my time."
+         "id": 85,
+         "text": "Waste my time."
       },
       {
-         "id":86,
-         "text":"Feel that I'm unable to deal with things."
+         "id": 86,
+         "text": "Feel that I'm unable to deal with things."
       },
       {
-         "id":87,
-         "text":"Love life."
+         "id": 87,
+         "text": "Love life."
       },
       {
-         "id":88,
-         "text":"Tend to vote for conservative political candidates."
+         "id": 88,
+         "text": "Tend to vote for conservative political candidates."
       },
       {
-         "id":89,
-         "text":"Am not interested in other people's problems."
+         "id": 89,
+         "text": "Am not interested in other people's problems."
       },
       {
-         "id":90,
-         "text":"Rush into things."
+         "id": 90,
+         "text": "Rush into things."
       },
       {
-         "id":91,
-         "text":"Get stressed out easily."
+         "id": 91,
+         "text": "Get stressed out easily."
       },
       {
-         "id":92,
-         "text":"Keep others at a distance."
+         "id": 92,
+         "text": "Keep others at a distance."
       },
       {
-         "id":93,
-         "text":"Like to get lost in thought."
+         "id": 93,
+         "text": "Like to get lost in thought."
       },
       {
-         "id":94,
-         "text":"Distrust people."
+         "id": 94,
+         "text": "Distrust people."
       },
       {
-         "id":95,
-         "text":"Know how to get things done."
+         "id": 95,
+         "text": "Know how to get things done."
       },
       {
-         "id":96,
-         "text":"Am not easily annoyed."
+         "id": 96,
+         "text": "Am not easily annoyed."
       },
       {
-         "id":97,
-         "text":"Avoid crowds."
+         "id": 97,
+         "text": "Avoid crowds."
       },
       {
-         "id":98,
-         "text":"Do not enjoy going to art museums."
+         "id": 98,
+         "text": "Do not enjoy going to art museums."
       },
       {
-         "id":99,
-         "text":"Obstruct others' plans."
+         "id": 99,
+         "text": "Obstruct others' plans."
       },
       {
-         "id":100,
-         "text":"Leave my belongings around."
+         "id": 100,
+         "text": "Leave my belongings around."
       },
       {
-         "id":101,
-         "text":"Feel comfortable with myself."
+         "id": 101,
+         "text": "Feel comfortable with myself."
       },
       {
-         "id":102,
-         "text":"Wait for others to lead the way."
+         "id": 102,
+         "text": "Wait for others to lead the way."
       },
       {
-         "id":103,
-         "text":"Don't understand people who get emotional."
+         "id": 103,
+         "text": "Don't understand people who get emotional."
       },
       {
-         "id":104,
-         "text":"Take no time for others."
+         "id": 104,
+         "text": "Take no time for others."
       },
       {
-         "id":105,
-         "text":"Break my promises."
+         "id": 105,
+         "text": "Break my promises."
       },
       {
-         "id":106,
-         "text":"Am not bothered by difficult social situations."
+         "id": 106,
+         "text": "Am not bothered by difficult social situations."
       },
       {
-         "id":107,
-         "text":"Like to take it easy."
+         "id": 107,
+         "text": "Like to take it easy."
       },
       {
-         "id":108,
-         "text":"Am attached to conventional ways."
+         "id": 108,
+         "text": "Am attached to conventional ways."
       },
       {
-         "id":109,
-         "text":"Get back at others."
+         "id": 109,
+         "text": "Get back at others."
       },
       {
-         "id":110,
-         "text":"Put little time and effort into my work."
+         "id": 110,
+         "text": "Put little time and effort into my work."
       },
       {
-         "id":111,
-         "text":"Am able to control my cravings."
+         "id": 111,
+         "text": "Am able to control my cravings."
       },
       {
-         "id":112,
-         "text":"Act wild and crazy."
+         "id": 112,
+         "text": "Act wild and crazy."
       },
       {
-         "id":113,
-         "text":"Am not interested in theoretical discussions."
+         "id": 113,
+         "text": "Am not interested in theoretical discussions."
       },
       {
-         "id":114,
-         "text":"Boast about my virtues."
+         "id": 114,
+         "text": "Boast about my virtues."
       },
       {
-         "id":115,
-         "text":"Have difficulty starting tasks."
+         "id": 115,
+         "text": "Have difficulty starting tasks."
       },
       {
-         "id":116,
-         "text":"Remain calm under pressure."
+         "id": 116,
+         "text": "Remain calm under pressure."
       },
       {
-         "id":117,
-         "text":"Look at the bright side of life."
+         "id": 117,
+         "text": "Look at the bright side of life."
       },
       {
-         "id":118,
-         "text":"Believe that we should be tough on crime."
+         "id": 118,
+         "text": "Believe that we should be tough on crime."
       },
       {
-         "id":119,
-         "text":"Try not to think about the needy."
+         "id": 119,
+         "text": "Try not to think about the needy."
       },
       {
-         "id":120,
-         "text":"Act without thinking."
+         "id": 120,
+         "text": "Act without thinking."
       }
    ],
-   "select":[
+   "select": [
       {
-         "id":1,
-         "text":"Very Inaccurate"
+         "id": 1,
+         "text": "Very Inaccurate"
       },
       {
-         "id":2,
-         "text":"Moderately Inaccurate"
+         "id": 2,
+         "text": "Moderately Inaccurate"
       },
       {
-         "id":3,
-         "text":"Neither Accurate Nor Inaccurate"
+         "id": 3,
+         "text": "Neither Accurate Nor Inaccurate"
       },
       {
-         "id":4,
-         "text":"Moderately Accurate"
+         "id": 4,
+         "text": "Moderately Accurate"
       },
       {
-         "id":5,
-         "text":"Very Accurate"
+         "id": 5,
+         "text": "Very Accurate"
       }
    ]
 }
