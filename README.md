@@ -161,38 +161,38 @@ An example of the output of the results:
 {
    "personalities":[
       {
-         "Openness":{
+         "openness":{
             "O":24.29091080263288,
             "score": "low",
             "traits":[
                {
                   "trait":1,
-                  "Imagination":21.43945888481437,
+                  "imagination":21.43945888481437,
                   "score":"low"
                },
                {
                   "trait":2,
-                  "Artistic-Interests":4.344187760272675,
+                  "artistic_interests":4.344187760272675,
                   "score":"low"
                },
                {
                   "trait":3,
-                  "Emotionality":8.379530297432893,
+                  "emotionality":8.379530297432893,
                   "score":"low"
                },
                {
                   "trait":4,
-                  "Adventurousness":30.805235884673323,
+                  "adventurousness":30.805235884673323,
                   "score":"low"
                },
                {
                   "trait":5,
-                  "Intellect":47.84680512022845,
+                  "intellect":47.84680512022845,
                   "score":"average"
                },
                {
                   "trait":6,
-                  "Liberalism":84.95164346200181,
+                  "liberalism":84.95164346200181,
                   "score":"high"
                }
             ]

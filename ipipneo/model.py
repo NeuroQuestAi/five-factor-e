@@ -5,7 +5,7 @@ __email__ = "e@neural7.io"
 __copyright__ = "Copyright Neural7 2022, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.7.0"
+__version__ = "1.8.0"
 __status__ = "production"
 
 from enum import Enum, IntEnum
@@ -52,53 +52,53 @@ class NormCubic(float, Enum):
 class Big5Neuroticism(str, Enum):
     """Composition of the big5 facets: Neuroticism."""
 
-    TRAIT1 = "Anxiety"
-    TRAIT2 = "Anger"
-    TRAIT3 = "Depression"
-    TRAIT4 = "Self-Consciousness"
-    TRAIT5 = "Immoderation"
-    TRAIT6 = "Vulnerability"
+    TRAIT1 = "anxiety"
+    TRAIT2 = "anger"
+    TRAIT3 = "depression"
+    TRAIT4 = "self_consciousness"
+    TRAIT5 = "immoderation"
+    TRAIT6 = "vulnerability"
 
 
 class Big5Extraversion(str, Enum):
     """Composition of the big5 facets: Extraversion."""
 
-    TRAIT1 = "Friendliness"
-    TRAIT2 = "Gregariousness"
-    TRAIT3 = "Assertiveness"
-    TRAIT4 = "Activity-Level"
-    TRAIT5 = "Excitement-Seeking"
-    TRAIT6 = "Cheerfulness"
+    TRAIT1 = "friendliness"
+    TRAIT2 = "gregariousness"
+    TRAIT3 = "assertiveness"
+    TRAIT4 = "activity_level"
+    TRAIT5 = "excitement_seeking"
+    TRAIT6 = "cheerfulness"
 
 
 class Big5Openness(str, Enum):
     """Composition of the big5 facets: Openness."""
 
-    TRAIT1 = "Imagination"
-    TRAIT2 = "Artistic-Interests"
-    TRAIT3 = "Emotionality"
-    TRAIT4 = "Adventurousness"
-    TRAIT5 = "Intellect"
-    TRAIT6 = "Liberalism"
+    TRAIT1 = "imagination"
+    TRAIT2 = "artistic_interests"
+    TRAIT3 = "emotionality"
+    TRAIT4 = "adventurousness"
+    TRAIT5 = "intellect"
+    TRAIT6 = "liberalism"
 
 
 class Big5Agreeableness(str, Enum):
     """Composition of the big5 facets: Agreeableness."""
 
-    TRAIT1 = "Trust"
-    TRAIT2 = "Morality"
-    TRAIT3 = "Altruism"
-    TRAIT4 = "Cooperation"
-    TRAIT5 = "Modesty"
-    TRAIT6 = "Sympathy"
+    TRAIT1 = "trust"
+    TRAIT2 = "morality"
+    TRAIT3 = "altruism"
+    TRAIT4 = "cooperation"
+    TRAIT5 = "modesty"
+    TRAIT6 = "sympathy"
 
 
 class Big5Conscientiousness(str, Enum):
     """Composition of the big5 facets: Conscientiousness."""
 
-    TRAIT1 = "Self-Efficacy"
-    TRAIT2 = "Orderliness"
-    TRAIT3 = "Dutifulness"
-    TRAIT4 = "Achievement-Striving"
-    TRAIT5 = "Self-Discipline"
-    TRAIT6 = "Cautiousness"
+    TRAIT1 = "self_efficacy"
+    TRAIT2 = "orderliness"
+    TRAIT3 = "dutifulness"
+    TRAIT4 = "achievement_striving"
+    TRAIT5 = "self_discipline"
+    TRAIT6 = "cautiousness"

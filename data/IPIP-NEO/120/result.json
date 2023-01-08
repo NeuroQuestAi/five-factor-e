@@ -9,190 +9,190 @@
       "result": {
          "personalities": [
             {
-               "Openness": {
+               "openness": {
                   "O": 24.29091080263288,
                   "score": "low",
                   "traits": [
                      {
                         "trait": 1,
-                        "Imagination": 21.43945888481437,
+                        "imagination": 21.43945888481437,
                         "score": "low"
                      },
                      {
                         "trait": 2,
-                        "Artistic-Interests": 4.344187760272675,
+                        "artistic_interests": 4.344187760272675,
                         "score": "low"
                      },
                      {
                         "trait": 3,
-                        "Emotionality": 8.379530297432893,
+                        "emotionality": 8.379530297432893,
                         "score": "low"
                      },
                      {
                         "trait": 4,
-                        "Adventurousness": 30.805235884673323,
+                        "adventurousness": 30.805235884673323,
                         "score": "low"
                      },
                      {
                         "trait": 5,
-                        "Intellect": 47.84680512022845,
+                        "intellect": 47.84680512022845,
                         "score": "average"
                      },
                      {
                         "trait": 6,
-                        "Liberalism": 84.95164346200181,
+                        "liberalism": 84.95164346200181,
                         "score": "high"
                      }
                   ]
                }
             },
             {
-               "Conscientiousness": {
+               "conscientiousness": {
                   "C": 1,
                   "score": "low",
                   "traits": [
                      {
                         "trait": 1,
-                        "Self-Efficacy": 57.91385182600635,
+                        "self_efficacy": 57.91385182600635,
                         "score": "average"
                      },
                      {
                         "trait": 2,
-                        "Orderliness": 2.151390653336037,
+                        "orderliness": 2.151390653336037,
                         "score": "low"
                      },
                      {
                         "trait": 3,
-                        "Dutifulness": 1,
+                        "dutifulness": 1,
                         "score": "low"
                      },
                      {
                         "trait": 4,
-                        "Achievement-Striving": 1,
+                        "achievement_striving": 1,
                         "score": "low"
                      },
                      {
                         "trait": 5,
-                        "Self-Discipline": 5.88847088602509,
+                        "self_discipline": 5.88847088602509,
                         "score": "low"
                      },
                      {
                         "trait": 6,
-                        "Cautiousness": 21.419533658147657,
+                        "cautiousness": 21.419533658147657,
                         "score": "low"
                      }
                   ]
                }
             },
             {
-               "Extraversion": {
+               "extraversion": {
                   "E": 32.92660962191414,
                   "score": "average",
                   "traits": [
                      {
                         "trait": 1,
-                        "Friendliness": 21.981508523850408,
+                        "friendliness": 21.981508523850408,
                         "score": "low"
                      },
                      {
                         "trait": 2,
-                        "Gregariousness": 60.22647281248504,
+                        "gregariousness": 60.22647281248504,
                         "score": "average"
                      },
                      {
                         "trait": 3,
-                        "Assertiveness": 13.161331704655908,
+                        "assertiveness": 13.161331704655908,
                         "score": "low"
                      },
                      {
                         "trait": 4,
-                        "Activity-Level": 63.387950876213154,
+                        "activity_level": 63.387950876213154,
                         "score": "average"
                      },
                      {
                         "trait": 5,
-                        "Excitement-Seeking": 70.76878765562839,
+                        "excitement_seeking": 70.76878765562839,
                         "score": "high"
                      },
                      {
                         "trait": 6,
-                        "Cheerfulness": 11.953998059108926,
+                        "cheerfulness": 11.953998059108926,
                         "score": "low"
                      }
                   ]
                }
             },
             {
-               "Agreeableness": {
+               "agreeableness": {
                   "A": 1,
                   "score": "low",
                   "traits": [
                      {
                         "trait": 1,
-                        "Trust": 37.62420353556735,
+                        "trust": 37.62420353556735,
                         "score": "average"
                      },
                      {
                         "trait": 2,
-                        "Morality": 1,
+                        "morality": 1,
                         "score": "low"
                      },
                      {
                         "trait": 3,
-                        "Altruism": 1,
+                        "altruism": 1,
                         "score": "low"
                      },
                      {
                         "trait": 4,
-                        "Cooperation": 1,
+                        "cooperation": 1,
                         "score": "low"
                      },
                      {
                         "trait": 5,
-                        "Modesty": 33.64020338320003,
+                        "modesty": 33.64020338320003,
                         "score": "average"
                      },
                      {
                         "trait": 6,
-                        "Sympathy": 2.8588563188529434,
+                        "sympathy": 2.8588563188529434,
                         "score": "low"
                      }
                   ]
                }
             },
             {
-               "Neuroticism": {
+               "neuroticism": {
                   "N": 67.59105722337824,
                   "score": "high",
                   "traits": [
                      {
                         "trait": 1,
-                        "Anxiety": 56.00057904147229,
+                        "anxiety": 56.00057904147229,
                         "score": "average"
                      },
                      {
                         "trait": 2,
-                        "Anger": 80.37525405921429,
+                        "anger": 80.37525405921429,
                         "score": "high"
                      },
                      {
                         "trait": 3,
-                        "Depression": 76.72120101599137,
+                        "depression": 76.72120101599137,
                         "score": "high"
                      },
                      {
                         "trait": 4,
-                        "Self-Consciousness": 21.97787637601246,
+                        "self_consciousness": 21.97787637601246,
                         "score": "low"
                      },
                      {
                         "trait": 5,
-                        "Immoderation": 67.45616643435892,
+                        "immoderation": 67.45616643435892,
                         "score": "average"
                      },
                      {
                         "trait": 6,
-                        "Vulnerability": 71.39370970797859,
+                        "vulnerability": 71.39370970797859,
                         "score": "high"
                      }
                   ]

@@ -5,13 +5,18 @@ __email__ = "e@neural7.io"
 __copyright__ = "Copyright Neural7 2022, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.7.0"
+__version__ = "1.8.0"
 __status__ = "production"
 
 from enum import Enum
 
-from ipipneo.model import (Big5Agreeableness, Big5Conscientiousness,
-                           Big5Extraversion, Big5Neuroticism, Big5Openness)
+from ipipneo.model import (
+    Big5Agreeableness,
+    Big5Conscientiousness,
+    Big5Extraversion,
+    Big5Neuroticism,
+    Big5Openness,
+)
 
 
 def raise_if_sex_is_invalid(sex: str) -> bool or AssertionError or BaseException:
@@ -43,9 +48,7 @@ def raise_if_age_is_invalid(age: int) -> bool or AssertionError or BaseException
 
     min, max = (10, 110)
     if not (min <= age <= max):
-        raise AssertionError(
-            "The age (%r) must be between %r and %r!" % (age, min, max)
-        )
+        raise AssertionError("The age (%r) must be between %r and %r!" % (age, min, max))
 
     return True
 
@@ -68,9 +71,7 @@ def answers_is_valid(answers: list) -> bool or AssertionError or BaseException:
     if 1 in [1 if x > 5 else 0 for x in answers]:
         raise BaseException("You cannot have answers with a number greater than 5!")
 
-    assert (
-        len(answers) == 120 or len(answers) == 300
-    ), "The (answers) field should be of size 120 or 300!"
+    assert len(answers) == 120 or len(answers) == 300, "The (answers) field should be of size 120 or 300!"
 
     return True
 
@@ -95,9 +96,7 @@ def organize_list_json(answers: dict) -> list or AssertionError or BaseException
 
     return [
         x["id_select"]
-        for x in sorted(
-            [x for x in answers.get("answers", [])], key=lambda x: x["id_question"]
-        )
+        for x in sorted([x for x in answers.get("answers", [])], key=lambda x: x["id_question"])
         if x["id_select"] >= 1
     ]
 

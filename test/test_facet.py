@@ -23,13 +23,13 @@ def load_mock_answers_300() -> dict:
 class TestFacet(unittest.TestCase):
     def test_invalid_params(self) -> None:
         with self.assertRaises(TypeError):
-            facet = Facet()
+            Facet()
 
         with self.assertRaises(BaseException):
-            facet = Facet(nquestion="")
+            Facet(nquestion="")
 
         with self.assertRaises(BaseException):
-            facet = Facet(nquestion=0)
+            Facet(nquestion=0)
 
         self.assertEqual(Facet(nquestion=120).__class__.__name__, "Facet")
         self.assertEqual(Facet(nquestion=300).__class__.__name__, "Facet")
@@ -91,9 +91,7 @@ class TestFacet(unittest.TestCase):
             "The number of questions setting is wrong: list index out of range",
         )
 
-        b5 = facet.b5create(
-            score=facet.score(answers=organize_list_json(load_mock_answers_120()))
-        )
+        b5 = facet.b5create(score=facet.score(answers=organize_list_json(load_mock_answers_120())))
         assert isinstance(b5, dict), "b5 must be a dict"
 
         self.assertEqual(len(b5.get("O")), 121)
@@ -118,9 +116,7 @@ class TestFacet(unittest.TestCase):
             "The number of questions setting is wrong: list index out of range",
         )
 
-        b5 = facet.b5create(
-            score=facet.score(answers=organize_list_json(load_mock_answers_300()))
-        )
+        b5 = facet.b5create(score=facet.score(answers=organize_list_json(load_mock_answers_300())))
         assert isinstance(b5, dict), "b5 must be a dict"
 
         self.assertEqual(len(b5.get("O")), 301)
@@ -145,9 +141,7 @@ class TestFacet(unittest.TestCase):
             "Invalid position in the score array: list index out of range",
         )
 
-        domain = facet.domain(
-            score=facet.score(answers=organize_list_json(load_mock_answers_120()))
-        )
+        domain = facet.domain(score=facet.score(answers=organize_list_json(load_mock_answers_120())))
         assert isinstance(domain, dict), "domain must be a dict"
 
         self.assertEqual(domain.get("O"), 78)
@@ -166,9 +160,7 @@ class TestFacet(unittest.TestCase):
             "Invalid position in the score array: list index out of range",
         )
 
-        domain = facet.domain(
-            score=facet.score(answers=organize_list_json(load_mock_answers_300()))
-        )
+        domain = facet.domain(score=facet.score(answers=organize_list_json(load_mock_answers_300())))
         assert isinstance(domain, dict), "domain must be a dict"
 
         self.assertEqual(domain.get("O"), 180)
@@ -183,14 +175,10 @@ class TestFacet(unittest.TestCase):
         with self.assertRaises(TypeError):
             facet.distrib(size=0, b5={}, norm={})
 
-        b5 = facet.b5create(
-            score=facet.score(answers=organize_list_json(load_mock_answers_120()))
-        )
+        b5 = facet.b5create(score=facet.score(answers=organize_list_json(load_mock_answers_120())))
         assert isinstance(b5, dict), "b5 must be a dict"
 
-        domain = facet.domain(
-            score=facet.score(answers=organize_list_json(load_mock_answers_120()))
-        )
+        domain = facet.domain(score=facet.score(answers=organize_list_json(load_mock_answers_120())))
         assert isinstance(domain, dict), "domain must be a dict"
 
         with self.assertRaises(BaseException) as e:
@@ -200,9 +188,7 @@ class TestFacet(unittest.TestCase):
             "The number of questions setting is wrong: list assignment index out of range",
         )
 
-        distrib = facet.distrib(
-            size=7, b5=b5, norm=Norm(sex="M", age=40, nquestion=120)
-        )
+        distrib = facet.distrib(size=7, b5=b5, norm=Norm(sex="M", age=40, nquestion=120))
         assert isinstance(distrib, dict), "distrib must be a dict"
 
         self.assertEqual(distrib.get("O")[0], 0)
@@ -246,9 +232,7 @@ class TestFacet(unittest.TestCase):
         self.assertEqual(distrib.get("N")[5], 43.80681818181818)
         self.assertEqual(distrib.get("N")[6], 46.75287356321839)
 
-        distrib = facet.distrib(
-            size=7, b5=b5, norm=Norm(sex="F", age=30, nquestion=120)
-        )
+        distrib = facet.distrib(size=7, b5=b5, norm=Norm(sex="F", age=30, nquestion=120))
         assert isinstance(distrib, dict), "distrib must be a dict"
 
         self.assertEqual(distrib.get("O")[1], 33.113772455089816)
@@ -292,14 +276,10 @@ class TestFacet(unittest.TestCase):
         with self.assertRaises(TypeError):
             facet.distrib(size=0, b5={}, norm={})
 
-        b5 = facet.b5create(
-            score=facet.score(answers=organize_list_json(load_mock_answers_300()))
-        )
+        b5 = facet.b5create(score=facet.score(answers=organize_list_json(load_mock_answers_300())))
         assert isinstance(b5, dict), "b5 must be a dict"
 
-        domain = facet.domain(
-            score=facet.score(answers=organize_list_json(load_mock_answers_300()))
-        )
+        domain = facet.domain(score=facet.score(answers=organize_list_json(load_mock_answers_300())))
         assert isinstance(domain, dict), "domain must be a dict"
 
         with self.assertRaises(BaseException) as e:
@@ -309,9 +289,7 @@ class TestFacet(unittest.TestCase):
             "The number of questions setting is wrong: list assignment index out of range",
         )
 
-        distrib = facet.distrib(
-            size=7, b5=b5, norm=Norm(sex="M", age=40, nquestion=300)
-        )
+        distrib = facet.distrib(size=7, b5=b5, norm=Norm(sex="M", age=40, nquestion=300))
         assert isinstance(distrib, dict), "distrib must be a dict"
 
         self.assertEqual(distrib.get("O")[0], 0)
@@ -407,176 +385,166 @@ class TestFacet(unittest.TestCase):
         #############################################
         # 1. Neuroticism with its facets.
         #############################################
-        N = facet.personality(
-            size=len(score), big5=normalize, traits=distrib, label="N"
-        )
+        N = facet.personality(size=len(score), big5=normalize, traits=distrib, label="N")
         assert isinstance(N, dict), "N must be a dict"
         assert isinstance(N.get("traits"), list), "traits must be a list"
 
         self.assertEqual(N.get("N"), 37.23631660596993)
 
         self.assertEqual(N.get("traits")[0]["trait"], 1)
-        self.assertEqual(N.get("traits")[0]["Anxiety"], 55.29153291804727)
+        self.assertEqual(N.get("traits")[0]["anxiety"], 55.29153291804727)
         self.assertEqual(N.get("traits")[0]["score"], "average")
 
         self.assertEqual(N.get("traits")[1]["trait"], 2)
-        self.assertEqual(N.get("traits")[1]["Anger"], 52.068589887460575)
+        self.assertEqual(N.get("traits")[1]["anger"], 52.068589887460575)
         self.assertEqual(N.get("traits")[1]["score"], "average")
 
         self.assertEqual(N.get("traits")[2]["trait"], 3)
-        self.assertEqual(N.get("traits")[2]["Depression"], 30.04288206625688)
+        self.assertEqual(N.get("traits")[2]["depression"], 30.04288206625688)
         self.assertEqual(N.get("traits")[2]["score"], "low")
 
         self.assertEqual(N.get("traits")[3]["trait"], 4)
-        self.assertEqual(N.get("traits")[3]["Self-Consciousness"], 39.69850290396829)
+        self.assertEqual(N.get("traits")[3]["self_consciousness"], 39.69850290396829)
         self.assertEqual(N.get("traits")[3]["score"], "average")
 
         self.assertEqual(N.get("traits")[4]["trait"], 5)
-        self.assertEqual(N.get("traits")[4]["Immoderation"], 28.601999121511483)
+        self.assertEqual(N.get("traits")[4]["immoderation"], 28.601999121511483)
         self.assertEqual(N.get("traits")[4]["score"], "low")
 
         self.assertEqual(N.get("traits")[5]["trait"], 6)
-        self.assertEqual(N.get("traits")[5]["Vulnerability"], 38.536490293892996)
+        self.assertEqual(N.get("traits")[5]["vulnerability"], 38.536490293892996)
         self.assertEqual(N.get("traits")[5]["score"], "average")
 
         #############################################
         # 2. Extraversion with its facets.
         #############################################
-        E = facet.personality(
-            size=len(score), big5=normalize, traits=distrib, label="E"
-        )
+        E = facet.personality(size=len(score), big5=normalize, traits=distrib, label="E")
         assert isinstance(N, dict), "E must be a dict"
         assert isinstance(N.get("traits"), list), "traits must be a list"
 
         self.assertEqual(E.get("E"), 21.46713047820697)
 
         self.assertEqual(E.get("traits")[0]["trait"], 1)
-        self.assertEqual(E.get("traits")[0]["Friendliness"], 20.788746198012063)
+        self.assertEqual(E.get("traits")[0]["friendliness"], 20.788746198012063)
         self.assertEqual(E.get("traits")[0]["score"], "low")
 
         self.assertEqual(E.get("traits")[1]["trait"], 2)
-        self.assertEqual(E.get("traits")[1]["Gregariousness"], 8.857170154068399)
+        self.assertEqual(E.get("traits")[1]["gregariousness"], 8.857170154068399)
         self.assertEqual(E.get("traits")[1]["score"], "low")
 
         self.assertEqual(E.get("traits")[2]["trait"], 3)
-        self.assertEqual(E.get("traits")[2]["Assertiveness"], 25.365062122504668)
+        self.assertEqual(E.get("traits")[2]["assertiveness"], 25.365062122504668)
         self.assertEqual(E.get("traits")[2]["score"], "low")
 
         self.assertEqual(E.get("traits")[3]["trait"], 4)
-        self.assertEqual(E.get("traits")[3]["Activity-Level"], 70.68785093930268)
+        self.assertEqual(E.get("traits")[3]["activity_level"], 70.68785093930268)
         self.assertEqual(E.get("traits")[3]["score"], "high")
 
         self.assertEqual(E.get("traits")[4]["trait"], 5)
-        self.assertEqual(E.get("traits")[4]["Excitement-Seeking"], 36.25782829248527)
+        self.assertEqual(E.get("traits")[4]["excitement_seeking"], 36.25782829248527)
         self.assertEqual(E.get("traits")[4]["score"], "average")
 
         self.assertEqual(E.get("traits")[5]["trait"], 6)
-        self.assertEqual(E.get("traits")[5]["Cheerfulness"], 27.560328329400278)
+        self.assertEqual(E.get("traits")[5]["cheerfulness"], 27.560328329400278)
         self.assertEqual(E.get("traits")[5]["score"], "low")
 
         #############################################
         # 3. Openness with its facets.
         #############################################
-        O = facet.personality(
-            size=len(score), big5=normalize, traits=distrib, label="O"
-        )
+        O = facet.personality(size=len(score), big5=normalize, traits=distrib, label="O")
         assert isinstance(O, dict), "O must be a dict"
         assert isinstance(O.get("traits"), list), "traits must be a list"
 
         self.assertEqual(O.get("O"), 26.882298529738506)
 
         self.assertEqual(O.get("traits")[0]["trait"], 1)
-        self.assertEqual(O.get("traits")[0]["Imagination"], 1)
+        self.assertEqual(O.get("traits")[0]["imagination"], 1)
         self.assertEqual(O.get("traits")[0]["score"], "low")
 
         self.assertEqual(O.get("traits")[1]["trait"], 2)
-        self.assertEqual(O.get("traits")[1]["Artistic-Interests"], 14.832308817371768)
+        self.assertEqual(O.get("traits")[1]["artistic_interests"], 14.832308817371768)
         self.assertEqual(O.get("traits")[1]["score"], "low")
 
         self.assertEqual(O.get("traits")[2]["trait"], 3)
-        self.assertEqual(O.get("traits")[2]["Emotionality"], 22.458638690321635)
+        self.assertEqual(O.get("traits")[2]["emotionality"], 22.458638690321635)
         self.assertEqual(O.get("traits")[2]["score"], "low")
 
         self.assertEqual(O.get("traits")[3]["trait"], 4)
-        self.assertEqual(O.get("traits")[3]["Adventurousness"], 78.39980163147527)
+        self.assertEqual(O.get("traits")[3]["adventurousness"], 78.39980163147527)
         self.assertEqual(O.get("traits")[3]["score"], "high")
 
         self.assertEqual(O.get("traits")[4]["trait"], 5)
-        self.assertEqual(O.get("traits")[4]["Intellect"], 27.6351617847169)
+        self.assertEqual(O.get("traits")[4]["intellect"], 27.6351617847169)
         self.assertEqual(O.get("traits")[4]["score"], "low")
 
         self.assertEqual(O.get("traits")[5]["trait"], 6)
-        self.assertEqual(O.get("traits")[5]["Liberalism"], 79.99472618213304)
+        self.assertEqual(O.get("traits")[5]["liberalism"], 79.99472618213304)
         self.assertEqual(O.get("traits")[5]["score"], "high")
 
         #############################################
         # 4. Agreeableness with its facets.
         #############################################
-        A = facet.personality(
-            size=len(score), big5=normalize, traits=distrib, label="A"
-        )
+        A = facet.personality(size=len(score), big5=normalize, traits=distrib, label="A")
         assert isinstance(A, dict), "A must be a dict"
         assert isinstance(A.get("traits"), list), "traits must be a list"
 
         self.assertEqual(A.get("A"), 57.52658875205816)
 
         self.assertEqual(A.get("traits")[0]["trait"], 1)
-        self.assertEqual(A.get("traits")[0]["Trust"], 70.5561195632738)
+        self.assertEqual(A.get("traits")[0]["trust"], 70.5561195632738)
         self.assertEqual(A.get("traits")[0]["score"], "high")
 
         self.assertEqual(A.get("traits")[1]["trait"], 2)
-        self.assertEqual(A.get("traits")[1]["Morality"], 89.87557658724631)
+        self.assertEqual(A.get("traits")[1]["morality"], 89.87557658724631)
         self.assertEqual(A.get("traits")[1]["score"], "high")
 
         self.assertEqual(A.get("traits")[2]["trait"], 3)
-        self.assertEqual(A.get("traits")[2]["Altruism"], 22.561476501041227)
+        self.assertEqual(A.get("traits")[2]["altruism"], 22.561476501041227)
         self.assertEqual(A.get("traits")[2]["score"], "low")
 
         self.assertEqual(A.get("traits")[3]["trait"], 4)
-        self.assertEqual(A.get("traits")[3]["Cooperation"], 63.50546308998889)
+        self.assertEqual(A.get("traits")[3]["cooperation"], 63.50546308998889)
         self.assertEqual(A.get("traits")[3]["score"], "average")
 
         self.assertEqual(A.get("traits")[4]["trait"], 5)
-        self.assertEqual(A.get("traits")[4]["Modesty"], 55.67124528467815)
+        self.assertEqual(A.get("traits")[4]["modesty"], 55.67124528467815)
         self.assertEqual(A.get("traits")[4]["score"], "average")
 
         self.assertEqual(A.get("traits")[5]["trait"], 6)
-        self.assertEqual(A.get("traits")[5]["Sympathy"], 21.651269458084244)
+        self.assertEqual(A.get("traits")[5]["sympathy"], 21.651269458084244)
         self.assertEqual(A.get("traits")[5]["score"], "low")
 
         #############################################
         # 5. Conscientiousness with its facets.
         #############################################
-        C = facet.personality(
-            size=len(score), big5=normalize, traits=distrib, label="C"
-        )
+        C = facet.personality(size=len(score), big5=normalize, traits=distrib, label="C")
         assert isinstance(C, dict), "C must be a dict"
         assert isinstance(C.get("traits"), list), "traits must be a list"
 
         self.assertEqual(C.get("C"), 86.96687032595662)
 
         self.assertEqual(C.get("traits")[0]["trait"], 1)
-        self.assertEqual(C.get("traits")[0]["Self-Efficacy"], 67.18081968991703)
+        self.assertEqual(C.get("traits")[0]["self_efficacy"], 67.18081968991703)
         self.assertEqual(C.get("traits")[0]["score"], "average")
 
         self.assertEqual(C.get("traits")[1]["trait"], 2)
-        self.assertEqual(C.get("traits")[1]["Orderliness"], 98.82696217870512)
+        self.assertEqual(C.get("traits")[1]["orderliness"], 98.82696217870512)
         self.assertEqual(C.get("traits")[1]["score"], "high")
 
         self.assertEqual(C.get("traits")[2]["trait"], 3)
-        self.assertEqual(C.get("traits")[2]["Dutifulness"], 54.122030713014226)
+        self.assertEqual(C.get("traits")[2]["dutifulness"], 54.122030713014226)
         self.assertEqual(C.get("traits")[2]["score"], "average")
 
         self.assertEqual(C.get("traits")[3]["trait"], 4)
-        self.assertEqual(C.get("traits")[3]["Achievement-Striving"], 84.86323430898972)
+        self.assertEqual(C.get("traits")[3]["achievement_striving"], 84.86323430898972)
         self.assertEqual(C.get("traits")[3]["score"], "high")
 
         self.assertEqual(C.get("traits")[4]["trait"], 5)
-        self.assertEqual(C.get("traits")[4]["Self-Discipline"], 92.95956099997227)
+        self.assertEqual(C.get("traits")[4]["self_discipline"], 92.95956099997227)
         self.assertEqual(C.get("traits")[4]["score"], "high")
 
         self.assertEqual(C.get("traits")[5]["trait"], 6)
-        self.assertEqual(C.get("traits")[5]["Cautiousness"], 38.524355262005315)
+        self.assertEqual(C.get("traits")[5]["cautiousness"], 38.524355262005315)
         self.assertEqual(C.get("traits")[5]["score"], "average")
 
         #############################################
@@ -869,176 +837,166 @@ class TestFacet(unittest.TestCase):
         #############################################
         # 1. Neuroticism with its facets.
         #############################################
-        N = facet.personality(
-            size=len(score), big5=normalize, traits=distrib, label="N"
-        )
+        N = facet.personality(size=len(score), big5=normalize, traits=distrib, label="N")
         assert isinstance(N, dict), "N must be a dict"
         assert isinstance(N.get("traits"), list), "traits must be a list"
 
         self.assertEqual(N.get("N"), 72.42696555428512)
 
         self.assertEqual(N.get("traits")[0]["trait"], 1)
-        self.assertEqual(N.get("traits")[0]["Anxiety"], 56.21355262825239)
+        self.assertEqual(N.get("traits")[0]["anxiety"], 56.21355262825239)
         self.assertEqual(N.get("traits")[0]["score"], "average")
 
         self.assertEqual(N.get("traits")[1]["trait"], 2)
-        self.assertEqual(N.get("traits")[1]["Anger"], 49.99999999999858)
+        self.assertEqual(N.get("traits")[1]["anger"], 49.99999999999858)
         self.assertEqual(N.get("traits")[1]["score"], "average")
 
         self.assertEqual(N.get("traits")[2]["trait"], 3)
-        self.assertEqual(N.get("traits")[2]["Depression"], 75.7080910490638)
+        self.assertEqual(N.get("traits")[2]["depression"], 75.7080910490638)
         self.assertEqual(N.get("traits")[2]["score"], "high")
 
         self.assertEqual(N.get("traits")[3]["trait"], 4)
-        self.assertEqual(N.get("traits")[3]["Self-Consciousness"], 60.2364043211619)
+        self.assertEqual(N.get("traits")[3]["self_consciousness"], 60.2364043211619)
         self.assertEqual(N.get("traits")[3]["score"], "average")
 
         self.assertEqual(N.get("traits")[4]["trait"], 5)
-        self.assertEqual(N.get("traits")[4]["Immoderation"], 54.38260045296113)
+        self.assertEqual(N.get("traits")[4]["immoderation"], 54.38260045296113)
         self.assertEqual(N.get("traits")[4]["score"], "average")
 
         self.assertEqual(N.get("traits")[5]["trait"], 6)
-        self.assertEqual(N.get("traits")[5]["Vulnerability"], 98.37585552257963)
+        self.assertEqual(N.get("traits")[5]["vulnerability"], 98.37585552257963)
         self.assertEqual(N.get("traits")[5]["score"], "high")
 
         #############################################
         # 2. Extraversion with its facets.
         #############################################
-        E = facet.personality(
-            size=len(score), big5=normalize, traits=distrib, label="E"
-        )
+        E = facet.personality(size=len(score), big5=normalize, traits=distrib, label="E")
         assert isinstance(N, dict), "E must be a dict"
         assert isinstance(N.get("traits"), list), "traits must be a list"
 
         self.assertEqual(E.get("E"), 44.65415108872236)
 
         self.assertEqual(E.get("traits")[0]["trait"], 1)
-        self.assertEqual(E.get("traits")[0]["Friendliness"], 49.56063603396092)
+        self.assertEqual(E.get("traits")[0]["friendliness"], 49.56063603396092)
         self.assertEqual(E.get("traits")[0]["score"], "average")
 
         self.assertEqual(E.get("traits")[1]["trait"], 2)
-        self.assertEqual(E.get("traits")[1]["Gregariousness"], 57.44425564700225)
+        self.assertEqual(E.get("traits")[1]["gregariousness"], 57.44425564700225)
         self.assertEqual(E.get("traits")[1]["score"], "average")
 
         self.assertEqual(E.get("traits")[2]["trait"], 3)
-        self.assertEqual(E.get("traits")[2]["Assertiveness"], 47.15427409876639)
+        self.assertEqual(E.get("traits")[2]["assertiveness"], 47.15427409876639)
         self.assertEqual(E.get("traits")[2]["score"], "average")
 
         self.assertEqual(E.get("traits")[3]["trait"], 4)
-        self.assertEqual(E.get("traits")[3]["Activity-Level"], 52.371791064982006)
+        self.assertEqual(E.get("traits")[3]["activity_level"], 52.371791064982006)
         self.assertEqual(E.get("traits")[3]["score"], "average")
 
         self.assertEqual(E.get("traits")[4]["trait"], 5)
-        self.assertEqual(E.get("traits")[4]["Excitement-Seeking"], 32.54383356563801)
+        self.assertEqual(E.get("traits")[4]["excitement_seeking"], 32.54383356563801)
         self.assertEqual(E.get("traits")[4]["score"], "average")
 
         self.assertEqual(E.get("traits")[5]["trait"], 6)
-        self.assertEqual(E.get("traits")[5]["Cheerfulness"], 37.907163869258454)
+        self.assertEqual(E.get("traits")[5]["cheerfulness"], 37.907163869258454)
         self.assertEqual(E.get("traits")[5]["score"], "average")
 
         #############################################
         # 3. Openness with its facets.
         #############################################
-        O = facet.personality(
-            size=len(score), big5=normalize, traits=distrib, label="O"
-        )
+        O = facet.personality(size=len(score), big5=normalize, traits=distrib, label="O")
         assert isinstance(O, dict), "O must be a dict"
         assert isinstance(O.get("traits"), list), "traits must be a list"
 
         self.assertEqual(O.get("O"), 6.765261759154043)
 
         self.assertEqual(O.get("traits")[0]["trait"], 1)
-        self.assertEqual(O.get("traits")[0]["Imagination"], 3.019669333842657)
+        self.assertEqual(O.get("traits")[0]["imagination"], 3.019669333842657)
         self.assertEqual(O.get("traits")[0]["score"], "low")
 
         self.assertEqual(O.get("traits")[1]["trait"], 2)
-        self.assertEqual(O.get("traits")[1]["Artistic-Interests"], 19.180033328925163)
+        self.assertEqual(O.get("traits")[1]["artistic_interests"], 19.180033328925163)
         self.assertEqual(O.get("traits")[1]["score"], "low")
 
         self.assertEqual(O.get("traits")[2]["trait"], 3)
-        self.assertEqual(O.get("traits")[2]["Emotionality"], 58.46198478449537)
+        self.assertEqual(O.get("traits")[2]["emotionality"], 58.46198478449537)
         self.assertEqual(O.get("traits")[2]["score"], "average")
 
         self.assertEqual(O.get("traits")[3]["trait"], 4)
-        self.assertEqual(O.get("traits")[3]["Adventurousness"], 20.561530401874762)
+        self.assertEqual(O.get("traits")[3]["adventurousness"], 20.561530401874762)
         self.assertEqual(O.get("traits")[3]["score"], "low")
 
         self.assertEqual(O.get("traits")[4]["trait"], 5)
-        self.assertEqual(O.get("traits")[4]["Intellect"], 1.9528124319700737)
+        self.assertEqual(O.get("traits")[4]["intellect"], 1.9528124319700737)
         self.assertEqual(O.get("traits")[4]["score"], "low")
 
         self.assertEqual(O.get("traits")[5]["trait"], 6)
-        self.assertEqual(O.get("traits")[5]["Liberalism"], 29.473450015379456)
+        self.assertEqual(O.get("traits")[5]["liberalism"], 29.473450015379456)
         self.assertEqual(O.get("traits")[5]["score"], "low")
 
         #############################################
         # 4. Agreeableness with its facets.
         #############################################
-        A = facet.personality(
-            size=len(score), big5=normalize, traits=distrib, label="A"
-        )
+        A = facet.personality(size=len(score), big5=normalize, traits=distrib, label="A")
         assert isinstance(A, dict), "A must be a dict"
         assert isinstance(A.get("traits"), list), "traits must be a list"
 
         self.assertEqual(A.get("A"), 31.13757270081055)
 
         self.assertEqual(A.get("traits")[0]["trait"], 1)
-        self.assertEqual(A.get("traits")[0]["Trust"], 56.53893235643574)
+        self.assertEqual(A.get("traits")[0]["trust"], 56.53893235643574)
         self.assertEqual(A.get("traits")[0]["score"], "average")
 
         self.assertEqual(A.get("traits")[1]["trait"], 2)
-        self.assertEqual(A.get("traits")[1]["Morality"], 17.983638162857602)
+        self.assertEqual(A.get("traits")[1]["morality"], 17.983638162857602)
         self.assertEqual(A.get("traits")[1]["score"], "low")
 
         self.assertEqual(A.get("traits")[2]["trait"], 3)
-        self.assertEqual(A.get("traits")[2]["Altruism"], 30.46290046715066)
+        self.assertEqual(A.get("traits")[2]["altruism"], 30.46290046715066)
         self.assertEqual(A.get("traits")[2]["score"], "low")
 
         self.assertEqual(A.get("traits")[3]["trait"], 4)
-        self.assertEqual(A.get("traits")[3]["Cooperation"], 56.687055095672974)
+        self.assertEqual(A.get("traits")[3]["cooperation"], 56.687055095672974)
         self.assertEqual(A.get("traits")[3]["score"], "average")
 
         self.assertEqual(A.get("traits")[4]["trait"], 5)
-        self.assertEqual(A.get("traits")[4]["Modesty"], 72.45946413723033)
+        self.assertEqual(A.get("traits")[4]["modesty"], 72.45946413723033)
         self.assertEqual(A.get("traits")[4]["score"], "high")
 
         self.assertEqual(A.get("traits")[5]["trait"], 6)
-        self.assertEqual(A.get("traits")[5]["Sympathy"], 1.7779210136593235)
+        self.assertEqual(A.get("traits")[5]["sympathy"], 1.7779210136593235)
         self.assertEqual(A.get("traits")[5]["score"], "low")
 
         #############################################
         # 5. Conscientiousness with its facets.
         #############################################
-        C = facet.personality(
-            size=len(score), big5=normalize, traits=distrib, label="C"
-        )
+        C = facet.personality(size=len(score), big5=normalize, traits=distrib, label="C")
         assert isinstance(C, dict), "C must be a dict"
         assert isinstance(C.get("traits"), list), "traits must be a list"
 
         self.assertEqual(C.get("C"), 15.799085796472156)
 
         self.assertEqual(C.get("traits")[0]["trait"], 1)
-        self.assertEqual(C.get("traits")[0]["Self-Efficacy"], 17.11734969494421)
+        self.assertEqual(C.get("traits")[0]["self_efficacy"], 17.11734969494421)
         self.assertEqual(C.get("traits")[0]["score"], "low")
 
         self.assertEqual(C.get("traits")[1]["trait"], 2)
-        self.assertEqual(C.get("traits")[1]["Orderliness"], 36.46593774743093)
+        self.assertEqual(C.get("traits")[1]["orderliness"], 36.46593774743093)
         self.assertEqual(C.get("traits")[1]["score"], "average")
 
         self.assertEqual(C.get("traits")[2]["trait"], 3)
-        self.assertEqual(C.get("traits")[2]["Dutifulness"], 1)
+        self.assertEqual(C.get("traits")[2]["dutifulness"], 1)
         self.assertEqual(C.get("traits")[2]["score"], "low")
 
         self.assertEqual(C.get("traits")[3]["trait"], 4)
-        self.assertEqual(C.get("traits")[3]["Achievement-Striving"], 5.368564900396208)
+        self.assertEqual(C.get("traits")[3]["achievement_striving"], 5.368564900396208)
         self.assertEqual(C.get("traits")[3]["score"], "low")
 
         self.assertEqual(C.get("traits")[4]["trait"], 5)
-        self.assertEqual(C.get("traits")[4]["Self-Discipline"], 48.729091361349106)
+        self.assertEqual(C.get("traits")[4]["self_discipline"], 48.729091361349106)
         self.assertEqual(C.get("traits")[4]["score"], "average")
 
         self.assertEqual(C.get("traits")[5]["trait"], 6)
-        self.assertEqual(C.get("traits")[5]["Cautiousness"], 62.553226842568904)
+        self.assertEqual(C.get("traits")[5]["cautiousness"], 62.553226842568904)
         self.assertEqual(C.get("traits")[5]["score"], "average")
 
     def test_big_five_level(self) -> None:
