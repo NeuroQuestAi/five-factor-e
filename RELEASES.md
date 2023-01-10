@@ -6,7 +6,7 @@ Release **[1.8.0](https://github.com/neural7/five-factor-e/releases/tag/v1.8.0)*
 
 * Leaving the json format more Pythonic;
 * Revised README files.
-* 
+
 Release **[1.7.0](https://github.com/neural7/five-factor-e/releases/tag/v1.7.0)**:
 
 * Leaving the age range between 10 to 110 years;
