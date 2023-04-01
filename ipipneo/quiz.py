@@ -20,7 +20,9 @@ except ModuleNotFoundError:
     sys.path.insert(0, "../")
     from ipipneo.ipipneo import IpipNeo
 
-URL_IPIP_QUESTIONS = "https://raw.githubusercontent.com/neural7/five-factor-e/main/data/IPIP-NEO"
+URL_IPIP_QUESTIONS = (
+    "https://raw.githubusercontent.com/rewire5-io/five-factor-e/main/data/IPIP-NEO"
+)
 
 
 def load_ipip_questions(lang: int, question: int) -> dict:
@@ -55,7 +57,10 @@ def get_questions(lang: int, question: int) -> list:
         - lang: The language ID.
         - question: Inventory model 120 or 300.
     """
-    return [x for x in load_ipip_questions(lang=lang, question=question).get("questions", [])]
+    return [
+        x
+        for x in load_ipip_questions(lang=lang, question=question).get("questions", [])
+    ]
 
 
 def get_select(lang: int, question: int) -> list:
@@ -113,7 +118,9 @@ def quiz(inventory: int, sex: str, age: int, shuffle: str, lang: int) -> None:
         option = int(next(filter({"1", "2", "3", "4", "5"}.__contains__, replies)))
         answers.append({"id_question": q.get("id"), "id_select": option})
 
-    result = IpipNeo(question=inventory).compute(sex=sex, age=age, answers={"answers": answers}, compare=True)
+    result = IpipNeo(question=inventory).compute(
+        sex=sex, age=age, answers={"answers": answers}, compare=True
+    )
 
     object = json.dumps(result, indent=4)
     fname = f"result-{str(inventory)}-{result.get('id', 'id')}.json"
@@ -140,7 +147,11 @@ def plot_results(result: dict) -> None:
 
         print(
             "\nInventory:",
-            str(result.get("model")) + "-" + str(result.get("question")) + " v" + str(result.get("version")),
+            str(result.get("model"))
+            + "-"
+            + str(result.get("question"))
+            + " v"
+            + str(result.get("version")),
         )
         print("Case:", result.get("id"))
         print("Gender:", result.get("person").get("sex"))
@@ -164,7 +175,12 @@ def plot_results(result: dict) -> None:
                 int(big5[2].get("extraversion").get("traits")[1].get("gregariousness")),
                 int(big5[2].get("extraversion").get("traits")[2].get("assertiveness")),
                 int(big5[2].get("extraversion").get("traits")[3].get("activity_level")),
-                int(big5[2].get("extraversion").get("traits")[4].get("excitement_seeking")),
+                int(
+                    big5[2]
+                    .get("extraversion")
+                    .get("traits")[4]
+                    .get("excitement_seeking")
+                ),
                 int(big5[2].get("extraversion").get("traits")[5].get("cheerfulness")),
             ],
             width=100,
@@ -218,12 +234,36 @@ def plot_results(result: dict) -> None:
             C,
             [
                 int(big5[1].get("conscientiousness").get("C")),
-                int(big5[1].get("conscientiousness").get("traits")[0].get("self_efficacy")),
-                int(big5[1].get("conscientiousness").get("traits")[1].get("orderliness")),
-                int(big5[1].get("conscientiousness").get("traits")[2].get("dutifulness")),
-                int(big5[1].get("conscientiousness").get("traits")[3].get("achievement_striving")),
-                int(big5[1].get("conscientiousness").get("traits")[4].get("self_discipline")),
-                int(big5[1].get("conscientiousness").get("traits")[5].get("cautiousness")),
+                int(
+                    big5[1]
+                    .get("conscientiousness")
+                    .get("traits")[0]
+                    .get("self_efficacy")
+                ),
+                int(
+                    big5[1].get("conscientiousness").get("traits")[1].get("orderliness")
+                ),
+                int(
+                    big5[1].get("conscientiousness").get("traits")[2].get("dutifulness")
+                ),
+                int(
+                    big5[1]
+                    .get("conscientiousness")
+                    .get("traits")[3]
+                    .get("achievement_striving")
+                ),
+                int(
+                    big5[1]
+                    .get("conscientiousness")
+                    .get("traits")[4]
+                    .get("self_discipline")
+                ),
+                int(
+                    big5[1]
+                    .get("conscientiousness")
+                    .get("traits")[5]
+                    .get("cautiousness")
+                ),
             ],
             width=100,
             title="Big-Five | Consciousness",
@@ -250,7 +290,12 @@ def plot_results(result: dict) -> None:
                 int(big5[4].get("neuroticism").get("traits")[0].get("anxiety")),
                 int(big5[4].get("neuroticism").get("traits")[1].get("anger")),
                 int(big5[4].get("neuroticism").get("traits")[2].get("depression")),
-                int(big5[4].get("neuroticism").get("traits")[3].get("self_consciousness")),
+                int(
+                    big5[4]
+                    .get("neuroticism")
+                    .get("traits")[3]
+                    .get("self_consciousness")
+                ),
                 int(big5[4].get("neuroticism").get("traits")[4].get("immoderation")),
                 int(big5[4].get("neuroticism").get("traits")[5].get("vulnerability")),
             ],
@@ -323,9 +368,13 @@ def main() -> None:
 
     print("\n====================================================================")
     if inventory == 120:
-        print("The following test contains 120 questions which is estimated to take you about 15 minutes to complete!")
+        print(
+            "The following test contains 120 questions which is estimated to take you about 15 minutes to complete!"
+        )
     elif inventory == 300:
-        print("The following test contains 300 questions which is estimated to take you about 35 minutes to complete!")
+        print(
+            "The following test contains 300 questions which is estimated to take you about 35 minutes to complete!"
+        )
 
     replies = map(
         input,
@@ -364,7 +413,9 @@ def main() -> None:
         input,
         chain(
             ["\n> Choose the language of the questions above: "],
-            repeat("Please, only the numbers that are on the list are valid! Try again: "),
+            repeat(
+                "Please, only the numbers that are on the list are valid! Try again: "
+            ),
         ),
     )
     lang = int(next(filter(set(map(str, range(0, 3))).__contains__, replies)))

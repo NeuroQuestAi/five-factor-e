@@ -13,8 +13,15 @@ clean_pypi()
   echo "Ok."
 }
 
+code_style()
+{
+  black ipipneo/*.py && isort ipipneo/*.py
+  black test/*.py && isort test/*.py
+}
+
 while [[ "$#" -gt 0 ]]; do
     case ${1} in
+        -s|--style) code_style;;
         -p|--pypi) create_pypi;;
         -c|--clean) clean_pypi;;
         *) echo "Unknown parameter!"; exit 1;;

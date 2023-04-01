@@ -11,13 +11,8 @@ __status__ = "production"
 from datetime import datetime
 from enum import Enum
 
-from ipipneo.model import (
-    Big5Agreeableness,
-    Big5Conscientiousness,
-    Big5Extraversion,
-    Big5Neuroticism,
-    Big5Openness,
-)
+from ipipneo.model import (Big5Agreeableness, Big5Conscientiousness,
+                           Big5Extraversion, Big5Neuroticism, Big5Openness)
 
 
 def raise_if_sex_is_invalid(sex: str) -> bool or AssertionError or BaseException:
@@ -155,7 +150,9 @@ def big5_target(label: str) -> Enum or BaseException:
     Args:
         - label: The acronym for the Big-Five standard O.C.E.A.N.
     """
-    if big5_ocean_is_valid(label=label):
+    big5_ocean_is_valid(label=label)
+
+    try:
         if label == "O":
             return Big5Openness
         if label == "C":
@@ -166,6 +163,8 @@ def big5_target(label: str) -> Enum or BaseException:
             return Big5Agreeableness
         if label == "N":
             return Big5Neuroticism
+    except BaseException:
+        raise BaseException("The Big-Five label is invalid!")
 
 
 def create_big5_dict(label: str, big5: float, x: list, y: list) -> dict:

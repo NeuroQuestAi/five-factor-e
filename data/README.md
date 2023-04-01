@@ -50,6 +50,6 @@ from ipipneo import IpipNeo
 IpipNeo(question=120, test=True).compute(sex="M", age=40, answers=answers120, compare=True)
 ```
 
-If you have any questions, please send us an email to: (**e at neural.io**) or create an issue reporting the question of the problem in the repository of this project (https://github.com/rewire5-io/five-factor-e/issues).
+If you have any questions, please send us an email to: (**e at rewire5.io**) or create an issue reporting the question of the problem in the repository of this project (https://github.com/rewire5-io/five-factor-e/issues).
 
 Thanks!
