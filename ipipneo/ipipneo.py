@@ -1,11 +1,11 @@
 """It does the calculations to generate the IPIP-NEO results based on the questions and answers."""
 
 __author__ = "Ederson Corbari"
-__email__ = "e@neural7.io"
-__copyright__ = "Copyright Neural7 2022, Big 5 Personality Traits"
+__email__ = "e@rewire5.io"
+__copyright__ = "Copyright ReWire5 2022-2023, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.8.0"
+__version__ = "1.9.0"
 __status__ = "production"
 
 import copy
@@ -19,6 +19,7 @@ from ipipneo.utility import (
     organize_list_json,
     raise_if_age_is_invalid,
     raise_if_sex_is_invalid,
+    add_dict_footer,
 )
 
 
@@ -58,7 +59,9 @@ class IpipNeo(Facet):
         normc = Norm.calc(domain=self.domain(score=score), norm=norm)
         assert isinstance(normc, dict), "normc must be a dict"
 
-        distrib = self.distrib(size=len(score), b5=self.b5create(score=score), norm=norm)
+        distrib = self.distrib(
+            size=len(score), b5=self.b5create(score=score), norm=norm
+        )
         assert isinstance(distrib, dict), "distrib must be a dict"
 
         normalize = Norm.normalize(normc=normc, percent=Norm.percent(normc=normc))
@@ -79,10 +82,9 @@ class IpipNeo(Facet):
         return {
             "id": str(uuid.uuid4()),
             "theory": "Big 5 Personality Traits",
-            "model": "IPIP-NEO",
+            "model": "IPIP-NEO" if self._nquestion == 120 else "IPIP",
             "question": self._nquestion,
             "test": self._test,
-            "version": __version__,
             "person": {
                 "sex": sex,
                 "age": age,
@@ -96,6 +98,7 @@ class IpipNeo(Facet):
                     ]
                 },
             },
+            **add_dict_footer(),
         }
 
     def compute(self, sex: str, age: int, answers: dict, compare: bool = False) -> dict:
@@ -120,7 +123,9 @@ class IpipNeo(Facet):
             reversed = ReverseScoredCustom(answers=answers)
         else:
             reversed = (
-                ReverseScored120(answers=answers) if self._nquestion == 120 else ReverseScored300(answers=answers)
+                ReverseScored120(answers=answers)
+                if self._nquestion == 120
+                else ReverseScored300(answers=answers)
             )
         assert isinstance(reversed, dict), "reversed must be a dict"
 
