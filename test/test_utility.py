@@ -3,10 +3,13 @@
 import json
 import unittest
 
-from ipipneo.utility import (answers_is_valid, big5_ocean_is_valid,
-                             big5_target, create_big5_dict, organize_list_json,
+from ipipneo.utility import (add_dict_footer, answers_is_valid,
+                             big5_ocean_is_valid, big5_target,
+                             create_big5_dict, organize_list_json,
                              raise_if_age_is_invalid, raise_if_sex_is_invalid,
                              reverse_scored)
+
+LIB_CURRENT_VERSION = "1.9.0"
 
 
 def load_mock_answers(idx: int) -> dict:
@@ -20,7 +23,6 @@ def load_mock_answers(idx: int) -> dict:
 
 
 class TestUtility(unittest.TestCase):
-
     maxDiff = None
 
     def test_raise_if_sex_is_invalid(self) -> None:
@@ -591,3 +593,10 @@ class TestUtility(unittest.TestCase):
         self.assertEqual(reverse_scored(select=3), 3)
         self.assertEqual(reverse_scored(select=4), 2)
         self.assertEqual(reverse_scored(select=5), 1)
+
+    def test_add_dict_footer(self) -> None:
+        footer = add_dict_footer()
+        assert isinstance(footer, dict), "footer must be a dict"
+
+        self.assertEqual(footer.get("library"), "five-factor-e")
+        self.assertEqual(footer.get("version"), LIB_CURRENT_VERSION)

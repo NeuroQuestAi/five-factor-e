@@ -252,10 +252,16 @@ class ReverseScoredCustom:
             raise BaseException("The key named (reverse_scored) was not found!")
 
         def is_reversed_custom(x: dict) -> dict:
-            x["id_select"] = reverse_scored(select=x["id_select"]) if x.get("reverse_scored") == 1 else x["id_select"]
+            x["id_select"] = (
+                reverse_scored(select=x["id_select"])
+                if x.get("reverse_scored") == 1
+                else x["id_select"]
+            )
             return x
 
-        return {"answers": [is_reversed_custom(x=x) for x in answers.get("answers", [])]}
+        return {
+            "answers": [is_reversed_custom(x=x) for x in answers.get("answers", [])]
+        }
 
 
 class ReverseScored120:
@@ -285,7 +291,9 @@ class ReverseScored120:
         if not any("id_select" in x for x in answers.get("answers", [])):
             raise BaseException("The key named (id_select) was not found!")
 
-        assert len(list(IPIP_NEO_ITEMS_REVERSED_120)) == 55, "The number of reverse items should be 55!"
+        assert (
+            len(list(IPIP_NEO_ITEMS_REVERSED_120)) == 55
+        ), "The number of reverse items should be 55!"
 
         def is_reversed_120(x: int, y: int) -> int:
             for i in IPIP_NEO_ITEMS_REVERSED_120:
@@ -294,7 +302,13 @@ class ReverseScored120:
             return y
 
         update = map(
-            (lambda x: (x.__setitem__("id_select", is_reversed_120(x["id_question"], x["id_select"])))),
+            (
+                lambda x: (
+                    x.__setitem__(
+                        "id_select", is_reversed_120(x["id_question"], x["id_select"])
+                    )
+                )
+            ),
             answers.get("answers"),
         )
         assert len(list(update)) == 120, "The update number should be 120!"
@@ -329,7 +343,9 @@ class ReverseScored300:
         if not any("id_select" in x for x in answers.get("answers", [])):
             raise BaseException("The key named (id_select) was not found!")
 
-        assert len(list(IPIP_NEO_ITEMS_REVERSED_300)) == 148, "The number of reverse items should be 148!"
+        assert (
+            len(list(IPIP_NEO_ITEMS_REVERSED_300)) == 148
+        ), "The number of reverse items should be 148!"
 
         def is_reversed_300(x: int, y: int) -> int:
             for i in IPIP_NEO_ITEMS_REVERSED_300:
@@ -338,7 +354,13 @@ class ReverseScored300:
             return y
 
         update = map(
-            (lambda x: (x.__setitem__("id_select", is_reversed_300(x["id_question"], x["id_select"])))),
+            (
+                lambda x: (
+                    x.__setitem__(
+                        "id_select", is_reversed_300(x["id_question"], x["id_select"])
+                    )
+                )
+            ),
             answers.get("answers"),
         )
         assert len(list(update)) == 300, "The update number should be 300!"

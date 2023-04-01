@@ -14,13 +14,10 @@ import uuid
 from ipipneo.facet import Facet
 from ipipneo.model import QuestionNumber
 from ipipneo.norm import Norm
-from ipipneo.reverse import ReverseScored120, ReverseScored300, ReverseScoredCustom
-from ipipneo.utility import (
-    organize_list_json,
-    raise_if_age_is_invalid,
-    raise_if_sex_is_invalid,
-    add_dict_footer,
-)
+from ipipneo.reverse import (ReverseScored120, ReverseScored300,
+                             ReverseScoredCustom)
+from ipipneo.utility import (add_dict_footer, organize_list_json,
+                             raise_if_age_is_invalid, raise_if_sex_is_invalid)
 
 
 class IpipNeo(Facet):

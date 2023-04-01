@@ -91,7 +91,9 @@ class TestFacet(unittest.TestCase):
             "The number of questions setting is wrong: list index out of range",
         )
 
-        b5 = facet.b5create(score=facet.score(answers=organize_list_json(load_mock_answers_120())))
+        b5 = facet.b5create(
+            score=facet.score(answers=organize_list_json(load_mock_answers_120()))
+        )
         assert isinstance(b5, dict), "b5 must be a dict"
 
         self.assertEqual(len(b5.get("O")), 121)
@@ -116,7 +118,9 @@ class TestFacet(unittest.TestCase):
             "The number of questions setting is wrong: list index out of range",
         )
 
-        b5 = facet.b5create(score=facet.score(answers=organize_list_json(load_mock_answers_300())))
+        b5 = facet.b5create(
+            score=facet.score(answers=organize_list_json(load_mock_answers_300()))
+        )
         assert isinstance(b5, dict), "b5 must be a dict"
 
         self.assertEqual(len(b5.get("O")), 301)
@@ -141,7 +145,9 @@ class TestFacet(unittest.TestCase):
             "Invalid position in the score array: list index out of range",
         )
 
-        domain = facet.domain(score=facet.score(answers=organize_list_json(load_mock_answers_120())))
+        domain = facet.domain(
+            score=facet.score(answers=organize_list_json(load_mock_answers_120()))
+        )
         assert isinstance(domain, dict), "domain must be a dict"
 
         self.assertEqual(domain.get("O"), 78)
@@ -160,7 +166,9 @@ class TestFacet(unittest.TestCase):
             "Invalid position in the score array: list index out of range",
         )
 
-        domain = facet.domain(score=facet.score(answers=organize_list_json(load_mock_answers_300())))
+        domain = facet.domain(
+            score=facet.score(answers=organize_list_json(load_mock_answers_300()))
+        )
         assert isinstance(domain, dict), "domain must be a dict"
 
         self.assertEqual(domain.get("O"), 180)
@@ -175,10 +183,14 @@ class TestFacet(unittest.TestCase):
         with self.assertRaises(TypeError):
             facet.distrib(size=0, b5={}, norm={})
 
-        b5 = facet.b5create(score=facet.score(answers=organize_list_json(load_mock_answers_120())))
+        b5 = facet.b5create(
+            score=facet.score(answers=organize_list_json(load_mock_answers_120()))
+        )
         assert isinstance(b5, dict), "b5 must be a dict"
 
-        domain = facet.domain(score=facet.score(answers=organize_list_json(load_mock_answers_120())))
+        domain = facet.domain(
+            score=facet.score(answers=organize_list_json(load_mock_answers_120()))
+        )
         assert isinstance(domain, dict), "domain must be a dict"
 
         with self.assertRaises(BaseException) as e:
@@ -188,7 +200,9 @@ class TestFacet(unittest.TestCase):
             "The number of questions setting is wrong: list assignment index out of range",
         )
 
-        distrib = facet.distrib(size=7, b5=b5, norm=Norm(sex="M", age=40, nquestion=120))
+        distrib = facet.distrib(
+            size=7, b5=b5, norm=Norm(sex="M", age=40, nquestion=120)
+        )
         assert isinstance(distrib, dict), "distrib must be a dict"
 
         self.assertEqual(distrib.get("O")[0], 0)
@@ -232,7 +246,9 @@ class TestFacet(unittest.TestCase):
         self.assertEqual(distrib.get("N")[5], 43.80681818181818)
         self.assertEqual(distrib.get("N")[6], 46.75287356321839)
 
-        distrib = facet.distrib(size=7, b5=b5, norm=Norm(sex="F", age=30, nquestion=120))
+        distrib = facet.distrib(
+            size=7, b5=b5, norm=Norm(sex="F", age=30, nquestion=120)
+        )
         assert isinstance(distrib, dict), "distrib must be a dict"
 
         self.assertEqual(distrib.get("O")[1], 33.113772455089816)
@@ -276,10 +292,14 @@ class TestFacet(unittest.TestCase):
         with self.assertRaises(TypeError):
             facet.distrib(size=0, b5={}, norm={})
 
-        b5 = facet.b5create(score=facet.score(answers=organize_list_json(load_mock_answers_300())))
+        b5 = facet.b5create(
+            score=facet.score(answers=organize_list_json(load_mock_answers_300()))
+        )
         assert isinstance(b5, dict), "b5 must be a dict"
 
-        domain = facet.domain(score=facet.score(answers=organize_list_json(load_mock_answers_300())))
+        domain = facet.domain(
+            score=facet.score(answers=organize_list_json(load_mock_answers_300()))
+        )
         assert isinstance(domain, dict), "domain must be a dict"
 
         with self.assertRaises(BaseException) as e:
@@ -289,7 +309,9 @@ class TestFacet(unittest.TestCase):
             "The number of questions setting is wrong: list assignment index out of range",
         )
 
-        distrib = facet.distrib(size=7, b5=b5, norm=Norm(sex="M", age=40, nquestion=300))
+        distrib = facet.distrib(
+            size=7, b5=b5, norm=Norm(sex="M", age=40, nquestion=300)
+        )
         assert isinstance(distrib, dict), "distrib must be a dict"
 
         self.assertEqual(distrib.get("O")[0], 0)
@@ -385,7 +407,9 @@ class TestFacet(unittest.TestCase):
         #############################################
         # 1. Neuroticism with its facets.
         #############################################
-        N = facet.personality(size=len(score), big5=normalize, traits=distrib, label="N")
+        N = facet.personality(
+            size=len(score), big5=normalize, traits=distrib, label="N"
+        )
         assert isinstance(N, dict), "N must be a dict"
         assert isinstance(N.get("traits"), list), "traits must be a list"
 
@@ -418,7 +442,9 @@ class TestFacet(unittest.TestCase):
         #############################################
         # 2. Extraversion with its facets.
         #############################################
-        E = facet.personality(size=len(score), big5=normalize, traits=distrib, label="E")
+        E = facet.personality(
+            size=len(score), big5=normalize, traits=distrib, label="E"
+        )
         assert isinstance(N, dict), "E must be a dict"
         assert isinstance(N.get("traits"), list), "traits must be a list"
 
@@ -451,7 +477,9 @@ class TestFacet(unittest.TestCase):
         #############################################
         # 3. Openness with its facets.
         #############################################
-        O = facet.personality(size=len(score), big5=normalize, traits=distrib, label="O")
+        O = facet.personality(
+            size=len(score), big5=normalize, traits=distrib, label="O"
+        )
         assert isinstance(O, dict), "O must be a dict"
         assert isinstance(O.get("traits"), list), "traits must be a list"
 
@@ -484,7 +512,9 @@ class TestFacet(unittest.TestCase):
         #############################################
         # 4. Agreeableness with its facets.
         #############################################
-        A = facet.personality(size=len(score), big5=normalize, traits=distrib, label="A")
+        A = facet.personality(
+            size=len(score), big5=normalize, traits=distrib, label="A"
+        )
         assert isinstance(A, dict), "A must be a dict"
         assert isinstance(A.get("traits"), list), "traits must be a list"
 
@@ -517,7 +547,9 @@ class TestFacet(unittest.TestCase):
         #############################################
         # 5. Conscientiousness with its facets.
         #############################################
-        C = facet.personality(size=len(score), big5=normalize, traits=distrib, label="C")
+        C = facet.personality(
+            size=len(score), big5=normalize, traits=distrib, label="C"
+        )
         assert isinstance(C, dict), "C must be a dict"
         assert isinstance(C.get("traits"), list), "traits must be a list"
 
@@ -837,7 +869,9 @@ class TestFacet(unittest.TestCase):
         #############################################
         # 1. Neuroticism with its facets.
         #############################################
-        N = facet.personality(size=len(score), big5=normalize, traits=distrib, label="N")
+        N = facet.personality(
+            size=len(score), big5=normalize, traits=distrib, label="N"
+        )
         assert isinstance(N, dict), "N must be a dict"
         assert isinstance(N.get("traits"), list), "traits must be a list"
 
@@ -870,7 +904,9 @@ class TestFacet(unittest.TestCase):
         #############################################
         # 2. Extraversion with its facets.
         #############################################
-        E = facet.personality(size=len(score), big5=normalize, traits=distrib, label="E")
+        E = facet.personality(
+            size=len(score), big5=normalize, traits=distrib, label="E"
+        )
         assert isinstance(N, dict), "E must be a dict"
         assert isinstance(N.get("traits"), list), "traits must be a list"
 
@@ -903,7 +939,9 @@ class TestFacet(unittest.TestCase):
         #############################################
         # 3. Openness with its facets.
         #############################################
-        O = facet.personality(size=len(score), big5=normalize, traits=distrib, label="O")
+        O = facet.personality(
+            size=len(score), big5=normalize, traits=distrib, label="O"
+        )
         assert isinstance(O, dict), "O must be a dict"
         assert isinstance(O.get("traits"), list), "traits must be a list"
 
@@ -936,7 +974,9 @@ class TestFacet(unittest.TestCase):
         #############################################
         # 4. Agreeableness with its facets.
         #############################################
-        A = facet.personality(size=len(score), big5=normalize, traits=distrib, label="A")
+        A = facet.personality(
+            size=len(score), big5=normalize, traits=distrib, label="A"
+        )
         assert isinstance(A, dict), "A must be a dict"
         assert isinstance(A.get("traits"), list), "traits must be a list"
 
@@ -969,7 +1009,9 @@ class TestFacet(unittest.TestCase):
         #############################################
         # 5. Conscientiousness with its facets.
         #############################################
-        C = facet.personality(size=len(score), big5=normalize, traits=distrib, label="C")
+        C = facet.personality(
+            size=len(score), big5=normalize, traits=distrib, label="C"
+        )
         assert isinstance(C, dict), "C must be a dict"
         assert isinstance(C.get("traits"), list), "traits must be a list"
 

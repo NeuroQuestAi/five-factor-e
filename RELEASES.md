@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/rewire5-io/five-factor-e/main/doc/rewire5-io.png" align="right" width="80" height="70"/>
+<img src="https://raw.githubusercontent.com/rewire5-io/five-factor-e/main/doc/rewire5.png" align="right" width="80" height="70"/>
 
 ### Releases 🎈
 
