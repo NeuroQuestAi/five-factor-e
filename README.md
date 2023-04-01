@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/neural7/five-factor-e/main/doc/neural7.png" align="right" width="80" height="70"/>
+<img src="https://raw.githubusercontent.com/rewire5-io/five-factor-e/main/doc/rewire5.png" align="right" width="80" height="70"/>
 
 # Five Factor E 🌊
 
@@ -10,7 +10,7 @@
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3.7%20|%203.8%20|%203.9%20|%203.10%20|%203.11%20&color=blue
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/neural7/five-factor-e/main/doc/big-five-neural7.png" alt="Representation of the Big Five"/>
+  <img src="https://raw.githubusercontent.com/rewire5-io/five-factor-e/main/doc/big-five-rewire5.png" alt="Representation of the Big Five"/>
 </p>
 
 This project assesses a person's 🗣 personality based on an inventory of questions. The project uses the **Big Five** theory using the [IPIP-NEO-300](http://www.personal.psu.edu/~j5j/IPIP/ipipneo300.htm) model created by **Lewis R. Goldberg** and [IPIP-NEO-120](http://www.personal.psu.edu/~j5j/IPIP/ipipneo120.htm) the shorter version developed by Professor **Dr. John A. Johnson**, this is a free representation of the [NEO PI-R™](https://en.wikipedia.org/wiki/Revised_NEO_Personality_Inventory).
@@ -21,7 +21,7 @@ The main idea of the project is to facilitate the use of **Python** developers w
 
 👉 *"That is wonderful, ...! Thank you for developing the Python version of the IPIP-NEO and making it publicly available. It looks like a great resource."* - Dr. Johnson
 
-Note 🚩: *The project is based on the work of **Dhiru Kholia**, and is an adaptation of [Neural7](https://github.com/neural7) for a version that can be reused in other projects of the company.*
+Note 🚩: *The project is based on the work of **Dhiru Kholia**, and is an adaptation of [ReWire5](https://github.com/rewire5-io) for a version that can be reused in other projects of the company.*
 
 ### Synopsis 🌐
 
@@ -59,7 +59,7 @@ Note 🚩: Some answers have the order of the [score reversed](https://ipip.ori.
 
 News about each version please look here:
 
-  * [Releases](https://github.com/neural7/five-factor-e/blob/main/RELEASES.md)
+  * [Releases](https://github.com/rewire5-io/five-factor-e/blob/main/RELEASES.md)
 
 ### Installation 🚀
 
@@ -72,14 +72,14 @@ $ python3 -m pip install --upgrade five-factor-e
 From source:
 
 ```shell
-$ git clone https://github.com/neural7/five-factor-e.git
+$ git clone https://github.com/rewire5-io/five-factor-e.git
 $ cd five-factor-e
 $ python3 -m pip install .
 ```
 
 ### How to use 🔥
 
-The construtor requires the questions model, whether it is the **300** model or short model with **120** questions. It also has the version to do simulations with the questions that are [reversed](https://ipip.ori.org/newScoringInstructions.htm). For this, you must turn the **test** variable from false to true, for more details on reverse scoring tests see section [Experiments with reverse scoring questions](https://github.com/neural7/five-factor-e/blob/main/data/README.md).
+The construtor requires the questions model, whether it is the **300** model or short model with **120** questions. It also has the version to do simulations with the questions that are [reversed](https://ipip.ori.org/newScoringInstructions.htm). For this, you must turn the **test** variable from false to true, for more details on reverse scoring tests see section [Experiments with reverse scoring questions](https://github.com/rewire5-io/five-factor-e/blob/main/data/README.md).
 
 | Parameters    | Type      | Description                                                       |
 | ------------- | --------- | ----------------------------------------------------------------- |
@@ -102,12 +102,12 @@ from ipipneo import IpipNeo
 ipip = IpipNeo(question=300)
 ```
 
-The answers must be in a *standardized json*, you can insert this template in the [data](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json) folder of the project. This dictionary contains random answers, used for testing purposes only. As an example, you can load the file with the **120** test responses:
+The answers must be in a *standardized json*, you can insert this template in the [data](https://github.com/rewire5-io/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json) folder of the project. This dictionary contains random answers, used for testing purposes only. As an example, you can load the file with the **120** test responses:
 
 ```python
 import json, urllib.request
 
-data = urllib.request.urlopen("https://raw.githubusercontent.com/neural7"\
+data = urllib.request.urlopen("https://raw.githubusercontent.com/rewire5-io"\
    "/five-factor-e/main/data/IPIP-NEO/120/answers.json").read()
 
 answers120 = json.loads(data)
@@ -118,7 +118,7 @@ For the long inventory version with **300** items.
 ```python
 import json, urllib.request
 
-data = urllib.request.urlopen("https://raw.githubusercontent.com/neural7"\
+data = urllib.request.urlopen("https://raw.githubusercontent.com/rewire5-io"\
    "/five-factor-e/main/data/IPIP-NEO/300/answers.json").read()
 
 answers300 = json.loads(data)
@@ -200,7 +200,7 @@ An example of the output of the results:
 }
 ```
 
-Example of the complete output check here: [Big 5️⃣ Output](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/result.json)
+Example of the complete output check here: [Big 5️⃣ Output](https://github.com/rewire5-io/five-factor-e/blob/main/data/IPIP-NEO/120/result.json)
 
 ### Tests 🏗
 
@@ -227,14 +227,14 @@ $ pip install five-factor-e[quiz]
 Example output with graphics:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/neural7/five-factor-e/feature/v1.5.0/doc/sample-light-1.png" alt="Big Five Results" border="1"/>
+  <img src="https://raw.githubusercontent.com/rewire5-io/five-factor-e/feature/v1.5.0/doc/sample-light-1.png" alt="Big Five Results" border="1"/>
 </p>
 
 *The complete result is saved in the run folder in json format*.
 
 ### About data 📊
 
-Inside the data [data](https://github.com/neural7/five-factor-e/blob/main/data/) directory, there are examples of questions and answers. The most important is the response data entry which must follow the pattern of this [file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json). Example:
+Inside the data [data](https://github.com/rewire5-io/five-factor-e/blob/main/data/) directory, there are examples of questions and answers. The most important is the response data entry which must follow the pattern of this [file](https://github.com/rewire5-io/five-factor-e/blob/main/data/IPIP-NEO/120/answers.json). Example:
 
 ```json
 {
@@ -251,7 +251,7 @@ Inside the data [data](https://github.com/neural7/five-factor-e/blob/main/data/)
 }
 ```
 
-The id question field refers to the question in this [file](https://github.com/neural7/five-factor-e/blob/main/data/IPIP-NEO/120/questions.json).
+The id question field refers to the question in this [file](https://github.com/rewire5-io/five-factor-e/blob/main/data/IPIP-NEO/120/questions.json).
 Obviously if you want you can change the translation of the question, *but don't change the ID of the question*.
 
 Note 🚩:
@@ -279,4 +279,4 @@ Note 🚩:
 
 ### Authors 👨‍💻
 
-  * [Ederson Corbari](mailto:e@neural7.io) 👽
+  * [Ederson Corbari](mailto:e@rewire5.io) 👽

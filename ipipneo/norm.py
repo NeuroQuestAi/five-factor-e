@@ -1,11 +1,11 @@
 """The standard with the rules of IPIP-NEO norms."""
 
 __author__ = "Ederson Corbari"
-__email__ = "e@neural7.io"
-__copyright__ = "Copyright Neural7 2022, Big 5 Personality Traits"
+__email__ = "e@rewire5.io"
+__copyright__ = "Copyright ReWire5 2022-2023, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.8.0"
+__version__ = "1.9.0"
 __status__ = "production"
 
 from enum import IntEnum
