@@ -1,11 +1,11 @@
 """Reverses scores for certain questions from the IPIP-120, IPIP-300 and Custom Items."""
 
 __author__ = "Ederson Corbari"
-__email__ = "e@rewire5.io"
+__email__ = "e@NeuroQuest.ai"
 __copyright__ = "Copyright ReWire5 2022-2023, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.9.0"
+__version__ = "1.10.0"
 __status__ = "production"
 
 from ipipneo.utility import reverse_scored
@@ -240,16 +240,16 @@ class ReverseScoredCustom:
         assert isinstance(answers, dict), "The (answers) field must be a dict!"
 
         if "answers" not in answers:
-            raise BaseException("The key named (answers) was not found!")
+            raise ValueError("The key named (answers) was not found!")
 
         if not any("id_question" in x for x in answers.get("answers", [])):
-            raise BaseException("The key named (id_question) was not found!")
+            raise ValueError("The key named (id_question) was not found!")
 
         if not any("id_select" in x for x in answers.get("answers", [])):
-            raise BaseException("The key named (id_select) was not found!")
+            raise ValueError("The key named (id_select) was not found!")
 
         if not any("reverse_scored" in x for x in answers.get("answers", [])):
-            raise BaseException("The key named (reverse_scored) was not found!")
+            raise ValueError("The key named (reverse_scored) was not found!")
 
         def is_reversed_custom(x: dict) -> dict:
             x["id_select"] = (
@@ -283,13 +283,13 @@ class ReverseScored120:
         assert isinstance(answers, dict), "The (answers) field must be a dict!"
 
         if "answers" not in answers:
-            raise BaseException("The key named (answers) was not found!")
+            raise ValueError("The key named (answers) was not found!")
 
         if not any("id_question" in x for x in answers.get("answers", [])):
-            raise BaseException("The key named (id_question) was not found!")
+            raise ValueError("The key named (id_question) was not found!")
 
         if not any("id_select" in x for x in answers.get("answers", [])):
-            raise BaseException("The key named (id_select) was not found!")
+            raise ValueError("The key named (id_select) was not found!")
 
         assert (
             len(list(IPIP_NEO_ITEMS_REVERSED_120)) == 55
@@ -302,12 +302,8 @@ class ReverseScored120:
             return y
 
         update = map(
-            (
-                lambda x: (
-                    x.__setitem__(
-                        "id_select", is_reversed_120(x["id_question"], x["id_select"])
-                    )
-                )
+            lambda x: x.__setitem__(
+                "id_select", is_reversed_120(x["id_question"], x["id_select"])
             ),
             answers.get("answers"),
         )
@@ -335,13 +331,13 @@ class ReverseScored300:
         assert isinstance(answers, dict), "The (answers) field must be a dict!"
 
         if "answers" not in answers:
-            raise BaseException("The key named (answers) was not found!")
+            raise ValueError("The key named (answers) was not found!")
 
         if not any("id_question" in x for x in answers.get("answers", [])):
-            raise BaseException("The key named (id_question) was not found!")
+            raise ValueError("The key named (id_question) was not found!")
 
         if not any("id_select" in x for x in answers.get("answers", [])):
-            raise BaseException("The key named (id_select) was not found!")
+            raise ValueError("The key named (id_select) was not found!")
 
         assert (
             len(list(IPIP_NEO_ITEMS_REVERSED_300)) == 148
@@ -354,12 +350,8 @@ class ReverseScored300:
             return y
 
         update = map(
-            (
-                lambda x: (
-                    x.__setitem__(
-                        "id_select", is_reversed_300(x["id_question"], x["id_select"])
-                    )
-                )
+            lambda x: x.__setitem__(
+                "id_select", is_reversed_300(x["id_question"], x["id_select"])
             ),
             answers.get("answers"),
         )

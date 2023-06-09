@@ -1,11 +1,11 @@
 """The standard with the rules of IPIP-NEO norms."""
 
 __author__ = "Ederson Corbari"
-__email__ = "e@rewire5.io"
+__email__ = "e@NeuroQuest.ai"
 __copyright__ = "Copyright ReWire5 2022-2023, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.9.0"
+__version__ = "1.10.0"
 __status__ = "production"
 
 from enum import IntEnum
@@ -1006,36 +1006,20 @@ class Norm:
         Args:
             - normc: The calculated norms.
         """
-        N = float(
-            NormCubic.CONST1.value
-            - (NormCubic.CONST2.value * normc.get("N", 0))
-            + (NormCubic.CONST3.value * normc.get("N", 0) ** 2)
-            - (NormCubic.CONST4.value * normc.get("N", 0) ** 3)
-        )
-        E = float(
-            NormCubic.CONST1.value
-            - (NormCubic.CONST2.value * normc.get("E", 0))
-            + (NormCubic.CONST3.value * normc.get("E", 0) ** 2)
-            - (NormCubic.CONST4.value * normc.get("E", 0) ** 3)
-        )
-        O = float(
-            NormCubic.CONST1.value
-            - (NormCubic.CONST2.value * normc.get("O", 0))
-            + (NormCubic.CONST3.value * normc.get("O", 0) ** 2)
-            - (NormCubic.CONST4.value * normc.get("O", 0) ** 3)
-        )
-        A = float(
-            NormCubic.CONST1.value
-            - (NormCubic.CONST2.value * normc.get("A", 0))
-            + (NormCubic.CONST3.value * normc.get("A", 0) ** 2)
-            - (NormCubic.CONST4.value * normc.get("A", 0) ** 3)
-        )
-        C = float(
-            NormCubic.CONST1.value
-            - (NormCubic.CONST2.value * normc.get("C", 0))
-            + (NormCubic.CONST3.value * normc.get("C", 0) ** 2)
-            - (NormCubic.CONST4.value * normc.get("C", 0) ** 3)
-        )
+
+        def calculate_percent(factor: float, value: float) -> float:
+            return float(
+                NormCubic.CONST1.value
+                - (NormCubic.CONST2.value * value)
+                + (NormCubic.CONST3.value * value**2)
+                - (NormCubic.CONST4.value * value**3)
+            )
+
+        N = calculate_percent(NormCubic.CONST2.value, normc.get("N", 0))
+        E = calculate_percent(NormCubic.CONST2.value, normc.get("E", 0))
+        O = calculate_percent(NormCubic.CONST2.value, normc.get("O", 0))
+        A = calculate_percent(NormCubic.CONST2.value, normc.get("A", 0))
+        C = calculate_percent(NormCubic.CONST2.value, normc.get("C", 0))
 
         return {"O": O, "C": C, "E": E, "A": A, "N": N}
 

@@ -1,11 +1,11 @@
 """It does the calculations to generate the IPIP-NEO results based on the questions and answers."""
 
 __author__ = "Ederson Corbari"
-__email__ = "e@rewire5.io"
+__email__ = "e@NeuroQuest.ai"
 __copyright__ = "Copyright ReWire5 2022-2023, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.9.0"
+__version__ = "1.10.0"
 __status__ = "production"
 
 import copy
@@ -23,7 +23,7 @@ from ipipneo.utility import (add_dict_footer, organize_list_json,
 class IpipNeo(Facet):
     """Class that calculates IPIP-NEO answers."""
 
-    def __init__(self, question: int, test: bool = False) -> None or BaseException:
+    def __init__(self, question: int, test: bool = False) -> None:
         """
         Initialize the class.
 
@@ -31,15 +31,19 @@ class IpipNeo(Facet):
             - question: Question type, 120 or 300.
             - test: Used to test your proposed questions with reverse.
         """
-        if question == 120:
-            nquestion = QuestionNumber.IPIP_120
-        elif question == 300:
-            nquestion = QuestionNumber.IPIP_300
-        else:
-            raise BaseException(f"Type question {question} is invalid!")
+        question_mapping = {
+            120: QuestionNumber.IPIP_120,
+            300: QuestionNumber.IPIP_300,
+        }
 
-        super().__init__(nquestion=nquestion)
-        self._nquestion, self._test = (question, test)
+        nquestion = question_mapping.get(question)
+
+        if nquestion is None:
+            raise ValueError(f"Type question {question} is invalid!")
+
+        super().__init__(nquestion)
+        self._nquestion = question
+        self._test = test
 
     def evaluator(self, sex: str, age: int, score: list) -> dict:
         """
@@ -115,15 +119,13 @@ class IpipNeo(Facet):
         original = copy.deepcopy(answers)
         assert isinstance(original, dict), "original must be a dict"
 
-        reversed = {}
-        if self._test:
-            reversed = ReverseScoredCustom(answers=answers)
-        else:
-            reversed = (
-                ReverseScored120(answers=answers)
-                if self._nquestion == 120
-                else ReverseScored300(answers=answers)
-            )
+        reversed = (
+            ReverseScoredCustom(answers=answers)
+            if self._test
+            else ReverseScored120(answers=answers)
+            if self._nquestion == 120
+            else ReverseScored300(answers=answers)
+        )
         assert isinstance(reversed, dict), "reversed must be a dict"
 
         score = self.score(answers=organize_list_json(answers=reversed))

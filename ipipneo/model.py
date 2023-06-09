@@ -1,11 +1,11 @@
 """Auxiliary constants that are used in the library."""
 
 __author__ = "Ederson Corbari"
-__email__ = "e@rewire5.io"
+__email__ = "e@NeuroQuest.ai"
 __copyright__ = "Copyright ReWire5 2022-2023, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.9.0"
+__version__ = "1.10.0"
 __status__ = "production"
 
 from enum import Enum, IntEnum
