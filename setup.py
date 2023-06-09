@@ -10,15 +10,15 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = "1.9.0"
+VERSION = "1.10.0"
 DESCRIPTION = "Big 5 IPIP-NEO Personality Traits"
 LONG_DESCRIPTION = "Library with a self-administered questionnaire that assesses a person's personality according to the Big Five model, using the IPIP-NEO."
 
 setup(
     name="five-factor-e",
     version=VERSION,
-    author="Ederson Corbari, ReWire5",
-    author_email="<e@rewire5.com>",
+    author="Ederson Corbari, NeuroQuest",
+    author_email="<e@NeuroQuest.com>",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=long_description,

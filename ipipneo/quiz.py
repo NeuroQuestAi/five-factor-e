@@ -1,11 +1,11 @@
 """We use this for testing."""
 
 __author__ = "Ederson Corbari"
-__email__ = "e@rewire5.io"
+__email__ = "e@NeuroQuest.ai"
 __copyright__ = "Copyright ReWire5 2022-2023, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.9.0"
+__version__ = "1.10.0"
 __status__ = "production"
 
 import json
@@ -21,7 +21,7 @@ except ModuleNotFoundError:
     from ipipneo.ipipneo import IpipNeo
 
 URL_IPIP_QUESTIONS = (
-    "https://raw.githubusercontent.com/rewire5-io/five-factor-e/main/data/IPIP-NEO"
+    "https://raw.githubusercontent.com/NeuroQuestAi/five-factor-e/main/data/IPIP-NEO"
 )
 
 
@@ -56,11 +56,13 @@ def get_questions(lang: int, question: int) -> list:
     Args:
         - lang: The language ID.
         - question: Inventory model 120 or 300.
+
+    Returns:
+        The filtered list of questions.
     """
-    return [
-        x
-        for x in load_ipip_questions(lang=lang, question=question).get("questions", [])
-    ]
+    questions = load_ipip_questions(lang=lang, question=question).get("questions", [])
+
+    return list(filter(lambda x: x is not None, questions))
 
 
 def get_select(lang: int, question: int) -> list:

@@ -1,11 +1,11 @@
 """Creation and scoring of the facets that make up the Big-Five."""
 
 __author__ = "Ederson Corbari"
-__email__ = "e@rewire5.io"
+__email__ = "e@NeuroQuest.ai"
 __copyright__ = "Copyright ReWire5 2022-2023, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.9.0"
+__version__ = "1.10.0"
 __status__ = "production"
 
 from enum import IntEnum
@@ -18,19 +18,22 @@ from ipipneo.utility import big5_ocean_is_valid, create_big5_dict
 class Facet:
     """Creating and scoring facets and Big-Five."""
 
-    def __init__(self, nquestion: IntEnum) -> None or BaseException:
+    def __init__(self, nquestion: IntEnum) -> None:
         """
         Initialize the class.
 
         Args:
             - nquestion: Enum with question type.
         """
-        if nquestion == 300:
-            self._scale = FacetScale.IPIP_300.value
-        elif nquestion == 120:
-            self._scale = FacetScale.IPIP_120.value
-        else:
-            raise BaseException(f"The available questions are: {list(QuestionNumber)}")
+        scale_mapping = {
+            300: FacetScale.IPIP_300.value,
+            120: FacetScale.IPIP_120.value,
+        }
+
+        self._scale = scale_mapping.get(nquestion)
+
+        if self._scale is None:
+            raise ValueError(f"The available questions are: {list(QuestionNumber)}")
 
     def score(self, answers: list) -> list or BaseException:
         """
@@ -87,11 +90,12 @@ class Facet:
             - score: The facet score result.
         """
         try:
-            N = score[1] + score[6] + score[11] + score[16] + score[21] + score[26]
-            E = score[2] + score[7] + score[12] + score[17] + score[22] + score[27]
-            O = score[3] + score[8] + score[13] + score[18] + score[23] + score[28]
-            A = score[4] + score[9] + score[14] + score[19] + score[24] + score[29]
-            C = score[5] + score[10] + score[15] + score[20] + score[25] + score[30]
+            calculate_domain_score = lambda x: sum(score[i] for i in x)
+            N = calculate_domain_score([1, 6, 11, 16, 21, 26])
+            E = calculate_domain_score([2, 7, 12, 17, 22, 27])
+            O = calculate_domain_score([3, 8, 13, 18, 23, 28])
+            A = calculate_domain_score([4, 9, 14, 19, 24, 29])
+            C = calculate_domain_score([5, 10, 15, 20, 25, 30])
         except IndexError as e:
             raise BaseException(f"Invalid position in the score array: {str(e)}")
 
@@ -203,12 +207,12 @@ class Facet:
         big5_ocean_is_valid(label=label)
 
         score = big5.get(label, 0)
-
-        if score < FacetLevel.LOW.value:
-            big5["score"] = "low"
-        if score >= FacetLevel.LOW.value and score <= FacetLevel.HIGH.value:
-            big5["score"] = "average"
-        if score > FacetLevel.HIGH.value:
-            big5["score"] = "high"
+        big5["score"] = (
+            "low"
+            if score < FacetLevel.LOW.value
+            else "average"
+            if score <= FacetLevel.HIGH.value
+            else "high"
+        )
 
         return big5
