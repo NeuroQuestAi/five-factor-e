@@ -227,7 +227,7 @@ $ pip install five-factor-e[quiz]
 Example output with graphics:
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/NeuroQuestAi/five-factor-e/feature/v1.5.0/doc/sample-light-1.png" alt="Big Five Results" border="1"/>
+  <img src="https://raw.githubusercontent.com/NeuroQuestAi/five-factor-e/main/doc/sample-light-1.png" alt="Big Five Results" border="1"/>
 </p>
 
 *The complete result is saved in the run folder in json format*.
