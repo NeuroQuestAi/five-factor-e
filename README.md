@@ -2,6 +2,8 @@
 
 # Five Factor E 🌊
 
+[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NeuroQuest-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](
+https://neuroquest.ai)
 [![PyPI Latest Release](https://img.shields.io/pypi/v/five-factor-e.svg)](https://pypi.org/project/five-factor-e/)
 ![python 3.7 | 3.8 | 3.9 | 3.10 | 3.11][python_version]
 [![PyPi Downloads](https://pepy.tech/badge/five-factor-e)](https://pepy.tech/project/five-factor-e)
