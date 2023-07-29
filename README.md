@@ -2,7 +2,7 @@
 
 # Five Factor E 🌊
 
-[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NeuroQuestAI-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](
+[![Powered by NeuroQuestAI](https://img.shields.io/badge/powered%20by-NeuroQuestAI-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](
 https://neuroquest.ai)
 [![PyPI Latest Release](https://img.shields.io/pypi/v/five-factor-e.svg)](https://pypi.org/project/five-factor-e/)
 ![python 3][python_version]
@@ -23,7 +23,7 @@ The main idea of the project is to facilitate the use of **Python** developers w
 
 👉 *"That is wonderful, ...! Thank you for developing the Python version of the IPIP-NEO and making it publicly available. It looks like a great resource."* - Dr. Johnson
 
-Note 🚩: *The project is based on the work of **Dhiru Kholia**, and is an adaptation of [NeuroQuest](https://github.com/NeuroQuestAi) for a version that can be reused in other projects of the company.*
+Note 🚩: *The project is based on the work of **Dhiru Kholia**, and is an adaptation of [NeuroQuestAI](https://github.com/NeuroQuestAi) for a version that can be reused in other projects of the company.*
 
 ### Synopsis 🌐
 
