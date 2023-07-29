@@ -17,8 +17,8 @@ LONG_DESCRIPTION = "Library with a self-administered questionnaire that assesses
 setup(
     name="five-factor-e",
     version=VERSION,
-    author="Ederson Corbari, NeuroQuest",
-    author_email="<e@NeuroQuest.com>",
+    author="Ederson Corbari, NeuroQuestAI",
+    author_email="<e@NeuroQuest.ai>",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=long_description,
