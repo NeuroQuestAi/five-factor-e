@@ -289,4 +289,4 @@ Note 🚩:
 
 ### Authors 👨‍💻
 
-  * [Ederson Corbari](mailto:e@NeuralQuest.ai) 👽
+  * [Ederson Corbari](mailto:e@NeuroQuest.ai) 👽
