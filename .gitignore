@@ -39,7 +39,6 @@ Thumbs.db
 # Specific directories and files #
 ##################################
 *.pyc
-*.lock
 *.vscode
 *.env
 *.bak
