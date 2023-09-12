@@ -282,9 +282,7 @@ Note 🚩:
 
 ### Resources 📗
 
-  * http://www.personal.psu.edu/j5j/IPIP/ipipneo300.htm
-  * http://www.personal.psu.edu/j5j/IPIP/ipipneo120.htm
-  * http://www.personal.psu.edu/faculty/j/5/j5j/
+  * https://sites.psu.edu/drj5j/
   * https://ipip.ori.org/
   * https://osf.io/tbmh5/
   * https://github.com/kholia/IPIP-NEO-PI
