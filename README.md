@@ -8,7 +8,9 @@ https://neuroquest.ai)
 ![python 3][python_version]
 [![PyPi Downloads](https://static.pepy.tech/badge/five-factor-e)](https://pepy.tech/project/five-factor-e)
 [![Code style: Black](https://img.shields.io/badge/code%20style-Black-000000.svg)](https://github.com/psf/black)
+[![Packaged with Poetry][poetry-badge]](https://python-poetry.org/)
 
+[poetry-badge]: https://img.shields.io/badge/packaging-poetry-cyan.svg
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3%20&color=blue
 
 <p align="center">
