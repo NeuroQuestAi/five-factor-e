@@ -1,6 +1,12 @@
-<img src="https://raw.githubusercontent.com/NeuroQuestAi/five-factor-e/main/doc/neuro-quest.png" align="right" width="80" height="70"/>
+<img src="https://raw.githubusercontent.com/NeuroQuestAi/neuroquestai.github.io/main/brand/logo/neuroquest-orange-logo.png" align="right" width="80" height="80"/>
 
 ### Releases 🎈
+
+Release **[1.11.0](https://github.com/NeuroQuestAi/five-factor-e/releases/tag/v1.11.0)**:
+
+* Refactoring calculate percent;
+* Revised README files;
+* Change company logo.
 
 Release **[1.10.0](https://github.com/NeuroQuestAi/five-factor-e/releases/tag/v1.10.0)**:
 

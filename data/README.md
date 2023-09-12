@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/NeuroQuestAi/five-factor-e/main/doc/neuro-quest.png" align="right" width="80" height="70"/>
+<img src="https://raw.githubusercontent.com/NeuroQuestAi/neuroquestai.github.io/main/brand/logo/neuroquest-orange-logo.png" align="right" width="80" height="80"/>
 
 ### About data 📊
 
