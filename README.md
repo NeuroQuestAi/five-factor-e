@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/NeuroQuestAi/five-factor-e/main/doc/neuro-quest.png" align="right" width="80" height="70"/>
+<img src="https://raw.githubusercontent.com/NeuroQuestAi/neuroquestai.github.io/main/brand/logo/neuroquest-orange-logo.png" align="right" width="80" height="80"/>
 
 # Five Factor E 🌊
 
@@ -8,7 +8,9 @@ https://neuroquest.ai)
 ![python 3][python_version]
 [![PyPi Downloads](https://static.pepy.tech/badge/five-factor-e)](https://pepy.tech/project/five-factor-e)
 [![Code style: Black](https://img.shields.io/badge/code%20style-Black-000000.svg)](https://github.com/psf/black)
+[![Packaged with Poetry][poetry-badge]](https://python-poetry.org/)
 
+[poetry-badge]: https://img.shields.io/badge/packaging-poetry-cyan.svg
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3%20&color=blue
 
 <p align="center">
@@ -77,6 +79,14 @@ From source:
 $ git clone https://github.com/NeuroQuestAi/five-factor-e.git
 $ cd five-factor-e
 $ python3 -m pip install .
+```
+
+or [Poetry](https://python-poetry.org/):
+
+```shell
+$ git clone https://github.com/NeuroQuestAi/five-factor-e.git
+$ cd five-factor-e
+$ poetry shell && poetry install
 ```
 
 ### How to use 🔥
@@ -272,9 +282,7 @@ Note 🚩:
 
 ### Resources 📗
 
-  * http://www.personal.psu.edu/j5j/IPIP/ipipneo300.htm
-  * http://www.personal.psu.edu/j5j/IPIP/ipipneo120.htm
-  * http://www.personal.psu.edu/faculty/j/5/j5j/
+  * https://sites.psu.edu/drj5j/
   * https://ipip.ori.org/
   * https://osf.io/tbmh5/
   * https://github.com/kholia/IPIP-NEO-PI

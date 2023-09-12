@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "five-factor-e"
+version = "v1.11.0"
+description = "Big 5 IPIP-NEO Personality Traits"
+authors = ["Ederson Corbari <e@neuroquest.ai>"]
+readme = "README.md"
+packages = [{include = "five_factor_e"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+coverage = "^7.3.1"
+plotext = "^5.2.8"
+isort = "^5.12.0"
+black = "^23.9.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

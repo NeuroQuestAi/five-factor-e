@@ -5,7 +5,7 @@ __email__ = "e@NeuroQuest.ai"
 __copyright__ = "Copyright NeuroQuest 2022-2023, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.10.0"
+__version__ = "1.11.0"
 __status__ = "production"
 
 from enum import IntEnum
@@ -1007,7 +1007,7 @@ class Norm:
             - normc: The calculated norms.
         """
 
-        def calculate_percent(factor: float, value: float) -> float:
+        def calculate_percent(value: float) -> float:
             return float(
                 NormCubic.CONST1.value
                 - (NormCubic.CONST2.value * value)
@@ -1015,11 +1015,11 @@ class Norm:
                 - (NormCubic.CONST4.value * value**3)
             )
 
-        N = calculate_percent(NormCubic.CONST2.value, normc.get("N", 0))
-        E = calculate_percent(NormCubic.CONST2.value, normc.get("E", 0))
-        O = calculate_percent(NormCubic.CONST2.value, normc.get("O", 0))
-        A = calculate_percent(NormCubic.CONST2.value, normc.get("A", 0))
-        C = calculate_percent(NormCubic.CONST2.value, normc.get("C", 0))
+        N = calculate_percent(value=normc.get("N", 0))
+        E = calculate_percent(value=normc.get("E", 0))
+        O = calculate_percent(value=normc.get("O", 0))
+        A = calculate_percent(value=normc.get("A", 0))
+        C = calculate_percent(value=normc.get("C", 0))
 
         return {"O": O, "C": C, "E": E, "A": A, "N": N}
 

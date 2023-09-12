@@ -9,7 +9,7 @@ from ipipneo.utility import (add_dict_footer, answers_is_valid,
                              raise_if_age_is_invalid, raise_if_sex_is_invalid,
                              reverse_scored)
 
-LIB_CURRENT_VERSION = "1.10.0"
+LIB_CURRENT_VERSION = "1.11.0"
 
 
 def load_mock_answers(idx: int) -> dict:
