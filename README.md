@@ -81,7 +81,7 @@ $ cd five-factor-e
 $ python3 -m pip install .
 ```
 
-or Poetry:
+or [Poetry](https://python-poetry.org/):
 
 ```shell
 $ git clone https://github.com/NeuroQuestAi/five-factor-e.git
