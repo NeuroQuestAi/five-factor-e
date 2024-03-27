@@ -2,6 +2,11 @@
 
 ### Releases 🎈
 
+Release **[1.11.1](https://github.com/NeuroQuestAi/five-factor-e/releases/tag/v1.11.1)**:
+
+* People over 10 years old can take the test;
+* Revised README files;
+
 Release **[1.11.0](https://github.com/NeuroQuestAi/five-factor-e/releases/tag/v1.11.0)**:
 
 * Refactoring calculate percent;
