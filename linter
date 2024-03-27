@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+[[ "$(command -v black)" ]] || { echo 'Sorry! black is not installed...' 1>&2 && exit -1; }
+[[ "$(command -v isort)" ]] || { echo 'Sorry! isort is not installed...' 1>&2 && exit -1; }
+
+black ipipneo/ && isort ipipneo/
+black test/ && isort test/
+
+exit 0

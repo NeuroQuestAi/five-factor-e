@@ -5,7 +5,7 @@ __email__ = "e@NeuroQuest.ai"
 __copyright__ = "Copyright NeuroQuest 2022-2023, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.11.0"
+__version__ = "1.11.1"
 __status__ = "production"
 
 import json
@@ -391,10 +391,10 @@ def main() -> None:
         input,
         chain(
             ["\n> What is your age? "],
-            repeat("Please, only numbers between 18 and 100 are valid! Try again: "),
+            repeat("Please, only numbers between 10 and 110 are valid! Try again: "),
         ),
     )
-    age = int(next(filter(set(map(str, range(18, 101))).__contains__, replies)))
+    age = int(next(filter(set(map(str, range(10, 110))).__contains__, replies)))
 
     replies = map(
         input,

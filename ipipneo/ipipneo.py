@@ -5,7 +5,7 @@ __email__ = "e@NeuroQuest.ai"
 __copyright__ = "Copyright NeuroQuest 2022-2023, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.11.0"
+__version__ = "1.11.1"
 __status__ = "production"
 
 import copy
@@ -122,9 +122,11 @@ class IpipNeo(Facet):
         reversed = (
             ReverseScoredCustom(answers=answers)
             if self._test
-            else ReverseScored120(answers=answers)
-            if self._nquestion == 120
-            else ReverseScored300(answers=answers)
+            else (
+                ReverseScored120(answers=answers)
+                if self._nquestion == 120
+                else ReverseScored300(answers=answers)
+            )
         )
         assert isinstance(reversed, dict), "reversed must be a dict"
 
