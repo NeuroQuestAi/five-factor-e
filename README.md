@@ -17,7 +17,7 @@ https://neuroquest.ai)
   <img src="https://raw.githubusercontent.com/NeuroQuestAi/five-factor-e/main/doc/big-five-neuro-quest.png" alt="Representation of the Big Five"/>
 </p>
 
-This project assesses a person's 🗣 personality based on an inventory of questions. The project uses the **Big Five** theory using the [IPIP-NEO-300](http://www.personal.psu.edu/~j5j/IPIP/ipipneo300.htm) model created by **Lewis R. Goldberg** and [IPIP-NEO-120](http://www.personal.psu.edu/~j5j/IPIP/ipipneo120.htm) the shorter version developed by Professor **Dr. John A. Johnson**, this is a free representation of the [NEO PI-R™](https://en.wikipedia.org/wiki/Revised_NEO_Personality_Inventory).
+This project assesses a person's personality based on an inventory of questions. The project uses the **Big Five** theory using the [IPIP-NEO-300](http://www.personal.psu.edu/~j5j/IPIP/ipipneo300.htm) model created by **Lewis R. Goldberg** and [IPIP-NEO-120](http://www.personal.psu.edu/~j5j/IPIP/ipipneo120.htm) the shorter version developed by Professor **Dr. John A. Johnson**, this is a free representation of the [NEO PI-R™](https://en.wikipedia.org/wiki/Revised_NEO_Personality_Inventory).
 
 👉 *"The IPIP-NEO is not identical to the original NEO PI-R, but in my opinion it is close enough to serve as a good substitute. More and more people are beginning to use it in published research, so its acceptance is growing."* - Dr. Johnson
 
