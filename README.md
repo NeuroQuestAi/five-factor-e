@@ -143,7 +143,7 @@ The **compute** method is used to evaluate the answers, see the table below with
 | Parameters    | Type      | Description                                               |
 | ------------- | --------- | --------------------------------------------------------- |
 | sex           | string    | The sex of the individual (M or F).                       |
-| age           | int       | The age of the individual (between 18 and 100 years old). |
+| age           | int       | The age of the individual (between 10 and 110 years old). |
 | answers       | dict      | Standardized dictionary with answers.                     |
 | compare       | boolean   | If true, it shows the user's answers and reverse score.   |
 
