@@ -223,7 +223,7 @@ IPIP_NEO_ITEMS_REVERSED_300 = [
 class ReverseScoredCustom:
     """Reverse scored for Tests."""
 
-    def __new__(self, answers: dict) -> dict or BaseException or AssertionError:
+    def __new__(self, answers: dict) -> dict | BaseException | AssertionError:
         """
         Apply reverse scoring to items with key (reverse_scored=1).
 
@@ -267,7 +267,7 @@ class ReverseScoredCustom:
 class ReverseScored120:
     """Reverse scored for IPIP-120."""
 
-    def __new__(self, answers: dict) -> dict or BaseException or AssertionError:
+    def __new__(self, answers: dict) -> dict | BaseException | AssertionError:
         """
         Apply reverse scoring on certain items (IPIP-120).
 
@@ -315,7 +315,7 @@ class ReverseScored120:
 class ReverseScored300:
     """Reverse scored for IPIP-300."""
 
-    def __new__(self, answers: dict) -> dict or BaseException or AssertionError:
+    def __new__(self, answers: dict) -> dict | BaseException | AssertionError:
         """
         Apply reverse scoring on certain items (IPIP-300).
 

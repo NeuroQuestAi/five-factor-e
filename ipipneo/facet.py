@@ -35,7 +35,7 @@ class Facet:
         if self._scale is None:
             raise ValueError(f"The available questions are: {list(QuestionNumber)}")
 
-    def score(self, answers: list) -> list or BaseException:
+    def score(self, answers: list) -> list | BaseException:
         """
         Score facet scales are created.
 
