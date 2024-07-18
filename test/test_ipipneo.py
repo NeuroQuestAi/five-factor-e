@@ -24,6 +24,12 @@ def load_mock_answers_custom() -> dict:
     return data
 
 
+def load_mock_answers_300_1() -> dict:
+    with open("test/mock/answers-test-7.json") as f:
+        data = json.load(f)
+    return data
+
+
 class TestIpipNeo(unittest.TestCase):
     maxDiff = None
 
@@ -351,7 +357,7 @@ class TestIpipNeo(unittest.TestCase):
 
         self.assertNotEqual(a, b)
 
-    def test_compute_test_custom_reversed(self) -> None:
+    def test_compute_test_custom_120_reversed(self) -> None:
         #############################################
         # 1. Test with 40 year old man.
         #############################################
@@ -413,3 +419,102 @@ class TestIpipNeo(unittest.TestCase):
         self.assertEqual(personalities[2]["extraversion"].get("E"), 34.10779114957646)
         self.assertEqual(personalities[3]["agreeableness"].get("A"), 6.331832993524202)
         self.assertEqual(personalities[4]["neuroticism"].get("N"), 58.6632925696303)
+
+    def test_compute_test_custom_300_reversed(self) -> None:
+        def d(compare_original: list, compare_reverse: list):
+            differences = []
+            for original, reversed in zip(compare_original, compare_reverse):
+                if original["id_select"] != reversed["id_select"]:
+                    differences.append(
+                        {
+                            "id_question": original["id_question"],
+                            "id_select_original": original["id_select"],
+                            "id_select_reversed": reversed["id_select"],
+                        }
+                    )
+            return differences or []
+
+        #############################################
+        # 1. Test with 40 year old man.
+        #############################################
+        result = IpipNeo(question=300).compute(
+            sex="M", age=40, answers=load_mock_answers_300(), compare=True
+        )
+
+        compare_original = result["person"]["result"]["compare"][
+            "user_answers_original"
+        ]
+        compare_reverse = result["person"]["result"]["compare"]["user_answers_reversed"]
+
+        self.assertEqual(
+            len(d(compare_original=compare_original, compare_reverse=compare_reverse)),
+            121,
+        )
+
+        #############################################
+        # 2. Test with 39 year old man.
+        #############################################
+        result = IpipNeo(question=300).compute(
+            sex="M", age=39, answers=load_mock_answers_300_1(), compare=True
+        )
+
+        compare_original = result["person"]["result"]["compare"][
+            "user_answers_original"
+        ]
+        compare_reverse = result["person"]["result"]["compare"]["user_answers_reversed"]
+
+        self.assertEqual(
+            len(d(compare_original=compare_original, compare_reverse=compare_reverse)),
+            144,
+        )
+
+        #############################################
+        # 3. Test with 20 year old man.
+        #############################################
+        result = IpipNeo(question=300).compute(
+            sex="M", age=20, answers=load_mock_answers_300_1(), compare=True
+        )
+
+        compare_original = result["person"]["result"]["compare"][
+            "user_answers_original"
+        ]
+        compare_reverse = result["person"]["result"]["compare"]["user_answers_reversed"]
+
+        self.assertEqual(
+            len(d(compare_original=compare_original, compare_reverse=compare_reverse)),
+            144,
+        )
+
+        #############################################
+        # 4. Test with 18 year old woman.
+        #############################################
+        result = IpipNeo(question=300).compute(
+            sex="F", age=18, answers=load_mock_answers_300_1(), compare=True
+        )
+
+        compare_original = result["person"]["result"]["compare"][
+            "user_answers_original"
+        ]
+        compare_reverse = result["person"]["result"]["compare"]["user_answers_reversed"]
+
+        self.assertEqual(
+            len(d(compare_original=compare_original, compare_reverse=compare_reverse)),
+            144,
+        )
+
+        #############################################
+        # 5. Test with 29 year old woman.
+        #############################################
+        result = IpipNeo(question=300).compute(
+            sex="F", age=29, answers=load_mock_answers_300(), compare=True
+        )
+
+        compare_original = result["person"]["result"]["compare"][
+            "user_answers_original"
+        ]
+        compare_reverse = result["person"]["result"]["compare"]["user_answers_reversed"]
+
+        self.assertEqual(
+            len(d(compare_original=compare_original, compare_reverse=compare_reverse)),
+            121,
+        )

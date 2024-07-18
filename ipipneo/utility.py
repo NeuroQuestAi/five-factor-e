@@ -2,10 +2,10 @@
 
 __author__ = "Ederson Corbari"
 __email__ = "e@NeuroQuest.ai"
-__copyright__ = "Copyright NeuroQuest 2022-2023, Big 5 Personality Traits"
+__copyright__ = "Copyright NeuroQuest 2022-2024, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.11.1"
+__version__ = "1.12.0"
 __status__ = "production"
 
 from datetime import datetime
@@ -15,7 +15,7 @@ from ipipneo.model import (Big5Agreeableness, Big5Conscientiousness,
                            Big5Extraversion, Big5Neuroticism, Big5Openness)
 
 
-def raise_if_sex_is_invalid(sex: str) -> bool or AssertionError or BaseException:
+def raise_if_sex_is_invalid(sex: str) -> bool | AssertionError | BaseException:
     """
     Validate the sex field.
 
@@ -30,7 +30,7 @@ def raise_if_sex_is_invalid(sex: str) -> bool or AssertionError or BaseException
     return True
 
 
-def raise_if_age_is_invalid(age: int) -> bool or AssertionError or BaseException:
+def raise_if_age_is_invalid(age: int) -> bool | AssertionError | BaseException:
     """
     Validate the age field.
 
@@ -51,7 +51,7 @@ def raise_if_age_is_invalid(age: int) -> bool or AssertionError or BaseException
     return True
 
 
-def answers_is_valid(answers: list) -> bool or AssertionError or BaseException:
+def answers_is_valid(answers: list) -> bool | AssertionError | BaseException:
     """
     Validate the answers field.
 
@@ -76,7 +76,7 @@ def answers_is_valid(answers: list) -> bool or AssertionError or BaseException:
     return True
 
 
-def organize_list_json(answers: dict) -> list or AssertionError or BaseException:
+def organize_list_json(answers: dict) -> list | AssertionError | BaseException:
     """
     Organize input list in json format.
 
@@ -103,7 +103,7 @@ def organize_list_json(answers: dict) -> list or AssertionError or BaseException
     ]
 
 
-def reverse_scored(select: int) -> int or BaseException:
+def reverse_scored(select: int) -> int | BaseException:
     """
     Apply reverse scoring (1=5, 2=4, 4=2, 5=1).
 
@@ -123,7 +123,7 @@ def reverse_scored(select: int) -> int or BaseException:
     raise BaseException(f"Something wrong in the selection option: {select}")
 
 
-def big5_ocean_is_valid(label: str) -> bool or BaseException:
+def big5_ocean_is_valid(label: str) -> bool | BaseException:
     """
     Validate if the Big-Five acronym is correct.
 
@@ -143,7 +143,7 @@ def big5_ocean_is_valid(label: str) -> bool or BaseException:
     raise BaseException("The Big-Five label is invalid!")
 
 
-def big5_target(label: str) -> Enum or BaseException:
+def big5_target(label: str) -> Enum | BaseException:
     """
     Return the facets of a Big-Five.
 

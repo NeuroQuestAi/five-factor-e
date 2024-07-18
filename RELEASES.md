@@ -2,6 +2,12 @@
 
 ### Releases 🎈
 
+Release **[1.12.0](https://github.com/NeuroQuestAi/five-factor-e/releases/tag/v1.12.0)**:
+
+* Revised README files;
+* The minimum and maximum value can be adjusted by the user to normalize it;
+* Runs on Python10 or higher.
+
 Release **[1.11.1](https://github.com/NeuroQuestAi/five-factor-e/releases/tag/v1.11.1)**:
 
 * People over 10 years old can take the test;
