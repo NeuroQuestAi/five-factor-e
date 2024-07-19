@@ -3,8 +3,9 @@
 import json
 import unittest
 
-from ipipneo.reverse import (ReverseScored120, ReverseScored300,
-                             ReverseScoredCustom, IPIP_NEO_ITEMS_REVERSED_120, IPIP_NEO_ITEMS_REVERSED_300)
+from ipipneo.reverse import (IPIP_NEO_ITEMS_REVERSED_120,
+                             IPIP_NEO_ITEMS_REVERSED_300, ReverseScored120,
+                             ReverseScored300, ReverseScoredCustom)
 
 
 def load_mock_answers_120() -> dict:
