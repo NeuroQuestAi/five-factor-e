@@ -148,7 +148,17 @@ class Facet:
 
         return {"O": O, "C": C, "E": E, "A": A, "N": N}
 
-    def personality(self, size: int, big5: dict, traits: dict, label: str) -> dict:
+    def personality(
+        self,
+        size: int,
+        big5: dict,
+        traits: dict,
+        label: str,
+        norm_scale_min: int = None,
+        norm_scale_max: int = None,
+        facet_score_level_low: int = None,
+        facet_score_level_high: int = None,
+    ) -> dict:
         """
         Calculate the personalities / facets for each Big-Five.
 
@@ -157,10 +167,32 @@ class Facet:
             - big5: Dictionary of normalized Big-Five.
             - traits: Dictionary with the distribution of personalities.
             - label: Capital letter referring to the Big-Five to be calculated.
+            - norm_scale_min: The minimum value of the norm scale.
+            - norm_scale_max: The maximum value of the norm scale.
+            - facet_score_level_low: The score level is considered low.
+            - facet_score_level_high: The score level is considered high.
         """
         big5_ocean_is_valid(label=label)
 
         big5, traits = big5.get(label, 0), traits.get(label, [])
+
+        norm_min_value = (
+            norm_scale_min if norm_scale_min is not None else NormScale.CONST_MIN.value
+        )
+        norm_max_value = (
+            norm_scale_max if norm_scale_max is not None else NormScale.CONST_MAX.value
+        )
+
+        facet_score_level_low_value = (
+            facet_score_level_low
+            if facet_score_level_low is not None
+            else FacetLevel.LOW.value
+        )
+        facet_score_level_high_value = (
+            facet_score_level_high
+            if facet_score_level_high is not None
+            else FacetLevel.HIGH.value
+        )
 
         X = [0] * size
         Y = [0] * size
@@ -169,14 +201,15 @@ class Facet:
             for i in range(1, 7):
                 Y[i] = traits[i]
 
-                if traits[i] < FacetLevel.LOW.value:
+                if int(traits[i]) < facet_score_level_low_value:
                     Y[i] = "low"
-                if (
-                    traits[i] >= FacetLevel.LOW.value
-                    and traits[i] <= FacetLevel.HIGH.value
+                elif (
+                    facet_score_level_low_value
+                    <= int(traits[i])
+                    <= facet_score_level_high_value
                 ):
                     Y[i] = "average"
-                if traits[i] > FacetLevel.HIGH.value:
+                elif int(traits[i]) > facet_score_level_high_value:
                     Y[i] = "high"
 
                 X[i] = (
@@ -186,33 +219,88 @@ class Facet:
                     - (NormCubic.CONST4.value * traits[i] ** 3)
                 )
 
-                if traits[i] < NormScale.CONST_MIN.value:
+                if traits[i] < norm_min_value:
                     X[i] = 1
 
-                if traits[i] > NormScale.CONST_MAX.value:
+                if traits[i] > norm_max_value:
                     X[i] = 99
         except IndexError as e:
             raise BaseException(f"The number of questions setting is wrong: {str(e)}")
 
         return create_big5_dict(label=label, big5=big5, x=X, y=Y) or {}
 
-    def big_five_level(self, big5: dict, label: str) -> dict:
+    def big_five_level(
+        self,
+        big5: dict,
+        label: str,
+        facet_score_level_low: int = None,
+        facet_score_level_high: int = None,
+    ) -> dict:
         """
         Add the average for each Big-Five.
 
         Args:
             - big5: Dictionary of personality Big-Five.
             - label: Capital letter referring to the Big-Five to be checked the average.
+            - facet_score_level_low: The score level is considered low.
+            - facet_score_level_high: The score level is considered high.
         """
         big5_ocean_is_valid(label=label)
 
+        facet_score_level_low_value = (
+            facet_score_level_low
+            if facet_score_level_low is not None
+            else FacetLevel.LOW.value
+        )
+        facet_score_level_high_value = (
+            facet_score_level_high
+            if facet_score_level_high is not None
+            else FacetLevel.HIGH.value
+        )
+
+        for trait in big5.get("traits", []):
+            score_value = None
+            for key, value in trait.items():
+                if key not in ["trait", "score"] and isinstance(value, (int, float)):
+                    score_value = value
+                    break
+
+            if score_value:
+                trait["score"] = self.score_level(
+                    score=score_value,
+                    facet_score_level_low=facet_score_level_low_value,
+                    facet_score_level_high=facet_score_level_high_value,
+                )
+
         score = big5.get(label, 0)
-        big5["score"] = (
-            "low"
-            if score < FacetLevel.LOW.value
-            else "average"
-            if score <= FacetLevel.HIGH.value
-            else "high"
+        big5["score"] = self.score_level(
+            score=score,
+            facet_score_level_low=facet_score_level_low_value,
+            facet_score_level_high=facet_score_level_high_value,
         )
 
         return big5
+
+    def score_level(
+        self,
+        score: float,
+        facet_score_level_low: int = None,
+        facet_score_level_high: int = None,
+    ) -> str:
+        facet_score_level_low_value = (
+            facet_score_level_low
+            if facet_score_level_low is not None
+            else FacetLevel.LOW.value
+        )
+        facet_score_level_high_value = (
+            facet_score_level_high
+            if facet_score_level_high is not None
+            else FacetLevel.HIGH.value
+        )
+        return (
+            "low"
+            if int(score) < facet_score_level_low_value
+            else "average"
+            if facet_score_level_low_value <= int(score) <= facet_score_level_high_value
+            else "high"
+        )

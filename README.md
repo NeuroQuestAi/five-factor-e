@@ -14,10 +14,12 @@ https://neuroquest.ai)
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3%20&color=blue
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/NeuroQuestAi/five-factor-e/main/doc/big-five-neuro-quest.png" alt="Representation of the Big Five"/>
+  <img src="https://raw.githubusercontent.com/NeuroQuestAi/five-factor-e/main/doc/big-five2.png" alt="Representation of the Big Five"/>
 </p>
 
-This project assesses a person's personality based on an inventory of questions. The project uses the **Big Five** theory using the [IPIP-NEO-300](https://drj.virtualave.net/IPIP/ipipneo300.htm) model created by **Lewis R. Goldberg** and [IPIP-NEO-120](https://drj.virtualave.net/IPIP/ipipneo120.htm) the shorter version developed by Professor **Dr. John A. Johnson**, this is a free representation of the [NEO PI-R™](https://en.wikipedia.org/wiki/Revised_NEO_Personality_Inventory).
+The International Personality Item Pool [(IPIP)](https://ipip.ori.org/) is a public domain collection of items for use in personality tests. It is managed by the [Oregon Research Institute](https://www.ori.org/).
+
+This project assesses a person's personality based on an inventory of questions. The project uses the **Big Five** theory using the [IPIP-NEO-300](https://drj.virtualave.net/IPIP/ipipneo300.htm) model created by **Lewis R. Goldberg** and [IPIP-NEO-120](https://drj.virtualave.net/IPIP/ipipneo120.htm) the shorter version developed by Professor **Dr. John A. Johnson**, this is a free representation of the [NEO PI-R™](https://en.wikipedia.org/wiki/Revised_NEO_Personality_Inventory). 
 
 👉 *"The IPIP-NEO is not identical to the original NEO PI-R, but in my opinion it is close enough to serve as a good substitute. More and more people are beginning to use it in published research, so its acceptance is growing."* - Dr. Johnson
 
@@ -25,7 +27,7 @@ The main idea of the project is to facilitate the use of **Python** developers w
 
 👉 *"That is wonderful, ...! Thank you for developing the Python version of the IPIP-NEO and making it publicly available. It looks like a great resource."* - Dr. Johnson
 
-Note 🚩: *The project is based on the work of **Dhiru Kholia**, and is an adaptation of [NeuroQuestAI](https://github.com/NeuroQuestAi) for a version that can be reused in other projects of the company.*
+Note 🚩: *The project is based on the work of Dhiru Kholia, and is an adaptation of [NeuroQuestAI](https://github.com/NeuroQuestAi) for a version that can be reused in other projects of the company.*
 
 ### Synopsis 🌐
 
