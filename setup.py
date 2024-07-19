@@ -10,7 +10,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = "1.11.1"
+VERSION = "1.12.0"
 DESCRIPTION = "Big 5 IPIP-NEO Personality Traits"
 LONG_DESCRIPTION = "Library with a self-administered questionnaire that assesses a person's personality according to the Big Five Model, using the IPIP-NEO."
 
@@ -23,7 +23,7 @@ setup(
     long_description_content_type="text/markdown",
     long_description=long_description,
     packages=find_packages(exclude=("test",)),
-    python_requires=">=3.7",
+    python_requires=">=3.10",
     include_package_data=True,
     install_requires=[],
     extras_require={"quiz": ["plotext"]},

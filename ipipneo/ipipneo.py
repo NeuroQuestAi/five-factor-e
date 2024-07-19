@@ -2,17 +2,17 @@
 
 __author__ = "Ederson Corbari"
 __email__ = "e@NeuroQuest.ai"
-__copyright__ = "Copyright NeuroQuest 2022-2023, Big 5 Personality Traits"
+__copyright__ = "Copyright NeuroQuest 2022-2024, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.11.1"
+__version__ = "1.12.0"
 __status__ = "production"
 
 import copy
 import uuid
 
 from ipipneo.facet import Facet
-from ipipneo.model import QuestionNumber
+from ipipneo.model import FacetLevel, NormScale, QuestionNumber
 from ipipneo.norm import Norm
 from ipipneo.reverse import (ReverseScored120, ReverseScored300,
                              ReverseScoredCustom)
@@ -31,6 +31,9 @@ class IpipNeo(Facet):
             - question: Question type, 120 or 300.
             - test: Used to test your proposed questions with reverse.
         """
+        assert isinstance(question, int), "The (question) field must be an int!"
+        assert isinstance(test, bool), "The (test) field must be a bool!"
+
         question_mapping = {
             120: QuestionNumber.IPIP_120,
             300: QuestionNumber.IPIP_300,
@@ -42,8 +45,56 @@ class IpipNeo(Facet):
             raise ValueError(f"Type question {question} is invalid!")
 
         super().__init__(nquestion)
-        self._nquestion = question
-        self._test = test
+        self._nquestion: int = question
+        self._test: bool = test
+        self._norm_scale_min: int = None
+        self._norm_scale_max: int = None
+        self._score_level_low: int = None
+        self._score_level_high: int = None
+
+    def set_new_norm_scale(self, scale_min: int, scale_max: int) -> None:
+        """
+        Used to set a new norm scale. Used for testing only.
+
+        The default is min=32 and max=73.
+
+        Args:
+            - scale_min: The minimum value of the norm scale.
+            - scale_max: The maximum value of the norm scale.
+        """
+        assert isinstance(scale_min, int), "The (scale_min) field must be an int!"
+        assert isinstance(scale_max, int), "The (scale_max) field must be an int!"
+
+        self._norm_scale_min = int(scale_min)
+        self._norm_scale_max = int(scale_max)
+
+    def get_current_norm(self) -> tuple:
+        """Shows the values ​​of the current level scale used."""
+        if self._norm_scale_min is not None and self._norm_scale_max is not None:
+            return self._norm_scale_min, self._norm_scale_max
+        return NormScale.CONST_MIN.value, NormScale.CONST_MAX.value
+
+    def set_new_facet_level(self, low_min: int, high_max: int) -> None:
+        """
+        Used to set a new facet level. Used for testing only.
+
+        The default is low=45 and high=55.
+
+        Args:
+            - low_min: Value considered low.
+            - high_max: Value considered high.
+        """
+        assert isinstance(low_min, int), "The (low_min) field must be an int!"
+        assert isinstance(high_max, int), "The (high_max) field must be an int!"
+
+        self._score_level_low = int(low_min)
+        self._score_level_high = int(high_max)
+
+    def get_current_scale_level(self) -> tuple:
+        """Shows the values ​​of the current level scale used."""
+        if self._score_level_low is not None and self._score_level_high is not None:
+            return self._score_level_low, self._score_level_high
+        return FacetLevel.LOW.value, FacetLevel.HIGH.value
 
     def evaluator(self, sex: str, age: int, score: list) -> dict:
         """
@@ -65,15 +116,84 @@ class IpipNeo(Facet):
         )
         assert isinstance(distrib, dict), "distrib must be a dict"
 
-        normalize = Norm.normalize(normc=normc, percent=Norm.percent(normc=normc))
+        normalize = Norm.normalize(
+            normc=normc,
+            percent=Norm.percent(normc=normc),
+            norm_scale_min=self._norm_scale_min if self._norm_scale_min else None,
+            norm_scale_max=self._norm_scale_max if self._norm_scale_max else None,
+        )
         assert isinstance(normalize, dict), "normalize must be a dict"
 
-        N = self.personality(size=len(score), big5=normalize, traits=distrib, label="N")
-        E = self.personality(size=len(score), big5=normalize, traits=distrib, label="E")
-        O = self.personality(size=len(score), big5=normalize, traits=distrib, label="O")
-        A = self.personality(size=len(score), big5=normalize, traits=distrib, label="A")
-        C = self.personality(size=len(score), big5=normalize, traits=distrib, label="C")
-
+        N = self.personality(
+            size=len(score),
+            big5=normalize,
+            traits=distrib,
+            label="N",
+            norm_scale_min=self._norm_scale_min if self._norm_scale_min else None,
+            norm_scale_max=self._norm_scale_max if self._norm_scale_max else None,
+            facet_score_level_low=self._score_level_low
+            if self._score_level_low
+            else None,
+            facet_score_level_high=self._score_level_high
+            if self._score_level_high
+            else None,
+        )
+        E = self.personality(
+            size=len(score),
+            big5=normalize,
+            traits=distrib,
+            label="E",
+            norm_scale_min=self._norm_scale_min if self._norm_scale_min else None,
+            norm_scale_max=self._norm_scale_max if self._norm_scale_max else None,
+            facet_score_level_low=self._score_level_low
+            if self._score_level_low
+            else None,
+            facet_score_level_high=self._score_level_high
+            if self._score_level_high
+            else None,
+        )
+        O = self.personality(
+            size=len(score),
+            big5=normalize,
+            traits=distrib,
+            label="O",
+            norm_scale_min=self._norm_scale_min if self._norm_scale_min else None,
+            norm_scale_max=self._norm_scale_max if self._norm_scale_max else None,
+            facet_score_level_low=self._score_level_low
+            if self._score_level_low
+            else None,
+            facet_score_level_high=self._score_level_high
+            if self._score_level_high
+            else None,
+        )
+        A = self.personality(
+            size=len(score),
+            big5=normalize,
+            traits=distrib,
+            label="A",
+            norm_scale_min=self._norm_scale_min if self._norm_scale_min else None,
+            norm_scale_max=self._norm_scale_max if self._norm_scale_max else None,
+            facet_score_level_low=self._score_level_low
+            if self._score_level_low
+            else None,
+            facet_score_level_high=self._score_level_high
+            if self._score_level_high
+            else None,
+        )
+        C = self.personality(
+            size=len(score),
+            big5=normalize,
+            traits=distrib,
+            label="C",
+            norm_scale_min=self._norm_scale_min if self._norm_scale_min else None,
+            norm_scale_max=self._norm_scale_max if self._norm_scale_max else None,
+            facet_score_level_low=self._score_level_low
+            if self._score_level_low
+            else None,
+            facet_score_level_high=self._score_level_high
+            if self._score_level_high
+            else None,
+        )
         assert isinstance(O, dict), "O must be a dict"
         assert isinstance(C, dict), "C must be a dict"
         assert isinstance(E, dict), "E must be a dict"
@@ -91,11 +211,66 @@ class IpipNeo(Facet):
                 "age": age,
                 "result": {
                     "personalities": [
-                        {"openness": self.big_five_level(big5=O, label="O")},
-                        {"conscientiousness": self.big_five_level(big5=C, label="C")},
-                        {"extraversion": self.big_five_level(big5=E, label="E")},
-                        {"agreeableness": self.big_five_level(big5=A, label="A")},
-                        {"neuroticism": self.big_five_level(big5=N, label="N")},
+                        {
+                            "openness": self.big_five_level(
+                                big5=O,
+                                label="O",
+                                facet_score_level_low=self._score_level_low
+                                if self._score_level_low
+                                else None,
+                                facet_score_level_high=self._score_level_high
+                                if self._score_level_high
+                                else None,
+                            )
+                        },
+                        {
+                            "conscientiousness": self.big_five_level(
+                                big5=C,
+                                label="C",
+                                facet_score_level_low=self._score_level_low
+                                if self._score_level_low
+                                else None,
+                                facet_score_level_high=self._score_level_high
+                                if self._score_level_high
+                                else None,
+                            )
+                        },
+                        {
+                            "extraversion": self.big_five_level(
+                                big5=E,
+                                label="E",
+                                facet_score_level_low=self._score_level_low
+                                if self._score_level_low
+                                else None,
+                                facet_score_level_high=self._score_level_high
+                                if self._score_level_high
+                                else None,
+                            )
+                        },
+                        {
+                            "agreeableness": self.big_five_level(
+                                big5=A,
+                                label="A",
+                                facet_score_level_low=self._score_level_low
+                                if self._score_level_low
+                                else None,
+                                facet_score_level_high=self._score_level_high
+                                if self._score_level_high
+                                else None,
+                            )
+                        },
+                        {
+                            "neuroticism": self.big_five_level(
+                                big5=N,
+                                label="N",
+                                facet_score_level_low=self._score_level_low
+                                if self._score_level_low
+                                else None,
+                                facet_score_level_high=self._score_level_high
+                                if self._score_level_high
+                                else None,
+                            )
+                        },
                     ]
                 },
             },

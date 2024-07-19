@@ -2,10 +2,10 @@
 
 __author__ = "Ederson Corbari"
 __email__ = "e@NeuroQuest.ai"
-__copyright__ = "Copyright NeuroQuest 2022-2023, Big 5 Personality Traits"
+__copyright__ = "Copyright NeuroQuest 2022-2024, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.11.1"
+__version__ = "1.12.0"
 __status__ = "production"
 
 from enum import IntEnum
@@ -1024,23 +1024,38 @@ class Norm:
         return {"O": O, "C": C, "E": E, "A": A, "N": N}
 
     @staticmethod
-    def normalize(normc: dict, percent: dict) -> dict:
+    def normalize(
+        normc: dict,
+        percent: dict,
+        norm_scale_min: int = None,
+        norm_scale_max: int = None,
+    ) -> dict:
         """
         Normalize the Big-Fives with scale values, if necessary.
 
         Args:
             - normc: The calculated norms.
+            - percent: The percentage data.
+            - norm_scale_min: The minimum value of the norm scale.
+            - norm_scale_max: The maximum value of the norm scale.
         """
-        N = 1 if normc.get("N", 0) < NormScale.CONST_MIN.value else percent.get("N", 0)
-        E = 1 if normc.get("E", 0) < NormScale.CONST_MIN.value else percent.get("E", 0)
-        O = 1 if normc.get("O", 0) < NormScale.CONST_MIN.value else percent.get("O", 0)
-        A = 1 if normc.get("A", 0) < NormScale.CONST_MIN.value else percent.get("A", 0)
-        C = 1 if normc.get("C", 0) < NormScale.CONST_MIN.value else percent.get("C", 0)
+        min_value = (
+            norm_scale_min if norm_scale_min is not None else NormScale.CONST_MIN.value
+        )
+        max_value = (
+            norm_scale_max if norm_scale_max is not None else NormScale.CONST_MAX.value
+        )
 
-        N = 99 if normc.get("N", 0) > NormScale.CONST_MAX.value else N
-        E = 99 if normc.get("E", 0) > NormScale.CONST_MAX.value else E
-        O = 99 if normc.get("O", 0) > NormScale.CONST_MAX.value else O
-        A = 99 if normc.get("A", 0) > NormScale.CONST_MAX.value else A
-        C = 99 if normc.get("C", 0) > NormScale.CONST_MAX.value else C
+        N = 1 if normc.get("N", 0) < min_value else percent.get("N", 0)
+        E = 1 if normc.get("E", 0) < min_value else percent.get("E", 0)
+        O = 1 if normc.get("O", 0) < min_value else percent.get("O", 0)
+        A = 1 if normc.get("A", 0) < min_value else percent.get("A", 0)
+        C = 1 if normc.get("C", 0) < min_value else percent.get("C", 0)
+
+        N = 99 if normc.get("N", 0) > max_value else N
+        E = 99 if normc.get("E", 0) > max_value else E
+        O = 99 if normc.get("O", 0) > max_value else O
+        A = 99 if normc.get("A", 0) > max_value else A
+        C = 99 if normc.get("C", 0) > max_value else C
 
         return {"O": O, "C": C, "E": E, "A": A, "N": N}

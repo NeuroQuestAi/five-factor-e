@@ -2,10 +2,10 @@
 
 __author__ = "Ederson Corbari"
 __email__ = "e@NeuroQuest.ai"
-__copyright__ = "Copyright NeuroQuest 2022-2023, Big 5 Personality Traits"
+__copyright__ = "Copyright NeuroQuest 2022-2024, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.11.1"
+__version__ = "1.12.0"
 __status__ = "production"
 
 import json

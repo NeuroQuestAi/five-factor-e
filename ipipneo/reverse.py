@@ -2,10 +2,10 @@
 
 __author__ = "Ederson Corbari"
 __email__ = "e@NeuroQuest.ai"
-__copyright__ = "Copyright NeuroQuest 2022-2023, Big 5 Personality Traits"
+__copyright__ = "Copyright NeuroQuest 2022-2024, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.11.1"
+__version__ = "1.12.0"
 __status__ = "production"
 
 from ipipneo.utility import reverse_scored
@@ -168,14 +168,14 @@ IPIP_NEO_ITEMS_REVERSED_300 = [
     249,
     250,
     251,
-    253,
     252,
+    253,
     254,
     255,
     256,
     257,
-    259,
     258,
+    259,
     260,
     261,
     262,
@@ -196,8 +196,8 @@ IPIP_NEO_ITEMS_REVERSED_300 = [
     277,
     278,
     279,
-    281,
     280,
+    281,
     282,
     283,
     284,
@@ -209,8 +209,8 @@ IPIP_NEO_ITEMS_REVERSED_300 = [
     290,
     291,
     292,
-    294,
     293,
+    294,
     295,
     296,
     297,
@@ -223,7 +223,7 @@ IPIP_NEO_ITEMS_REVERSED_300 = [
 class ReverseScoredCustom:
     """Reverse scored for Tests."""
 
-    def __new__(self, answers: dict) -> dict or BaseException or AssertionError:
+    def __new__(self, answers: dict) -> dict | BaseException | AssertionError:
         """
         Apply reverse scoring to items with key (reverse_scored=1).
 
@@ -267,7 +267,7 @@ class ReverseScoredCustom:
 class ReverseScored120:
     """Reverse scored for IPIP-120."""
 
-    def __new__(self, answers: dict) -> dict or BaseException or AssertionError:
+    def __new__(self, answers: dict) -> dict | BaseException | AssertionError:
         """
         Apply reverse scoring on certain items (IPIP-120).
 
@@ -315,7 +315,7 @@ class ReverseScored120:
 class ReverseScored300:
     """Reverse scored for IPIP-300."""
 
-    def __new__(self, answers: dict) -> dict or BaseException or AssertionError:
+    def __new__(self, answers: dict) -> dict | BaseException | AssertionError:
         """
         Apply reverse scoring on certain items (IPIP-300).
 

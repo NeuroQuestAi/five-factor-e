@@ -4,7 +4,7 @@ import json
 import unittest
 
 from ipipneo.reverse import (ReverseScored120, ReverseScored300,
-                             ReverseScoredCustom)
+                             ReverseScoredCustom, IPIP_NEO_ITEMS_REVERSED_120, IPIP_NEO_ITEMS_REVERSED_300)
 
 
 def load_mock_answers_120() -> dict:
@@ -27,6 +27,8 @@ def load_mock_answers_custom() -> dict:
 
 class TestReverse(unittest.TestCase):
     def test_reverse_scored_120(self) -> None:
+        self.assertEqual(len(IPIP_NEO_ITEMS_REVERSED_120), 55)
+
         with self.assertRaises(TypeError):
             ReverseScored120()
 
@@ -56,6 +58,8 @@ class TestReverse(unittest.TestCase):
         self.assertNotEqual(a, b)
 
     def test_reverse_scored_300(self) -> None:
+        self.assertEqual(len(IPIP_NEO_ITEMS_REVERSED_300), 148)
+
         with self.assertRaises(TypeError):
             ReverseScored300()
 
