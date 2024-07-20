@@ -12,6 +12,12 @@ def load_mock_answers_120() -> dict:
     return data
 
 
+def load_mock_answers_120_1() -> dict:
+    with open("test/mock/answers-test-8.json") as f:
+        data = json.load(f)
+    return data
+
+
 def load_mock_answers_300() -> dict:
     with open("test/mock/answers-test-4.json") as f:
         data = json.load(f)
@@ -89,35 +95,30 @@ class TestIpipNeo(unittest.TestCase):
             personalities[0]["openness"]["traits"][0].get("imagination"), 1
         )
         self.assertEqual(personalities[0]["openness"]["traits"][0].get("score"), "low")
-
         self.assertEqual(
             personalities[0]["openness"]["traits"][1].get("artistic_interests"),
             14.832308817371768,
         )
         self.assertEqual(personalities[0]["openness"]["traits"][1].get("score"), "low")
-
         self.assertEqual(
             personalities[0]["openness"]["traits"][2].get("emotionality"),
             22.458638690321635,
         )
         self.assertEqual(personalities[0]["openness"]["traits"][2].get("score"), "low")
-
         self.assertEqual(
             personalities[0]["openness"]["traits"][3].get("adventurousness"),
             19.18624143043911,
         )
         self.assertEqual(personalities[0]["openness"]["traits"][3].get("score"), "low")
-
         self.assertEqual(
             personalities[0]["openness"]["traits"][4].get("intellect"), 27.6351617847169
         )
         self.assertEqual(personalities[0]["openness"]["traits"][4].get("score"), "low")
-
         self.assertEqual(
             personalities[0]["openness"]["traits"][5].get("liberalism"),
             79.99472618213304,
         )
-        ##self.assertEqual(personalities[0]["openness"]["traits"][5].get("score"), "high")
+        self.assertEqual(personalities[0]["openness"]["traits"][5].get("score"), "high")
 
         # 2. C
         self.assertEqual(
@@ -130,10 +131,9 @@ class TestIpipNeo(unittest.TestCase):
             personalities[1]["conscientiousness"]["traits"][0].get("self_efficacy"),
             67.18081968991703,
         )
-        # self.assertEqual(
-        #    personalities[1]["conscientiousness"]["traits"][0].get("score"), "average"
-        # )
-
+        self.assertEqual(
+            personalities[1]["conscientiousness"]["traits"][0].get("score"), "high"
+        )
         self.assertEqual(
             personalities[1]["conscientiousness"]["traits"][1].get("orderliness"),
             18.490917605991513,
@@ -141,7 +141,6 @@ class TestIpipNeo(unittest.TestCase):
         self.assertEqual(
             personalities[1]["conscientiousness"]["traits"][1].get("score"), "low"
         )
-
         self.assertEqual(
             personalities[1]["conscientiousness"]["traits"][2].get("dutifulness"),
             28.94752897386354,
@@ -149,7 +148,6 @@ class TestIpipNeo(unittest.TestCase):
         self.assertEqual(
             personalities[1]["conscientiousness"]["traits"][2].get("score"), "low"
         )
-
         self.assertEqual(
             personalities[1]["conscientiousness"]["traits"][3].get(
                 "achievement_striving"
@@ -159,7 +157,6 @@ class TestIpipNeo(unittest.TestCase):
         self.assertEqual(
             personalities[1]["conscientiousness"]["traits"][3].get("score"), "low"
         )
-
         self.assertEqual(
             personalities[1]["conscientiousness"]["traits"][4].get("self_discipline"),
             17.450496278627668,
@@ -167,14 +164,13 @@ class TestIpipNeo(unittest.TestCase):
         self.assertEqual(
             personalities[1]["conscientiousness"]["traits"][4].get("score"), "low"
         )
-
         self.assertEqual(
             personalities[1]["conscientiousness"]["traits"][5].get("cautiousness"),
             38.524355262005315,
         )
-        # self.assertEqual(
-        #    personalities[1]["conscientiousness"]["traits"][5].get("score"), "average"
-        # )
+        self.assertEqual(
+            personalities[1]["conscientiousness"]["traits"][5].get("score"), "low"
+        )
 
         # 3. E
         self.assertEqual(personalities[2]["extraversion"].get("E"), 34.10779114957646)
@@ -185,18 +181,16 @@ class TestIpipNeo(unittest.TestCase):
             personalities[2]["extraversion"]["traits"][0].get("friendliness"),
             37.84207122476397,
         )
-        # self.assertEqual(
-        #    personalities[2]["extraversion"]["traits"][0].get("score"), "average"
-        # )
-
+        self.assertEqual(
+            personalities[2]["extraversion"]["traits"][0].get("score"), "low"
+        )
         self.assertEqual(
             personalities[2]["extraversion"]["traits"][1].get("gregariousness"),
             55.874636258650355,
         )
-        # self.assertEqual(
-        #    personalities[2]["extraversion"]["traits"][1].get("score"), "average"
-        # )
-
+        self.assertEqual(
+            personalities[2]["extraversion"]["traits"][1].get("score"), "average"
+        )
         self.assertEqual(
             personalities[2]["extraversion"]["traits"][2].get("assertiveness"),
             10.136565617726376,
@@ -204,23 +198,20 @@ class TestIpipNeo(unittest.TestCase):
         self.assertEqual(
             personalities[2]["extraversion"]["traits"][2].get("score"), "low"
         )
-
         self.assertEqual(
             personalities[2]["extraversion"]["traits"][3].get("activity_level"),
             70.68785093930268,
         )
-        # self.assertEqual(
-        #    personalities[2]["extraversion"]["traits"][3].get("score"), "high"
-        # )
-
+        self.assertEqual(
+            personalities[2]["extraversion"]["traits"][3].get("score"), "high"
+        )
         self.assertEqual(
             personalities[2]["extraversion"]["traits"][4].get("excitement_seeking"),
             36.25782829248527,
         )
-        # self.assertEqual(
-        #    personalities[2]["extraversion"]["traits"][4].get("score"), "average"
-        # )
-
+        self.assertEqual(
+            personalities[2]["extraversion"]["traits"][4].get("score"), "low"
+        )
         self.assertEqual(
             personalities[2]["extraversion"]["traits"][5].get("cheerfulness"),
             27.560328329400278,
@@ -238,17 +229,15 @@ class TestIpipNeo(unittest.TestCase):
             personalities[3]["agreeableness"]["traits"][0].get("trust"),
             51.83212101876228,
         )
-        # self.assertEqual(
-        #    personalities[3]["agreeableness"]["traits"][0].get("score"), "average"
-        # )
-
+        self.assertEqual(
+            personalities[3]["agreeableness"]["traits"][0].get("score"), "average"
+        )
         self.assertEqual(
             personalities[3]["agreeableness"]["traits"][1].get("morality"), 1
         )
         self.assertEqual(
             personalities[3]["agreeableness"]["traits"][1].get("score"), "low"
         )
-
         self.assertEqual(
             personalities[3]["agreeableness"]["traits"][2].get("altruism"),
             22.561476501041227,
@@ -256,7 +245,6 @@ class TestIpipNeo(unittest.TestCase):
         self.assertEqual(
             personalities[3]["agreeableness"]["traits"][2].get("score"), "low"
         )
-
         self.assertEqual(
             personalities[3]["agreeableness"]["traits"][3].get("cooperation"),
             1.930347015846948,
@@ -264,15 +252,13 @@ class TestIpipNeo(unittest.TestCase):
         self.assertEqual(
             personalities[3]["agreeableness"]["traits"][3].get("score"), "low"
         )
-
         self.assertEqual(
             personalities[3]["agreeableness"]["traits"][4].get("modesty"),
             55.67124528467815,
         )
-        # self.assertEqual(
-        #    personalities[3]["agreeableness"]["traits"][4].get("score"), "average"
-        # )
-
+        self.assertEqual(
+            personalities[3]["agreeableness"]["traits"][4].get("score"), "average"
+        )
         self.assertEqual(
             personalities[3]["agreeableness"]["traits"][5].get("sympathy"),
             21.651269458084244,
@@ -290,25 +276,22 @@ class TestIpipNeo(unittest.TestCase):
             personalities[4]["neuroticism"]["traits"][0].get("anxiety"),
             55.29153291804727,
         )
-        # self.assertEqual(
-        #    personalities[4]["neuroticism"]["traits"][0].get("score"), "average"
-        # )
-
+        self.assertEqual(
+            personalities[4]["neuroticism"]["traits"][0].get("score"), "average"
+        )
         self.assertEqual(
             personalities[4]["neuroticism"]["traits"][1].get("anger"), 68.23438372956855
         )
-        # self.assertEqual(
-        #    personalities[4]["neuroticism"]["traits"][1].get("score"), "high"
-        # )
-
+        self.assertEqual(
+            personalities[4]["neuroticism"]["traits"][1].get("score"), "high"
+        )
         self.assertEqual(
             personalities[4]["neuroticism"]["traits"][2].get("depression"),
             63.91248592040063,
         )
-        # self.assertEqual(
-        #    personalities[4]["neuroticism"]["traits"][2].get("score"), "average"
-        # )
-
+        self.assertEqual(
+            personalities[4]["neuroticism"]["traits"][2].get("score"), "high"
+        )
         self.assertEqual(
             personalities[4]["neuroticism"]["traits"][3].get("self_consciousness"),
             22.421630518162374,
@@ -316,22 +299,20 @@ class TestIpipNeo(unittest.TestCase):
         self.assertEqual(
             personalities[4]["neuroticism"]["traits"][3].get("score"), "low"
         )
-
         self.assertEqual(
             personalities[4]["neuroticism"]["traits"][4].get("immoderation"),
             48.1804752623172,
         )
-        # self.assertEqual(
-        #    personalities[4]["neuroticism"]["traits"][4].get("score"), "average"
-        # )
-
+        self.assertEqual(
+            personalities[4]["neuroticism"]["traits"][4].get("score"), "average"
+        )
         self.assertEqual(
             personalities[4]["neuroticism"]["traits"][5].get("vulnerability"),
             77.83259998736844,
         )
-        # self.assertEqual(
-        #    personalities[4]["neuroticism"]["traits"][5].get("score"), "high"
-        # )
+        self.assertEqual(
+            personalities[4]["neuroticism"]["traits"][5].get("score"), "high"
+        )
 
         #############################################
         # 2. Test with 30 year old woman.
@@ -890,3 +871,278 @@ class TestIpipNeo(unittest.TestCase):
             len(d(compare_original=compare_original, compare_reverse=compare_reverse)),
             144,
         )
+
+    def test_loop_process(self) -> None:
+        mock_data = load_mock_answers_120_1()
+
+        for _ in range(1, 501):
+            result = IpipNeo(question=120).compute(sex="M", age=40, answers=mock_data)
+
+            self.assertTrue(len(result.get("id")))
+            self.assertTrue(len(result.get("theory")))
+            self.assertTrue(len(result.get("model")))
+
+            self.assertEqual(result.get("question"), 120)
+            self.assertEqual(result.get("person").get("sex"), "M")
+            self.assertEqual(result.get("person").get("age"), 40)
+
+            self.assertTrue(len(result.get("person").get("result")))
+            self.assertTrue(
+                len(result.get("person").get("result").get("personalities"))
+            )
+
+            personalities = result.get("person").get("result").get("personalities")
+            self.assertEqual(len(personalities), 5)
+
+            # 1. O
+            self.assertEqual(personalities[0]["openness"].get("O"), 21.983719876245175)
+            self.assertEqual(personalities[0]["openness"].get("score"), "low")
+
+            # 1.1. O. Traits
+            self.assertEqual(
+                personalities[0]["openness"]["traits"][0].get("imagination"),
+                4.859442376762473,
+            )
+            self.assertEqual(
+                personalities[0]["openness"]["traits"][0].get("score"), "low"
+            )
+            self.assertEqual(
+                personalities[0]["openness"]["traits"][1].get("artistic_interests"),
+                14.832308817371768,
+            )
+            self.assertEqual(
+                personalities[0]["openness"]["traits"][1].get("score"), "low"
+            )
+            self.assertEqual(
+                personalities[0]["openness"]["traits"][2].get("emotionality"),
+                75.62287614753984,
+            )
+            self.assertEqual(
+                personalities[0]["openness"]["traits"][2].get("score"), "high"
+            )
+            self.assertEqual(
+                personalities[0]["openness"]["traits"][3].get("adventurousness"),
+                28.214638296317105,
+            )
+            self.assertEqual(
+                personalities[0]["openness"]["traits"][3].get("score"), "low"
+            )
+            self.assertEqual(
+                personalities[0]["openness"]["traits"][4].get("intellect"),
+                27.6351617847169,
+            )
+            self.assertEqual(
+                personalities[0]["openness"]["traits"][4].get("score"), "low"
+            )
+            self.assertEqual(
+                personalities[0]["openness"]["traits"][5].get("liberalism"),
+                53.250682139481455,
+            )
+            self.assertEqual(
+                personalities[0]["openness"]["traits"][5].get("score"), "average"
+            )
+
+            # 2. C
+            self.assertEqual(
+                personalities[1]["conscientiousness"].get("C"), 3.478244270657882
+            )
+            self.assertEqual(personalities[1]["conscientiousness"].get("score"), "low")
+
+            # 2.1. C. Traits
+            self.assertEqual(
+                personalities[1]["conscientiousness"]["traits"][0].get("self_efficacy"),
+                4.796963023285045,
+            )
+            self.assertEqual(
+                personalities[1]["conscientiousness"]["traits"][0].get("score"), "low"
+            )
+            self.assertEqual(
+                personalities[1]["conscientiousness"]["traits"][1].get("orderliness"),
+                25.51289074968153,
+            )
+            self.assertEqual(
+                personalities[1]["conscientiousness"]["traits"][1].get("score"), "low"
+            )
+            self.assertEqual(
+                personalities[1]["conscientiousness"]["traits"][2].get("dutifulness"),
+                54.122030713014226,
+            )
+            self.assertEqual(
+                personalities[1]["conscientiousness"]["traits"][2].get("score"),
+                "average",
+            )
+            self.assertEqual(
+                personalities[1]["conscientiousness"]["traits"][3].get(
+                    "achievement_striving"
+                ),
+                1,
+            )
+            self.assertEqual(
+                personalities[1]["conscientiousness"]["traits"][3].get("score"), "low"
+            )
+            self.assertEqual(
+                personalities[1]["conscientiousness"]["traits"][4].get(
+                    "self_discipline"
+                ),
+                17.450496278627668,
+            )
+            self.assertEqual(
+                personalities[1]["conscientiousness"]["traits"][4].get("score"), "low"
+            )
+            self.assertEqual(
+                personalities[1]["conscientiousness"]["traits"][5].get("cautiousness"),
+                9.298073989542786,
+            )
+            self.assertEqual(
+                personalities[1]["conscientiousness"]["traits"][5].get("score"), "low"
+            )
+
+            # 3. E
+            self.assertEqual(
+                personalities[2]["extraversion"].get("E"), 47.89470896965372
+            )
+            self.assertEqual(personalities[2]["extraversion"].get("score"), "average")
+
+            # 3.1. E. Traits
+            self.assertEqual(
+                personalities[2]["extraversion"]["traits"][0].get("friendliness"),
+                56.44599205755361,
+            )
+            self.assertEqual(
+                personalities[2]["extraversion"]["traits"][0].get("score"), "high"
+            )
+            self.assertEqual(
+                personalities[2]["extraversion"]["traits"][1].get("gregariousness"),
+                80.5566775121581,
+            )
+            self.assertEqual(
+                personalities[2]["extraversion"]["traits"][1].get("score"), "high"
+            )
+            self.assertEqual(
+                personalities[2]["extraversion"]["traits"][2].get("assertiveness"),
+                25.365062122504668,
+            )
+            self.assertEqual(
+                personalities[2]["extraversion"]["traits"][2].get("score"), "low"
+            )
+            self.assertEqual(
+                personalities[2]["extraversion"]["traits"][3].get("activity_level"),
+                80.26337356752106,
+            )
+            self.assertEqual(
+                personalities[2]["extraversion"]["traits"][3].get("score"), "high"
+            )
+            self.assertEqual(
+                personalities[2]["extraversion"]["traits"][4].get("excitement_seeking"),
+                46.47487379334291,
+            )
+            self.assertEqual(
+                personalities[2]["extraversion"]["traits"][4].get("score"), "average"
+            )
+            self.assertEqual(
+                personalities[2]["extraversion"]["traits"][5].get("cheerfulness"),
+                5.725720334311717,
+            )
+            self.assertEqual(
+                personalities[2]["extraversion"]["traits"][5].get("score"), "low"
+            )
+
+            # 4. A
+            self.assertEqual(
+                personalities[3]["agreeableness"].get("A"), 35.9900006369013
+            )
+            self.assertEqual(personalities[3]["agreeableness"].get("score"), "low")
+
+            # 4.1. A. Traits
+            self.assertEqual(
+                personalities[3]["agreeableness"]["traits"][0].get("trust"),
+                32.86250876624982,
+            )
+            self.assertEqual(
+                personalities[3]["agreeableness"]["traits"][0].get("score"), "low"
+            )
+            self.assertEqual(
+                personalities[3]["agreeableness"]["traits"][1].get("morality"),
+                50.78337445541564,
+            )
+            self.assertEqual(
+                personalities[3]["agreeableness"]["traits"][1].get("score"), "average"
+            )
+            self.assertEqual(
+                personalities[3]["agreeableness"]["traits"][2].get("altruism"),
+                1,
+            )
+            self.assertEqual(
+                personalities[3]["agreeableness"]["traits"][2].get("score"), "low"
+            )
+            self.assertEqual(
+                personalities[3]["agreeableness"]["traits"][3].get("cooperation"),
+                44.431624713722385,
+            )
+            self.assertEqual(
+                personalities[3]["agreeableness"]["traits"][3].get("score"), "low"
+            )
+            self.assertEqual(
+                personalities[3]["agreeableness"]["traits"][4].get("modesty"),
+                65.42096153830568,
+            )
+            self.assertEqual(
+                personalities[3]["agreeableness"]["traits"][4].get("score"), "high"
+            )
+            self.assertEqual(
+                personalities[3]["agreeableness"]["traits"][5].get("sympathy"),
+                63.16385561684274,
+            )
+            self.assertEqual(
+                personalities[3]["agreeableness"]["traits"][5].get("score"), "high"
+            )
+
+            # 5. N
+            self.assertEqual(
+                personalities[4]["neuroticism"].get("N"), 67.02787730779448
+            )
+            self.assertEqual(personalities[4]["neuroticism"].get("score"), "high")
+
+            # 5.1. N Traits
+            self.assertEqual(
+                personalities[4]["neuroticism"]["traits"][0].get("anxiety"),
+                45.83967894356357,
+            )
+            self.assertEqual(
+                personalities[4]["neuroticism"]["traits"][0].get("score"), "average"
+            )
+            self.assertEqual(
+                personalities[4]["neuroticism"]["traits"][1].get("anger"),
+                27.947540876827475,
+            )
+            self.assertEqual(
+                personalities[4]["neuroticism"]["traits"][1].get("score"), "low"
+            )
+            self.assertEqual(
+                personalities[4]["neuroticism"]["traits"][2].get("depression"),
+                30.04288206625688,
+            )
+            self.assertEqual(
+                personalities[4]["neuroticism"]["traits"][2].get("score"), "low"
+            )
+            self.assertEqual(
+                personalities[4]["neuroticism"]["traits"][3].get("self_consciousness"),
+                58.27892065831418,
+            )
+            self.assertEqual(
+                personalities[4]["neuroticism"]["traits"][3].get("score"), "high"
+            )
+            self.assertEqual(
+                personalities[4]["neuroticism"]["traits"][4].get("immoderation"),
+                91.7841965201095,
+            )
+            self.assertEqual(
+                personalities[4]["neuroticism"]["traits"][4].get("score"), "high"
+            )
+            self.assertEqual(
+                personalities[4]["neuroticism"]["traits"][5].get("vulnerability"),
+                99.1834310463289,
+            )
+            self.assertEqual(
+                personalities[4]["neuroticism"]["traits"][5].get("score"), "high"
+            )

@@ -5,7 +5,7 @@ __email__ = "e@NeuroQuest.ai"
 __copyright__ = "Copyright NeuroQuest 2022-2024, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.12.0"
+__version__ = "1.12.1"
 __status__ = "production"
 
 import copy
@@ -47,6 +47,15 @@ class IpipNeo(Facet):
         super().__init__(nquestion)
         self._nquestion: int = question
         self._test: bool = test
+        self._norm_scale_min: int = None
+        self._norm_scale_max: int = None
+        self._score_level_low: int = None
+        self._score_level_high: int = None
+
+    def __del__(self):
+        """Clear data."""
+        self._nquestion: int = None
+        self._test: bool = False
         self._norm_scale_min: int = None
         self._norm_scale_max: int = None
         self._score_level_low: int = None
@@ -295,12 +304,12 @@ class IpipNeo(Facet):
         assert isinstance(original, dict), "original must be a dict"
 
         reversed = (
-            ReverseScoredCustom(answers=answers)
+            ReverseScoredCustom(answers=copy.deepcopy(answers))
             if self._test
             else (
-                ReverseScored120(answers=answers)
+                ReverseScored120(answers=copy.deepcopy(answers))
                 if self._nquestion == 120
-                else ReverseScored300(answers=answers)
+                else ReverseScored300(answers=copy.deepcopy(answers))
             )
         )
         assert isinstance(reversed, dict), "reversed must be a dict"
@@ -317,5 +326,10 @@ class IpipNeo(Facet):
                 "user_answers_reversed": reversed.get("answers", []),
             }
         assert isinstance(result, dict), "result 2 must be a dict"
+
+        if "answers" in locals():
+            del answers
+        if "original" in locals():
+            del original
 
         return result or {}
