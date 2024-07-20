@@ -5,7 +5,7 @@ __email__ = "e@NeuroQuest.ai"
 __copyright__ = "Copyright NeuroQuest 2022-2024, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.12.0"
+__version__ = "1.12.1"
 __status__ = "production"
 
 from enum import IntEnum
@@ -34,6 +34,10 @@ class Facet:
 
         if self._scale is None:
             raise ValueError(f"The available questions are: {list(QuestionNumber)}")
+
+    def __del__(self):
+        """Clear data."""
+        self._scale = None
 
     def score(self, answers: list) -> list | BaseException:
         """

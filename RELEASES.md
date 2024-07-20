@@ -2,6 +2,11 @@
 
 ### Releases 🎈
 
+Release **[1.12.1](https://github.com/NeuroQuestAi/five-factor-e/releases/tag/v1.12.1)**:
+
+* Fixed the problem where when the algorithm was executed asynchronously it generated unexpected results;
+* Adding more unit tests.
+
 Release **[1.12.0](https://github.com/NeuroQuestAi/five-factor-e/releases/tag/v1.12.0)**:
 
 * Revised README files;
