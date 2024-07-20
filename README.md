@@ -72,23 +72,23 @@ News about each version please look here:
 From **PyPI**:
 
 ```shell
-$ python3 -m pip install --upgrade five-factor-e
+python3 -m pip install --upgrade five-factor-e
 ```
 
 From source:
 
 ```shell
-$ git clone https://github.com/NeuroQuestAi/five-factor-e.git
-$ cd five-factor-e
-$ python3 -m pip install .
+git clone https://github.com/NeuroQuestAi/five-factor-e.git
+cd five-factor-e
+python3 -m pip install .
 ```
 
 or [Poetry](https://python-poetry.org/):
 
 ```shell
-$ git clone https://github.com/NeuroQuestAi/five-factor-e.git
-$ cd five-factor-e
-$ poetry shell && poetry install
+git clone https://github.com/NeuroQuestAi/five-factor-e.git
+cd five-factor-e
+poetry shell && poetry install
 ```
 
 ### How to use 🔥
