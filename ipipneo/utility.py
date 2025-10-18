@@ -2,10 +2,10 @@
 
 __author__ = "Ederson Corbari"
 __email__ = "e@NeuroQuest.ai"
-__copyright__ = "Copyright NeuroQuest 2022-2024, Big 5 Personality Traits"
+__copyright__ = "Copyright NeuroQuest 2022-2025, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.12.1"
+__version__ = "1.13.1"
 __status__ = "production"
 
 from datetime import datetime
@@ -20,13 +20,17 @@ def raise_if_sex_is_invalid(sex: str) -> bool | AssertionError | BaseException:
     Validate the sex field.
 
     Args:
-        - sex: Male is M or Female is F.
+        - sex: Male is M or Female is F or Neutral is N.
     """
     if not sex:
         raise BaseException("The (sex) field is required!")
 
     assert isinstance(sex, str), "The (sex) field must be a string!"
-    assert sex == "M" or sex == "F", "The (sex) field must contain (M or F)!"
+    assert sex in [
+        "M",
+        "F",
+        "N",
+    ], "The (sex) field must contain one of (M, F, or N for Neutral)!"
     return True
 
 

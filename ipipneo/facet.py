@@ -2,10 +2,10 @@
 
 __author__ = "Ederson Corbari"
 __email__ = "e@NeuroQuest.ai"
-__copyright__ = "Copyright NeuroQuest 2022-2024, Big 5 Personality Traits"
+__copyright__ = "Copyright NeuroQuest 2022-2025, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.12.1"
+__version__ = "1.13.1"
 __status__ = "production"
 
 from enum import IntEnum
@@ -304,7 +304,11 @@ class Facet:
         return (
             "low"
             if int(score) < facet_score_level_low_value
-            else "average"
-            if facet_score_level_low_value <= int(score) <= facet_score_level_high_value
-            else "high"
+            else (
+                "average"
+                if facet_score_level_low_value
+                <= int(score)
+                <= facet_score_level_high_value
+                else "high"
+            )
         )

@@ -2,10 +2,10 @@
 
 __author__ = "Ederson Corbari"
 __email__ = "e@NeuroQuest.ai"
-__copyright__ = "Copyright NeuroQuest 2022-2024, Big 5 Personality Traits"
+__copyright__ = "Copyright NeuroQuest 2022-2025, Big 5 Personality Traits"
 __credits__ = ["John A. Johnson", "Dhiru Kholia"]
 __license__ = "MIT"
-__version__ = "1.12.1"
+__version__ = "1.13.1"
 __status__ = "production"
 
 from enum import IntEnum
@@ -21,8 +21,11 @@ class Norm:
         """
         Based on sex and age returns range with norms.
 
+        For inclusion, a combined norm is added (average between the M and F)
+        and applied to all people who do not identify with (M or F).
+
         Args:
-            - sex: Gender of the individual (M or F).
+            - sex: Gender of the individual (M or F or N).
             - age: The age of the individual.
             - nquestion: Question type, 120 or 300.
         """
@@ -31,6 +34,21 @@ class Norm:
 
         if nquestion != 120 and nquestion != 300:
             raise BaseException(f"Type question {nquestion} is invalid!")
+
+        if sex.upper() not in {"M", "F"}:
+            return {
+                "id": 0,
+                "ns": [
+                    round(sum(v) / 2, 2)
+                    for v in zip(
+                        *(
+                            Norm(sex=s, age=age, nquestion=nquestion)["ns"]
+                            for s in ("M", "F")
+                        )
+                    )
+                ],
+                "category": "neutral (combined male & female norms)",
+            }
 
         if nquestion == 120:
             if sex.upper() == "M" and age < 21:
