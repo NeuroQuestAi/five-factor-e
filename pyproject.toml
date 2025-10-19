@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "five-factor-e"
-version = "v1.12.0"
+version = "v1.13.1"
 description = "Big 5 IPIP-NEO Personality Traits"
 authors = ["Ederson Corbari <e@NeuroQuest.ai>"]
 readme = "README.md"

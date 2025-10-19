@@ -3,7 +3,7 @@
 create_pypi()
 {
   python3 setup.py sdist bdist_wheel && twine check dist/*
-  # cat ~/.pypi && twine upload --repository testpypi dist/*
+  # cat ~/.pypirc && twine upload --repository testpypi dist/*
   echo "Ok."
 }
 
