@@ -2,6 +2,10 @@
 
 ### Releases 🎈
 
+Release **[1.13.1](https://github.com/NeuroQuestAi/five-factor-e/releases/tag/v1.13.1)**:
+
+* Created a neutral norm, the average of the (M and F) norms, applied to individuals who do not identify with these groups.
+
 Release **[1.12.1](https://github.com/NeuroQuestAi/five-factor-e/releases/tag/v1.12.1)**:
 
 * Fixed the problem where when the algorithm was executed asynchronously it generated unexpected results;

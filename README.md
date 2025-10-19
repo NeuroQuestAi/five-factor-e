@@ -158,22 +158,22 @@ Calculate the Big Five for a **40-year-old man**:
 IpipNeo(question=120).compute(sex="M", age=40, answers=answers120)
 ```
 
-For the long version of the inventory just change the parameters *question* to **300**.
-
-```python
-IpipNeo(question=300).compute(sex="M", age=40, answers=answers300)
-```
-
-Calculating the Big Five for a **25-year-old woman**:
+For a **25-year-old woman**:
 
 ```python
 IpipNeo(question=120).compute(sex="F", age=25, answers=answers120)
 ```
 
-Calculating the Big Five for a **25-year-old neutral**:
+For a **neutral case at 18 years of age**:
 
 ```python
-IpipNeo(question=120).compute(sex="N", age=25, answers=answers120)
+IpipNeo(question=120).compute(sex="N", age=18, answers=answers120)
+```
+
+For the long version of the inventory just change the parameters *question* to **300**.
+
+```python
+IpipNeo(question=300).compute(sex="M", age=40, answers=answers300)
 ```
 
 An example of the output of the results:
