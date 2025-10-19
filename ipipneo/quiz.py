@@ -381,11 +381,11 @@ def main() -> None:
     replies = map(
         input,
         chain(
-            ["\n> What is your sex Male or Female? M / F: "],
-            repeat("Please, only M or F are valid! Try again: "),
+            ["\n> What is your sex? Male, Female, or Neutral? M / F / N: "],
+            repeat("Please, only M, F, or N are valid! Try again: "),
         ),
     )
-    sex = str(next(filter({"F", "f", "M", "m"}.__contains__, replies)))
+    sex = str(next(filter({"F", "f", "M", "m", "N", "n"}.__contains__, replies)))
 
     replies = map(
         input,

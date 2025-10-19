@@ -43,6 +43,7 @@ class TestUtility(unittest.TestCase):
 
         self.assertEqual(raise_if_sex_is_invalid(sex="M"), True)
         self.assertEqual(raise_if_sex_is_invalid(sex="F"), True)
+        self.assertEqual(raise_if_sex_is_invalid(sex="N"), True)
 
     def test_raise_if_age_is_invalid(self) -> None:
         with self.assertRaises(BaseException):
